@@ -1,17 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
   return (
-    <div className="App">
-      
+    <Router>
       <div className="bg-blue-500 text-red-300 p-4">
-  This is a div styled with Tailwind CSS.
-</div>
-      
-    </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
   );
+}
+
+function Home() {
+  return <h1>Home Page</h1>;
 }
 
 export default App;
