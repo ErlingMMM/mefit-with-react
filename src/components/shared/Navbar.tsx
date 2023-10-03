@@ -9,7 +9,7 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
   };
 
   const switchToGoalsDashboard = () => {
-    setActiveComponent('goals');
+    setActiveComponent('goals-dashboard');
   };
 
   return (

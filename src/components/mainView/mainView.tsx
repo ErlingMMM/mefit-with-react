@@ -5,7 +5,7 @@ import Contributors from '../contributors/Contributors';
 import GoalsDashboard from '../goals/GoalsDashboard';
 
 function MainView() {
-  const [activeComponent, setActiveComponent] = useState('goals');
+  const [activeComponent, setActiveComponent] = useState('goals-dashboard');
 
   const renderComponent = () => {
     switch (activeComponent) {
@@ -13,7 +13,7 @@ function MainView() {
         return <Profile />;
       case 'contributors':
         return <Contributors />;
-      case 'goals':
+      case 'goals-dashboard':
         return <GoalsDashboard />;
       default:
         return null;
