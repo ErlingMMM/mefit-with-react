@@ -1,8 +1,11 @@
-import React from 'react'
-
+import Navbar from "../shared/Navbar"
 function Dashboard() {
   return (
-    <div>Goals dashboard</div>
+    <>
+     <div>Goals dashboard</div>
+     <Navbar />
+    </>
+   
   )
 }
 
