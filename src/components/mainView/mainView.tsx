@@ -22,7 +22,7 @@ function MainView() {
 
   return (
     <>
-      <div>My Dashboard</div>
+      <div>Main view</div>
       <Navbar setActiveComponent={setActiveComponent} />
       <div className="bg-green-500 text-yellow-300 p-4">{renderComponent()}</div>
     </>
