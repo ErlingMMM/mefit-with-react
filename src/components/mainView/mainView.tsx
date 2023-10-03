@@ -5,6 +5,9 @@ import Contributors from '../contributors/Contributors';
 import GoalsDashboard from '../goalsDashboard/GoalsDashboard';
 import GoalsDetailView from '../goalsDetailView/GoalsDetailView';
 import Programs from '../programs/Programs';  
+import Workouts from '../workouts/Workouts';
+import Exercises from '../exercises/Exercises';
+import UserDetails from '../userDetails/UserDetails';
 
 function MainView() {
   const [activeComponent, setActiveComponent] = useState('goals-dashboard');
@@ -21,6 +24,12 @@ function MainView() {
         return <GoalsDetailView/>;
         case 'programs':
         return <Programs/>;
+        case 'workouts':
+        return <Workouts/>;
+        case 'exercises':
+        return <Exercises/>;
+        case 'user-details':
+        return <UserDetails/>;
       default:
         return null;
     }

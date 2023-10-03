@@ -14,6 +14,9 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
           <button onClick={() => switchToComponent('goals-dashboard')}>Goals Dashboard</button>
           <button onClick={() => switchToComponent('goals-details')}>Goals Details</button>
           <button onClick={() => switchToComponent('programs')}>Programs</button>
+          <button onClick={() => switchToComponent('workouts')}>Workouts</button>
+          <button onClick={() => switchToComponent('exercises')}>Exercises</button>
+          <button onClick={() => switchToComponent('user-details')}>User details</button>
         </div>
         <div className="logout-button">
           <button>Logout</button>
