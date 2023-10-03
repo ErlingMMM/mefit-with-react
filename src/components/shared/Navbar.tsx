@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 
 import Profile from '../profile/Profile'; 
 import Contributors from '../contributors/Contributors'; 
+import GoalsDashboard from '../goals/GoalsDashboard';
 
 function Navbar() {
-  const [activeComponent, setActiveComponent] = useState('dashboard');
+  const [activeComponent, setActiveComponent] = useState('goals-dashboard');
 
 
 
@@ -17,6 +18,10 @@ function Navbar() {
     setActiveComponent('contributors');
   };
 
+  const switchToGoalsDashboard = () => {
+    setActiveComponent('goals-dashboard');
+  };
+
   const renderComponent = () => {
     switch (activeComponent) {
      
@@ -24,6 +29,8 @@ function Navbar() {
         return <Profile />;
       case 'contributors':
         return <Contributors />;
+        case 'goals-dashboard':
+            return <GoalsDashboard />;
       default:
         return null;
     }
@@ -37,6 +44,7 @@ function Navbar() {
           
           <button onClick={switchToProfile}>Profile</button>
           <button onClick={switchToContributors}>Contributors Area</button>
+          <button onClick={switchToGoalsDashboard}>Goals Dashboard</button>
         </div>
         <div className="logout-button">
           <button>Logout</button>
