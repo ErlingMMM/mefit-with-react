@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Navbar from '../shared/Navbar';
 import Profile from '../profile/Profile';
 import Contributors from '../contributors/Contributors';
-import GoalsDashboard from '../goals/GoalsDashboard';
+import GoalsDashboard from '../goalsDashboard/GoalsDashboard';
 
 function MainView() {
   const [activeComponent, setActiveComponent] = useState('goals-dashboard');
