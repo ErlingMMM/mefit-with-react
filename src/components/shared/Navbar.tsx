@@ -1,5 +1,5 @@
 function Navbar({ setActiveComponent }: { setActiveComponent: (component: string) => void }) {
-  
+
   const switchToComponent = (component: string) => {
     setActiveComponent(component);
   };
@@ -13,6 +13,7 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
           <button onClick={() => switchToComponent('contributors')}>Contributors Area</button>
           <button onClick={() => switchToComponent('goals-dashboard')}>Goals Dashboard</button>
           <button onClick={() => switchToComponent('goals-details')}>Goals Details</button>
+          <button onClick={() => switchToComponent('programs')}>Programs</button>
         </div>
         <div className="logout-button">
           <button>Logout</button>

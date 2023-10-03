@@ -4,6 +4,7 @@ import Profile from '../profile/Profile';
 import Contributors from '../contributors/Contributors';
 import GoalsDashboard from '../goalsDashboard/GoalsDashboard';
 import GoalsDetailView from '../goalsDetailView/GoalsDetailView';
+import Programs from '../programs/Programs';  
 
 function MainView() {
   const [activeComponent, setActiveComponent] = useState('goals-dashboard');
@@ -18,6 +19,8 @@ function MainView() {
         return <GoalsDashboard />;
         case 'goals-details':
         return <GoalsDetailView/>;
+        case 'programs':
+        return <Programs/>;
       default:
         return null;
     }
