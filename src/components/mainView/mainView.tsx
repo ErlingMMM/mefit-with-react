@@ -4,7 +4,7 @@ import Profile from '../profile/Profile';
 import Contributors from '../contributors/Contributors';
 import GoalsDashboard from '../goals/GoalsDashboard';
 
-function Dashboard() {
+function MainView() {
   const [activeComponent, setActiveComponent] = useState('goals');
 
   const renderComponent = () => {
@@ -29,4 +29,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default MainView;
