@@ -1,5 +1,7 @@
 
 function Navbar({ setActiveComponent }: { setActiveComponent: (component: string) => void }) {
+
+
   const switchToProfile = () => {
     setActiveComponent('profile');
   };
@@ -12,6 +14,10 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
     setActiveComponent('goals-dashboard');
   };
 
+  const switchToGoalsDetails = () => {
+    setActiveComponent('goals-details');
+  };
+
   return (
     <div>
       <div className="bg-red-500 text-orange-300 p-4">
@@ -20,6 +26,7 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
           <button onClick={switchToProfile}>Profile</button>
           <button onClick={switchToContributors}>Contributors Area</button>
           <button onClick={switchToGoalsDashboard}>Goals Dashboard</button>
+          <button onClick={switchToGoalsDetails}>Goals Details</button>
         </div>
         <div className="logout-button">
           <button>Logout</button>

@@ -3,6 +3,7 @@ import Navbar from '../shared/Navbar';
 import Profile from '../profile/Profile';
 import Contributors from '../contributors/Contributors';
 import GoalsDashboard from '../goalsDashboard/GoalsDashboard';
+import GoalsDetailView from '../goalsDetailView/GoalsDetailView';
 
 function MainView() {
   const [activeComponent, setActiveComponent] = useState('goals-dashboard');
@@ -15,6 +16,8 @@ function MainView() {
         return <Contributors />;
       case 'goals-dashboard':
         return <GoalsDashboard />;
+        case 'goals-details':
+        return <GoalsDetailView/>;
       default:
         return null;
     }
