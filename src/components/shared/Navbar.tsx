@@ -1,15 +1,5 @@
-import React, { useState } from 'react';
 
-
-import Profile from '../profile/Profile'; 
-import Contributors from '../contributors/Contributors'; 
-import GoalsDashboard from '../goals/GoalsDashboard';
-
-function Navbar() {
-  const [activeComponent, setActiveComponent] = useState('goals-dashboard');
-
-
-
+function Navbar({ setActiveComponent }: { setActiveComponent: (component: string) => void }) {
   const switchToProfile = () => {
     setActiveComponent('profile');
   };
@@ -19,29 +9,14 @@ function Navbar() {
   };
 
   const switchToGoalsDashboard = () => {
-    setActiveComponent('goals-dashboard');
-  };
-
-  const renderComponent = () => {
-    switch (activeComponent) {
-     
-      case 'profile':
-        return <Profile />;
-      case 'contributors':
-        return <Contributors />;
-        case 'goals-dashboard':
-            return <GoalsDashboard />;
-      default:
-        return null;
-    }
+    setActiveComponent('goals');
   };
 
   return (
     <div>
-      <div className="navbar">
+      <div className="bg-red-500 text-orange-300 p-4">
         <div className="user-indicator">User: John Doe</div>
         <div className="nav-links">
-          
           <button onClick={switchToProfile}>Profile</button>
           <button onClick={switchToContributors}>Contributors Area</button>
           <button onClick={switchToGoalsDashboard}>Goals Dashboard</button>
@@ -50,7 +25,6 @@ function Navbar() {
           <button>Logout</button>
         </div>
       </div>
-      <div className="content">{renderComponent()}</div>
     </div>
   );
 }
