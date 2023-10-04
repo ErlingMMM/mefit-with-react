@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
+import Exercise from './pages/Exercise';
 import MainView from './components/mainView/mainView';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainView />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/exercise" element={<Exercise />} />
         </Routes>
       </div>
     </Router>
