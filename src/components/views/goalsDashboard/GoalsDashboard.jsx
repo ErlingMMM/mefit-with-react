@@ -7,7 +7,6 @@ function GoalsDashboard() {
   return (
     <>
      <div>GoalsDashboard</div>
-    <Progress/>
     <Calandar/>
     <MyGoals/>
     <RemainingDays/>
