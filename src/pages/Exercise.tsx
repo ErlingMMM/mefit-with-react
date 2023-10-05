@@ -1,5 +1,4 @@
-// Exercise.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ExerciseModal from '../components/modals/ExerciseModal';
 
 function Exercise() {
