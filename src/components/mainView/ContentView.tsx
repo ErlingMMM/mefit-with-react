@@ -7,7 +7,7 @@ import Workouts from '../views/workouts/Workouts';
 import Exercises from '../views/exercises/Exercises';
 import UserDetails from '../views/userDetails/UserDetails';
 
-function ContentView({ activeComponent }) {
+function ContentView({ activeComponent }: { activeComponent: string }) {
   switch (activeComponent) {
     case 'contributors':
       return <Contributors />;
