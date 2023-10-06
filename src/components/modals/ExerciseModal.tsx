@@ -1,5 +1,5 @@
 
-function ExerciseModal({ isOpen, closeModal }) {
+function ExerciseModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) {
   return (
     <div>
       {isOpen && (

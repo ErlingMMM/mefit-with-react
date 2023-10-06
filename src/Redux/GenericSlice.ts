@@ -44,7 +44,7 @@ export const getLoginAsync = createAsyncThunk(
       const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/users/1`);
       if (resp.ok) {
         const user = await resp.json();
-        if (user.length === 1) {
+        if (user.id != null) {
           return { user };
         } else {
           throw new Error('Feil: Bruker ikke funnet.');
