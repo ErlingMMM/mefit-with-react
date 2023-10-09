@@ -1,5 +1,3 @@
-// HamburgerMenu.tsx
-
 import React from 'react';
 
 interface HamburgerMenuProps {
@@ -11,32 +9,36 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
   return (
     <div className="relative">
       <button
-        className="text-gray-500 w-10 h-10 relative focus:outline-none bg-white"
+        className="text-black w-10 h-10 relative focus:outline-none bg-white"
         onClick={toggleMenu}
       >
-        <span className="sr-only">Open main menu</span>
-        <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <span
-            aria-hidden="true"
-            className={`block absolute h-0.5 w-5 bg-current transform transition duration-200 ease-in-out ${
-              isOpen ? 'rotate-45' : ''
-            }`}
-            style={{ top: '50%' }}
-          ></span>
-          <span
-            aria-hidden="true"
-            className={`block absolute h-0.5 w-5 bg-current transform transition duration-200 ease-in-out ${
-              isOpen ? 'opacity-0' : ''
-            }`}
-            style={{ top: '50%' }}
-          ></span>
-          <span
-            aria-hidden="true"
-            className={`block absolute h-0.5 w-5 bg-current transform transition duration-200 ease-in-out ${
-              isOpen ? '-rotate-45' : ''
-            }`}
-            style={{ top: '50%' }}
-          ></span>
+        <div>
+          <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <span
+              className={`block absolute h-0.5 w-5 bg-current transform transition duration-200 ease-in-out ${
+                isOpen ? 'rotate-45' : ''
+              }`}
+            ></span>
+            <span
+              className={`block absolute h-0.5 w-5 bg-current transform transition duration-200 ease-in-out ${
+                isOpen ? '-rotate-45' : ''
+              }`}
+            ></span>
+          </div>
+          <div>
+            <span
+              className={`block absolute h-0.5 w-5 bg-current transform transition duration-200 ease-in-out ${
+                isOpen ? 'opacity-0' : ''
+              }`}
+              style={{ top: '10px', left: '10px' }} 
+            ></span>
+            <span
+              className={`block absolute h-0.5 w-5 bg-current transform transition duration-200 ease-in-out ${
+                isOpen ? 'opacity-0' : ''
+              }`}
+              style={{ top: '30px', left: '10px' }} 
+            ></span>
+          </div>
         </div>
       </button>
     </div>
