@@ -2,7 +2,8 @@
   "realm": "deploy-mefit",
   "auth-server-url": "https://lemur-10.cloud-iam.com/auth/",
   "ssl-required": "external",
-  "resource": "mefit-frontend-azure",
+  "resource": "mefit-frontend-local",
   "public-client": true,
   "confidential-port": 0
 }
+
