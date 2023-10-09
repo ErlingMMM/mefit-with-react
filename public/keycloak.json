@@ -1,8 +1,8 @@
 {
-    "realm": "pacmaniatesting",
-    "auth-server-url": "https://lemur-10.cloud-iam.com/auth/",
-    "ssl-required": "external",
-    "resource": "TestingClient",
-    "public-client": true,
-    "confidential-port": 0
-  }
+  "realm": "deploy-mefit",
+  "auth-server-url": "https://lemur-10.cloud-iam.com/auth/",
+  "ssl-required": "external",
+  "resource": "mefit-frontend-local",
+  "public-client": true,
+  "confidential-port": 0
+}
