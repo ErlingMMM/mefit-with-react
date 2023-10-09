@@ -10,8 +10,8 @@ import { RootState } from "../Redux/Store";
 function Exercise() {
 const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
 const user = useSelector((state:any) => state.data.data);
-//const loading = useSelector((state:any) => state.data.loading);
-//const error = useSelector((state:any) => state.data.error);
+const loading = useSelector((state:any) => state.data.loading);
+const error = useSelector((state:any) => state.data.error);
 const [isModalOpen, setIsModalOpen] = useState(false);
 
 
