@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import { initialize } from './Keycloak';
 import reportWebVitals from './reportWebVitals';
-
-
+import { Provider } from 'react-redux';  // Importer Provider fra react-redux
+import { store } from './Redux/Store';   // Importer Redux store
 
 const rootElement = document.getElementById("root");
 
@@ -15,7 +15,9 @@ if (rootElement) {
   .then(() => { // If No Keycloak Error occurred - Display the App
     root.render(
       <React.StrictMode>
-        <App />
+        <Provider store={store}> {/* Wrap App komponenten med Provider og gi den Redux store som en prop */}
+          <App />
+        </Provider>
       </React.StrictMode>
     );
   })
