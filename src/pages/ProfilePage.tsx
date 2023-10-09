@@ -5,6 +5,7 @@ import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "@reduxjs/toolkit";
 import { RootState } from "../Redux/Store";
 import keycloak from "../Keycloak";
+import { log } from "console";
 
 
 function ProfilePage() {
@@ -16,8 +17,9 @@ function ProfilePage() {
   
   useEffect(() => {
     dispatch(getLoginAsync());
-  }, []); 
+  }, [dispatch]); 
 
+  console.log(user);
 
   return (
 

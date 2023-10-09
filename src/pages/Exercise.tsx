@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ExerciseModal from '../components/modals/ExerciseModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
@@ -38,7 +38,11 @@ function Exercise() {
               </li>
             ))
           ) : (
-            <li>No exercises available</li>
+            <div>
+   <li>No exercises available</li>
+            <button onClick={() => openModal("hei")}>hei</button>
+            </div>
+         
           )}
         </ul>
       </div>
