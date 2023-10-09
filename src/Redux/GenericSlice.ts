@@ -90,7 +90,7 @@ export const getLoginAsync = createAsyncThunk(
   "getLoginAsync",
   async () => {
     try {
-      const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/users/1`);
+      const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/user/`);
       if (resp.ok) {
         const user = await resp.json();
         if (user.id != null) {

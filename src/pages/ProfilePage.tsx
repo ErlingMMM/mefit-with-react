@@ -16,8 +16,7 @@ function ProfilePage() {
   
   useEffect(() => {
     dispatch(getLoginAsync());
-  }, []); // Tom avhengighetsliste betyr at denne effekten kjører kun en gang ved montering
-
+  }, []); 
 
 
   return (
@@ -34,19 +33,10 @@ function ProfilePage() {
           )}
         </section>
   
-        {keycloak.token && (
-          <div>
-            <h4>Token</h4>
-            <pre>{keycloak.token}</pre>
-          </div>
-        )}
-      <h1>Profile Page</h1>
-      <p>Welcome to your profile page {user.name}</p>
-      <p> Your bio: {user.bio}</p>
-      <p>Your fitnesslevl: {user.fitnessPreference}</p>
-      <p>your gender: {user.male}</p>
-      <p>your height:{user.height}</p>
-      <p>your weight: {user.weight}</p>   
+        {keycloak.tokenParsed && keycloak.tokenParsed.name && (
+        <><h1>velkommen: {keycloak.tokenParsed.name}</h1>
+        <h1>din mail er : {keycloak.tokenParsed.email}</h1></>
+      )}
     </div>
 
 
