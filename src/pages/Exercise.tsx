@@ -40,7 +40,7 @@ function Exercise() {
           ) : (
             <div>
    <li>No exercises available</li>
-            <button onClick={() => openModal("hei")}>hei</button>
+            <button onClick={() => openModal("dummy")}>dummy</button>
             </div>
          
           )}

@@ -2,7 +2,7 @@
 import Programs from '../programs/Programs';  
 import Workouts from '../workouts/Workouts';
 import Exercises from '../exercises/Exercises';
-import Dashboard from './GoalsDashboard';
+import Dashboard from './Dashboard';
 import Profile from '../profile/Profile';
 
 function ContentView({ activeComponent }: { activeComponent: string }) {

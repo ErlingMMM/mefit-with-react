@@ -3,10 +3,10 @@ import MyGoals from "./MyGoals"
 import Progress from "./Progress"
 import RemainingDays from "./RemainingDays"
 
-function GoalsDashboard() {
+function Dashboard() {
   return (
     <>
-     <div>GoalsDashboard</div>
+     <div>Dashboard</div>
     <Calandar/>
     <MyGoals/>
     <RemainingDays/>
@@ -16,4 +16,4 @@ function GoalsDashboard() {
   )
 }
 
-export default GoalsDashboard
+export default Dashboard
