@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Navbar from '../shared/Navbar';
-import ContentView from './ContentView';
+import Navbar from '../components/shared/Navbar';
+import ContentView from '../components/dashboard/ContentView';
 
 function MainView() {
   const [activeComponent, setActiveComponent] = useState('goals-dashboard');
