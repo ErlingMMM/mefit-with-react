@@ -1,9 +1,9 @@
 
-import Programs from '../views/programs/Programs';  
-import Workouts from '../views/workouts/Workouts';
-import Exercises from '../views/exercises/Exercises';
-import Dashboard from '../views/dashboard/GoalsDashboard';
-import Profile from '../views/profile/Profile';
+import Programs from '../programs/Programs';  
+import Workouts from '../workouts/Workouts';
+import Exercises from '../exercises/Exercises';
+import Dashboard from './GoalsDashboard';
+import Profile from '../profile/Profile';
 
 function ContentView({ activeComponent }: { activeComponent: string }) {
   switch (activeComponent) {

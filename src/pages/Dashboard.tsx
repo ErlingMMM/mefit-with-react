@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Navbar from '../components/shared/Navbar';
-import ContentView from '../components/dashboard/ContentView';
+import ContentView from '../components/views/dashboard/ContentView';
 
-function MainView() {
+function Dashboard() {
   const [activeComponent, setActiveComponent] = useState('dashboard');
 
   return (
@@ -16,4 +16,4 @@ function MainView() {
   );
 }
 
-export default MainView;
+export default Dashboard;
