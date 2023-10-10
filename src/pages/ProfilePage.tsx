@@ -37,7 +37,8 @@ function ProfilePage() {
   
         {keycloak.tokenParsed && keycloak.tokenParsed.name && (
         <><h1>velkommen: {keycloak.tokenParsed.name}</h1>
-        <h1>din mail er : {keycloak.tokenParsed.email}</h1></>
+        <h1>din mail er : {keycloak.tokenParsed.email}</h1>
+        <h1>JWT token : {keycloak.token}</h1></>
       )}
     </div>
 
