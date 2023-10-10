@@ -3,7 +3,8 @@ name: Docker Image CI - mefit
 on:
   push:
     branches:
-        - main
+        - master
+  workflow_dispatch:
 
 env:
   APP_NAME: mefit

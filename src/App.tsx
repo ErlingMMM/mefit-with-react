@@ -6,7 +6,6 @@ import MainView from './components/mainView/mainView';
 import Onboarding from './pages/Onboarding';
 import ProfilePage from './pages/ProfilePage';
 import { store } from './Redux/Store';
-import ExcerciseData from './pages/ExcerciseData';
 function App() {
   return (
   
@@ -20,7 +19,6 @@ function App() {
             <Route path="/ob" element={<Onboarding/>} />
             <Route path="/proffa" element={<ProfilePage/>} />
             <Route path="/exercise" element={<Exercise />} />
-            <Route path="/ed" element={<ExcerciseData />} />
           </Routes>
         </div>
       </Router>
