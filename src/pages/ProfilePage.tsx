@@ -9,6 +9,7 @@ import keycloak from "../Keycloak";
 
 function ProfilePage() {
 
+  /*
    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const user = useSelector((state: any) => state.data.userData);
   const loading = useSelector((state: any) => state.loading);
@@ -18,7 +19,7 @@ function ProfilePage() {
     dispatch(getLoginAsync());
   }, []); 
 
-
+*/
   return (
 
     <div>
@@ -36,6 +37,7 @@ function ProfilePage() {
         {keycloak.tokenParsed && keycloak.tokenParsed.name && (
         <><h1>velkommen: {keycloak.tokenParsed.name}</h1>
         <h1>din mail er : {keycloak.tokenParsed.email}</h1></>
+        
       )}
     </div>
 

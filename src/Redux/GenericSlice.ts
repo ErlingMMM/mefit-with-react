@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-
+import keycloak from "../Keycloak";
 
 interface UserData {
     id: number | null;
-  name: string | null;
+  firstName: string | null;
+  lastName: string | null;
   picture: string | null;
   bio: string | null;
   fitnessPreference: string | null;
@@ -47,7 +48,8 @@ interface DataState {
 const initialState: DataState = {
   userData: {
         id: null,
-      name: null,
+      firstName: null,
+      lastName: null,
       picture: null,
       bio: null,
       fitnessPreference: null,
@@ -164,10 +166,62 @@ export const getWorkoutInfo = createAsyncThunk(
   }
 );
 
+
+
+
+interface UserDatapostAPI {
+  firstname: string;
+  lastname: string;
+}
+
+export const RegisterUserAsync = createAsyncThunk(
+  'RegisterUserAsync',
+  async ({ firstname, lastname }: UserDatapostAPI) => {
+    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/users/register`, {
+      headers: {
+        'Authorization':`Bearer ${keycloak.token}`,
+        'Content-Type':'application/json'
+    },
+      method: 'POST',
+      body: JSON.stringify({
+        firstName: firstname,
+        lastName:  lastname,
+      }),
+    });
+
+    if (response.ok) {
+      console.log('dette funker');
+      const user = await response.json();
+      return { user };
+    }
+
+    // Håndter feil her hvis response.ok er falsk
+    throw new Error('Feil ved lagring av brukerdata');
+  }
+);
+
+
+
+
+
+
+
+
 const dataSlice = createSlice({
   name: 'data',
   initialState,
-  reducers: {},
+  reducers: {
+    SetuserFName: (state, action) => {
+      state.userData.firstName = action.payload
+  },
+  SetuserLName: (state, action) => {
+    state.userData.lastName = action.payload
+},
+
+
+
+  },
+  
   extraReducers: (builder) => {
     builder
       .addCase(getLoginAsync.pending, (state) => {
@@ -177,10 +231,6 @@ const dataSlice = createSlice({
       .addCase(getLoginAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.userData = action.payload.user;
-      })
-      .addCase(getLoginAsync.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message ?? null;
       })
       
       .addCase(getExcersiceInfo.pending, (state) => {
@@ -192,11 +242,6 @@ const dataSlice = createSlice({
         state.exerciseData = action.payload.Excer;
         //console.log( state.exerciseData )
       })
-      .addCase(getExcersiceInfo.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message ?? null;
-        
-      })
       .addCase(getWorkoutInfo.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -206,16 +251,11 @@ const dataSlice = createSlice({
         state.workoutData = action.payload.workout;
         //console.log(state.workoutData)
       })
-      .addCase(getWorkoutInfo.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message ?? null;
-        
-      });
       
   },
 });
 
-export const { } = dataSlice.actions;
+export const {  SetuserFName,  SetuserLName} = dataSlice.actions;
 
 export default dataSlice.reducer;
 
