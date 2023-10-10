@@ -1,23 +1,25 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLoginAsync, getExcersiceInfo } from "../Redux/GenericSlice";
+import { getLoginAsync } from "../Redux/GenericSlice";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "@reduxjs/toolkit";
 import { RootState } from "../Redux/Store";
 import keycloak from "../Keycloak";
+import { log } from "console";
 
 
 function ProfilePage() {
 
    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const user = useSelector((state: any) => state.data.userData);
-  const loading = useSelector((state: any) => state.loading);
+  //const loading = useSelector((state: any) => state.loading);
 
   
   useEffect(() => {
     dispatch(getLoginAsync());
-  }, []); 
+  }, [dispatch]); 
 
+  console.log(user);
 
   return (
 
