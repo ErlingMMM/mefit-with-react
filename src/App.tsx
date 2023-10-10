@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import Login from './pages/Login';
 import Index from './pages/Basepage';
 import Onboarding from './pages/Onboarding';
-import ProfilePage from './pages/ProfilePage';
 import { store } from './Redux/Store';
 import './App.css';
 function App() {
@@ -17,7 +16,6 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/ob" element={<Onboarding/>} />
-            <Route path="/proffa" element={<ProfilePage/>} />
           </Routes>
         </div>
       </Router>
