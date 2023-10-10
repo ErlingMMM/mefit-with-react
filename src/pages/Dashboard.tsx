@@ -3,7 +3,7 @@ import Navbar from '../components/shared/Navbar';
 import ContentView from '../components/dashboard/ContentView';
 
 function MainView() {
-  const [activeComponent, setActiveComponent] = useState('goals-dashboard');
+  const [activeComponent, setActiveComponent] = useState('dashboard');
 
   return (
     <>
