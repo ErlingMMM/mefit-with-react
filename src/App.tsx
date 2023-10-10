@@ -6,6 +6,7 @@ import MainView from './components/mainView/mainView';
 import Onboarding from './pages/Onboarding';
 import ProfilePage from './pages/ProfilePage';
 import { store } from './Redux/Store';
+import './App.css';
 function App() {
   return (
   
