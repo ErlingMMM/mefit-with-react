@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Exercise from './pages/Exercise';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Index';
 import Onboarding from './pages/Onboarding';
 import ProfilePage from './pages/ProfilePage';
 import { store } from './Redux/Store';
