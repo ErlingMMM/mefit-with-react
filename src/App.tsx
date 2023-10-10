@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Login from './pages/Login';
 import Index from './pages/Basepage';
 import Onboarding from './pages/Onboarding';
 import { store } from './Redux/Store';
@@ -14,8 +13,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/ob" element={<Onboarding/>} />
+            <Route path="/onboarding" element={<Onboarding/>} />
           </Routes>
         </div>
       </Router>
