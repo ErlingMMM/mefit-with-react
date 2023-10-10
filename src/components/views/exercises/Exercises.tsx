@@ -6,31 +6,50 @@ import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
 import { getExcersiceInfo } from '../../../Redux/GenericSlice';
 
-function Exercises() {
+
+
+function Exercise() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const exercises = useSelector((state: any) => state.data.exerciseData);
   const exerciseLoading = useSelector((state: any) => state.loading);
-  const [selectedExercise, setSelectedExercise] = useState(null); 
+  const [selectedExercise, setSelectedExercise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     dispatch(getExcersiceInfo());
   }, [dispatch]);
 
   const openModal = (exercise: any) => {
-    setSelectedExercise(exercise); 
+    setSelectedExercise(exercise);
     setIsModalOpen(true);
   };
+
+  // Check if exercises is an array before filtering
+  const filteredExercises = Array.isArray(exercises)
+    ? exercises.filter((exercise: any) => {
+        // Perform case-insensitive search by converting both the query and exercise name to lowercase
+        const query = searchQuery.toLowerCase();
+        const exerciseName = exercise.name.toLowerCase();
+        return exerciseName.includes(query);
+      })
+    : [];
 
   return (
     <div>
       <div>
         <br />
         <h1>Exercises:</h1>
+        <input
+          type="text"
+          placeholder="Search by exercise name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
         {exerciseLoading && <h1>Loading exercises...</h1>}
         <ul>
-          {Array.isArray(exercises) ? (
-            exercises.map((exercise: any) => (
+          {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
+            filteredExercises.map((exercise: any) => (
               <li key={exercise.id}>
                 <button onClick={() => openModal(exercise)}>
                   {exercise.name} - {exercise.description} - {exercise.muscleGroup}
@@ -39,10 +58,8 @@ function Exercises() {
             ))
           ) : (
             <div>
-   <li>No exercises available</li>
-            <button onClick={() => openModal("dummy")}>dummy</button>
+              <li>No matching exercises</li>
             </div>
-         
           )}
         </ul>
       </div>
@@ -50,10 +67,16 @@ function Exercises() {
       <ExerciseModal
         isOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
-        exercise={selectedExercise} 
+        exercise={selectedExercise}
       />
     </div>
   );
 }
 
-export default Exercises;
+export default Exercise;
+
+
+
+
+
+
