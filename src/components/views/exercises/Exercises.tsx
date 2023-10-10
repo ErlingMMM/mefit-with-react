@@ -5,6 +5,9 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
 import { getExcersiceInfo } from '../../../Redux/GenericSlice';
+import loadingGif from '../../../assets/loading.gif';
+
+
 
 
 
@@ -15,10 +18,25 @@ function Exercise() {
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
-    dispatch(getExcersiceInfo());
+    const fetchData = async () => {
+      try {
+        await dispatch(getExcersiceInfo());
+        // Simulate a minimum loading time of half a second
+        setTimeout(() => {
+          setIsLoading(false); // Data is loaded, set isLoading to false
+        }, 1000);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, [dispatch]);
+  
 
   const openModal = (exercise: any) => {
     setSelectedExercise(exercise);
@@ -41,12 +59,17 @@ function Exercise() {
         <br />
         <h1>Exercises:</h1>
         <input
-          type="text"
-          placeholder="Search by exercise name"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        {exerciseLoading && <h1>Loading exercises...</h1>}
+        type="text"
+        placeholder="Search by exercise name"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      {isLoading ? ( // Display loading GIF when isLoading is true
+        <div>
+          <img src={loadingGif} alt="Loading..." />
+          <p>Loading exercises...</p>
+        </div>
+      ) : (
         <ul>
           {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
             filteredExercises.map((exercise: any) => (
@@ -62,6 +85,7 @@ function Exercise() {
             </div>
           )}
         </ul>
+         )}
       </div>
 
       <ExerciseModal
