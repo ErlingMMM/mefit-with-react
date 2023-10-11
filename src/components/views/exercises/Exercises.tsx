@@ -64,7 +64,6 @@ function Exercise() {
     <div>
       <div>
         <br />
-        <h1>Exercises:</h1>
         <input
           type="text"
           placeholder="search exercises"
