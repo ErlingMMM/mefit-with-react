@@ -66,7 +66,7 @@ function Exercise() {
         <br />
         <div className="text-center mt-4">
   <input
-    className="border-2 border-gray-300 bg-white h-10 w-10/12 px-5 pr-16 rounded-3xl text-sm focus:outline-none inline-block"
+    className="border-2 border-gray-300 bg-white h-12 w-10/12 px-5 pr-16 rounded-3xl text-sm focus:outline-none inline-block"
     type="text"
     placeholder="search exercises"
     value={searchQuery}
