@@ -9,7 +9,7 @@ function App() {
   
     <Provider store={store}>
       <Router>
-        <div className="bg-blue-500 text-red-300 p-4">
+        <div className="bg-blue-500 text-red-300">
 
           <Routes>
             <Route path="/" element={<Index />} />
@@ -22,7 +22,7 @@ function App() {
 }
 export default App;
 
-//Workflow test
+
 
 
 

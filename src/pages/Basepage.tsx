@@ -8,7 +8,7 @@ function Basepage() {
   return (
     <>
       <Navbar setActiveComponent={setActiveComponent} />
-      <div className="bg-green-500 text-yellow-300 p-4">
+      <div className="bg-green-500 text-yellow-300">
         <ContentView activeComponent={activeComponent} />
       </div>
     </>
