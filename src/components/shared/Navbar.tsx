@@ -11,9 +11,11 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
   };
 
   return (
-    <div className="bg-red-500 text-orange-300 p-4">
+    <div>
+     MeFit
       {/* Hamburger Menu on Mobile */}
       <div className="block sm:hidden">
+      
         <HamburgerMenu isOpen={menuOpen} toggleMenu={() => setMenuOpen(!menuOpen)} />
       </div>
 

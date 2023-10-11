@@ -9,14 +9,11 @@ function App() {
   
     <Provider store={store}>
       <Router>
-        <div className="bg-blue-500 text-red-300">
-
-          <Routes>
+        <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/onboarding" element={<Onboarding/>} />
           </Routes>
-        </div>
-      </Router>
+       </Router>
     </Provider>
   );
 }

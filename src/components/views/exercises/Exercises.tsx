@@ -52,7 +52,7 @@ function Exercise() {
         <h1>Exercises:</h1>
         <input
           type="text"
-          placeholder="Search by exercise name"
+          placeholder="search exercises"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
