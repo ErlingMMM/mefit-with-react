@@ -8,7 +8,6 @@ function Basepage() {
   return (
     <>
       <Navbar setActiveComponent={setActiveComponent} />
-      <h1 className="font-bold">MeFit</h1>
         <ContentView activeComponent={activeComponent} />
       </>
   );
