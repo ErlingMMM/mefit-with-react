@@ -25,7 +25,7 @@ function Exercise() {
     const fetchData = async () => {
       try {
         await dispatch(getExcersiceInfo());
-        // Simulate a minimum loading time of half a second
+        // Simulate a minimum loading time of a second
         setTimeout(() => {
           setIsLoading(false); // Data is loaded, set isLoading to false
         }, 1000);
@@ -75,7 +75,7 @@ function Exercise() {
             filteredExercises.map((exercise: any) => (
               <li key={exercise.id}>
                 <button onClick={() => openModal(exercise)}>
-                  {exercise.name} - {exercise.description} - {exercise.muscleGroup}
+                Level: {exercise.difficulty} <br></br> {exercise.name} <br></br> {exercise.muscleGroup}
                 </button>
               </li>
             ))
