@@ -23,6 +23,7 @@ function Onboarding() {
       <div>
       <button onClick={handlePrevClick}>Previous</button>
         <button onClick={handleNextClick}>Next</button>
+        <button onClick={handleNextClick}>Skip</button>
         </div>
     </>
   );
