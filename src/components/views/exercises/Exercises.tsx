@@ -7,10 +7,6 @@ import { RootState } from '../../../Redux/Store';
 import { getExcersiceInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
 
-
-
-
-
 function Exercise() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const exercises = useSelector((state: any) => state.data.exerciseData);
@@ -19,7 +15,6 @@ function Exercise() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,17 +31,14 @@ function Exercise() {
 
     fetchData();
   }, [dispatch]);
-  
 
   const openModal = (exercise: any) => {
     setSelectedExercise(exercise);
     setIsModalOpen(true);
   };
 
-  // Check if exercises is an array before filtering
   const filteredExercises = Array.isArray(exercises)
     ? exercises.filter((exercise: any) => {
-        // Perform case-insensitive search by converting both the query and exercise name to lowercase
         const query = searchQuery.toLowerCase();
         const exerciseName = exercise.name.toLowerCase();
         return exerciseName.includes(query);
@@ -59,33 +51,42 @@ function Exercise() {
         <br />
         <h1>Exercises:</h1>
         <input
-        type="text"
-        placeholder="Search by exercise name"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      {isLoading ? ( // Display loading GIF when isLoading is true
-        <div>
-          <img src={loadingGif} alt="Loading..." />
-          <p>Loading exercises...</p>
-        </div>
-      ) : (
-        <ul>
-          {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
-            filteredExercises.map((exercise: any) => (
-              <li key={exercise.id}>
-                <button onClick={() => openModal(exercise)}>
-                Level: {exercise.difficulty} <br></br> {exercise.name} <br></br> {exercise.muscleGroup}
-                </button>
-              </li>
-            ))
-          ) : (
-            <div>
-              <li>No matching exercises</li>
-            </div>
-          )}
-        </ul>
-         )}
+          type="text"
+          placeholder="Search by exercise name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        {isLoading ? (
+          <div>
+            <img src={loadingGif} alt="Loading..." />
+            <p>Loading exercises...</p>
+          </div>
+        ) : (
+          <ul>
+            {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
+              filteredExercises.map((exercise: any) => (
+                <li key={exercise.id}>
+                  <button onClick={() => openModal(exercise)} className="flex items-center">
+                    <img
+                      src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-745x490.jpg"
+                      alt={exercise.name}
+                      className="max-w-full h-auto w-1/3 sm:w-1/3 md:w-1/4 md:h-auto mx-auto"
+                    />
+                    <div className="pl-2">
+                      <p>Level: {exercise.difficulty}</p>
+                      <p>{exercise.name}</p>
+                      <p>{exercise.muscleGroup}</p>
+                    </div>
+                  </button>
+                </li>
+              ))
+            ) : (
+              <div>
+                <li>No matching exercises</li>
+              </div>
+            )}
+          </ul>
+        )}
       </div>
 
       <ExerciseModal
@@ -98,8 +99,6 @@ function Exercise() {
 }
 
 export default Exercise;
-
-
 
 
 
