@@ -83,11 +83,11 @@ function Exercise() {
 filteredExercises.map((exercise: any) => (
   <li key={exercise.id}>
  <button onClick={() => openModal(exercise)} className="flex items-start">
-  <img
+<img
 src={getRandomDummyImageUrl()}
-    alt={exercise.name}
-    style={{ maxWidth: '30%', height: 'auto' }}
-  />
+alt={exercise.name}
+style={{ width: '100px', height: '100px' }} // Adjust the width and height as needed
+/>
   <div style={{ marginLeft: '10px' }}>
     <p>Level: {exercise.difficulty}</p>
     <p>{exercise.name}</p>
