@@ -66,7 +66,7 @@ function Exercise() {
             {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
               filteredExercises.map((exercise: any) => (
                 <li key={exercise.id}>
-                  <button onClick={() => openModal(exercise)} className="flex items-center">
+                  <button onClick={() => openModal(exercise)} className="flex items-start">
                     <img
                       src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-745x490.jpg"
                       alt={exercise.name}
@@ -99,7 +99,3 @@ function Exercise() {
 }
 
 export default Exercise;
-
-
-
-
