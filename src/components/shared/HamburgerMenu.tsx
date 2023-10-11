@@ -7,7 +7,7 @@ interface HamburgerMenuProps {
 
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => {
   return (
-    <div className="relative">
+    <div className="relative mt-5">
       <button
         className="text-black w-10 h-10 relative focus:outline-none bg-white"
         onClick={toggleMenu}
