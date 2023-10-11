@@ -10,8 +10,8 @@ interface UserData {
   fitnessPreference: string | null;
   height: number | null;
   weight: number | null;
-  isAdmin: boolean;
-  isContributor: boolean;
+  timesAWeek: number | null;
+  DurationTimeFrame: number | null;
   programs: any[] | null;
 }
 
@@ -55,8 +55,8 @@ const initialState: DataState = {
       fitnessPreference: null,
       height: null,
       weight: null,
-      isAdmin: false,
-      isContributor: false,
+      DurationTimeFrame: null,
+      timesAWeek: null,
       programs: null,
   },
   exerciseData: {
@@ -88,13 +88,15 @@ const initialState: DataState = {
 
 
 
+
 export const getLoginAsync = createAsyncThunk(
   "getLoginAsync",
   async () => {
     try {
-      const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/user/`);
+      const resp = await fetch(`'https://mefit-backend.azurewebsites.net/api/Users/user`);
       if (resp.ok) {
         const user = await resp.json();
+        console.log(user)
         if (user.id != null) {
           return { user };
         } else {
@@ -170,13 +172,15 @@ export const getWorkoutInfo = createAsyncThunk(
 
 
 interface UserDatapostAPI {
-  firstname: string;
-  lastname: string;
+  intensity: string;
+  fitnessLvl: string;
+  timeframe:string
 }
 
-export const RegisterUserAsync = createAsyncThunk(
-  'RegisterUserAsync',
-  async ({ firstname, lastname }: UserDatapostAPI) => {
+export const RegisterUserOnboardingStatsAsync = createAsyncThunk(
+  'RegisterUserOnboardStatsAsync',
+  async ({ intensity,fitnessLvl,timeframe }: UserDatapostAPI) => {
+    const timeframeInt = parseInt(timeframe);const intensityInt = parseInt(intensity);
     const response = await fetch(`https://mefit-backend.azurewebsites.net/api/users/register`, {
       headers: {
         'Authorization':`Bearer ${keycloak.token}`,
@@ -184,15 +188,15 @@ export const RegisterUserAsync = createAsyncThunk(
     },
       method: 'POST',
       body: JSON.stringify({
-        firstName: firstname,
-        lastName:  lastname,
+        fitnessPreference: fitnessLvl,
+        timesAWeek: intensityInt,
+        durationTimeframe: timeframeInt
       }),
     });
-
+    console.log(response.text())
     if (response.ok) {
-      console.log('dette funker');
+      console.log('dette funker!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       const user = await response.json();
-      return { user };
     }
 
     // Håndter feil her hvis response.ok er falsk
@@ -220,6 +224,12 @@ const dataSlice = createSlice({
    SetUserFitnessLVL: (state, action) => {
    state.userData.fitnessPreference = action.payload
 },
+setUserTimesAWeek:(state, action) => {
+  state.userData.timesAWeek = action.payload
+},
+setUserTimeFrame:(state, action) => {
+  state.userData.DurationTimeFrame = action.payload
+}
   },
   
   extraReducers: (builder) => {
@@ -255,7 +265,7 @@ const dataSlice = createSlice({
   },
 });
 
-export const {  SetuserFName,  SetuserLName, SetUserFitnessLVL} = dataSlice.actions;
+export const {  SetuserFName,  setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek} = dataSlice.actions;
 
 export default dataSlice.reducer;
 

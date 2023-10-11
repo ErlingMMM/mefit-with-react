@@ -10,7 +10,7 @@ import { log } from "console";
 
 function ProfilePage() {
 
-  /*
+
    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const user = useSelector((state: any) => state.data.userData);
   //const loading = useSelector((state: any) => state.loading);
@@ -21,7 +21,6 @@ function ProfilePage() {
   }, [dispatch]); 
 
   console.log(user);
-*/
   return (
 
     <div>

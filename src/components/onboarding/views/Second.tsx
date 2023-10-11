@@ -1,50 +1,35 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, SetStateAction, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../Redux/Store';
-import { RegisterUserAsync, SetuserFName, SetuserLName } from '../../../Redux/GenericSlice';
+import { SetUserFitnessLVL, setUserTimesAWeek } from '../../../Redux/GenericSlice';
 import { AnyAction } from '@reduxjs/toolkit';
 
 function Second() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-  const [etternavn, setFornavn] = useState<string>('');
-  const etternavnBruker = useSelector((state: any) => state.data.userData.firstName);
-  const fornnavnBruker = useSelector((state: any) => state.data.userData.lastName);
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setFornavn(event.target.value);
-    dispatch(SetuserLName(event.target.value));
-
-  };
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    // Her kan du gjøre noe med fornavnet, for eksempel sende det til en API eller utføre en annen handling.
-
-  };
+  const [selectedOption, setSelectedOption] = useState('option1');
+  const fintensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
   
-console.log("brukerens fornavn er lagret som",fornnavnBruker)
-console.log("brukerens etternavn er lagret som",etternavnBruker)
 
 
+  const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+    setSelectedOption(event.target.value);
+    dispatch(setUserTimesAWeek(event.target.value));
 
-const handleRegistrerClick = () => {
-  dispatch(RegisterUserAsync({ firstname: fornnavnBruker, lastname:etternavnBruker}));
-};
-
+  }
   return (
-    <div>
-      <h1>Skjema for Brukerens Fornavn</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Fornavn:
-          <input
-            type="text"
-            value={etternavn}
-            onChange={ handleInputChange}
-          />
-        </label>
-        <button onClick={handleRegistrerClick} type="submit">registrer</button>
-      </form>
+    <div  className="flex flex-col items-center h-screen bg-white">
+      <h1>Choose your wanted intensity level (times a week) :</h1>
+<form className="p-48 rounded justify-center">
+    <div className="mb-4 p-6 round hover:scale-125">
+    <input type="radio" id="Beginner" name="fitnessLevel" value="3" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
+    <label htmlFor="Beginner">3 times a week</label><br />
+    </div>
+    <div className="mb-4 p-6 round hover:scale-125">
+    <input type="radio" id="Intermediate" name="fitnessLevel" value="5" onChange={handleRadioChange} className="mr-2 h-8 w-8"  />
+    <label htmlFor="Intermediate">5 times a week</label><br />
+    </div>
+</form>
     </div>
   );
 };
