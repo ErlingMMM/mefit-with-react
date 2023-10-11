@@ -11,15 +11,14 @@ function ContentView({ activeComponent }: { activeComponent: string }) {
     case 'dashboard':
       return <Dashboard />;
     case 'profile':
-        return <Profile />;
+      return <Profile />;
     case 'programs':
       return <Programs />;
     case 'workouts':
       return <Workouts />;
     case 'exercises':
       return <Exercises />;
- 
-    default:
+     default:
       return null;
   }
 }

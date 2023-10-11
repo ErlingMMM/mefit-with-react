@@ -1,10 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Exercise from './pages/Exercise';
-import Login from './pages/Login';
 import Index from './pages/Basepage';
 import Onboarding from './pages/Onboarding';
-import ProfilePage from './pages/ProfilePage';
 import { store } from './Redux/Store';
 import './App.css';
 function App() {
@@ -16,10 +13,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/ob" element={<Onboarding/>} />
-            <Route path="/proffa" element={<ProfilePage/>} />
-            <Route path="/exercise" element={<Exercise />} />
+            <Route path="/onboarding" element={<Onboarding/>} />
           </Routes>
         </div>
       </Router>
