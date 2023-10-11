@@ -97,7 +97,7 @@ function Exercise() {
                     <img
                       src={getRandomDummyImageUrl()}
                       alt={exercise.name}
-                      style={{ width: '100px', height: '100px', marginLeft: '30px', borderRadius: 18 }} // Adjust the width and height as needed
+                      style={{ width: '100px', height: '100px', marginLeft: '30px', borderRadius: 18 }} 
                     />
                     <div>
                       <h3 className='text-lg font-bold' style={{ marginLeft: '-20px' }}>{exercise.name}</h3>
