@@ -28,6 +28,7 @@ function Onboarding() {
         Next
       </button> {/* Legg til Tailwind CSS klasser for å style knappen */}
     </div>
+        <button onClick={handleNextClick}>Skip</button>
   </div>
   );
 }

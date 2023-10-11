@@ -22,13 +22,11 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
         menuOpen ? 'block' : 'hidden'
       } sm:block sm:flex sm:space-x-4 nav-links`}>
         <div className="user-indicator">User: John Doe</div>
-        <button onClick={() => switchToComponent('contributors')}>Contributors Area</button>
-        <button onClick={() => switchToComponent('goals-dashboard')}>Goals Dashboard</button>
-        <button onClick={() => switchToComponent('goals-details')}>Goals Details</button>
+        <button onClick={() => switchToComponent('dashboard')}>Dashboard</button>
+        <button onClick={() => switchToComponent('profile')}>Profile</button>
         <button onClick={() => switchToComponent('programs')}>Programs</button>
         <button onClick={() => switchToComponent('workouts')}>Workouts</button>
         <button onClick={() => switchToComponent('exercises')}>Exercises</button>
-        <button onClick={() => switchToComponent('user-details')}>User details</button>
         <button>Logout</button>
       </div>
     </div>

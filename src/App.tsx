@@ -1,24 +1,19 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Exercise from './pages/Exercise';
-import Login from './pages/Login';
-import MainView from './components/mainView/mainView';
+import Index from './pages/Basepage';
 import Onboarding from './pages/Onboarding';
-import ProfilePage from './pages/ProfilePage';
 import { store } from './Redux/Store';
+import './App.css';
 function App() {
   return (
   
     <Provider store={store}>
       <Router>
-        <div className="bg-blue-500 text-red-300 p-4">
+        <div className="bg-blue-500 text-red-300">
 
           <Routes>
-            <Route path="/" element={<MainView />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/ob" element={<Onboarding/>} />
-            <Route path="/proffa" element={<ProfilePage/>} />
-            <Route path="/exercise" element={<Exercise />} />
+            <Route path="/" element={<Index />} />
+            <Route path="/onboarding" element={<Onboarding/>} />
           </Routes>
         </div>
       </Router>
@@ -27,7 +22,7 @@ function App() {
 }
 export default App;
 
-//Workflow test
+
 
 
 
