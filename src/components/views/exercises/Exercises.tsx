@@ -7,6 +7,7 @@ import { RootState } from '../../../Redux/Store';
 import { getExcersiceInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
 import { SearchIcon } from '@heroicons/react/outline';
+import '../../../styles/Exercise.css'
 
 
 
