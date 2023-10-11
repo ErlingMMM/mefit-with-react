@@ -1,16 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
+import keycloak from "../Keycloak";
 
 interface UserData {
     id: number | null;
-  name: string | null;
+  firstName: string | null;
+  lastName: string | null;
   picture: string | null;
   bio: string | null;
   fitnessPreference: string | null;
   height: number | null;
   weight: number | null;
-  isAdmin: boolean;
-  isContributor: boolean;
+  timesAWeek: number | null;
+  DurationTimeFrame: number | null;
   programs: any[] | null;
 }
 
@@ -47,14 +48,15 @@ interface DataState {
 const initialState: DataState = {
   userData: {
         id: null,
-      name: null,
+      firstName: null,
+      lastName: null,
       picture: null,
       bio: null,
       fitnessPreference: null,
       height: null,
       weight: null,
-      isAdmin: false,
-      isContributor: false,
+      DurationTimeFrame: null,
+      timesAWeek: null,
       programs: null,
   },
   exerciseData: {
@@ -86,13 +88,15 @@ const initialState: DataState = {
 
 
 
+
 export const getLoginAsync = createAsyncThunk(
   "getLoginAsync",
   async () => {
     try {
-      const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/user/`);
+      const resp = await fetch(`'https://mefit-backend.azurewebsites.net/api/Users/user`);
       if (resp.ok) {
         const user = await resp.json();
+        console.log(user)
         if (user.id != null) {
           return { user };
         } else {
@@ -164,10 +168,70 @@ export const getWorkoutInfo = createAsyncThunk(
   }
 );
 
+
+
+
+interface UserDatapostAPI {
+  intensity: string;
+  fitnessLvl: string;
+  timeframe:string
+}
+
+export const RegisterUserOnboardingStatsAsync = createAsyncThunk(
+  'RegisterUserOnboardStatsAsync',
+  async ({ intensity,fitnessLvl,timeframe }: UserDatapostAPI) => {
+    const timeframeInt = parseInt(timeframe);const intensityInt = parseInt(intensity);
+    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/users/register`, {
+      headers: {
+        'Authorization':`Bearer ${keycloak.token}`,
+        'Content-Type':'application/json'
+    },
+      method: 'POST',
+      body: JSON.stringify({
+        fitnessPreference: fitnessLvl,
+        timesAWeek: intensityInt,
+        durationTimeframe: timeframeInt
+      }),
+    });
+    console.log(response.text())
+    if (response.ok) {
+      console.log('dette funker!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+      const user = await response.json();
+    }
+
+    // Håndter feil her hvis response.ok er falsk
+    throw new Error('Feil ved lagring av brukerdata');
+  }
+);
+
+
+
+
+
+
+
+
 const dataSlice = createSlice({
   name: 'data',
   initialState,
-  reducers: {},
+  reducers: {
+    SetuserFName: (state, action) => {
+      state.userData.firstName = action.payload
+  },
+  SetuserLName: (state, action) => {
+    state.userData.lastName = action.payload
+},
+   SetUserFitnessLVL: (state, action) => {
+   state.userData.fitnessPreference = action.payload
+},
+setUserTimesAWeek:(state, action) => {
+  state.userData.timesAWeek = action.payload
+},
+setUserTimeFrame:(state, action) => {
+  state.userData.DurationTimeFrame = action.payload
+}
+  },
+  
   extraReducers: (builder) => {
     builder
       .addCase(getLoginAsync.pending, (state) => {
@@ -177,10 +241,6 @@ const dataSlice = createSlice({
       .addCase(getLoginAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.userData = action.payload.user;
-      })
-      .addCase(getLoginAsync.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message ?? null;
       })
       
       .addCase(getExcersiceInfo.pending, (state) => {
@@ -192,11 +252,6 @@ const dataSlice = createSlice({
         state.exerciseData = action.payload.Excer;
         //console.log( state.exerciseData )
       })
-      .addCase(getExcersiceInfo.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message ?? null;
-        
-      })
       .addCase(getWorkoutInfo.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -206,16 +261,11 @@ const dataSlice = createSlice({
         state.workoutData = action.payload.workout;
         //console.log(state.workoutData)
       })
-      .addCase(getWorkoutInfo.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message ?? null;
-        
-      });
       
   },
 });
 
-export const { } = dataSlice.actions;
+export const {  SetuserFName,  setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek} = dataSlice.actions;
 
 export default dataSlice.reducer;
 
