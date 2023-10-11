@@ -76,7 +76,7 @@ function Exercise() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <div className="absolute left-3 top-3 text-gray-400">
+            <div className="absolute left-14 top-3 text-gray-400">
               <SearchIcon className="w-5 h-5" />
             </div>
           </div>
