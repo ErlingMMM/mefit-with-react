@@ -10,6 +10,10 @@ function Onboarding() {
     }
   };
 
+  const handleSkip = () => {
+    //TODO: Add logic to skip onboarding
+    };
+
   const handlePrevClick = () => {
     if (activeComponent > 1) {
       setActiveComponent((prevActive) => prevActive - 1);
@@ -23,7 +27,7 @@ function Onboarding() {
       <div>
       <button onClick={handlePrevClick}>Previous</button>
         <button onClick={handleNextClick}>Next</button>
-        <button onClick={handleNextClick}>Skip</button>
+        <button onClick={handleSkip}>Skip</button>
         </div>
     </>
   );
