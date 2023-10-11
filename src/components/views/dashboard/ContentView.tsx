@@ -25,3 +25,6 @@ function ContentView({ activeComponent }: { activeComponent: string }) {
 }
 
 export default ContentView;
+
+//This file doesn't really have anything to do with the dashboard itself! It is a component made to display the active component in the basepage,
+//Which could be Dashboard, Profile, Programs etc... Look to move the file from /dasboard to a new folder called /Navigation or something.

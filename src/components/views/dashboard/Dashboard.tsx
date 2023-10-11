@@ -1,19 +1,16 @@
-import Calandar from "./Calandar"
-import MyGoals from "./MyGoals"
+import Calendar from "./Calendar"
 import Progress from "./Progress"
-import RemainingDays from "./RemainingDays"
 
 function Dashboard() {
   return (
     <>
-     <div>Dashboard</div>
-    <Calandar/>
-    <MyGoals/>
-    <RemainingDays/>
     <Progress/>
+    <Calendar/>
+    
     </>
    
   )
 }
 
 export default Dashboard
+
