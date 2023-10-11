@@ -12,7 +12,6 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
 
   return (
     <div>
-     MeFit
       {/* Hamburger Menu on Mobile */}
       <div className="block sm:hidden">
       
