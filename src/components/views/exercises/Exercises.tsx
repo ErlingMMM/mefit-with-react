@@ -45,6 +45,22 @@ function Exercise() {
       })
     : [];
 
+
+  // Define dummy exercise images URLs
+  const dummyImageUrls = [
+    'https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-745x490.jpg',
+    'https://info.totalwellnesshealth.com/hs-fs/hubfs/HealthBenefitsFitness.png?width=675&name=HealthBenefitsFitness.png',
+    'https://i0.wp.com/beautyleebar.com/wp-content/uploads/2023/05/istockphoto-1344876535-612x612-1.jpg?fit=437%2C612&ssl=1',
+    // Add more dummy image URLs as needed
+  ];
+
+    // Helper function to get a random dummy image URL
+    const getRandomDummyImageUrl = () => {
+      const randomIndex = Math.floor(Math.random() * dummyImageUrls.length);
+      return dummyImageUrls[randomIndex];
+    };
+
+
   return (
     <div>
       <div>
@@ -68,7 +84,7 @@ filteredExercises.map((exercise: any) => (
   <li key={exercise.id}>
  <button onClick={() => openModal(exercise)} className="flex items-start">
   <img
-    src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-745x490.jpg"
+src={getRandomDummyImageUrl()}
     alt={exercise.name}
     style={{ maxWidth: '30%', height: 'auto' }}
   />
