@@ -217,9 +217,9 @@ const dataSlice = createSlice({
   SetuserLName: (state, action) => {
     state.userData.lastName = action.payload
 },
-
-
-
+   SetUserFitnessLVL: (state, action) => {
+   state.userData.fitnessPreference = action.payload
+},
   },
   
   extraReducers: (builder) => {
@@ -255,7 +255,7 @@ const dataSlice = createSlice({
   },
 });
 
-export const {  SetuserFName,  SetuserLName} = dataSlice.actions;
+export const {  SetuserFName,  SetuserLName, SetUserFitnessLVL} = dataSlice.actions;
 
 export default dataSlice.reducer;
 
