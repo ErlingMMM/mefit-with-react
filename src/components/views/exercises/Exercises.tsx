@@ -64,24 +64,24 @@ function Exercise() {
         ) : (
           <ul>
             {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
-              filteredExercises.map((exercise: any) => (
-                <li key={exercise.id}>
-<button onClick={() => openModal(exercise)} className="flex items-start">
+filteredExercises.map((exercise: any) => (
+  <li key={exercise.id}>
+ <button onClick={() => openModal(exercise)} className="flex items-start">
   <img
     src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-745x490.jpg"
     alt={exercise.name}
-    className="max-w-full h-auto w-1/3 sm:w-1/3 md:w-1/4 md:h-auto mx-auto"
+    style={{ maxWidth: '30%', height: 'auto' }}
   />
-  <div className="pl-2">
+  <div style={{ marginLeft: '10px' }}>
     <p>Level: {exercise.difficulty}</p>
     <p>{exercise.name}</p>
     <p>{exercise.muscleGroup}</p>
   </div>
 </button>
 
+  </li>
+))
 
-                </li>
-              ))
             ) : (
               <div>
                 <li>No matching exercises</li>
