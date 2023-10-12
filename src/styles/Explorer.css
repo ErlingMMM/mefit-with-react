@@ -1,0 +1,35 @@
+.placeholder-padding::placeholder {
+    /* Mobile styles */
+    text-align: right;
+    padding-right: 70px; 
+  }
+  
+  @media (min-width: 768px) {
+    /* Desktop styles */
+    .placeholder-padding::placeholder {
+      text-align: left;
+      padding-left: 70px;  
+    }
+  }
+  
+  .external-input-style input{
+    border: none;
+    border-width: 0;
+    outline: none;
+  }
+
+  .external-input-style.focused {
+    border-color: black; 
+  }
+
+  .custom-image-style {
+    width: 100px;
+    height: 100px;
+    margin-left: 30px;
+    border-radius: 10px;
+  }
+  
+  .external-input-style.focused .text-gray-400 {
+    color: black; /* Change the color of the search icon to black on focus */
+    transform: scale(1.2);
+}
