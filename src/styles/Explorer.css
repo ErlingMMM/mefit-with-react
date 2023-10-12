@@ -12,10 +12,16 @@
     }
   }
   
-  .custom-input input{
+  .external-input-style input{
     border: none;
     border-width: 0;
     outline: none;
+  }
+
+
+  
+  .external-input-style.focused {
+    border-color: black; 
   }
 
   .custom-image-style {
@@ -24,5 +30,7 @@
     margin-left: 30px;
     border-radius: 10px;
   }
-
   
+  .custom-input.focused + .absolute .text-gray-400 {
+    color: white; /* Change the color of the search icon to white on focus */
+  }
