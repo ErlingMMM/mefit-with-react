@@ -1,42 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
-import { useDispatch, useSelector } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from '@reduxjs/toolkit';
-import { RootState } from '../../../Redux/Store';
-import { getExcersiceInfo } from '../../../Redux/GenericSlice';
-import loadingGif from '../../../assets/loading.gif';
+import { useSelector } from 'react-redux';
 import '../../../styles/Explorer.css';
 
-function Exercises({ searchQuery, isLoading }: { searchQuery: string; isLoading: boolean }) {
-  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+function Exercises({ searchQuery }: { searchQuery: string }) {
   const exercises = useSelector((state: any) => state.data.exerciseData);
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    if (isLoading) {
-      const hasLoadedBefore = sessionStorage.getItem('hasLoadedExercises');
-      if (hasLoadedBefore !== 'loaded') {
-        const fetchData = async () => {
-          try {
-            await dispatch(getExcersiceInfo());
-            // Simulate a minimum loading time of a second
-            setTimeout(() => {
-              isLoading = false;
-              sessionStorage.setItem('hasLoadedExercises', 'loaded');
-            }, 1000);
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        };
-
-        fetchData();
-      } else {
-        isLoading = false;
-      }
-    }
-  }, [dispatch, isLoading]);
 
   const openModal = (exercise: any) => {
     setSelectedExercise(exercise);
@@ -50,6 +20,7 @@ function Exercises({ searchQuery, isLoading }: { searchQuery: string; isLoading:
         return exerciseName.includes(query);
       })
     : [];
+
 
   // Define dummy exercise images URLs
   const dummyImageUrls = [
@@ -67,39 +38,37 @@ function Exercises({ searchQuery, isLoading }: { searchQuery: string; isLoading:
   return (
     <div>
       <div>
-        {isLoading ? (
-          <div>
-            <img src={loadingGif} alt="Loading..." />
-          </div>
-        ) : (
-          <ul>
-            {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
-              filteredExercises.map((exercise: any) => (
-                <li key={exercise.id} className="mb-6">
+        <ul>
+          {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
+            filteredExercises.map((exercise: any) => (
+              <li key={exercise.id} className="mb-6">
                   <button onClick={() => openModal(exercise)} className="flex items-start">
-                    <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
-                    <div>
-                      <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
-                        {exercise.name}
-                      </h3>
-                      <p style={{ marginLeft: '-45px' }}>Level: {exercise.difficulty} </p>
-                      <br />
-                      <p style={{ marginLeft: '10px' }}>{exercise.muscleGroup}</p>
-                    </div>
-                  </button>
-                </li>
-              ))
-            ) : (
-              <div>
-                <li>No matching exercises</li>
-              </div>
-            )}
-          </ul>
-        )}
+                      <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
+                      <div>
+                        <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
+                          {exercise.name}
+                        </h3>
+                        <p style={{ marginLeft: '-45px' }}>Level: {exercise.difficulty} </p>
+                        <br />
+                        <p style={{ marginLeft: '10px' }}>{exercise.muscleGroup}</p>
+                      </div>
+                    </button>
+              </li>
+            ))
+          ) : (
+            <div>
+              <li>No matching exercises</li>
+            </div>
+          )}
+        </ul>
       </div>
       <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedExercise} />
     </div>
   );
-}
+  }
+  
+  export default Exercises;
 
-export default Exercises;
+
+
+

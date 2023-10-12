@@ -4,7 +4,7 @@ import Workouts from './Workouts';
 function DisplayManager({ activeComponent, searchQuery, isLoading }: { activeComponent: string; searchQuery: string; isLoading: boolean }) {
   switch (activeComponent) {
     case 'exercises':
-      return <Exercises searchQuery={searchQuery} isLoading={isLoading} />;
+      return <Exercises searchQuery={searchQuery}  />;
     case 'workouts':
       return <Workouts searchQuery={searchQuery} isLoading={isLoading} />;
     default:

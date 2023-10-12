@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import ExerciseModal from '../../modals/ExerciseModal';
 import DisplayManager from './DisplayManager';
 import SearchBar from './SearchBar';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
@@ -14,8 +13,7 @@ function Explorer() {
   const [isLoading, setIsLoading] = useState(true);
 
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-  const exercises = useSelector((state: any) => state.data.exerciseData);
-  const workouts = useSelector((state: any) => state.data.workoutData);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
