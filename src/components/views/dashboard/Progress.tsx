@@ -6,7 +6,7 @@ function Progress() {
   let completedWorkouts: number = 1; //The number of workouts completed this week
   let progress: number = Math.floor(completedWorkouts/goalWorkouts*100); 
   return (
-    <div className={`${styles.progressParentContainer} bg-blue-500`}>
+    <div className={styles.progressParentContainer}>
       <div className={styles.progressContainer}>
         <h1>Week {week}</h1>
         <div>
@@ -21,7 +21,7 @@ function Progress() {
         {Array.from({ length: goalWorkouts }).map((_, idx) => ( //maps from [undefined, undefined, ..., undefined] of length n = goalWorkouts to [1,2,..,n]
           <div 
             key={idx} // if idx is less than completedWorkouts its green (completed) otherwise grey (pending)
-            className={`${styles.rectangle} ${idx < completedWorkouts ? styles.completed : styles.pending}`}
+            className={`${styles.rectangle} ${idx < completedWorkouts ? styles.completedRectangle : styles.pendingRectangle}`}
           ></div>
         ))}
       </div>
