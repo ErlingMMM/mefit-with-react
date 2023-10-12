@@ -27,7 +27,7 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
           // Simulate a minimum loading time of a second
           setTimeout(() => {
             setIsLoading(false); 
-          }, 500);
+          }, 1000);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
