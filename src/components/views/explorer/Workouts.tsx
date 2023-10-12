@@ -1,33 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
-import { useDispatch, useSelector } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from '@reduxjs/toolkit';
-import { RootState } from '../../../Redux/Store';
-import { getWorkoutInfo } from '../../../Redux/GenericSlice';
-import loadingGif from '../../../assets/loading.gif';
+import { useSelector } from 'react-redux';
+
 import '../../../styles/Explorer.css';
 
-function Workouts({ searchQuery, isLoading }: { searchQuery: string; isLoading: boolean }) {
-  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+function Workouts({ searchQuery }: { searchQuery: string; }) {
   const workouts = useSelector((state: any) => state.data.workoutData);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    if (isLoading) {
-      const fetchData = async () => {
-        try {
-          await dispatch(getWorkoutInfo());
-          isLoading = false;
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
-
-      fetchData();
-    }
-  }, [dispatch, isLoading]);
 
   const openModal = (workout: any) => {
     setSelectedWorkout(workout);
@@ -59,11 +39,6 @@ function Workouts({ searchQuery, isLoading }: { searchQuery: string; isLoading: 
     return (
       <div>
         <div>
-          {isLoading ? (
-            <div>
-              <img src={loadingGif} alt="Loading..." />
-            </div>
-          ) : (
             <ul>
               {Array.isArray(filteredWorkouts) && filteredWorkouts.length > 0 ? (
                 filteredWorkouts.map((workout: any) => (
@@ -90,7 +65,6 @@ function Workouts({ searchQuery, isLoading }: { searchQuery: string; isLoading: 
                 </div>
               )}
             </ul>
-          )}
         </div>
         <ExerciseModal
           isOpen={isModalOpen}
