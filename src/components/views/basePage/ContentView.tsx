@@ -1,7 +1,6 @@
 
 import Programs from '../programs/Programs';  
-import Workouts from '../workouts/Workouts';
-import Exercises from '../exercises/Exercises';
+import Explorer from '../explorer/Explorer';
 import Dashboard from '../dashboard/Dashboard';
 import Profile from '../profile/Profile';
 
@@ -14,10 +13,8 @@ function ContentView({ activeComponent }: { activeComponent: string }) {
       return <Profile />;
     case 'programs':
       return <Programs />;
-    case 'workouts':
-      return <Workouts />;
-    case 'exercises':
-      return <Exercises />;
+    case 'explorer':
+      return <Explorer />;
      default:
       return null;
   }
