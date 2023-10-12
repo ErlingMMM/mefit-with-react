@@ -7,7 +7,7 @@ import { RootState } from '../../../Redux/Store';
 import { getExcersiceInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
 import { SearchIcon } from '@heroicons/react/outline';
-import '../../../styles/Exercise.css'
+import '../../../styles/Explorer.css'
 
 
 
@@ -70,13 +70,12 @@ function Exercise() {
         <br />
         <div className="text-center mt-4">
           <div className="relative">
-          <div className="border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
+          <div className="custom-input border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
           <input
                 type="text"
                 placeholder="Search exercises"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                style={{ border: 'none', borderWidth: 0, outline: 'none' }} 
                 onFocus={(e) => (e.target.placeholder = "")}
                 onBlur={(e) => (e.target.placeholder = "Search exercises")}
               />
@@ -101,8 +100,8 @@ function Exercise() {
                     <img
                       src={getRandomDummyImageUrl()}
                       alt={exercise.name}
-                      style={{ width: '100px', height: '100px', marginLeft: '30px', borderRadius: 18 }} 
-                    />
+                      className="custom-image-style"                   
+                       />
                     <div>
                       <h3 className='text-lg font-bold' style={{ marginLeft: '-20px' }}>{exercise.name}</h3>
                       <p style={{ marginLeft: '-45px' }}>Level: {exercise.difficulty} </p>

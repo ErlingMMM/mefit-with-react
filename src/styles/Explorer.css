@@ -12,3 +12,15 @@
     }
   }
   
+  .custom-input input {
+    border: none;
+    border-width: 0;
+    outline: none;
+  }
+
+  .custom-image-style {
+    width: 100px;
+    height: 100px;
+    margin-left: 30px;
+    border-radius: 10px;
+  }
