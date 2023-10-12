@@ -71,11 +71,12 @@ function Exercise() {
         <div className="text-center mt-4">
           <div className="relative">
           <div className="border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
-              <input
+          <input
                 type="text"
                 placeholder="Search exercises"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                style={{ border: 'none', borderWidth: 0, outline: 'none' }} 
               />
             </div>
             <div className="absolute left-4 top-4 text-gray-400">
