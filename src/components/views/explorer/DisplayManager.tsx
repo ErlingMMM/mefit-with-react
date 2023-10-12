@@ -1,11 +1,11 @@
 import Exercises from "./Exercises";
 import Workouts from "./Workouts";
 
-function DisplayManager({ activeComponent }: { activeComponent: string }) {
+function DisplayManager({ activeComponent, searchQuery }: { activeComponent: string; searchQuery: string }) {
     switch (activeComponent) {
         case 'exercises':
-            return <Exercises />;
-        case 'workouts':
+            return <Exercises searchQuery={searchQuery} />;
+            case 'workouts':
             return <Workouts />;
         default:
             return null;

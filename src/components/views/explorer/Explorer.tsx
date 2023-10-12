@@ -19,7 +19,7 @@ function Explorer() {
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} />
      <button onClick={() => switchToComponent('exercises')}>exercises</button>
     <button onClick={() => switchToComponent('workouts')}>workouts</button>
-     <DisplayManager activeComponent={activeComponent} />
+    <DisplayManager activeComponent={activeComponent} searchQuery={searchQuery} /> 
     </>
    )
 }
