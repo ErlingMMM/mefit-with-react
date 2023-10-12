@@ -21,20 +21,29 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await dispatch(getExcersiceInfo());
-        // Simulate a minimum loading time of a second
-        setTimeout(() => {
-          setIsLoading(false); // Data is loaded, set isLoading to false
-        }, 1000);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+    const hasLoadedBefore = sessionStorage.getItem('hasLoadedExercises');
+    
+    if (hasLoadedBefore !== "loaded") {
+      const fetchData = async () => {
+        try {
+          await dispatch(getExcersiceInfo());
+          // Simulate a minimum loading time of a second
+          setTimeout(() => {
+            setIsLoading(false); 
+            sessionStorage.setItem('hasLoadedExercises', 'loaded');
+          }, 1000);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
 
-    fetchData();
+      fetchData();
+    } else {
+      setIsLoading(false);
+    }
   }, [dispatch]);
+
+
 
   const openModal = (exercise: any) => {
     setSelectedExercise(exercise);
