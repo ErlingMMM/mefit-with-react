@@ -24,7 +24,7 @@ function Onboarding() {
  
 
   return (
-    <div className="p-0 bg-white ">
+    <div className="p-0 bg-white overflow-x-hidden">
 
   
     <ContentSwitch activeComponent={activeComponent} />
