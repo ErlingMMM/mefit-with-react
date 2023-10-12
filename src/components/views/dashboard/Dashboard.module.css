@@ -9,13 +9,27 @@
   border-radius: 10px;
   padding: 0 10px; /* Some horizontal padding for aesthetics */
   margin-top: 10px;  /* Adds padding to the top of the container */
-  margin-bottom: 10px;  /* Adds padding to the bottom of the container */
+  margin-bottom: 15px;  /* Adds padding to the bottom of the container */
 }
 
 .progressContainer {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
+    position: relative;
   }
+
+.goalWrapper {
+  display: flex;            /* Set the display to flex for the vertical layout */
+  flex-direction: column;   /* Stack the children vertically */
+  align-items: flex-end;    /* Align children to the right */
+}
+  
+.goalText {
+  white-space: nowrap; /* Prevents the text from wrapping */
+  margin-bottom: 0px;  /* Space between "Goal:" and "x workouts" */
+}
+  
 
 .dateContainer {
   display: flex;
@@ -27,7 +41,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;         /* Center children vertically */
-  margin: 5px 5px; /* Adds a 5px gap below and above the calendar bar */      
+  margin: 5px 5px; /* Adds a 5px gap below and above the calendar bar */     
 }
 
 .progressRectangles {
@@ -38,9 +52,11 @@
   
 .rectangle {
   flex: 1;
-  height: 30px;
+  height: 35px;
   margin-right: 5px;  /* Some spacing between the rectangles */
   margin-left: 5px;  /* Some spacing between the rectangles */
+  margin-bottom: 10px; /* Adds a 10px gap below each workout bar */
+  margin-top: 4px; /* Adds a 10px gap below each workout bar */
 }
 
 .rectangle:last-child {
@@ -71,11 +87,78 @@
   margin-top: 10px; /* Adds a 10px gap below each workout bar */
 }
 
+.durationWrapper {
+  display: flex;            /* Use flexbox to align icon and text */
+  align-items: center;      /* Vertically align the icon and text */
+  gap: 5px; 
+  margin-bottom: 10px;                /* Small space between icon and text */
+}
+
+.showDetailsWrapper{
+  border-radius: 0 0 10px 10px;  /* Rounded corners only on the bottom */
+  border: 1.5px solid #A8E52E;   /* Specify the width (1px) and style (solid) */
+  position: relative; /* Makes this element a reference point for positioned children */
+  border-top: none;
+
+}
+/*-------------------------------------------------------------------------------------------*/
+/*A bunch of stuff to get the lines of the sides of the showdetailsMapper to have a seamless contact point with the rounded corners of the above workoutBarWrapper*/
+.showDetailsWrapper::before,
+.showDetailsWrapper::after {
+  content: ""; /* Necessary for the pseudo-element to show */
+  position: absolute; /* Absolute positioning */
+  top: -6px; /* Extend it upwards to cover the gap */
+  height: 10px; /* Height to match the curvature of the rounded corners */
+  width: 1px; /* 1px width to match the border */
+  background-color: #A8E52E; /* Match the border color */
+}
+
+.showDetailsWrapper::before {
+  left: -1px; /* Position on the left side */
+}
+
+.showDetailsWrapper::after {
+  right: -1px; /* Position on the right side */
+}
+
+/*-------------------------------------------------------------------------------------------*/
+
+.seeDetailedWorkout{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 16px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #A8E52E;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  border-radius: 0 0 7px 7px; /* If you want the bottom to have rounded corners */
+
+    
+}
+
 .completed_h1 {
   margin-bottom: -8px; /* To counteract the margin-top of the workoutBarWrapper */
+  margin-top: 15px;
 }
   
 .upcoming_h1 {
   margin-bottom: -8px; /* To counteract the margin-top of the workoutBarWrapper */
   margin-top: 10px;
 }
+
+.progress_h1 {
+  margin-top: 25px;
+}
+
+.day_h1{
+  margin-top: 10px;
+}
+
+.duration_h1{
+  margin-bottom: 10px;
+}
+

@@ -8,14 +8,14 @@ function Calendar() {
   return (
     <div className={styles.dateParentContainer}>
 
-      <button>{<ChevronLeftIcon className="h-5 w-5" /> }</button> 
+      <button>{<ChevronLeftIcon className="h-7 w-7" /> }</button> 
       
       <div className={styles.dateContainer}>
         <img src="/Icons/calendar.png" alt="Calendar" />
-        <span>{start} - {end}</span>
+        <span><b>{start} - {end}</b></span>
       </div>
 
-      <button><ChevronRightIcon className="h-5 w-5" /></button> 
+      <button><ChevronRightIcon className="h-7 w-7" /></button> 
 
     </div>
   )
