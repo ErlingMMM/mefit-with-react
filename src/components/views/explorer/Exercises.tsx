@@ -8,6 +8,8 @@ import { getExcersiceInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
 import '../../../styles/Explorer.css'
 
+//TODO Check if CSS should be in Explorer.css or in Exercise.css
+
 
 
 function Exercises({ searchQuery }: { searchQuery: string }) {

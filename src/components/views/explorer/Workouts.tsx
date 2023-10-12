@@ -6,6 +6,8 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
 import { getWorkoutInfo } from '../../../Redux/GenericSlice';
+import '../../../styles/Workouts.css'
+
 
 
 function Workouts({ searchQuery }: { searchQuery: string }) {
@@ -56,7 +58,7 @@ function Workouts({ searchQuery }: { searchQuery: string }) {
     return dummyImageUrls[randomIndex];
   };
   return (
-    <div>
+    <div className='slide-in'>
       <div>
    
           <ul>
