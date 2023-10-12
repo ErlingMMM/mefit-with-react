@@ -7,11 +7,11 @@ import { RootState } from '../../../Redux/Store';
 import { getExcersiceInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
 import { SearchIcon } from '@heroicons/react/outline';
-import '../../../styles/Exercise.css'
+import '../../../styles/Explorer.css'
 
 
 
-function Exercise() {
+function Exercises() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const exercises = useSelector((state: any) => state.data.exerciseData);
   const exerciseLoading = useSelector((state: any) => state.loading);
@@ -70,15 +70,29 @@ function Exercise() {
         <br />
         <div className="text-center mt-4">
           <div className="relative">
-            <input
-              className="border-2 border-gray-300 bg-white h-12 w-10/12 px-5 pr-16 rounded-3xl text-sm focus:outline-none inline-block placeholder-padding"
-              type="text"
-              placeholder="Search exercises"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-  <div className="absolute left-14 top-4 text-gray-400 md:left-32 md:top-5">
+            <div className="external-input-style border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
+              <input
+                type="text"
+                placeholder="Search exercises"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={(e) => {
+                  e.target.placeholder = "";
+                  if (e.target.parentElement) {
+                    e.target.parentElement.classList.add("focused");
+                  }
+                }}
+                onBlur={(e) => {
+                  e.target.placeholder = "Search exercises";
+                  if (e.target.parentElement) {
+                    e.target.parentElement.classList.remove("focused");
+                  }
+                }}
+                style={{ marginTop: '11px', marginRight: '60px' }}
+              />
+                <div className="absolute left-12 top-4 text-gray-400">
               <SearchIcon className="w-4 h-4" />
+            </div>
             </div>
           </div>
         </div>
@@ -97,7 +111,7 @@ function Exercise() {
                     <img
                       src={getRandomDummyImageUrl()}
                       alt={exercise.name}
-                      style={{ width: '100px', height: '100px', marginLeft: '30px', borderRadius: 18 }} 
+                      className="custom-image-style"
                     />
                     <div>
                       <h3 className='text-lg font-bold' style={{ marginLeft: '-20px' }}>{exercise.name}</h3>
@@ -127,4 +141,4 @@ function Exercise() {
   );
 }
 
-export default Exercise;
+export default Exercises;

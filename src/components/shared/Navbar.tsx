@@ -29,11 +29,8 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
         <button onClick={() => switchToComponent('dashboard')}>Dashboard</button>
         <button onClick={() => switchToComponent('profile')}>Profile</button>
         <button onClick={() => switchToComponent('programs')}>Programs</button>
-        <button onClick={() => switchToComponent('workouts')}>Workouts</button>
-        <button onClick={() => switchToComponent('exercises')}>Exercises</button>
-        {keycloak.authenticated && (
-            <button onClick={() => keycloak.logout()}>Logout</button>
-          )}
+        <button onClick={() => switchToComponent('explorer')}>Explorer</button>
+        <button>Logout</button>
       </div>
     </div>
   );

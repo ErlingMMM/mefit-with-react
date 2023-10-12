@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from "./Dashboard.module.css" //locally scoped
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/outline';
 
 type WorkoutBarProps = {
   day: number;
@@ -16,7 +17,7 @@ function WorkoutBar({day, muscleGroup, duration}: WorkoutBarProps) { //The argum
   };
 
   return (
-    <div className={'bg-blue-500'}>
+    <div>
 
       <div className = {styles.workoutBarWrapper}>
         <div>
@@ -24,7 +25,7 @@ function WorkoutBar({day, muscleGroup, duration}: WorkoutBarProps) { //The argum
           <h1>{duration} min</h1>
         </div>
       
-        <button onClick={toggleDetails}>{showDetails ? '▲' : '▼'}</button>
+        <button onClick={toggleDetails}>{showDetails ? <ChevronUpIcon className="h-5 w-5 text-[#A8E52E]" /> : <ChevronDownIcon className="h-5 w-5 text-[#A8E52E]" />}</button>
       </div>
       
       {showDetails && (
