@@ -1,15 +1,15 @@
-import Exercises from "./Exercises";
-import Workouts from "./Workouts";
+import Exercises from './Exercises';
+import Workouts from './Workouts';
 
-function DisplayManager({ activeComponent, searchQuery }: { activeComponent: string; searchQuery: string }) {
-    switch (activeComponent) {
-        case 'exercises':
-            return <Exercises searchQuery={searchQuery} />;
-            case 'workouts':
-            return <Workouts searchQuery={searchQuery} />;
-        default:
-            return null;
-    }
+function DisplayManager({ activeComponent, searchQuery, isLoading }: { activeComponent: string; searchQuery: string; isLoading: boolean }) {
+  switch (activeComponent) {
+    case 'exercises':
+      return <Exercises searchQuery={searchQuery} isLoading={isLoading} />;
+    case 'workouts':
+      return <Workouts searchQuery={searchQuery} isLoading={isLoading} />;
+    default:
+      return null;
+  }
 }
 
-export default DisplayManager
+export default DisplayManager;
