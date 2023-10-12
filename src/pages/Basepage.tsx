@@ -7,8 +7,11 @@ function Basepage() {
 
   return (
     <>
-      <Navbar setActiveComponent={setActiveComponent} />
+    <div className='overflow-x-hidden	'>
+    <Navbar setActiveComponent={setActiveComponent} />
         <ContentView activeComponent={activeComponent} />
+    </div>
+   
       </>
   );
 }

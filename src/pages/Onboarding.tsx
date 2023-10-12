@@ -22,13 +22,16 @@ function Onboarding() {
 
   return (
     <>
-      <div>Onboarding</div>
+    <div className='overflow-x-hidden	'>
+    <div>Onboarding</div>
       <ContentSwitch activeComponent={activeComponent} />
       <div>
       <button onClick={handlePrevClick}>Previous</button>
         <button onClick={handleNextClick}>Next</button>
         <button onClick={handleSkip}>Skip</button>
         </div>
+    </div>
+   
     </>
   );
 }
