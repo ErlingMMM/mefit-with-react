@@ -90,10 +90,11 @@ function Exercise() {
                 }}
                 style={{ marginTop: '11px', marginRight: '60px' }}
               />
-            </div>
-            <div className="absolute left-4 top-4 text-gray-400">
+                <div className="absolute left-4 top-4 text-gray-400">
               <SearchIcon className="w-4 h-4" />
             </div>
+            </div>
+          
 
           </div>
         </div>
