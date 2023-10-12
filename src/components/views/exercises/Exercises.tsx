@@ -71,14 +71,14 @@ function Exercise() {
         <div className="text-center mt-4">
           <div className="relative">
           <div className="custom-input border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
-          <input
+          <input 
                 type="text"
                 placeholder="Search exercises"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={(e) => (e.target.placeholder = "")}
                 onBlur={(e) => (e.target.placeholder = "Search exercises")}
-                style={{ marginTop: '10px' }}
+                style={{ marginTop: '11px', marginRight: '60px' }}
               />
             </div>
             <div className="absolute left-4 top-4 text-gray-400">
