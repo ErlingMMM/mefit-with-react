@@ -33,7 +33,8 @@ function WorkoutBar({day, muscleGroup, duration}: WorkoutBarProps) { //The argum
       
       {showDetails && (
         <div className={styles.showDetailsWrapper}>
-          <p>Workout details go here</p>
+          <b className={styles.infoRow}><span>Excercise</span><span>Sets</span><span>Reps</span></b>
+          <p className={styles.infoRow}><span>Placeholder exercise</span><span>4</span><span>12</span></p> 
           <button className={styles.seeDetailedWorkout}><b>See Workout</b></button>
         </div>
       )}

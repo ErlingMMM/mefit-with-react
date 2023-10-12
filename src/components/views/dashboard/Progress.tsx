@@ -12,9 +12,7 @@ function Progress() {
         <h1><b>Week {week}</b></h1>
 
         <div className={styles.goalWrapper}>
-          <div className={styles.goalText}>
-            <h1><b>Goal:</b></h1>
-          </div>
+          <h1 className={styles.goalText}><b>Goal:</b></h1>
           <h1>{goalWorkouts} workouts</h1>
         </div>
 
