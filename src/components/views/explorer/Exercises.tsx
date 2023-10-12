@@ -11,7 +11,7 @@ import '../../../styles/Explorer.css'
 
 
 
-function Exercise() {
+function Exercises() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const exercises = useSelector((state: any) => state.data.exerciseData);
   const exerciseLoading = useSelector((state: any) => state.loading);
@@ -141,4 +141,4 @@ function Exercise() {
   );
 }
 
-export default Exercise;
+export default Exercises;

@@ -6,7 +6,6 @@ import Profile from '../profile/Profile';
 
 function ContentView({ activeComponent }: { activeComponent: string }) {
   switch (activeComponent) {
-   
     case 'dashboard':
       return <Dashboard />;
     case 'profile':
