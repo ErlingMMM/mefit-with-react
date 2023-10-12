@@ -1,19 +1,18 @@
 import { SearchIcon } from '@heroicons/react/outline';
-import '../../../styles/Explorer.css'
-
 
 interface SearchBarProps {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
+  placeholder: string;
 }
 
-function SearchBar({ searchQuery, setSearchQuery }: SearchBarProps) {
+function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps) {
   return (
     <div className="relative">
       <div className="external-input-style border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
         <input
           type="text"
-          placeholder="Search exercises"
+          placeholder={placeholder}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={(e) => {
@@ -23,7 +22,7 @@ function SearchBar({ searchQuery, setSearchQuery }: SearchBarProps) {
             }
           }}
           onBlur={(e) => {
-            e.target.placeholder = "Search exercises";
+            e.target.placeholder = placeholder;
             if (e.target.parentElement) {
               e.target.parentElement.classList.remove("focused");
             }
