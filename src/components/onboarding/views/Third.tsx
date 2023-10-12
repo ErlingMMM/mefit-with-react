@@ -20,7 +20,7 @@ function Third() {
     console.log(event.target.value)
 
   }
-  
+  //  <button className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleRegistrerClick} type="submit">registrer</button>
 const handleRegistrerClick = () => {
   dispatch(RegisterUserOnboardingStatsAsync ({ intensity:intensityLevelUser, fitnessLvl:fintessLevelBruker
     ,timeframe:fintessTimeFrame}));
@@ -29,28 +29,36 @@ const handleRegistrerClick = () => {
   console.log("user fitness level:",fintessLevelBruker)
   console.log("timeframe:",fintessTimeFrame )
   return (
-    
-    <div  className="flex flex-col items-center h-screen bg-white">
-      <h1>Choose your timeframe:</h1>
-      <form className="p-36 rounded justify-center ">
+    <div className="min-h-screen flex flex-col justify-center items-center p-4 ">
+      <h1 className="text-lg font-bold mb-6 self-end">Choose your timeframe:</h1>
+      <form className="">
 
-      <div className="mb-4 p-6 round hover:scale-110">
+      <div className="mb-2 p-4 round hover:scale-110">
         <input type="radio" id="html" name="fav_language" value="15"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
-        <label htmlFor="html">15 days</label><br />
+         <div>
+        <label  className="text-lg font-bold">15 days</label><br />
+        <p>Perfect for som vil prøve og eventuelt utvide til en lenger periode. lykke til</p>
+         </div>
         </div>
 
         <div className="mb-4 p-6 round hover:scale-110">
         <input type="radio" id="css" name="fav_language" value="30"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
-        <label htmlFor="css">30 days</label><br />
+        <div>
+        <label   className="text-lg font-bold" >30 days</label><br />
+        <p>Perfect for som vil er erfaren og kan holde ut et treningsprogram i en hektisk hverdag.lykke til</p>
+         </div>
         </div>
 
         <div className="mb-4 p-6 round hover:scale-110">
         <input type="radio" id="javascript" name="fav_language" value="45"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
-        <label htmlFor="javascript">45 days</label><br />
+         <div>
+        <label className="text-lg font-bold">45 days</label><br />
+        <p>Perfect for deg som trener mot et intens mål og har erfaringen og disiplin tol å fullføre et hardt løp.lykke til</p>
+         </div>
         </div>
       </form>
+      <button className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleRegistrerClick} type="submit">registrer</button>
       <div className="mb-8 flex justify-center">
-  <button className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleRegistrerClick} type="submit">registrer</button>
      </div>
     </div>
   );

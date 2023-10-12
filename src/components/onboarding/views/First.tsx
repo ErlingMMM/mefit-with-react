@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, SetStateAction, useState } from "react";
-import { SetUserFitnessLVL, SetuserFName } from "../../../Redux/GenericSlice";
+import { RegisterUserOnboardingStatsAsync, SetUserFitnessLVL, SetuserFName } from "../../../Redux/GenericSlice";
 import { ThunkDispatch } from "redux-thunk";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Store";
@@ -9,7 +9,11 @@ function First() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const [fornavn, setFornavn] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState('option1');
+  const intensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
   const fintessLevelBruker = useSelector((state: any) => state.data.userData.fitnessPreference);
+  const fintessTimeFrame = useSelector((state: any) => state.data.userData.DurationTimeFrame);
+  
+  
   
 
 
@@ -18,25 +22,55 @@ function First() {
     dispatch(SetUserFitnessLVL(event.target.value));
 
   }
+  const handleRegistrerClick = () => {
+    dispatch(RegisterUserOnboardingStatsAsync ({ intensity:intensityLevelUser, fitnessLvl:fintessLevelBruker
+      ,timeframe:fintessTimeFrame}));
+  };
+
+
   return (
-    
-    <div className="flex flex-col items-center h-screen bg-white">
-    <h1 className="text-3xl font-bold mb-6">Fitness Level</h1>
-    <form className="p-48 rounded justify-center">
-      <div className="mb-4 p-6 round hover:scale-125">
-        <input type="radio" id="Beginner" name="fitnessLevel" value="Beginner" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
-        <label htmlFor="Beginner" className="text-lg">Beginner</label>
-      </div>
-      <div className="mb-4 p-6 rounded hover:scale-125">
-        <input type="radio" id="Intermediate" name="fitnessLevel" value="Intermediate" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
-        <label htmlFor="Intermediate" className="text-lg">Intermediate</label>
-      </div>
-      <div className="mb-4 p-6 rounded hover:scale-125">
-        <input type="radio" id="Expert" name="fitnessLevel" value="Expert" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
-        <label htmlFor="Expert" className="text-lg">Expert</label>
-      </div>
+    <div className="min-h-screen flex flex-col justify-center items-center p-4 ">
+      <h1 className="text-lg font-bold mb-6 self-end">What is your<br />current fitness<br />level?</h1>
+
+    <form className="">
+        <div className="mb-2 p-4 rounded hover:scale-110">
+            <input type="radio" id="Beginner" name="fitnessLevel" value="Beginner" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
+            <div>
+            <label htmlFor="Beginner" className="text-lg font-bold">Beginner</label>
+            <p>Perfect for fitness newcomers.<br />
+            Covers fundamental exercises<br />
+            and techniques.</p>
+            </div> 
+        </div>
+
+        <div className="mb-2 p-4 rounded hover:scale-110">
+            <input type="radio" id="Intermediate" name="fitnessLevel" value="Intermediate" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
+            <div>
+            <label htmlFor="Intermediate" className="text-lg font-bold">Intermediate</label>
+            <p>For users with some prior fitness experience.<br />
+            Covers fundamental exercises<br />
+            and techniques.</p>
+            </div>
+        </div>
+
+        <div className="mb-2 p-4 rounded hover:scale-110">
+            <input type="radio" id="Expert" name="fitnessLevel" value="Expert" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
+            <div>
+            <label htmlFor="Expert" className="text-lg font-bold">Expert</label>
+            <p>For users with significant prior fitness experience.<br />
+            Covers advanced exercises<br />
+            and techniques.</p>
+            </div>
+        </div>
+
     </form>
-  </div>
+    <button className="underline" type="submit" onClick={handleRegistrerClick}>skip</button>
+
+
+</div>
+
+
+  
 
   );
 };
