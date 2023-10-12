@@ -70,14 +70,15 @@ function Exercise() {
         <br />
         <div className="text-center mt-4">
           <div className="relative">
-            <input
-              className="border-2 border-gray-300 bg-white h-12 w-10/12 px-5 pr-16 rounded-3xl text-sm focus:outline-none inline-block placeholder-padding"
-              type="text"
-              placeholder="Search exercises"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-  <div className="absolute left-14 top-4 text-gray-400 md:left-32 md:top-5">
+          <div className="border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
+              <input
+                type="text"
+                placeholder="Search exercises"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            <div className="absolute left-4 top-4 text-gray-400">
               <SearchIcon className="w-4 h-4" />
             </div>
           </div>
