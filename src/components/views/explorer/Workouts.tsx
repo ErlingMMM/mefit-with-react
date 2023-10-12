@@ -6,7 +6,6 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
 import { getWorkoutInfo } from '../../../Redux/GenericSlice';
-import '../../../styles/Workouts.css'
 
 
 
