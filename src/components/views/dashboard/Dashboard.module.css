@@ -1,0 +1,53 @@
+.progressParentContainer {
+  border: 1px solid black;   /* Specify the width (1px) and style (solid) */ 
+}
+
+.progressContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+.dateContainer {
+  display: flex;
+  align-items: center; /* Aligns items vertically centered */
+  gap: 10px; /* Adds a gap between the image and the date */
+}
+  
+.dateParentContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;         /* Center children vertically */
+  border: 1px solid black;   /* Specify the width (1px) and style (solid) */      
+}
+
+.progressRectangles {
+  display: flex;
+  justify-content: space-between; /* Distributes the rectangles evenly */
+  padding-bottom: 5px;  /* Adds padding to the bottom of the container */
+}
+  
+.rectangle {
+  flex: 1;
+  height: 30px;
+  margin-right: 5px;  /* Some spacing between the rectangles */
+  margin-left: 5px;  /* Some spacing between the rectangles */
+}
+
+.completed {
+  background-color: green;
+}
+
+.pending {
+  background-color: gray;
+}
+
+.workoutBarWrapper {
+  display: flex;
+  justify-content: space-between; /* Push children to the edges */
+  align-items: center; /* Center children vertically */
+  padding: 0 10px; /* Some horizontal padding for aesthetics */
+  border: 1px solid black;   /* Specify the width (1px) and style (solid) */ 
+}
+
+  
+  
