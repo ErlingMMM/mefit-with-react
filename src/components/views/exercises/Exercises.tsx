@@ -78,6 +78,7 @@ function Exercise() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={(e) => (e.target.placeholder = "")}
                 onBlur={(e) => (e.target.placeholder = "Search exercises")}
+                style={{ marginTop: '10px' }}
               />
             </div>
             <div className="absolute left-4 top-4 text-gray-400">
