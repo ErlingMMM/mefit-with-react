@@ -9,7 +9,7 @@ function App() {
   
     <Provider store={store}>
       <Router>
-        <div className="bg-blue-500 text-red-300">
+        <div className="bg-blue-500 text-black">
 
           <Routes>
             <Route path="/" element={<Index />} />
