@@ -8,14 +8,19 @@ function Progress() {
   return (
     <div className={styles.progressParentContainer}>
       <div className={styles.progressContainer}>
-        <h1>Week {week}</h1>
-        <div>
-          <h1>Goal:</h1>
+
+        <h1><b>Week {week}</b></h1>
+
+        <div className={styles.goalWrapper}>
+          <div className={styles.goalText}>
+            <h1><b>Goal:</b></h1>
+          </div>
           <h1>{goalWorkouts} workouts</h1>
         </div>
+
       </div>
 
-      <h1>Progress: {progress}%</h1>
+      <h1 className={styles.progress_h1}><b>Progress: </b> {progress}%</h1>
 
       <div className={styles.progressRectangles}>
         {Array.from({ length: goalWorkouts }).map((_, idx) => ( //maps from [undefined, undefined, ..., undefined] of length n = goalWorkouts to [1,2,..,n]
