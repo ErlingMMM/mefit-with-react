@@ -6,7 +6,7 @@ function DisplayManager({ activeComponent, searchQuery }: { activeComponent: str
         case 'exercises':
             return <Exercises searchQuery={searchQuery} />;
             case 'workouts':
-            return <Workouts />;
+            return <Workouts searchQuery={searchQuery} />;
         default:
             return null;
     }
