@@ -1,19 +1,21 @@
 import React from 'react'
 import styles from "./Dashboard.module.css" //locally scoped
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+
 
 function Calendar() {
   const { start, end } = getCurrentWeek();
   return (
-    <div className={`${styles.dateParentContainer} bg-blue-500`}>
+    <div className={styles.dateParentContainer}>
 
-      <button>{"<"}</button> 
+      <button>{<ChevronLeftIcon className="h-5 w-5" /> }</button> 
       
       <div className={styles.dateContainer}>
         <img src="/Icons/calendar.png" alt="Calendar" />
         <span>{start} - {end}</span>
       </div>
 
-      <button>{">"}</button> 
+      <button><ChevronRightIcon className="h-5 w-5" /></button> 
 
     </div>
   )
