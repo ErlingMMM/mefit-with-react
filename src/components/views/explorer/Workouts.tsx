@@ -6,7 +6,6 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
 import { getWorkoutInfo } from '../../../Redux/GenericSlice';
-import loadingGif from '../../../assets/loading.gif';
 
 
 function Workouts({ searchQuery }: { searchQuery: string }) {
@@ -14,17 +13,13 @@ function Workouts({ searchQuery }: { searchQuery: string }) {
   const workouts = useSelector((state: any) => state.data.workoutData);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         await dispatch(getWorkoutInfo());
-        // Simulate a minimum loading time of a second
-        setTimeout(() => {
-          setIsLoading(false); // Data is loaded, set isLoading to false
-        }, 1000);
+   
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -63,12 +58,7 @@ function Workouts({ searchQuery }: { searchQuery: string }) {
   return (
     <div>
       <div>
-        {isLoading ? (
-          <div>
-            <img src={loadingGif} alt="Loading..." />
-            <p>Loading workouts...</p>
-          </div>
-        ) : (
+   
           <ul>
             {Array.isArray(filteredWorkouts) && filteredWorkouts.length > 0 ? (
               filteredWorkouts.map((workout: any) => (
@@ -95,7 +85,7 @@ function Workouts({ searchQuery }: { searchQuery: string }) {
               </div>
             )}
           </ul>
-        )}
+        
       </div>
       <ExerciseModal
         isOpen={isModalOpen}
