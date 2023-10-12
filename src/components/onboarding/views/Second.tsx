@@ -4,10 +4,12 @@ import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../Redux/Store';
 import { RegisterUserOnboardingStatsAsync, SetUserFitnessLVL, setUserTimesAWeek } from '../../../Redux/GenericSlice';
 import { AnyAction } from '@reduxjs/toolkit';
+import { useNavigate } from 'react-router-dom';
 
 function Second() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const [selectedOption, setSelectedOption] = useState('option1');
+  const navigate = useNavigate();
   const intensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
   const fintessLevelBruker = useSelector((state: any) => state.data.userData.fitnessPreference);
   const fintessTimeFrame = useSelector((state: any) => state.data.userData.DurationTimeFrame);
@@ -20,9 +22,11 @@ function Second() {
 
   }
 
+
   const handleRegistrerClick = () => {
     dispatch(RegisterUserOnboardingStatsAsync ({ intensity:intensityLevelUser, fitnessLvl:fintessLevelBruker
       ,timeframe:fintessTimeFrame}));
+      navigate('/')
   };
   return (
     <div className="min-h-screen flex flex-col justify-center items-center p-4 ">

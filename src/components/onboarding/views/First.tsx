@@ -4,11 +4,13 @@ import { ThunkDispatch } from "redux-thunk";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Store";
 import { AnyAction } from "@reduxjs/toolkit";
+import { useNavigate } from 'react-router-dom';
 
 function First() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const [fornavn, setFornavn] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState('option1');
+  const navigate = useNavigate();
   const intensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
   const fintessLevelBruker = useSelector((state: any) => state.data.userData.fitnessPreference);
   const fintessTimeFrame = useSelector((state: any) => state.data.userData.DurationTimeFrame);
@@ -25,6 +27,7 @@ function First() {
   const handleRegistrerClick = () => {
     dispatch(RegisterUserOnboardingStatsAsync ({ intensity:intensityLevelUser, fitnessLvl:fintessLevelBruker
       ,timeframe:fintessTimeFrame}));
+      navigate('/')
   };
 
 
