@@ -16,6 +16,7 @@ interface KeycloakRouteProps {
     if (keycloak.hasRealmRole(role)) {
       return <>{children}</>;
     }
+
   
     return <Navigate replace to={redirectTo} />;
   }

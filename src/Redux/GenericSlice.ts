@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import keycloak from "../Keycloak";
+import { time } from 'console';
 
 interface UserData {
     id: number | null;
@@ -88,16 +89,22 @@ const initialState: DataState = {
 
 
 
-
 export const getLoginAsync = createAsyncThunk(
   "getLoginAsync",
   async () => {
     try {
-      const resp = await fetch(`'https://mefit-backend.azurewebsites.net/api/Users/user`);
+      const accessToken = keycloak.token; 
+      const resp = await fetch('https://mefit-backend.azurewebsites.net/api/Users/user', {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`, 
+          'Content-Type': 'application/json'
+        }
+      });
+
       if (resp.ok) {
         const user = await resp.json();
-        console.log(user)
-        if (user.id != null) {
+        if (user != null) {
+          console.log("heiieiei")
           return { user };
         } else {
           throw new Error('Feil: Bruker ikke funnet.');
@@ -106,10 +113,11 @@ export const getLoginAsync = createAsyncThunk(
         throw new Error('Feil: Ugyldig respons fra serveren.');
       }
     } catch (error) {
-      throw new Error(`Feil: hehhee`);
+      throw new Error(`Feil: ${"dette stemmer ikke"}`);
     }
   }
 );
+
 
 //-------------------------------------------------------------------------------------------
 //excersice data
@@ -179,8 +187,13 @@ interface UserDatapostAPI {
 
 export const RegisterUserOnboardingStatsAsync = createAsyncThunk(
   'RegisterUserOnboardStatsAsync',
+  
   async ({ intensity,fitnessLvl,timeframe }: UserDatapostAPI) => {
     const timeframeInt = parseInt(timeframe);const intensityInt = parseInt(intensity);
+    if(intensity == null){
+      
+    }
+
     const response = await fetch(`https://mefit-backend.azurewebsites.net/api/users/register`, {
       headers: {
         'Authorization':`Bearer ${keycloak.token}`,

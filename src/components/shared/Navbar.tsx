@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import HamburgerMenu from './HamburgerMenu';
+import keycloak from "../../Keycloak";
 
 function Navbar({ setActiveComponent }: { setActiveComponent: (component: string) => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,7 +30,9 @@ function Navbar({ setActiveComponent }: { setActiveComponent: (component: string
         <button onClick={() => switchToComponent('profile')}>Profile</button>
         <button onClick={() => switchToComponent('programs')}>Programs</button>
         <button onClick={() => switchToComponent('explorer')}>Explorer</button>
-        <button>Logout</button>
+        {keycloak.authenticated && (
+            <button onClick={() => keycloak.logout()}>Logout</button>
+          )}
       </div>
     </div>
   );
