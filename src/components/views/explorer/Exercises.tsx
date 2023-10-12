@@ -6,7 +6,6 @@ import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
 import { getExcersiceInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
-import { SearchIcon } from '@heroicons/react/outline';
 import '../../../styles/Explorer.css'
 
 
@@ -14,10 +13,9 @@ import '../../../styles/Explorer.css'
 function Exercises({ searchQuery }: { searchQuery: string }) {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const exercises = useSelector((state: any) => state.data.exerciseData);
-  const exerciseLoading = useSelector((state: any) => state.loading);
+  //const exerciseLoading = useSelector((state: any) => state.loading);
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  //const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

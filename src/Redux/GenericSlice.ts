@@ -104,16 +104,16 @@ export const getLoginAsync = createAsyncThunk(
       if (resp.ok) {
         const user = await resp.json();
         if (user != null) {
-          console.log("heiieiei")
+          console.log("user is null")
           return { user };
         } else {
-          throw new Error('Feil: Bruker ikke funnet.');
+          throw new Error('Error. User not found');
         }
       } else {
-        throw new Error('Feil: Ugyldig respons fra serveren.');
+        throw new Error('Error: Unvalid response from server.');
       }
     } catch (error) {
-      throw new Error(`Feil: ${"dette stemmer ikke"}`);
+      throw new Error(`Error`);
     }
   }
 );
@@ -139,13 +139,13 @@ export const getExcersiceInfo = createAsyncThunk(
 
           return { Excer };
         } else {
-          throw new Error('Feil: Bruker ikke funnet.');
+          throw new Error('Error. User not found');
         }
       } else {
-        throw new Error('Feil: Ugyldig respons fra serveren.');
+        throw new Error('Error: Unvalid response from server.');
       }
     } catch (error) {
-      throw new Error(`Feil: hehhee`);
+      throw new Error(`Error`);
     }
   }
 );
@@ -165,13 +165,13 @@ export const getWorkoutInfo = createAsyncThunk(
 
           return {  workout };
         } else {
-          throw new Error('Feil: Bruker ikke funnet.');
+          throw new Error('Error. User not found.');
         }
       } else {
-        throw new Error('Feil: Ugyldig respons fra serveren.');
+        throw new Error('Error: Unvalid response from server.');
       }
     } catch (error) {
-      throw new Error(`Feil: hehhee`);
+      throw new Error(`Error`);
     }
   }
 );
@@ -208,12 +208,11 @@ export const RegisterUserOnboardingStatsAsync = createAsyncThunk(
     });
     console.log(response.text())
     if (response.ok) {
-      console.log('dette funker!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       const user = await response.json();
     }
 
-    // Håndter feil her hvis response.ok er falsk
-    throw new Error('Feil ved lagring av brukerdata');
+    // Handles errors if the response is not ok
+    throw new Error('Error: Unvalid response from server.');
   }
 );
 
