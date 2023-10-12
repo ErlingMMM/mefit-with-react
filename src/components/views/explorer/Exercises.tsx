@@ -21,26 +21,19 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const hasLoadedBefore = sessionStorage.getItem('hasLoadedExercises');
-    
-    if (hasLoadedBefore !== "loaded") {
       const fetchData = async () => {
         try {
           await dispatch(getExcersiceInfo());
           // Simulate a minimum loading time of a second
           setTimeout(() => {
             setIsLoading(false); 
-            sessionStorage.setItem('hasLoadedExercises', 'loaded');
-          }, 1000);
+          }, 500);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
       };
 
       fetchData();
-    } else {
-      setIsLoading(false);
-    }
   }, [dispatch]);
 
 
@@ -79,7 +72,6 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
         {isLoading ? (
           <div>
             <img src={loadingGif} alt="Loading..." />
-            <p>Loading exercises...</p>
           </div>
         ) : (
           <ul>

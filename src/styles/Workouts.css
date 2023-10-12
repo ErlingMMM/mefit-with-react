@@ -1,15 +1,2 @@
-.slide-in {
-    animation-name: slideIn;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-  }
-  
-  @keyframes slideIn {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
+
   

@@ -58,7 +58,7 @@ function Workouts({ searchQuery }: { searchQuery: string }) {
     return dummyImageUrls[randomIndex];
   };
   return (
-    <div className='slide-in'>
+    <div>
       <div>
    
           <ul>
