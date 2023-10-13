@@ -43,18 +43,17 @@ function Workouts({ searchQuery }: { searchQuery: string; }) {
             filteredWorkouts.map((workout: any) => (
               <li key={workout.id} className="mb-6">
               <button onClick={() => openModal(workout)}>
-                <div className="flex">
-                  <img
-                    src={getRandomDummyImageUrl()}
-                    alt={workout.name}
-                    className="w-80 h-24 rounded-lg mx-auto"
-                  />
-                  <div className="flex flex-col pl-2"> {/* Add pl-2 (padding-left) for spacing */}
-                    <h3 className="text-lg font-bold">
-                      {workout.name}
-                    </h3>
-                    <p>{workout.description}</p>
-                  </div>
+                <img
+                  src={getRandomDummyImageUrl()}
+                  alt={workout.name}
+                  className="w-80 h-24 rounded-lg mx-auto"
+                />
+                <div >
+                  <h3 className="text-lg font-bold" >
+                    {workout.name}
+                  </h3>
+                  <p >{workout.description}</p>
+                  <br />
                 </div>
               </button>
             </li>
