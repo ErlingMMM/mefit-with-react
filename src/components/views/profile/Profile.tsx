@@ -29,7 +29,7 @@ console.log(user)
   return (
 <div className="flex flex-col justify-center items-center p-4">
 <button onClick={handleEditClick} className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
-        edit profile
+        settings
     </button> 
     {keycloak.tokenParsed && keycloak.tokenParsed.name && (
         <div className="flex flex-col items-center justify-center max-w-screen-md mx-auto p-4 text-center">
@@ -37,7 +37,7 @@ console.log(user)
                  alt="Cheetah!" className="w-32 h-32 object-cover rounded-full mb-4" />
             <h1 className="text-2xl font-bold mb-2">{keycloak.tokenParsed.name}</h1>
             <div className="my-4">
-    <p className="text-lg mb-2 font-bold">Fitness Preference:</p>
+    <p className="text-lg mb-2 font-bold">Fitness level:</p>
     <p className="text-lg mb-4">{user.fitnessPreference}</p>
 </div>
 <div className="my-4">
@@ -50,11 +50,11 @@ console.log(user)
         <p className="text-lg mb-4">{user.age}</p>
     </div>
     <div className="my-4 mx-2">
-        <p className="text-lg mb-2 font-bold">Height:</p>
+        <p className="text-lg mb-2 font-bold">Height (cm):</p>
         <p className="text-lg mb-4">{user.height}</p>
     </div>
     <div className="my-4 mx-2">
-        <p className="text-lg mb-2 font-bold">Weight:</p>
+        <p className="text-lg mb-2 font-bold">Weight (kg):</p>
         <p className="text-lg mb-4">{user.weight}</p>
     </div>
     <div className="my-4 mx-2">
