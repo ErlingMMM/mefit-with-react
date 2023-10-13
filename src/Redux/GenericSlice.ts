@@ -314,7 +314,7 @@ interface UserDataUpdateAPI {
           body: JSON.stringify(patchOps),
         });
         if(response.ok){
-          console.log("det fungerer for faen!!!")
+          console.log("det fungerer!")
         }
   
         if (!response.ok) {
