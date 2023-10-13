@@ -4,6 +4,7 @@ import BasePage from './pages/Basepage';
 import Onboarding from './pages/Onboarding';
 import { store } from './Redux/Store';
 import './App.css';
+import EditProfile from './pages/EditProfile';
 function App() {
   return (
   
@@ -12,6 +13,7 @@ function App() {
         <Routes>
             <Route path="/" element={<BasePage />} />
             <Route path="/onboarding" element={<Onboarding/>} />
+            <Route path="/editprofile" element={<EditProfile/>} />
           </Routes>
        </Router>
     </Provider>

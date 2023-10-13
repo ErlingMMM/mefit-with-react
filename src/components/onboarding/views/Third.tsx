@@ -25,9 +25,11 @@ const handleRegistrerClick = () => {
   dispatch(RegisterUserOnboardingStatsAsync ({ intensity:intensityLevelUser, fitnessLvl:fintessLevelBruker
     ,timeframe:fintessTimeFrame}));
 };
+
   console.log("user intensitylevel:",intensityLevelUser)
   console.log("user fitness level:",fintessLevelBruker)
   console.log("timeframe:",fintessTimeFrame )
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center p-4 ">
       <h1 className="text-lg font-bold mb-6 self-end">Choose your timeframe:</h1>
