@@ -11,6 +11,8 @@ interface UserData {
   fitnessPreference: string | null;
   height: number | null;
   weight: number | null;
+  age:number | null;
+  gender: number | null;
   timesAWeek: number | null;
   DurationTimeFrame: number | null;
   programs: any[] | null;
@@ -56,6 +58,8 @@ const initialState: DataState = {
       fitnessPreference: null,
       height: null,
       weight: null,
+      age:null,
+      gender: null,
       DurationTimeFrame: null,
       timesAWeek: null,
       programs: null,
@@ -189,8 +193,7 @@ export const RegisterUserOnboardingStatsAsync = createAsyncThunk(
   'RegisterUserOnboardStatsAsync',
   
   async ({ intensity,fitnessLvl,timeframe }: UserDatapostAPI) => {
-    const timeframeInt = parseInt(timeframe);const intensityInt = parseInt(intensity);
-    if(intensity == null){
+    const timeframeInt = parseInt(timeframe);const intensityInt = parseInt(intensity);{
       
     }
 
@@ -215,10 +218,84 @@ export const RegisterUserOnboardingStatsAsync = createAsyncThunk(
     throw new Error('Error: Unvalid response from server.');
   }
 );
+//------------------------------------------------------- async metode N
 
+interface UserDataUpdateAPI {
+  bio: string;
+  age: string;
+  height:string;
+  weight:string;
+  gender:String;
 
+}
 
-
+  export const updateUserProfile = createAsyncThunk(
+    'updateUserProfile',
+    async ({ bio, age, height, weight, gender }: UserDataUpdateAPI) => {
+      const patchOps = [];
+      if (bio !== null) {
+        patchOps.push({
+          op: 'replace',
+          path: '/bio',
+          value: bio,
+        });
+      }
+      if (age !== null) {
+        patchOps.push({
+          op: 'replace',
+          path: '/age',
+          value: age,
+        });
+      }
+      if (height !== null) {
+        patchOps.push({
+          op: 'replace',
+          path: '/height',
+          value: height,
+        });
+      }
+      if (weight !== null) {
+        patchOps.push({
+          op: 'replace',
+          path: '/weight',
+          value: weight,
+        });
+      }
+      if (gender !== null) {
+        patchOps.push({
+          op: 'replace',
+          path: '/gender',
+          value: gender,
+        });
+      }
+  
+      try {
+        const response = await fetch('https://mefit-backend.azurewebsites.net/api/users/updateuser', {
+          method: 'PATCH',
+          headers: {
+            'Authorization':`Bearer ${keycloak.token}`,
+            'Content-Type': 'application/json-patch+json',
+          },
+          body: JSON.stringify(patchOps),
+        });
+        if(response.ok){
+          console.log("det fungerer for faen!!!")
+        }
+  
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+  
+        const data = await response.json();
+        console.log(data)
+        return data;
+      } catch (error) {
+        console.error('Error:', error);
+        throw error;
+      }
+    }
+  );
+  
 
 
 
@@ -241,7 +318,23 @@ setUserTimesAWeek:(state, action) => {
 },
 setUserTimeFrame:(state, action) => {
   state.userData.DurationTimeFrame = action.payload
-}
+},
+setUserBio:(state, action) => {
+  state.userData.bio = action.payload
+},
+setUserHeight:(state, action) => {
+  state.userData.height = action.payload
+},
+setUserWeight:(state, action) => {
+  state.userData.weight = action.payload
+},
+setUserAge:(state, action) => {
+  state.userData.age = action.payload
+},
+setUserGender:(state, action) => {
+  state.userData.gender = action.payload
+},
+
   },
   
   extraReducers: (builder) => {
@@ -277,7 +370,7 @@ setUserTimeFrame:(state, action) => {
   },
 });
 
-export const {  SetuserFName,  setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek} = dataSlice.actions;
+export const {  SetuserFName,  setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight} = dataSlice.actions;
 
 export default dataSlice.reducer;
 
