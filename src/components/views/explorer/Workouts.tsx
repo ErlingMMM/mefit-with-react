@@ -42,21 +42,21 @@ function Workouts({ searchQuery }: { searchQuery: string; }) {
           {Array.isArray(filteredWorkouts) && filteredWorkouts.length > 0 ? (
             filteredWorkouts.map((workout: any) => (
               <li key={workout.id} className="mb-6">
-                <button onClick={() => openModal(workout)}>
-                  <img
-                    src={getRandomDummyImageUrl()}
-                    alt={workout.name}
-                    className="w-80 h-24 rounded-lg mx-auto"
-                  />
-                  <div>
-                    <h3 className="text-lg font-bold" >
-                      {workout.name}
-                    </h3>
-                    <p >{workout.description}</p>
-                    <br />
-                  </div>
-                </button>
-              </li>
+              <button onClick={() => openModal(workout)}>
+                <img
+                  src={getRandomDummyImageUrl()}
+                  alt={workout.name}
+                  className="w-80 h-24 rounded-lg mx-auto"
+                />
+                <div >
+                  <h3 className="text-lg font-bold" >
+                    {workout.name}
+                  </h3>
+                  <p >{workout.description}</p>
+                  <br />
+                </div>
+              </button>
+            </li>
             ))
           ) : (
             <div>
