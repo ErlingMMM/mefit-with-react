@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import keycloak from "../Keycloak";
-import { time } from 'console';
+import { Url } from 'url';
+
 
 interface UserData {
     id: number | null;
@@ -17,6 +18,25 @@ interface UserData {
   DurationTimeFrame: number | null;
   programs: any[] | null;
 }
+
+interface ProgramData {
+  name:null|string
+  description:string|null;
+  image:Url|null;
+  workoutIds : []|null;
+  programDuration:null|number;
+  programDifficulty:null|number;
+  userIds:[]|null;
+  orderOfWorkouts: number | null;
+  workoutDates: number | null;
+  currentWorkoutId : number | null;
+
+
+
+
+}
+
+
 
 interface ExerciseData {
     id: number | null;
@@ -44,11 +64,13 @@ interface DataState {
   userData: UserData;
   exerciseData: ExerciseData;
   workoutData: WorkoutData;
+  ProgramData:ProgramData
   loading: boolean;
   error: string | null;
 }
 
 const initialState: DataState = {
+  
   userData: {
         id: null,
       firstName: null,
@@ -64,6 +86,18 @@ const initialState: DataState = {
       timesAWeek: null,
       programs: null,
   },
+  ProgramData: {
+    name:null,
+    description:null,
+    image: null,
+    workoutIds: null,
+    programDuration:null,
+    programDifficulty:null,
+    userIds:null,
+    orderOfWorkouts:null,
+    workoutDates:null,
+    currentWorkoutId :null,
+  },
   exerciseData: {
       id: null,
       name: null,
@@ -76,6 +110,7 @@ const initialState: DataState = {
       sets: null,
       reps: null,
   },
+  
   workoutData: {
        id:null,
     name: null,
@@ -295,8 +330,32 @@ interface UserDataUpdateAPI {
       }
     }
   );
-  
 
+  //-------------------------------------------------------------------------------------
+  
+  export const getProgramInfo = createAsyncThunk(
+    "getProgramInfo",
+    async () => {
+      try {
+        const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/workouts`);
+        if (resp.ok) {
+          const program = await resp.json();
+          if (program.length > 0) {
+  
+            return {  program };
+          } else {
+            throw new Error('Error. User not found.');
+          }
+        } else {
+          throw new Error('Error: Unvalid response from server.');
+        }
+      } catch (error) {
+        throw new Error(`Error`);
+      }
+    }
+  );
+  
+  
 
 
 
