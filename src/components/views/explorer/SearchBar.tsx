@@ -8,7 +8,7 @@ interface SearchBarProps {
 
 function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps) {
   return (
-    <div className="relative">
+    <div className="flex justify-center">
       <div className="external-input-style border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
         <input
           type="text"
@@ -27,13 +27,14 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
               e.target.parentElement.classList.remove("focused");
             }
           }}
-          style={{ marginTop: '11px', marginRight: '60px' }}
+          style={{ marginTop: '11px', marginLeft: '50px' }}
         />
-        <div className="absolute left-12 top-4 text-gray-400">
+        <div className="absolute left-12 top-[4.85rem] text-gray-400">
           <SearchIcon className="w-4 h-4" />
         </div>
       </div>
     </div>
+    
   );
 }
 
