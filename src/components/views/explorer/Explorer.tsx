@@ -43,9 +43,9 @@ function Explorer() {
 
   return (
     <>
-      
+      <br />
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} />
-      
+      <br />
       <button onClick={() => switchToComponent('exercises')}>exercises</button>
       <button onClick={() => switchToComponent('workouts')}>workouts</button>
       {isLoading ? (
