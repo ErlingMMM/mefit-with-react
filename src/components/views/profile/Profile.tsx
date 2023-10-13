@@ -44,21 +44,23 @@ console.log(user)
     <p className="text-lg mb-2 font-bold">Bio:</p>
     <p className="text-lg mb-4">{user.bio}</p>
 </div>
-<div className="my-4">
-    <p className="text-lg mb-2 font-bold">Age:</p>
-    <p className="text-lg mb-4">{user.age}</p>
-</div>
-<div className="my-4">
-    <p className="text-lg mb-2 font-bold">Height:</p>
-    <p className="text-lg mb-4">{user.height}</p>
-</div>
-<div className="my-4">
-    <p className="text-lg mb-2 font-bold">Weight:</p>
-    <p className="text-lg mb-4">{user.weight}</p>
-</div>
-<div className="my-4">
-    <p className="text-lg mb-2 font-bold">Gender:</p>
-    <p className="text-lg mb-4">{user.gender}</p>
+<div className="flex">
+    <div className="my-4 mx-2">
+        <p className="text-lg mb-2 font-bold">Age:</p>
+        <p className="text-lg mb-4">{user.age}</p>
+    </div>
+    <div className="my-4 mx-2">
+        <p className="text-lg mb-2 font-bold">Height:</p>
+        <p className="text-lg mb-4">{user.height}</p>
+    </div>
+    <div className="my-4 mx-2">
+        <p className="text-lg mb-2 font-bold">Weight:</p>
+        <p className="text-lg mb-4">{user.weight}</p>
+    </div>
+    <div className="my-4 mx-2">
+        <p className="text-lg mb-2 font-bold">Gender:</p>
+        <p className="text-lg mb-4">{user.gender}</p>
+    </div>
 </div>
 
         </div>
