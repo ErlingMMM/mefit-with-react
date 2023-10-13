@@ -27,9 +27,9 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
               e.target.parentElement.classList.remove("focused");
             }
           }}
-          style={{ marginTop: '11px', marginLeft: '60px' }}
+          style={{ marginTop: '11px', marginLeft: '50px' }}
         />
-        <div className="absolute left-12 top-4 text-gray-400">
+        <div className="absolute left-12 top-[4.85rem] text-gray-400">
           <SearchIcon className="w-4 h-4" />
         </div>
       </div>
