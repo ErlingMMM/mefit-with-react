@@ -9,7 +9,6 @@ interface SearchBarProps {
 function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps) {
   return (
     <div className="flex justify-center">
-      <div className='relative'></div>
       <div className="external-input-style border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
         <input
           type="text"
