@@ -21,7 +21,10 @@ function Explorer() {
       try {
         await dispatch(getExcersiceInfo());
         await dispatch(getWorkoutInfo());
-        setIsLoading(false); // Set isLoading to false once data is loaded
+           // Simulate a minimum loading time of a second
+           setTimeout(() => {
+            setIsLoading(false); 
+          }, 500);
       } catch (error) {
         console.error('Error fetching data:', error);
         setIsLoading(false); // Ensure isLoading is set to false in case of an error
