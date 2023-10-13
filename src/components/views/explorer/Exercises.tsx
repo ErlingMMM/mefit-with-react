@@ -2,6 +2,8 @@ import { useState } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
 import '../../../styles/Explorer.css';
+import '../../../styles/Exercises.css';
+
 
 function Exercises({ searchQuery }: { searchQuery: string }) {
   const exercises = useSelector((state: any) => state.data.exerciseData);
