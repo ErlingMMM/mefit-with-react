@@ -26,5 +26,4 @@
   
   .external-input-style.focused .text-gray-400 {
     color: black; /* Change the color of the search icon to black on focus */
-    transform: scale(1.2);
 }
