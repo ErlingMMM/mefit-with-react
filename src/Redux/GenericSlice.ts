@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import keycloak from "../Keycloak";
-import { time } from 'console';
+import { Url } from 'url';
 
+
+/**
+ * Represents the user data object.
+ * @interface
+ */
 interface UserData {
     id: number | null;
   firstName: string | null;
@@ -18,6 +23,28 @@ interface UserData {
   programs: any[] | null;
 }
 
+/**
+ * Represents the data for a fitness program.
+ * @interface
+ */
+interface ProgramData {
+  name:null|string
+  description:string|null;
+  image:Url|null;
+  workoutIds : []|null;
+  programDuration:null|number;
+  programDifficulty:null|number;
+  userIds:[]|null;
+  orderOfWorkouts: number | null;
+  workoutDates: number | null;
+  currentWorkoutId : number | null;
+}
+
+
+/**
+ * Represents the data for a given exercise.
+ * @interface
+ */
 interface ExerciseData {
     id: number | null;
   name: string | null;
@@ -31,6 +58,10 @@ interface ExerciseData {
   reps: number | null;
 }
 
+/**
+ * Represents the data for a given workout.
+ * @interface
+ */
 interface WorkoutData {
    id: number | null;
   name: string | null;
@@ -40,15 +71,24 @@ interface WorkoutData {
   exercises: any[] | null;
 }
 
+/**
+ * Represents the state of data in the Redux store.
+ * @interface
+ */
 interface DataState {
   userData: UserData;
   exerciseData: ExerciseData;
   workoutData: WorkoutData;
+  ProgramData:ProgramData
   loading: boolean;
   error: string | null;
 }
 
+/**
+ * Represents the initial state of the data in the Redux store.
+ */
 const initialState: DataState = {
+  
   userData: {
         id: null,
       firstName: null,
@@ -64,6 +104,18 @@ const initialState: DataState = {
       timesAWeek: null,
       programs: null,
   },
+  ProgramData: {
+    name:null,
+    description:null,
+    image: null,
+    workoutIds: null,
+    programDuration:null,
+    programDifficulty:null,
+    userIds:null,
+    orderOfWorkouts:null,
+    workoutDates:null,
+    currentWorkoutId :null,
+  },
   exerciseData: {
       id: null,
       name: null,
@@ -76,6 +128,7 @@ const initialState: DataState = {
       sets: null,
       reps: null,
   },
+  
   workoutData: {
        id:null,
     name: null,
@@ -93,6 +146,11 @@ const initialState: DataState = {
 
 
 
+/**
+ * Async function to get user login details.
+ * @returns Promise containing user details.
+ * @throws Error if user is not found or if there is an invalid response from the server.
+ */
 export const getLoginAsync = createAsyncThunk(
   "getLoginAsync",
   async () => {
@@ -108,7 +166,7 @@ export const getLoginAsync = createAsyncThunk(
       if (resp.ok) {
         const user = await resp.json();
         if (user != null) {
-          console.log("user is null")
+          console.log("user is  not null")
           return { user };
         } else {
           throw new Error('Error. User not found');
@@ -132,6 +190,11 @@ export const getLoginAsync = createAsyncThunk(
 
 
 
+/**
+ * Async thunk to fetch exercise information from the server.
+ * @returns A promise that resolves to an object containing the exercise information.
+ * @throws An error if the response from the server is not valid or if an error occurs during the fetch.
+ */
 export const getExcersiceInfo = createAsyncThunk(
   "getExcersiceInfo",
   async () => {
@@ -158,6 +221,11 @@ export const getExcersiceInfo = createAsyncThunk(
 
 
 
+/**
+ * Async thunk to fetch workout information from the server.
+ * @returns {Promise<{workout: any}>} A promise that resolves to an object containing workout information.
+ * @throws {Error} If there is an error fetching the data or if the response is invalid.
+ */
 export const getWorkoutInfo = createAsyncThunk(
   "getWorkoutInfo",
   async () => {
@@ -189,6 +257,12 @@ interface UserDatapostAPI {
   timeframe:string
 }
 
+/**
+ * Registers user onboarding stats asynchronously.
+ * @param {UserDatapostAPI} data - The user data to be posted to the API.
+ * @returns {Promise<void>} - A promise that resolves when the user is registered successfully.
+ * @throws {Error} - Throws an error if the response from the server is not valid.
+ */
 export const RegisterUserOnboardingStatsAsync = createAsyncThunk(
   'RegisterUserOnboardStatsAsync',
   
@@ -229,6 +303,11 @@ interface UserDataUpdateAPI {
 
 }
 
+  /**
+   * Updates the user profile data on the server.
+   * @param {UserDataUpdateAPI} - An object containing the user data to update.
+   * @returns {Promise<any>} - A promise that resolves with the updated user data.
+   */
   export const updateUserProfile = createAsyncThunk(
     'updateUserProfile',
     async ({ bio, age, height, weight, gender }: UserDataUpdateAPI) => {
@@ -279,7 +358,7 @@ interface UserDataUpdateAPI {
           body: JSON.stringify(patchOps),
         });
         if(response.ok){
-          console.log("det fungerer for faen!!!")
+          console.log("it works!")
         }
   
         if (!response.ok) {
@@ -295,11 +374,40 @@ interface UserDataUpdateAPI {
       }
     }
   );
+
+  //-------------------------------------------------------------------------------------
+  
+  export const getProgramInfo = createAsyncThunk(
+    "getProgramInfo",
+    async () => {
+      try {
+        const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/workouts`);
+        if (resp.ok) {
+          const program = await resp.json();
+          if (program.length > 0) {
+  
+            return {  program };
+          } else {
+            throw new Error('Error. User not found.');
+          }
+        } else {
+          throw new Error('Error: Unvalid response from server.');
+        }
+      } catch (error) {
+        throw new Error(`Error`);
+      }
+    }
+  );
+  
   
 
 
 
-
+/**
+ * Redux slice for managing user data, exercise data, workout data, and program data.
+ * @name dataSlice
+ * @type {Slice}
+ */
 const dataSlice = createSlice({
   name: 'data',
   initialState,
@@ -364,6 +472,15 @@ setUserGender:(state, action) => {
       .addCase(getWorkoutInfo.fulfilled, (state, action) => {
         state.loading = false;
         state.workoutData = action.payload.workout;
+        //console.log(state.workoutData)
+      })
+      .addCase(getProgramInfo.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getProgramInfo.fulfilled, (state, action) => {
+        state.loading = false;
+        state.workoutData = action.payload.program;
         //console.log(state.workoutData)
       })
       
