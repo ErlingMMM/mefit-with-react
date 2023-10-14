@@ -20,6 +20,7 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
             if (e.target.parentElement) {
               e.target.parentElement.classList.add("focused");
             }
+            e.target.style.caretColor = 'auto'; // Set caret color to auto for blinking cursor
           }}
           onBlur={(e) => {
             e.target.placeholder = placeholder;
@@ -34,7 +35,7 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
         </div>
       </div>
     </div>
-    
+
   );
 }
 
