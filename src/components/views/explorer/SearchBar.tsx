@@ -9,7 +9,10 @@ interface SearchBarProps {
 function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps) {
   return (
     <div className="flex justify-center">
-      <div className="external-input-style border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block">
+      <div className="external-input-style border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block relative">
+        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+          <SearchIcon className="w-4 h-4" />
+        </div>
         <input
           type="text"
           placeholder={placeholder}
@@ -30,12 +33,8 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
           }}
           style={{ marginTop: '11px', marginLeft: '50px' }}
         />
-        <div className="absolute left-12 top-[6.3rem] text-gray-400">
-          <SearchIcon className="w-4 h-4" />
-        </div>
       </div>
     </div>
-
   );
 }
 
