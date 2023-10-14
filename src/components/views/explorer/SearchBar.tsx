@@ -33,7 +33,7 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
               e.target.parentElement.classList.remove("focused");
             }
           }}
-          style={{ marginTop: '11px', marginLeft: '50px' }}
+          style={{ marginTop: '11px', marginLeft: '50px', width: '80%' }}
         />
       </div>
     </div>
