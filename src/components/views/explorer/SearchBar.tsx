@@ -1,4 +1,6 @@
 import { SearchIcon } from '@heroicons/react/outline';
+import '../../../styles/SearchBar.css';
+
 
 interface SearchBarProps {
   searchQuery: string;

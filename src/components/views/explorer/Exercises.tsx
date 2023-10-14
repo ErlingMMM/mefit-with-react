@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
-import '../../../styles/Explorer.css';
 import '../../../styles/Exercises.css';
 
 
