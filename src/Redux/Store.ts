@@ -11,10 +11,12 @@ export const store = configureStore({
 });
 
 
-export type RootState = {
-  data: ReturnType<typeof dataReducer>,
-  dashboard: ReturnType<typeof dashboardReducer>,
-};
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch
+
+
 
 //This allows you to correctly type your global state and access the 
 //dashboard state with state.dashboard or state.data in your components or any other
