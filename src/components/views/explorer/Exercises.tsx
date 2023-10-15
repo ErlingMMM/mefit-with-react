@@ -6,6 +6,10 @@ import '../../../styles/Exercises.css';
 
 function Exercises({ searchQuery }: { searchQuery: string }) {
   const exercises = useSelector((state: any) => state.data.exerciseData);
+  const selectedSearchOption = useSelector((state: any) => state.data.selectedSearchOption); 
+
+  console.log("selectedSearchOption: " + selectedSearchOption);
+
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,8 +21,24 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
   const filteredExercises = Array.isArray(exercises)
     ? exercises.filter((exercise: any) => {
         const query = searchQuery.toLowerCase();
-        const exerciseName = exercise.name.toLowerCase();
-        return exerciseName.includes(query);
+        let exerciseFilter;
+        switch (selectedSearchOption) {
+          case "muscle-group":
+            exerciseFilter = exercise.muscleGroup.toLowerCase();
+            break;
+        case "difficulty":
+            exerciseFilter = exercise.difficulty;
+            break;
+        case "name":
+            exerciseFilter = exercise.name.toLowerCase();
+            break;
+          default:
+            break;
+        }
+        
+        return typeof exerciseFilter === 'string'
+        ? exerciseFilter.includes(query)
+        : typeof exerciseFilter === 'number' && exerciseFilter === parseInt(query);
       })
     : [];
 
