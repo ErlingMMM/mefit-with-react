@@ -13,11 +13,18 @@ interface SearchBarProps {
 
 function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const selectedSearchOption = useSelector((state: any) => state.data.selectedSearchOption);
+  const selectedSearchOptionRedux = useSelector((state: any) => state.data.selectedSearchOption);
 
   const openModal = () => {
     setIsModalOpen(true);
   };
+
+  // Convert selectedSearchOptionRedux to lowercase and add spaces between words
+  const selectedSearchOption = selectedSearchOptionRedux
+  .split(/(?=[A-Z])/)
+  .map((word: string) => word.toLowerCase())
+  .join(' ');
+
 
   return (
     <div className="flex justify-center">
