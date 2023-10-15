@@ -28,6 +28,9 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
     })
   : [];
 
+  const orderedExercises = [...filteredExercises].reverse();
+
+
 
   // Define dummy exercise images URLs
   const dummyImageUrls = [
@@ -46,8 +49,8 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
     <div>
       <div>
         <ul>
-          {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
-            filteredExercises.map((exercise: any) => (
+          {Array.isArray(orderedExercises) && orderedExercises.length > 0 ? (
+            orderedExercises.map((exercise: any) => (
               <li key={exercise.id} className="mb-6">
                 <button onClick={() => openModal(exercise)} className="flex items-start">
                   <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
