@@ -6,7 +6,7 @@ import '../../../styles/Exercises.css';
 
 function Exercises({ searchQuery }: { searchQuery: string }) {
   const exercises = useSelector((state: any) => state.data.exerciseData);
-  const selectedSearchOption = useSelector((state: any) => state.data.selectedSearchOption); 
+  const selectedSearchOption = useSelector((state: any) => state.data.selectedSearchOption);
 
   console.log("selectedSearchOption: " + selectedSearchOption);
 
@@ -20,26 +20,35 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
 
   const filteredExercises = Array.isArray(exercises)
     ? exercises.filter((exercise: any) => {
-        const query = searchQuery.toLowerCase();
-        let exerciseFilter;
-        switch (selectedSearchOption) {
-          case "muscle-group":
-            exerciseFilter = exercise.muscleGroup.toLowerCase();
-            break;
+      const query = searchQuery.toLowerCase();
+      let exerciseFilter;
+      switch (selectedSearchOption) {
+        case "muscle-group":
+          exerciseFilter = exercise.muscleGroup.toLowerCase();
+          break;
         case "difficulty":
-            exerciseFilter = exercise.difficulty;
-            break;
+          exerciseFilter = exercise.difficulty;
+          break;
         case "name":
-            exerciseFilter = exercise.name.toLowerCase();
-            break;
-          default:
-            break;
-        }
-        
-        return typeof exerciseFilter === 'string'
+          exerciseFilter = exercise.name.toLowerCase();
+          break;
+        default:
+          break;
+      }
+
+      // If searchQuery is empty, return all exercises
+      // This check is necessary because some cases are integers.
+      // If all cases were strings, the filter would work without this check.
+      // This is because an empty string (the default value of searchQuery) is always included in a string.
+      if (searchQuery === "") {
+        return true;
+      }
+
+
+      return typeof exerciseFilter === 'string'
         ? exerciseFilter.includes(query)
         : typeof exerciseFilter === 'number' && exerciseFilter === parseInt(query);
-      })
+    })
     : [];
 
 
@@ -63,17 +72,17 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
           {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
             filteredExercises.map((exercise: any) => (
               <li key={exercise.id} className="mb-6">
-                  <button onClick={() => openModal(exercise)} className="flex items-start">
-                      <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
-                      <div>
-                        <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
-                          {exercise.name}
-                        </h3>
-                        <p style={{ marginLeft: '-45px' }}>Level: {exercise.difficulty} </p>
-                        <br />
-                        <p style={{ marginLeft: '10px' }}>{exercise.muscleGroup}</p>
-                      </div>
-                    </button>
+                <button onClick={() => openModal(exercise)} className="flex items-start">
+                  <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
+                  <div>
+                    <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
+                      {exercise.name}
+                    </h3>
+                    <p style={{ marginLeft: '-45px' }}>Level: {exercise.difficulty} </p>
+                    <br />
+                    <p style={{ marginLeft: '10px' }}>{exercise.muscleGroup}</p>
+                  </div>
+                </button>
               </li>
             ))
           ) : (
@@ -86,9 +95,9 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
       <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedExercise} />
     </div>
   );
-  }
-  
-  export default Exercises;
+}
+
+export default Exercises;
 
 
 
