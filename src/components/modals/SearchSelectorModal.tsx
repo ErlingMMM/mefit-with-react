@@ -30,7 +30,7 @@ function SearchSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeMod
               />
             </div>
             <div className="p-4">
-              <button onClick={() => searchSelector("muscle group")}>Muscle Group</button>
+              <button onClick={() => searchSelector("muscleGroup")}>Muscle Group</button>
               <button onClick={() => searchSelector("difficulty")}>Difficulty</button>
               <button onClick={() => searchSelector("name")}>Name</button>
             </div>

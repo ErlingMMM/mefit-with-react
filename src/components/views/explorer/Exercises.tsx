@@ -8,8 +8,6 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
   const exercises = useSelector((state: any) => state.data.exerciseData);
   const selectedSearchOption = useSelector((state: any) => state.data.selectedSearchOption);
 
-  console.log("selectedSearchOption: " + selectedSearchOption);
-
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
