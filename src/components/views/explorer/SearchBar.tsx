@@ -20,7 +20,7 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
   const openModal = () => {
     setIsModalOpen(true);
   };
-  
+
   return (
     <div className="flex justify-center">
       <div className="external-input-style border-2 border-gray-300 bg-white h-12 w-10/12 rounded-3xl text-sm focus:outline-none inline-block relative">
@@ -47,11 +47,11 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
           }}
           style={{ marginTop: '11px', marginLeft: '50px', width: '80%' }}
         />
+        <button onClick={() => openModal()} >
+          hei
+        </button>
       </div>
-      <button onClick={() => openModal()} >
-hei
-      </button>
-<SearchSelectorModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}/>
+      <SearchSelectorModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
     </div>
   );
 }
