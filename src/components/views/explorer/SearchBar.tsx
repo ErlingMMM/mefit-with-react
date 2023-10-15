@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { SearchIcon } from '@heroicons/react/outline';
 import '../../../styles/SearchBar.css';
 import SearchSelectorModal from '../../modals/SearchSelectorModal';
+import { useSelector } from 'react-redux';
+
 
 
 interface SearchBarProps {
@@ -12,6 +14,8 @@ interface SearchBarProps {
 
 function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const selectedSearchOption = useSelector((state: any) => state.data.selectedSearchOption);
+
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -25,7 +29,7 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
         </div>
         <input
           type="text"
-          placeholder={placeholder}
+          placeholder={placeholder + " by " + selectedSearchOption}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={(e) => {
@@ -36,7 +40,7 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
             e.target.style.caretColor = 'auto'; // Set caret color to auto for blinking cursor
           }}
           onBlur={(e) => {
-            e.target.placeholder = placeholder;
+            e.target.placeholder = placeholder + " by " + selectedSearchOption;
             if (e.target.parentElement) {
               e.target.parentElement.classList.remove("focused");
             }
