@@ -6,7 +6,7 @@ import { setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, up
 import { Navigate, useNavigate } from 'react-router-dom';
 
 function EditProfile() {
-  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
     const [selectedBio, setSelectedBio] = useState("");
     const navigate = useNavigate();
     const [selectedAge, setSelectedAge] = useState("");

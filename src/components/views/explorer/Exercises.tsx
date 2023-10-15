@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
-import '../../../styles/Explorer.css';
 import '../../../styles/Exercises.css';
 
 
 function Exercises({ searchQuery }: { searchQuery: string }) {
   const exercises = useSelector((state: any) => state.data.exerciseData);
+  const selectedSearchOption = useSelector((state: any) => state.data.selectedSearchOption);
+
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,12 +17,19 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
   };
 
   const filteredExercises = Array.isArray(exercises)
-    ? exercises.filter((exercise: any) => {
-        const query = searchQuery.toLowerCase();
-        const exerciseName = exercise.name.toLowerCase();
-        return exerciseName.includes(query);
-      })
-    : [];
+  ? exercises.filter((exercise: any) => {
+      const query = searchQuery.toLowerCase();
+      let exerciseFilter = exercise[selectedSearchOption];
+      return (
+        searchQuery === "" ||
+        (typeof exerciseFilter === 'string' && exerciseFilter.toLowerCase().includes(query)) ||
+        (typeof exerciseFilter === 'number' && exerciseFilter === parseInt(query))
+      );
+    })
+  : [];
+
+  const orderedExercises = [...filteredExercises].reverse();
+
 
 
   // Define dummy exercise images URLs
@@ -41,20 +49,20 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
     <div>
       <div>
         <ul>
-          {Array.isArray(filteredExercises) && filteredExercises.length > 0 ? (
-            filteredExercises.map((exercise: any) => (
+          {Array.isArray(orderedExercises) && orderedExercises.length > 0 ? (
+            orderedExercises.map((exercise: any) => (
               <li key={exercise.id} className="mb-6">
-                  <button onClick={() => openModal(exercise)} className="flex items-start">
-                      <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
-                      <div>
-                        <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
-                          {exercise.name}
-                        </h3>
-                        <p style={{ marginLeft: '-45px' }}>Level: {exercise.difficulty} </p>
-                        <br />
-                        <p style={{ marginLeft: '10px' }}>{exercise.muscleGroup}</p>
-                      </div>
-                    </button>
+                <button onClick={() => openModal(exercise)} className="flex items-start">
+                  <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
+                  <div>
+                    <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
+                      {exercise.name}
+                    </h3>
+                    <p style={{ marginLeft: '-45px' }}>Level: {exercise.difficulty} </p>
+                    <br />
+                    <p style={{ marginLeft: '10px' }}>{exercise.muscleGroup}</p>
+                  </div>
+                </button>
               </li>
             ))
           ) : (
@@ -67,9 +75,9 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
       <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedExercise} />
     </div>
   );
-  }
-  
-  export default Exercises;
+}
+
+export default Exercises;
 
 
 
