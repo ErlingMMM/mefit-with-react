@@ -1,12 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setActiveComponent } from '../../../Redux/NavigationSlice';
+import { setWorkoutIdsInProgram } from '../../../Redux/WorkoutIdsInProgramSlice';
 
 function Programs({ searchQuery }: { searchQuery: string; }) {
   const programs = useSelector((state: any) => state.data.programData);
   const dispatch = useDispatch();
 
-  const handleProgramClick = () => {
+  const handleProgramClick = (workoutIds: number[]) => {    
     dispatch(setActiveComponent('workoutsInProgram'));
+    dispatch(setWorkoutIdsInProgram(workoutIds));
   };
 
   const filteredPrograms = Array.isArray(programs)
@@ -38,7 +40,8 @@ function Programs({ searchQuery }: { searchQuery: string; }) {
           {Array.isArray(filteredPrograms) && filteredPrograms.length > 0 ? (
             filteredPrograms.map((program: any) => (
               <li key={program.id} className="mb-6">
-                <button onClick={() => handleProgramClick()}>                <div >
+                <button onClick={() => handleProgramClick(program.workoutIds)}>                
+                <div >
                   <img
                     src={getRandomDummyImageUrl()}
                     alt={program.name}

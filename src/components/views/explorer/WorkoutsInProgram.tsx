@@ -2,15 +2,19 @@ import { useState } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
 
+
 function WorkoutsInProgram() {
   const workouts = useSelector((state: any) => state.data.workoutData);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const workoutIds = useSelector((state: any) => state.data.workoutIds); 
 
   const openModal = (workout: any) => {
     setSelectedWorkout(workout);
     setIsModalOpen(true);
   };
+
+  console.log(workoutIds);
 
  
 
