@@ -27,7 +27,7 @@ function Explorer() {
         }, 500);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setIsLoading(false); // Ensure isLoading is set to false in case of an error
+        setIsLoading(false); 
       }
     };
 
