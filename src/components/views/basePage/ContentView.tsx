@@ -2,6 +2,7 @@ import Workouts from '../workouts/Workouts';
 import Explorer from '../explorer/Explorer';
 import Dashboard from '../dashboard/Dashboard';
 import Profile from '../profile/Profile';
+import WorkoutsInProgram from '../explorer/WorkoutsInProgram';
 
 function ContentView({ activeComponent = 'dashboard' }: { activeComponent?: string }) {
   switch (activeComponent) {
@@ -13,6 +14,8 @@ function ContentView({ activeComponent = 'dashboard' }: { activeComponent?: stri
       return <Workouts />;
     case 'explorer':
       return <Explorer />;
+      case 'workoutsInProgram':
+      return <WorkoutsInProgram />;
     default:
       return null;
   }

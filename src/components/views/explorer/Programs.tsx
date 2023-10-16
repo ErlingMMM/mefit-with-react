@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveComponent } from '../../../Redux/NavigationSlice';
 
 function Programs({ searchQuery }: { searchQuery: string; }) {
-    const programs = useSelector((state: any) => state.data.programData);
-  const [selectedProgram, setSelectedProgram] = useState(null);
+  const programs = useSelector((state: any) => state.data.programData);
+  const dispatch = useDispatch();
 
-
+  const handleProgramClick = () => {
+    dispatch(setActiveComponent('workoutsInProgram'));
+  };
 
   const filteredPrograms = Array.isArray(programs)
     ? programs.filter((program: any) => {
@@ -36,22 +38,21 @@ function Programs({ searchQuery }: { searchQuery: string; }) {
           {Array.isArray(filteredPrograms) && filteredPrograms.length > 0 ? (
             filteredPrograms.map((program: any) => (
               <li key={program.id} className="mb-6">
-              <button onClick={() => setSelectedProgram(program.name)}>
-                <div >
+                <button onClick={() => handleProgramClick()}>                <div >
                   <img
                     src={getRandomDummyImageUrl()}
                     alt={program.name}
                     className="w-80 h-24 rounded-lg mx-auto"
                   />
                 </div>
-                <div className="flex items-start">
-                  <h3 className="text-lg font-bold">
-                    {program.name}
-                  </h3>
-                  <p>{program.description}</p>
-                </div>
-              </button>
-            </li>
+                  <div className="flex items-start">
+                    <h3 className="text-lg font-bold">
+                      {program.name}
+                    </h3>
+                    <p>{program.description}</p>
+                  </div>
+                </button>
+              </li>
             ))
           ) : (
             <div>
@@ -60,7 +61,7 @@ function Programs({ searchQuery }: { searchQuery: string; }) {
           )}
         </ul>
       </div>
-   
+
     </div>
   );
 }
