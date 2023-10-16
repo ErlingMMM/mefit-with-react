@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import dataReducer from './GenericSlice'
 import dashboardReducer from './DashboardSlice'
 import navigationReducer from './NavigationSlice';
+import { setWorkoutIdsInProgram } from './WorkoutIdsInProgramSlice';
 
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     data: dataReducer,
     dashboard: dashboardReducer,
     navigation: navigationReducer,
+    workoutIdsInProgram: setWorkoutIdsInProgram
   },
 });
 

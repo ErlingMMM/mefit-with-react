@@ -1,12 +1,10 @@
-
 import { createSlice } from '@reduxjs/toolkit';
-
 
 const workoutIdsInProgramSlice = createSlice({
   name: 'workoutIdsInProgram',
   initialState: [],
   reducers: {
-    setWorkoutIds: (state, action) => {
+    setWorkoutIdsInProgram: (state, action) => {
       return action.payload;
     },
   },

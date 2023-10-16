@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 
 function WorkoutsInProgram() {
-  const workouts = useSelector((state: any) => state.data.workoutData);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const workoutIds = useSelector((state: any) => state.data.workoutIds); 
@@ -34,10 +33,36 @@ function WorkoutsInProgram() {
 
   return (
     <div>
-   hei
+      <div>
+        <ul>
+          {Array.isArray(workoutIds) && workoutIds.length > 0 ? (
+            workoutIds.map((workout: any) => (
+              <li key={workout.id} className="mb-6">
+                <button onClick={() => openModal(workout)} className="flex items-start">
+                  <img src={getRandomDummyImageUrl()} alt={workout.name} className="custom-image-style" />
+                  <div>
+                    <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
+                      {workout.name}
+                    </h3>
+                    <p style={{ marginLeft: '-45px' }}>Level: {workout.recommendedFitness} </p>
+                    <br />
+                    <p style={{ marginLeft: '10px' }}>Duration {workout.duration}</p>
+                  </div>
+                </button>
+              </li>
+            ))
+          ) : (
+            <div>
+              <li>No matching workouts</li>
+            </div>
+          )}
+        </ul>
+      </div>
+      <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedWorkout} />
     </div>
   );
 }
+
 
 
 export default WorkoutsInProgram;
