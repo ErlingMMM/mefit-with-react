@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../Redux/Store';
 import { setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, updateUserProfile } from '../Redux/GenericSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { setActiveComponent } from '../Redux/NavigationSlice';
 
 function EditProfile() {
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
@@ -13,6 +14,7 @@ function EditProfile() {
     const [selectedHeight, setSelectedHeight] = useState("");
     const [selectedWeight, setSelectedWeight] = useState("");
     const [selectedGender, setSelectedGender] = useState("");
+
 
     const UserBio = useSelector((state: any) => state.data.userData.bio);
     const UserAge = useSelector((state: any) => state.data.userData.age);
@@ -58,8 +60,9 @@ function EditProfile() {
           gender: UserGender,
         }))
         navigate('/')
-    
+        dispatch(setActiveComponent('profile'));
       } 
+
   return (
     <div className='bg-gray-500 h-screen flex flex-col justify-center items-center'>
       <h1 className='text-3xl font-bold mb-4 text-white'>Profile Editing Page</h1>
