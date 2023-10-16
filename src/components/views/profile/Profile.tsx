@@ -14,7 +14,7 @@ function ProfilePage() {
   const user = useSelector((state: any) => state.data.userData);
   const navigate = useNavigate();
   
-  //const loading = useSelector((state: any) => state.loading);
+
 
   
   useEffect(() => {
