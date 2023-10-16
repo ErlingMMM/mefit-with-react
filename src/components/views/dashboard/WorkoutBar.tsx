@@ -8,6 +8,16 @@ type WorkoutBarProps = {
   duration: number;
 };
 
+const dayDictionary: { [key: number]: string } = {
+  1: "Monday",
+  2: "Tuesday",
+  3: "Wednesday",
+  4: "Thursday",
+  5: "Friday",
+  6: "Saturday",
+  0: "Sunday"
+};
+
 function WorkoutBar({day, muscleGroup, duration}: WorkoutBarProps) { //The arguments are passed as props here, but need to come from the database in the parent component
 
   const [showDetails, setShowDetails] = useState(false);
@@ -16,12 +26,15 @@ function WorkoutBar({day, muscleGroup, duration}: WorkoutBarProps) { //The argum
     setShowDetails(!showDetails);
   };
 
+  const weekday : string = dayDictionary[day%7]; 
+  //Keep in mind for this to make sense, the start date for the program has to be a monday
+
   return (
     <div>
 
       <div className = {styles.workoutBarWrapper}>
         <div>
-          <h1 className={styles.day_h1}><b>Day {day}</b>: {muscleGroup}</h1>
+          <h1 className={styles.day_h1}><b>{weekday}</b>: {muscleGroup}</h1>
           <div className={styles.durationWrapper}>
             <ClockIcon className="h-5 w-5 text-[#A8E52E]"/>
             <span>{duration} min</span>
