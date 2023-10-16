@@ -1,12 +1,12 @@
 import Exercises from './Exercises';
-import Workouts from './Workouts';
+import Programs from './Programs';
 
 function DisplayManager({ activeComponent, searchQuery }: { activeComponent: string; searchQuery: string; }) {
   switch (activeComponent) {
     case 'exercises':
       return <Exercises searchQuery={searchQuery}  />;
-    case 'workouts':
-      return <Workouts searchQuery={searchQuery}  />;
+    case 'programs':
+      return <Programs searchQuery={searchQuery}  />;
     default:
       return null;
   }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
 
-function Workouts({ searchQuery }: { searchQuery: string; }) {
+function Programs({ searchQuery }: { searchQuery: string; }) {
   const workouts = useSelector((state: any) => state.data.workoutData);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,5 +75,5 @@ function Workouts({ searchQuery }: { searchQuery: string; }) {
 }
 
 
-export default Workouts;
+export default Programs;
 

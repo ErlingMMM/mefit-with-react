@@ -38,8 +38,8 @@ function Explorer() {
     setActiveComponent(component);
   };
 
-  const isWorkoutsView = activeComponent === 'workouts';
-  const placeholder = isWorkoutsView ? 'Search workouts' : 'Search exercises';
+  const isProgramsView = activeComponent === 'programs';
+  const placeholder = isProgramsView ? 'Search programs' : 'Search exercises';
 
   return (
     <>
@@ -47,7 +47,7 @@ function Explorer() {
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} />
       <br />
       <button onClick={() => switchToComponent('exercises')}>exercises</button>
-      <button onClick={() => switchToComponent('workouts')}>workouts</button>
+      <button onClick={() => switchToComponent('programs')}>programs</button>
       {isLoading ? (
         <div>
           <img src={loadingGif} alt="Loading..." />
