@@ -9,7 +9,8 @@ import { setCurrentWeek } from '../../../Redux/DashboardSlice'; // Assuming path
 function Calendar() {
   const dispatch = useAppDispatch();
   const currentWeek = useAppSelector(state => state.dashboard.currentWeek);
-  const { start, end } = getCurrentWeek();
+  const maxWeek = useAppSelector(state => state.dashboard.maxWeek);
+  const { start, end } = getCurrentWeek(currentWeek);
   return (
     <div className={styles.dateParentContainer}>
 
@@ -22,7 +23,7 @@ function Calendar() {
         <span><b>{start} - {end}</b></span>
       </div>
 
-      <button onClick={() => dispatch(setCurrentWeek(currentWeek + 1))}>
+      <button onClick={() => dispatch(setCurrentWeek(Math.min(currentWeek + 1, maxWeek)))}>
         <ChevronRightIcon className="h-7 w-7" />
       </button> 
 
@@ -36,10 +37,10 @@ export default Calendar
 
 //------------------------------------------------------------------
 //Helper functions: 
-function getCurrentWeek(offset = 0) { //offset = integer value of current week
+function getCurrentWeek(offset = 1) { //offset = integer value of current week
   const now = new Date();
   const monday = new Date(now);
-  monday.setDate(monday.getDate() - monday.getDay() + 1 + (offset * 7)); // getDay() returns 0 for Sunday, 1 for Monday, etc.
+  monday.setDate(monday.getDate() - monday.getDay() + 1 + ((offset-1) * 7)); // getDay() returns 0 for Sunday, 1 for Monday, etc.
                                                             //'offset*7' takes the current week into account
   const sunday = new Date(monday);
   sunday.setDate(sunday.getDate() + 6);

@@ -4,7 +4,7 @@ import WorkoutBar from "./WorkoutBar"
 import styles from "./Dashboard.module.css" //locally scoped
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchWorkouts } from "../../../Redux/DashboardSlice"
+import { fetchWorkouts, setMaxWeek } from "../../../Redux/DashboardSlice"
 import { useAppDispatch, useAppSelector } from "../../../Redux/Hooks"
 
 
@@ -26,7 +26,16 @@ function Dashboard() {
 
     useEffect(() => {
         dispatch(fetchWorkouts());
+
+        if (workouts.length) {
+          const lastWorkout = workouts[workouts.length - 1];
+          const maxWeek = Math.ceil(lastWorkout.day / 7);
+          dispatch(setMaxWeek(maxWeek));
+       }
+       
     }, [dispatch]);
+
+    
 
   return (
     <div className={styles.dashboardContainer}>

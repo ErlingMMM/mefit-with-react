@@ -20,11 +20,13 @@ export const fetchWorkouts = createAsyncThunk('dashboard/fetchWorkouts', async (
 type DashboardState = {
     workouts: WorkoutData[];
     currentWeek: number;
+    maxWeek: number;
 };
   
 const initialState: DashboardState = {
     workouts: [],
-    currentWeek: 1 // Assuming the week starts from 1
+    currentWeek: 1, // Assuming the week starts from 1
+    maxWeek: 1 //initialized to one but is updated immidiatly
 };
   
 
@@ -34,7 +36,10 @@ export const dashboardSlice = createSlice({
     initialState, // <= initialized further up
     reducers: {
         setCurrentWeek: (state, action: PayloadAction<number>) => {
-            state.currentWeek = action.payload;
+            state.currentWeek = action.payload
+        },
+        setMaxWeek: (state, action: PayloadAction<number>) => {
+            state.maxWeek = action.payload
         }
     }, 
     // Handle the resolution of the promise in the thunk 
@@ -48,6 +53,6 @@ export const dashboardSlice = createSlice({
     },
 })
 
-export const { setCurrentWeek } = dashboardSlice.actions;
+export const { setCurrentWeek, setMaxWeek } = dashboardSlice.actions;
 
 export default dashboardSlice.reducer
