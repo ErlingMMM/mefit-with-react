@@ -387,7 +387,6 @@ interface UserDataUpdateAPI {
         if (resp.ok) {
           const program = await resp.json();
           if (program.length > 0) {
-  
             return {  program };
           } else {
             throw new Error('Error. User not found.');
@@ -486,7 +485,7 @@ setSelectedSearchOption: (state, action) => {
       })
       .addCase(getProgramInfo.fulfilled, (state, action) => {
         state.loading = false;
-        state.workoutData = action.payload.program;
+        state.ProgramData = action.payload.program;
         //console.log(state.workoutData)
       })
       
