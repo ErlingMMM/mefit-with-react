@@ -14,7 +14,7 @@ function ProfilePage() {
   const user = useSelector((state: any) => state.data.userData);
   const navigate = useNavigate();
   
-  //const loading = useSelector((state: any) => state.loading);
+
 
   
   useEffect(() => {
@@ -28,6 +28,7 @@ function ProfilePage() {
 console.log(user)
   return (
 <div className="flex flex-col justify-center items-center p-4">
+<h1>{keycloak.token}</h1>
 <button onClick={handleEditClick} className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
         settings
     </button> 
