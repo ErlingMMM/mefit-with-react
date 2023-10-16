@@ -27,7 +27,7 @@ interface UserData {
  * Represents the data for a fitness program.
  * @interface
  */
-interface ProgramData {
+interface programData {
   name:null|string
   description:string|null;
   image:Url|null;
@@ -79,7 +79,7 @@ interface DataState {
   userData: UserData;
   exerciseData: ExerciseData;
   workoutData: WorkoutData;
-  ProgramData:ProgramData
+  programData:programData
   loading: boolean;
   error: string | null;
   selectedSearchOption: string | null;
@@ -105,7 +105,7 @@ const initialState: DataState = {
       timesAWeek: null,
       programs: null,
   },
-  ProgramData: {
+  programData: {
     name:null,
     description:null,
     image: null,
@@ -485,8 +485,8 @@ setSelectedSearchOption: (state, action) => {
       })
       .addCase(getProgramInfo.fulfilled, (state, action) => {
         state.loading = false;
-        state.ProgramData = action.payload.program;
-        //console.log(state.workoutData)
+        state.programData = action.payload.program;
+
       })
       
   },

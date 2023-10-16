@@ -7,8 +7,7 @@ function Programs({ searchQuery }: { searchQuery: string; }) {
   const [selectedProgram, setSelectedProgram] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-
-
+console.log(programs)
   const openModal = (program: any) => {
     setSelectedProgram(program);
     setIsModalOpen(true);
