@@ -82,6 +82,7 @@ interface DataState {
   ProgramData:ProgramData
   loading: boolean;
   error: string | null;
+  selectedSearchOption: string | null;
 }
 
 /**
@@ -137,6 +138,7 @@ const initialState: DataState = {
     image: null,
     exercises: null,
   },
+  selectedSearchOption: "name",
   loading: false,
   error: null,
 };
@@ -443,6 +445,10 @@ setUserGender:(state, action) => {
   state.userData.gender = action.payload
 },
 
+setSelectedSearchOption: (state, action) => {
+  state.selectedSearchOption = action.payload;
+},
+
   },
   
   extraReducers: (builder) => {
@@ -487,7 +493,7 @@ setUserGender:(state, action) => {
   },
 });
 
-export const {  SetuserFName,  setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight} = dataSlice.actions;
+export const {  SetuserFName,  setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
 
