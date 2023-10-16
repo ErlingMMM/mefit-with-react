@@ -2,7 +2,7 @@ import { XIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
 import { setSelectedSearchOption } from '../../Redux/GenericSlice';
 
-function SearchSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) {
+function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) {
   const dispatch = useDispatch();
 
   const searchSelector = (option: string) => {
@@ -41,4 +41,4 @@ function SearchSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeMod
   );
 }
 
-export default SearchSelectorModal;
+export default SortSelectorModal;
