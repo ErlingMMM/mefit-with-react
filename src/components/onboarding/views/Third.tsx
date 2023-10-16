@@ -3,7 +3,9 @@ import React, { SetStateAction, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../Redux/Store';
-import { RegisterUserOnboardingStatsAsync, setUserTimeFrame, setUserTimesAWeek } from '../../../Redux/GenericSlice';
+import { RegisterUserOnboardingStatsAsync, setRegistrationBoolean, setUserTimeFrame, setUserTimesAWeek } from '../../../Redux/GenericSlice';
+import { useNavigate } from 'react-router-dom';
+
 
 function Third() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
@@ -12,7 +14,8 @@ function Third() {
   const intensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
   const fintessLevelBruker = useSelector((state: any) => state.data.userData.fitnessPreference);
   const fintessTimeFrame = useSelector((state: any) => state.data.userData.DurationTimeFrame);
-  
+  const navigate = useNavigate();
+
 
   const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
     setSelectedOption(event.target.value);
@@ -24,6 +27,8 @@ function Third() {
 const handleRegistrerClick = () => {
   dispatch(RegisterUserOnboardingStatsAsync ({ intensity:intensityLevelUser, fitnessLvl:fintessLevelBruker
     ,timeframe:fintessTimeFrame}));
+    dispatch(setRegistrationBoolean(true));
+    navigate('/')
 };
 
   console.log("user intensitylevel:",intensityLevelUser)

@@ -1,5 +1,6 @@
 import Navbar from '../components/shared/Navbar';
 import ContentView from '../components/views/basePage/ContentView';
+import authGuard from '../AuthGuard/authGuard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../Redux/Store'; // Assuming you have a 'Store.ts' file
 
@@ -21,4 +22,4 @@ function Basepage() {
   );
 }
 
-export default Basepage;
+export default authGuard(Basepage)
