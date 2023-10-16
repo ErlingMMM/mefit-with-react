@@ -7,6 +7,7 @@ function DisplayManager({ activeComponent, searchQuery }: { activeComponent: str
       return <Exercises searchQuery={searchQuery}  />;
     case 'programs':
       return <Programs searchQuery={searchQuery}  />;
+   
     default:
       return null;
   }

@@ -1,10 +1,9 @@
-
 import Workouts from '../workouts/Workouts';
 import Explorer from '../explorer/Explorer';
 import Dashboard from '../dashboard/Dashboard';
 import Profile from '../profile/Profile';
 
-function ContentView({ activeComponent }: { activeComponent: string }) {
+function ContentView({ activeComponent = 'dashboard' }: { activeComponent?: string }) {
   switch (activeComponent) {
     case 'dashboard':
       return <Dashboard />;
@@ -14,10 +13,9 @@ function ContentView({ activeComponent }: { activeComponent: string }) {
       return <Workouts />;
     case 'explorer':
       return <Explorer />;
-     default:
+    default:
       return null;
   }
 }
 
 export default ContentView;
-

@@ -1,17 +1,11 @@
 import { useState } from 'react';
-import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
 
 function Programs({ searchQuery }: { searchQuery: string; }) {
-  const programs = useSelector((state: any) => state.data.programData);
+    const programs = useSelector((state: any) => state.data.programData);
   const [selectedProgram, setSelectedProgram] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-console.log(programs)
-  const openModal = (program: any) => {
-    setSelectedProgram(program);
-    setIsModalOpen(true);
-  };
+
 
   const filteredPrograms = Array.isArray(programs)
     ? programs.filter((program: any) => {
@@ -42,7 +36,7 @@ console.log(programs)
           {Array.isArray(filteredPrograms) && filteredPrograms.length > 0 ? (
             filteredPrograms.map((program: any) => (
               <li key={program.id} className="mb-6">
-              <button onClick={() => openModal(program)}>
+              <button onClick={() => setSelectedProgram(program.name)}>
                 <div >
                   <img
                     src={getRandomDummyImageUrl()}
@@ -66,11 +60,7 @@ console.log(programs)
           )}
         </ul>
       </div>
-      <ExerciseModal
-        isOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
-        exercise={selectedProgram}
-      />
+   
     </div>
   );
 }
