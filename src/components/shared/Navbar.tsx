@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import HamburgerMenu from './HamburgerMenu';
 import keycloak from "../../Keycloak";
+import { setActiveComponent } from '../../Redux/NavigationSlice';
+import { useDispatch } from 'react-redux';
 
-function Navbar({ setActiveComponent }: { setActiveComponent: (component: string) => void }) {
+
+function Navbar() {
+  const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const switchToComponent = (component: string) => {
-    setActiveComponent(component);
+    dispatch(setActiveComponent(component));
     // Close the menu on mobile after clicking a link
     setMenuOpen(false);
   };

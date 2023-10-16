@@ -1,12 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import dataReducer from './GenericSlice'
 import dashboardReducer from './DashboardSlice'
+import navigationReducer from './NavigationSlice';
+import { setWorkoutIdsInProgram } from './WorkoutIdsInProgramSlice';
 
 
 export const store = configureStore({
   reducer: {
     data: dataReducer,
-    dashboard: dashboardReducer
+    dashboard: dashboardReducer,
+    navigation: navigationReducer,
+    workoutIdsInProgram: setWorkoutIdsInProgram
   },
 });
 

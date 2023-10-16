@@ -1,16 +1,14 @@
-import { useState } from 'react';
-import ExerciseModal from '../../modals/ExerciseModal';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveComponent } from '../../../Redux/NavigationSlice';
+import { setWorkoutIdsInProgram } from '../../../Redux/WorkoutIdsInProgramSlice';
 
 function Programs({ searchQuery }: { searchQuery: string; }) {
   const programs = useSelector((state: any) => state.data.programData);
-  const [selectedProgram, setSelectedProgram] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
-console.log(programs)
-  const openModal = (program: any) => {
-    setSelectedProgram(program);
-    setIsModalOpen(true);
+  const handleProgramClick = (workoutIds: number[]) => {    
+    dispatch(setActiveComponent('workoutsInProgram'));
+    dispatch(setWorkoutIdsInProgram(workoutIds));
   };
 
   const filteredPrograms = Array.isArray(programs)
@@ -42,7 +40,7 @@ console.log(programs)
           {Array.isArray(filteredPrograms) && filteredPrograms.length > 0 ? (
             filteredPrograms.map((program: any) => (
               <li key={program.id} className="mb-6">
-              <button onClick={() => openModal(program)}>
+                <button onClick={() => handleProgramClick(program.workoutIds)}>                
                 <div >
                   <img
                     src={getRandomDummyImageUrl()}
@@ -50,14 +48,14 @@ console.log(programs)
                     className="w-80 h-24 rounded-lg mx-auto"
                   />
                 </div>
-                <div className="flex items-start">
-                  <h3 className="text-lg font-bold">
-                    {program.name}
-                  </h3>
-                  <p>{program.description}</p>
-                </div>
-              </button>
-            </li>
+                  <div className="flex items-start">
+                    <h3 className="text-lg font-bold">
+                      {program.name}
+                    </h3>
+                    <p>{program.description}</p>
+                  </div>
+                </button>
+              </li>
             ))
           ) : (
             <div>
@@ -66,11 +64,7 @@ console.log(programs)
           )}
         </ul>
       </div>
-      <ExerciseModal
-        isOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
-        exercise={selectedProgram}
-      />
+
     </div>
   );
 }
