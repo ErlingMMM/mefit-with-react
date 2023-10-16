@@ -3,20 +3,22 @@ import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
 
 function Programs({ searchQuery }: { searchQuery: string; }) {
-  const workouts = useSelector((state: any) => state.data.workoutData);
-  const [selectedWorkout, setSelectedWorkout] = useState(null);
+  const programs = useSelector((state: any) => state.data.programData);
+  const [selectedProgram, setSelectedProgram] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (workout: any) => {
-    setSelectedWorkout(workout);
+
+
+  const openModal = (program: any) => {
+    setSelectedProgram(program);
     setIsModalOpen(true);
   };
 
-  const filteredWorkouts = Array.isArray(workouts)
-    ? workouts.filter((workout: any) => {
+  const filteredPrograms = Array.isArray(programs)
+    ? programs.filter((program: any) => {
       const query = searchQuery.toLowerCase();
-      const workoutName = workout.name.toLowerCase();
-      return workoutName.includes(query);
+      const programName = program.name.toLowerCase();
+      return programName.includes(query);
     })
     : [];
 
@@ -38,29 +40,29 @@ function Programs({ searchQuery }: { searchQuery: string; }) {
     <div>
       <div>
         <ul>
-          {Array.isArray(filteredWorkouts) && filteredWorkouts.length > 0 ? (
-            filteredWorkouts.map((workout: any) => (
-              <li key={workout.id} className="mb-6">
-              <button onClick={() => openModal(workout)}>
+          {Array.isArray(filteredPrograms) && filteredPrograms.length > 0 ? (
+            filteredPrograms.map((program: any) => (
+              <li key={program.id} className="mb-6">
+              <button onClick={() => openModal(program)}>
                 <div >
                   <img
                     src={getRandomDummyImageUrl()}
-                    alt={workout.name}
+                    alt={program.name}
                     className="w-80 h-24 rounded-lg mx-auto"
                   />
                 </div>
                 <div className="flex items-start">
                   <h3 className="text-lg font-bold">
-                    {workout.name}
+                    {program.name}
                   </h3>
-                  <p>{workout.description}</p>
+                  <p>{program.description}</p>
                 </div>
               </button>
             </li>
             ))
           ) : (
             <div>
-              <li>No matching workouts</li>
+              <li>No matching programs</li>
             </div>
           )}
         </ul>
@@ -68,7 +70,7 @@ function Programs({ searchQuery }: { searchQuery: string; }) {
       <ExerciseModal
         isOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
-        exercise={selectedWorkout}
+        exercise={selectedProgram}
       />
     </div>
   );

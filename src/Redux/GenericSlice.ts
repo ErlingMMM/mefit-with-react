@@ -383,7 +383,7 @@ interface UserDataUpdateAPI {
     "getProgramInfo",
     async () => {
       try {
-        const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/workouts`);
+        const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/Plan`);
         if (resp.ok) {
           const program = await resp.json();
           if (program.length > 0) {
