@@ -20,7 +20,13 @@ interface UserData {
   gender: number | null;
   timesAWeek: number | null;
   DurationTimeFrame: number | null;
-  programs: any[] | null;
+  
+  startDate: string | null;
+  
+}
+
+interface RegistrationValidation {
+  isRegistered: boolean;
 }
 
 /**
@@ -81,6 +87,7 @@ interface DataState {
   workoutData: WorkoutData;
   programData:programData
   loading: boolean;
+  RegistrationValidation: RegistrationValidation;
   error: string | null;
   selectedSearchOption: string | null;
 }
@@ -103,7 +110,7 @@ const initialState: DataState = {
       gender: null,
       DurationTimeFrame: null,
       timesAWeek: null,
-      programs: null,
+      startDate: null,
   },
   programData: {
     name:null,
@@ -138,8 +145,13 @@ const initialState: DataState = {
     image: null,
     exercises: null,
   },
+  RegistrationValidation: { 
+    isRegistered: false,
+  },
+  
   selectedSearchOption: "name",
   loading: false,
+  
   error: null,
 };
 
@@ -173,6 +185,7 @@ export const getLoginAsync = createAsyncThunk(
         } else {
           throw new Error('Error. User not found');
         }
+        
       } else {
         throw new Error('Error: Unvalid response from server.');
       }
@@ -447,6 +460,10 @@ setUserGender:(state, action) => {
 setSelectedSearchOption: (state, action) => {
   state.selectedSearchOption = action.payload;
 },
+setRegistrationBoolean: (state, action) => {
+  state.RegistrationValidation.isRegistered = action.payload;
+},
+
 
   },
   
@@ -492,7 +509,7 @@ setSelectedSearchOption: (state, action) => {
   },
 });
 
-export const {  SetuserFName,  setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
+export const {  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
 

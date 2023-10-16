@@ -9,13 +9,16 @@ interface KeycloakRouteProps {
   
   
   function KeycloakRoute({ children, role, redirectTo = "/" }: KeycloakRouteProps) {
+
     if (!keycloak.authenticated) {
       return <Navigate replace to={redirectTo} />;
     }
+
   
     if (keycloak.hasRealmRole(role)) {
       return <>{children}</>;
     }
+    
 
   
     return <Navigate replace to={redirectTo} />;
