@@ -1,19 +1,45 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
-
 
 function WorkoutsInProgram() {
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const selectedProgramId = useSelector((state: any) => state.selectedProgramId);
+  const [workouts, setWorkouts] = useState([]);
+
 
   const openModal = (workout: any) => {
     setSelectedWorkout(workout);
     setIsModalOpen(true);
   };
 
-  console.log(selectedProgramId);
+  useEffect(() => {
+    const fetchWorkouts = async () => {
+      if (selectedProgramId) {
+        try {
+          const response = await fetch(
+            `https://mefit-backend.azurewebsites.net/api/Plan/GetWorkouts/${parseInt(
+              selectedProgramId
+            )}`
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            setWorkouts(data); // Assuming the response is an array of workouts
+          } else {
+            // Handle the error or set an appropriate state
+            console.error('Error fetching data');
+          }
+        } catch (error) {
+          // Handle any network or parsing errors
+          console.error('Error:', error);
+        }
+      }
+    };
+
+    fetchWorkouts();
+  }, [selectedProgramId]);
 
  
 
@@ -35,8 +61,8 @@ function WorkoutsInProgram() {
     <div>
       <div>
         <ul>
-          {Array.isArray(selectedProgramId) && selectedProgramId.length > 0 ? (
-           selectedProgramId.map((workout: any) => (
+          {Array.isArray(workouts) && workouts.length > 0 ? (
+           workouts.map((workout: any) => (
               <li key={workout.id} className="mb-6">
                 <button onClick={() => openModal(workout)} className="flex items-start">
                   <img src={getRandomDummyImageUrl()} alt={workout.name} className="custom-image-style" />
