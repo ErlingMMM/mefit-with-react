@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
-import { getExcersiceInfo, getWorkoutInfo } from '../../../Redux/GenericSlice';
+import { getExcersiceInfo, getProgramInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
 
 function Explorer() {
@@ -20,14 +20,14 @@ function Explorer() {
     const fetchData = async () => {
       try {
         await dispatch(getExcersiceInfo());
-        await dispatch(getWorkoutInfo());
+        await dispatch(getProgramInfo());
         // Simulate a minimum loading time of a second
         setTimeout(() => {
           setIsLoading(false);
         }, 500);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setIsLoading(false); // Ensure isLoading is set to false in case of an error
+        setIsLoading(false); 
       }
     };
 
@@ -38,8 +38,8 @@ function Explorer() {
     setActiveComponent(component);
   };
 
-  const isWorkoutsView = activeComponent === 'workouts';
-  const placeholder = isWorkoutsView ? 'Search workouts' : 'Search exercises';
+  const isProgramsView = activeComponent === 'programs';
+  const placeholder = isProgramsView ? 'Search programs' : 'Search exercises';
 
   return (
     <>
@@ -47,7 +47,7 @@ function Explorer() {
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} />
       <br />
       <button onClick={() => switchToComponent('exercises')}>exercises</button>
-      <button onClick={() => switchToComponent('workouts')}>workouts</button>
+      <button onClick={() => switchToComponent('programs')}>programs</button>
       {isLoading ? (
         <div>
           <img src={loadingGif} alt="Loading..." />

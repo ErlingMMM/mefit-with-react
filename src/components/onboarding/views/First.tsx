@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, SetStateAction, useState } from "react";
-import { RegisterUserOnboardingStatsAsync, SetUserFitnessLVL, SetuserFName } from "../../../Redux/GenericSlice";
+import { RegisterUserOnboardingStatsAsync, SetUserFitnessLVL, SetuserFName, setRegistrationBoolean } from "../../../Redux/GenericSlice";
 import { ThunkDispatch } from "redux-thunk";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Store";
@@ -14,6 +14,7 @@ function First() {
   const intensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
   const fintessLevelBruker = useSelector((state: any) => state.data.userData.fitnessPreference);
   const fintessTimeFrame = useSelector((state: any) => state.data.userData.DurationTimeFrame);
+  const registrationState = useSelector((state: any) => state.data.RegistrationValidation);
   
   
   
@@ -27,6 +28,7 @@ function First() {
   const handleRegistrerClick = () => {
     dispatch(RegisterUserOnboardingStatsAsync ({ intensity:intensityLevelUser, fitnessLvl:fintessLevelBruker
       ,timeframe:fintessTimeFrame}));
+      dispatch(setRegistrationBoolean(true));
       navigate('/')
   };
 

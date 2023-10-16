@@ -20,14 +20,20 @@ interface UserData {
   gender: number | null;
   timesAWeek: number | null;
   DurationTimeFrame: number | null;
-  programs: any[] | null;
+  
+  startDate: string | null;
+  
+}
+
+interface RegistrationValidation {
+  isRegistered: boolean;
 }
 
 /**
  * Represents the data for a fitness program.
  * @interface
  */
-interface ProgramData {
+interface programData {
   name:null|string
   description:string|null;
   image:Url|null;
@@ -79,8 +85,9 @@ interface DataState {
   userData: UserData;
   exerciseData: ExerciseData;
   workoutData: WorkoutData;
-  ProgramData:ProgramData
+  programData:programData
   loading: boolean;
+  RegistrationValidation: RegistrationValidation;
   error: string | null;
   selectedSearchOption: string | null;
 }
@@ -103,9 +110,9 @@ const initialState: DataState = {
       gender: null,
       DurationTimeFrame: null,
       timesAWeek: null,
-      programs: null,
+      startDate: null,
   },
-  ProgramData: {
+  programData: {
     name:null,
     description:null,
     image: null,
@@ -138,8 +145,13 @@ const initialState: DataState = {
     image: null,
     exercises: null,
   },
+  RegistrationValidation: { 
+    isRegistered: false,
+  },
+  
   selectedSearchOption: "name",
   loading: false,
+  
   error: null,
 };
 
@@ -173,6 +185,7 @@ export const getLoginAsync = createAsyncThunk(
         } else {
           throw new Error('Error. User not found');
         }
+        
       } else {
         throw new Error('Error: Unvalid response from server.');
       }
@@ -239,7 +252,7 @@ export const getWorkoutInfo = createAsyncThunk(
 
           return {  workout };
         } else {
-          throw new Error('Error. User not found.');
+          throw new Error('Error. workout not found.');
         }
       } else {
         throw new Error('Error: Unvalid response from server.');
@@ -383,11 +396,10 @@ interface UserDataUpdateAPI {
     "getProgramInfo",
     async () => {
       try {
-        const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/workouts`);
+        const resp = await fetch(`https://mefit-backend.azurewebsites.net/api/Plan`);
         if (resp.ok) {
           const program = await resp.json();
           if (program.length > 0) {
-  
             return {  program };
           } else {
             throw new Error('Error. User not found.');
@@ -448,6 +460,10 @@ setUserGender:(state, action) => {
 setSelectedSearchOption: (state, action) => {
   state.selectedSearchOption = action.payload;
 },
+setRegistrationBoolean: (state, action) => {
+  state.RegistrationValidation.isRegistered = action.payload;
+},
+
 
   },
   
@@ -486,14 +502,14 @@ setSelectedSearchOption: (state, action) => {
       })
       .addCase(getProgramInfo.fulfilled, (state, action) => {
         state.loading = false;
-        state.workoutData = action.payload.program;
-        //console.log(state.workoutData)
+        state.programData = action.payload.program;
+
       })
       
   },
 });
 
-export const {  SetuserFName,  setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
+export const {  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
 
