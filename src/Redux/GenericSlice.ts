@@ -252,7 +252,7 @@ export const getWorkoutInfo = createAsyncThunk(
 
           return {  workout };
         } else {
-          throw new Error('Error. User not found.');
+          throw new Error('Error. workout not found.');
         }
       } else {
         throw new Error('Error: Unvalid response from server.');
