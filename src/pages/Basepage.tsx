@@ -2,23 +2,20 @@ import Navbar from '../components/shared/Navbar';
 import ContentView from '../components/views/basePage/ContentView';
 import authGuard from '../AuthGuard/authGuard';
 import { useSelector } from 'react-redux';
-import { RootState } from '../Redux/Store'; // Assuming you have a 'Store.ts' file
+import { RootState } from '../Redux/Store';
 
 
 function Basepage() {
   const activeComponent = useSelector((state: RootState) => state.navigation.activeComponent);
 
- 
-
-
   return (
     <>
-    <div className='overflow-x-hidden	'>
+   {/*<div className='overflow-x-hidden bg-custom-main'>*/} 
+   <div className='overflow-x-hidden'>
     <Navbar />
         <ContentView activeComponent={activeComponent} />
     </div>
-   
-      </>
+    </>
   );
 }
 
