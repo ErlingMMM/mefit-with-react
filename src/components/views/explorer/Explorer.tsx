@@ -85,9 +85,9 @@ function Explorer() {
         <div className={`w-1/3 h-0.5 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
       </div>
 
-      <button onClick={handleClick} className="flex items-center space-x-2 ml-9 mb-3">
-      <div dangerouslySetInnerHTML={{ __html: Bars3BottomLeftIconSVG }} />
-      <span>hei</span>
+      <button onClick={handleClick} className="flex items-center space-x-2 ml-9 mb-3 text-gray-400">
+      <div dangerouslySetInnerHTML={{ __html: Bars3BottomLeftIconSVG }}/>
+      <span className=' mb-1'>A-Z</span>
     </button>
 
 
