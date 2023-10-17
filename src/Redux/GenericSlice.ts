@@ -417,6 +417,50 @@ interface UserDataUpdateAPI {
 
 
 
+
+
+
+
+interface ProgramPostAPI {
+  name:string,
+  description:string,
+  image:string,
+  programDuration:number,
+  programDifficulty:number,
+  orderOfWorkouts:[],
+}
+
+export const AddProgramAsync = createAsyncThunk(
+  'AddProgramAsync',
+  
+  async ({name, description, image, programDuration, programDifficulty, orderOfWorkouts}: ProgramPostAPI) => {
+
+    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Plan`, {
+      headers: {
+        'Authorization':`Bearer ${keycloak.token}`,
+        'Content-Type':'application/json'
+    },
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        description: description,
+        image: image,
+        programDifficulty:programDifficulty,
+        programDuration:programDuration,
+        orderOfWorkouts : orderOfWorkouts,
+      }),
+    });
+    console.log(response.text())
+    if (response.ok) {
+      const user = await response.json();
+    }
+
+    // Handles errors if the response is not ok
+    throw new Error('Error: Unvalid response from server.');
+  }
+);
+
+
 /**
  * Redux slice for managing user data, exercise data, workout data, and program data.
  * @name dataSlice
@@ -464,6 +508,23 @@ setRegistrationBoolean: (state, action) => {
   state.RegistrationValidation.isRegistered = action.payload;
 },
 
+//Program
+setProgramName:(state, action) => {
+  state.programData.name = action.payload;
+},
+setProgramDesc:(state, action) => {
+  state.programData.description = action.payload;
+},
+setProgramImg:(state, action) => {
+  state.programData.image = action.payload;
+},
+setProgramDur:(state, action) => {
+  state.programData.programDuration = action.payload;
+},
+setProgramOrd:(state, action) => {
+  state.programData.orderOfWorkouts = action.payload;
+},
+
 
   },
   
@@ -509,7 +570,7 @@ setRegistrationBoolean: (state, action) => {
   },
 });
 
-export const {  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
+export const {  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setProgramDesc, setProgramImg, setProgramDur, setProgramName, setProgramOrd} = dataSlice.actions;
 
 export default dataSlice.reducer;
 

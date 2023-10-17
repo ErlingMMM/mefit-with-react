@@ -2,7 +2,6 @@ import React from 'react';
 
 function addWorkoutForm() {
     return (
-        
       <form className='bg-white p-8 rounded shadow-md'>
       <label className='block mb-2 text-gray-800' htmlFor="bio">name:</label>
       <input   className='w-full p-2 mb-4 border rounded' type="text" id="bio" name="bio" />
