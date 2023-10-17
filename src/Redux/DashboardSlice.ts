@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import { getWorkouts } from '../endpoints/dashboard_endpoints';
+import { getWorkouts, completeWorkout } from '../endpoints/dashboard_endpoints';
 
 interface WorkoutData {
     id: number;
@@ -15,7 +15,11 @@ interface WorkoutData {
 export const fetchWorkouts = createAsyncThunk('dashboard/fetchWorkouts', async () => {
     const response = await getWorkouts();
     return response;
-  });
+});
+
+export const completeWorkoutAction = createAsyncThunk('dashboard/completeWorkout', async (wId : number) => {
+  await completeWorkout(wId);
+});
 
 type DashboardState = {
     workouts: WorkoutData[];
@@ -26,7 +30,7 @@ type DashboardState = {
 const initialState: DashboardState = {
     workouts: [],
     currentWeek: 1, // Assuming the week starts from 1
-    maxWeek: 1 //initialized to one but is updated immidiatly
+    maxWeek: 1 //initialized to one but is updated immidiately
 };
   
 
@@ -55,7 +59,15 @@ export const dashboardSlice = createSlice({
             const lastWorkout = state.workouts[state.workouts.length - 1];
             state.maxWeek = Math.ceil(lastWorkout.day / 7);
           }
-        });
+        })
+        .addCase(completeWorkoutAction.fulfilled, (state, action) => {
+          // For demonstration purposes, let's say you just want to log a success message.
+          console.log("Workout completion status marked successfully.");
+        })
+        .addCase(completeWorkoutAction.rejected, (state, action) => {
+          // Handle the error. For now, just logging it.
+          console.error("Failed to mark the workouts completion status.", action.error);
+        }); 
     },
 })
 

@@ -2,14 +2,14 @@ import Calendar from "./Calendar"
 import Progress from "./Progress"
 import WorkoutBar from "./WorkoutBar"
 import styles from "./Dashboard.module.css" //locally scoped
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { fetchWorkouts, setMaxWeek } from "../../../Redux/DashboardSlice"
 import { useAppDispatch, useAppSelector } from "../../../Redux/Hooks"
 import { setActiveComponent } from '../../../Redux/NavigationSlice';
 
 
 function Dashboard() {
-
+    
     const dispatch = useAppDispatch();  // <-- useAppDispatch instead of useDispatch
 
     const workouts = useAppSelector(state => state.dashboard.workouts);  // <-- useAppSelector instead of useSelector
@@ -25,15 +25,18 @@ function Dashboard() {
     const upcomingWorkouts = filteredWorkouts.filter(workout => !workout.isCompleted);
     const completedWorkouts = filteredWorkouts.filter(workout => workout.isCompleted);
 
+    // When the completion status of a workout changes the dashboard should fetchWorkouts again and rerender
+    const [workoutUpdated, setWorkoutUpdated] = useState(false);
     // UseEffect to Fetch workouts
     useEffect(() => {
         dispatch(fetchWorkouts());
-    }, [dispatch]);
+    }, [dispatch, workoutUpdated]);
 
     // To navigate to explorer when button is clicked
     const handleClick = () => {    
       dispatch(setActiveComponent('explorer'));   
     };
+    
 
   return (
     <div className={styles.dashboardContainer}>
@@ -52,13 +55,13 @@ function Dashboard() {
     <h1 className={styles.upcoming_h1}><b>Upcoming Workouts:</b></h1>
     {
       upcomingWorkouts.map(workout => (
-        <WorkoutBar key={workout.id} day={workout.day} muscleGroup={workout.name} duration={workout.duration} />
+        <WorkoutBar key={workout.id} isCompleted = {workout.isCompleted} wId={workout.id} day={workout.day} muscleGroup={workout.name} duration={workout.duration} updateWorkout={setWorkoutUpdated} />
       ))
     }
     <h1 className={styles.completed_h1}><b>Completed Workouts:</b></h1>
     {
       completedWorkouts.map(workout => (
-        <WorkoutBar key={workout.id} day={workout.day} muscleGroup={workout.name} duration={workout.duration} />
+        <WorkoutBar key={workout.id} isCompleted = {workout.isCompleted} wId={workout.id} day={workout.day} muscleGroup={workout.name} duration={workout.duration} updateWorkout={setWorkoutUpdated}/>
       ))
     }
     </>

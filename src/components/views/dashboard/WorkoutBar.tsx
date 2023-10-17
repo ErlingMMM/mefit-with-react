@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import styles from "./Dashboard.module.css" //locally scoped
-import { ChevronUpIcon, ChevronDownIcon, ClockIcon } from '@heroicons/react/outline';
+import { ChevronUpIcon, ChevronDownIcon, ClockIcon, CheckCircleIcon, PlusCircleIcon } from '@heroicons/react/outline';
+import { useAppDispatch } from '../../../Redux/Hooks';
+import { completeWorkoutAction } from '../../../Redux/DashboardSlice';
 
 type WorkoutBarProps = {
+  wId: number
+  isCompleted: boolean
   day: number;
   muscleGroup: string;
   duration: number;
@@ -18,13 +22,25 @@ const dayDictionary: { [key: number]: string } = {
   0: "Sunday"
 };
 
-function WorkoutBar({day, muscleGroup, duration}: WorkoutBarProps) { //The arguments are passed as props here, but need to come from the database in the parent component
+function WorkoutBar({wId, isCompleted, day, muscleGroup, duration, updateWorkout} : WorkoutBarProps & { updateWorkout : React.Dispatch<React.SetStateAction<boolean>> }) { //The arguments are passed as props here, but need to come from the database in the parent component
+
+  const dispatch = useAppDispatch();  // <-- useAppDispatch instead of useDispatch
 
   const [showDetails, setShowDetails] = useState(false);
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);
   };
+
+  const updateCompletionStatus = async (workoutId:number) => {
+    try {
+      await dispatch(completeWorkoutAction(workoutId)).unwrap(); // unwrap() will throw an error if the promise is rejected
+      updateWorkout(prev => !prev); // updateWorkout is the same function as setWorkoutUpdated passed down from the parent. This will automatically toggle the value of workoutUpdated
+  } catch (error) {
+      console.error("Failed to complete workout:", error);
+      // Handle error appropriately, perhaps show an error message to the user
+  }
+  }
 
   const weekday : string = dayDictionary[day%7]; 
   //Keep in mind for this to make sense, the start date for the program has to be a monday
@@ -40,8 +56,12 @@ function WorkoutBar({day, muscleGroup, duration}: WorkoutBarProps) { //The argum
             <span>{duration} min</span>
           </div>
         </div>
-      
-        <button onClick={toggleDetails}>{showDetails ? <ChevronUpIcon className="h-7 w-7 text-[#A8E52E]" /> : <ChevronDownIcon className="h-7 w-7 text-[#A8E52E]" />}</button>
+
+        <div className={styles.buttonsGroup}>
+          <button onClick={() => updateCompletionStatus(wId)}>{isCompleted ? <CheckCircleIcon className="h-7 w-7 text-[#A8E52E]" /> : <PlusCircleIcon className="h-7 w-7 text-[#000000]" />}</button>
+          <button onClick={toggleDetails}>{showDetails ? <ChevronUpIcon className="h-7 w-7 text-[#A8E52E]" /> : <ChevronDownIcon className="h-7 w-7 text-[#A8E52E]" />}</button>
+        </div>
+
       </div>
       
       {showDetails && (
