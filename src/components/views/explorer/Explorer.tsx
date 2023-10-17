@@ -7,6 +7,7 @@ import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
 import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
+import Bars3BottomLeftIconSVG from '../../../SVG/Bars3BottomLeftIcon';
 
 function Explorer() {
   const [activeComponent, setActiveComponent] = useState('programs');
@@ -46,6 +47,10 @@ function Explorer() {
       ? 'Search exercises'
       : 'Search workouts';
 
+  const handleClick = () => {
+    console.log("Hello, World!");
+  };
+
   return (
     <>
       <br />
@@ -72,13 +77,17 @@ function Explorer() {
         </button>
       </div>
 
+      {/*Line under buttons*/}
       <div className="flex mb-5 mt-2">
-  <div className={`w-1/3 h-0.5 ${activeComponent === 'programs' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
-  <div className={`w-1/3 h-0.5 ${activeComponent === 'exercises' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
-  <div className={`w-1/3 h-0.5 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
-</div>
+        <div className={`w-1/3 h-0.5 ${activeComponent === 'programs' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-0.5 ${activeComponent === 'exercises' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-0.5 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+      </div>
 
-
+      <button onClick={handleClick} className="flex items-center space-x-2">
+      <div dangerouslySetInnerHTML={{ __html: Bars3BottomLeftIconSVG }} />
+      <span>hei</span>
+    </button>
 
 
       {isLoading ? (
