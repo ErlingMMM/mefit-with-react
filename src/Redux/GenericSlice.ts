@@ -507,6 +507,37 @@ setSelectedSearchOption: (state, action) => {
 setRegistrationBoolean: (state, action) => {
   state.RegistrationValidation.isRegistered = action.payload;
 },
+setNameExcersice: (state, action) => {
+  state.exerciseData.name = action.payload;
+},
+setDescriptionExcersice: (state, action) => {
+  state.exerciseData.description = action.payload;
+},
+setMusclegGroupExcersice: (state, action) => {
+  state.exerciseData.muscleGroup = action.payload;
+},
+setImgUrlExcersice: (state, action) => {
+  state.exerciseData.imageUrl = action.payload;
+},
+setVideoUrlExcersice: (state, action) => {
+  state.exerciseData.videoUrl = action.payload;
+},
+setTimeExcersice: (state, action) => {
+  state.exerciseData.time = action.payload;
+},
+setSetsExcersice: (state, action) => {
+  state.exerciseData.sets = action.payload;
+},
+setRepsExcersice: (state, action) => {
+  state.exerciseData.reps = action.payload;
+},
+
+
+
+
+
+
+
 
 //Program
 setProgramName:(state, action) => {
@@ -570,7 +601,7 @@ setProgramOrd:(state, action) => {
   },
 });
 
-export const {  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setProgramDesc, setProgramImg, setProgramDur, setProgramName, setProgramOrd} = dataSlice.actions;
+export const {setProgramDesc, setProgramImg, setProgramDur, setProgramName, setProgramOrd, setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
 

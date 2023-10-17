@@ -32,7 +32,6 @@ function Navbar() {
         <div className="user-indicator">User: John Doe</div>
         <button onClick={() => switchToComponent('dashboard')}>Dashboard</button>
         <button onClick={() => switchToComponent('profile')}>Profile</button>
-        <button onClick={() => switchToComponent('workouts')}>Workouts</button>
         <button onClick={() => switchToComponent('explorer')}>Explorer</button>
         {keycloak.authenticated && (
             <button onClick={() => keycloak.logout()}>Logout</button>
