@@ -73,10 +73,13 @@ function Explorer() {
       </div>
 
       <div className="flex mb-5 mt-2">
-        <div className={`flex-1 h-1 ${activeComponent === 'programs' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
-        <div className={`flex-1 h-1 ${activeComponent === 'exercises' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
-        <div className={`flex-1 h-1 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-0.5 ${activeComponent === 'programs' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-0.5 ${activeComponent === 'exercises' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-0.5 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
       </div>
+
+
+
 
       {isLoading ? (
         <div className="loading-container">
