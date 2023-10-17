@@ -26,13 +26,11 @@ function WorkoutsInProgram() {
 
           if (response.ok) {
             const data = await response.json();
-            setWorkouts(data); // Assuming the response is an array of workouts
+            setWorkouts(data); 
           } else {
-            // Handle the error or set an appropriate state
             console.error('Error fetching data');
           }
         } catch (error) {
-          // Handle any network or parsing errors
           console.error('Error:', error);
         }
       }

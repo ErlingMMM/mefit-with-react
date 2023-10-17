@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
-import '../../../styles/Exercises.css';
+import '../../../styles/ImageStyle.css';
 
 
 function Exercises({ searchQuery }: { searchQuery: string }) {
@@ -28,10 +28,10 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
     })
   : [];
 
-  //const orderedExercises = [...filteredExercises].reverse();
-  const orderedExercises = [...filteredExercises].sort((a, b) =>
+  const orderedExercises = [...filteredExercises].reverse();
+  /*const orderedExercises = [...filteredExercises].sort((a, b) =>
   a.name.toLowerCase().localeCompare(b.name.toLowerCase(), undefined, { sensitivity: 'base' })
-);
+);*/
 
 
 
