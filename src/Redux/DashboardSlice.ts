@@ -49,6 +49,12 @@ export const dashboardSlice = createSlice({
           // action.payload contains the returned data from the fulfilled promise.
           // Update the workouts with that data:
           state.workouts = action.payload;
+
+          // Calculate the last week of the workout based on the day of the last workout:
+          if (state.workouts.length) {
+            const lastWorkout = state.workouts[state.workouts.length - 1];
+            state.maxWeek = Math.ceil(lastWorkout.day / 7);
+          }
         });
     },
 })

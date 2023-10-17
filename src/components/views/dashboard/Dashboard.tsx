@@ -25,16 +25,9 @@ function Dashboard() {
     const upcomingWorkouts = filteredWorkouts.filter(workout => !workout.isCompleted);
     const completedWorkouts = filteredWorkouts.filter(workout => workout.isCompleted);
 
-    // Calculates and sets the last week accessible in the GUI based on the final workout day
+    // UseEffect to Fetch workouts
     useEffect(() => {
         dispatch(fetchWorkouts());
-
-        if (workouts.length) {
-          const lastWorkout = workouts[workouts.length - 1];
-          const maxWeek = Math.ceil(lastWorkout.day / 7);
-          dispatch(setMaxWeek(maxWeek));
-       }
-
     }, [dispatch]);
 
     // To navigate to explorer when button is clicked
