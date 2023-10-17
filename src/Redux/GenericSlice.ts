@@ -592,11 +592,21 @@ setRecommendedFitnessWorkout: (state, action) => {
 setRecommendedImage: (state, action) => { 
   state.workoutData.image = action.payload;
 },
-
-
-
-
-
+setProgramName:(state, action) => {
+  state.programData.name = action.payload;
+},
+setProgramDesc:(state, action) => {
+  state.programData.description = action.payload;
+},
+setProgramImg:(state, action) => {
+  state.programData.image = action.payload;
+},
+setProgramDur:(state, action) => {
+  state.programData.programDuration = action.payload;
+},
+setProgramOrd:(state, action) => {
+  state.programData.orderOfWorkouts = action.payload;
+},
 
 
 
@@ -647,7 +657,7 @@ setRecommendedImage: (state, action) => {
   },
 });
 
-export const {setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
+export const {setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
 
