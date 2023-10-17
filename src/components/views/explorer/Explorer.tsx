@@ -40,7 +40,13 @@ function Explorer() {
   };
 
   const isProgramsView = activeComponent === 'programs';
-  const placeholder = isProgramsView ? 'Search programs' : 'Search exercises';
+  const isExercisesView = activeComponent === 'exercises';
+  const placeholder = isProgramsView
+    ? 'Search programs'
+    : isExercisesView
+    ? 'Search exercises'
+    : 'Search workouts';
+  
 
   return (
     <>
