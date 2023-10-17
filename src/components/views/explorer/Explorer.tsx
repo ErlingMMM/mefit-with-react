@@ -72,7 +72,7 @@ function Explorer() {
         </button>
       </div>
 
-      <div className="border-b border-gray-400 my-4"></div>
+      <div className="border-b border-gray-400 my-6"></div>
 
 
       {isLoading ? (
