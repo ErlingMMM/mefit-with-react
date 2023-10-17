@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
-import { getExcersiceInfo, getProgramInfo } from '../../../Redux/GenericSlice';
+import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
 
 function Explorer() {
@@ -21,6 +21,7 @@ function Explorer() {
       try {
         await dispatch(getExcersiceInfo());
         await dispatch(getProgramInfo());
+        await dispatch(getWorkoutInfo());
         // Simulate a minimum loading time of a second
         setTimeout(() => {
           setIsLoading(false);
