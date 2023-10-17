@@ -5,6 +5,8 @@ import Onboarding from './pages/Onboarding';
 import { store } from './Redux/Store';
 import './App.css';
 import EditProfile from './pages/EditProfile';
+import Rolepage from './pages/RolePage';
+
 function App() {
   return (
   
@@ -14,6 +16,7 @@ function App() {
             <Route path="/" element={<BasePage />} />
             <Route path="/onboarding" element={<Onboarding/>} />
             <Route path="/editprofile" element={<EditProfile/>} />
+            <Route path="/rolepage" element={<Rolepage/>}/>
           </Routes>
        </Router>
     </Provider>
