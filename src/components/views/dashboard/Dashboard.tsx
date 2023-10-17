@@ -3,9 +3,9 @@ import Progress from "./Progress"
 import WorkoutBar from "./WorkoutBar"
 import styles from "./Dashboard.module.css" //locally scoped
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { fetchWorkouts, setMaxWeek } from "../../../Redux/DashboardSlice"
 import { useAppDispatch, useAppSelector } from "../../../Redux/Hooks"
+import { setActiveComponent } from '../../../Redux/NavigationSlice';
 
 
 function Dashboard() {
@@ -18,12 +18,14 @@ function Dashboard() {
     const startDay = (currentWeek - 1) * 7 + 1;
     const endDay = currentWeek * 7;
 
+    // Filter out the workouts belonging to the current week
     const filteredWorkouts = workouts.filter(workout => workout.day >= startDay && workout.day <= endDay);
 
-    // Separate workouts based on completion status
+    // Separate current weeks workouts based on completion status
     const upcomingWorkouts = filteredWorkouts.filter(workout => !workout.isCompleted);
     const completedWorkouts = filteredWorkouts.filter(workout => workout.isCompleted);
 
+    // Calculates and sets the last week accessible in the GUI based on the final workout day
     useEffect(() => {
         dispatch(fetchWorkouts());
 
@@ -32,15 +34,28 @@ function Dashboard() {
           const maxWeek = Math.ceil(lastWorkout.day / 7);
           dispatch(setMaxWeek(maxWeek));
        }
-       
+
     }, [dispatch]);
 
-    
+    // To navigate to explorer when button is clicked
+    const handleClick = () => {    
+      dispatch(setActiveComponent('explorer'));   
+    };
 
   return (
     <div className={styles.dashboardContainer}>
     <Progress/>
     <Calendar/>
+
+    {workouts.length === 0 ? (
+      // Display this message when user has no program:
+      <div className={styles.centeredContent}>
+      <h1 className={styles.firstRedirecth1}><b>Select a workout program</b></h1>
+      <h1 className={styles.secondRedirecth1}><b>to get started.</b></h1>
+      <button onClick={() => handleClick()} className={styles.seeWorkoutPlans}><b>See Workout Plans</b></button>
+      </div>
+    ) : ( // Otherwise display the program content:
+    <> 
     <h1 className={styles.upcoming_h1}><b>Upcoming Workouts:</b></h1>
     {
       upcomingWorkouts.map(workout => (
@@ -53,6 +68,8 @@ function Dashboard() {
         <WorkoutBar key={workout.id} day={workout.day} muscleGroup={workout.name} duration={workout.duration} />
       ))
     }
+    </>
+  )}
     </div>
    
   )
