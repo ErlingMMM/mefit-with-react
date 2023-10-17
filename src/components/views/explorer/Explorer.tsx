@@ -7,7 +7,6 @@ import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../Redux/Store';
 import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
-import '../../../styles/Explorer.css';
 
 function Explorer() {
   const [activeComponent, setActiveComponent] = useState('programs');
