@@ -1,4 +1,3 @@
-import Workouts from '../explorer/Workouts';
 import Explorer from '../explorer/Explorer';
 import Dashboard from '../dashboard/Dashboard';
 import Profile from '../profile/Profile';
@@ -10,8 +9,6 @@ function ContentView({ activeComponent = 'dashboard' }: { activeComponent?: stri
       return <Dashboard />;
     case 'profile':
       return <Profile />;
-    case 'workouts':
-      return <Workouts />;
     case 'explorer':
       return <Explorer />;
       case 'workoutsInProgram':
