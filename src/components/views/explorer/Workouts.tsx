@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
-import '../../../styles/ImageStyle.css'; // Import the same CSS file
+import '../../../styles/ImageStyle.css'; 
 
 function Workouts({ searchQuery }: { searchQuery: string; }) {
   const workouts = useSelector((state: any) => state.data.workoutData);
