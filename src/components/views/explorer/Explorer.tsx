@@ -72,6 +72,9 @@ function Explorer() {
         </button>
       </div>
 
+      <div className="border-b border-gray-400 my-4"></div>
+
+
       {isLoading ? (
         <div className="loading-container">
           <img src={loadingGif} alt="Loading..." className="loading-image" />
