@@ -35,8 +35,8 @@ function Programs({ searchQuery }: { searchQuery: string; }) {
 
   return (
     <div>
-      <div>
-        <ul>
+      <div className="flex justify-center items-center">
+      <ul>
           {Array.isArray(filteredPrograms) && filteredPrograms.length > 0 ? (
             filteredPrograms.map((program: any) => (
               <li key={program.id} className="mb-6">
