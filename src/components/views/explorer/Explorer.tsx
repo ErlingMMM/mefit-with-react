@@ -72,10 +72,11 @@ function Explorer() {
         </button>
       </div>
 
-      <div className="border-b border-gray-400 my-6 relative">
-        <div className="w-1/3 absolute top-0 left-0 bg-green-500 h-1" />
+      <div className="flex my-6">
+        <div className={`flex-1 h-1 ${activeComponent === 'programs' ? 'bg-green-500' : 'bg-gray-400'}`}></div>
+        <div className={`flex-1 h-1 ${activeComponent === 'exercises' ? 'bg-green-500' : 'bg-gray-400'}`}></div>
+        <div className={`flex-1 h-1 ${activeComponent === 'workouts' ? 'bg-green-500' : 'bg-gray-400'}`}></div>
       </div>
-
 
       {isLoading ? (
         <div className="loading-container">
