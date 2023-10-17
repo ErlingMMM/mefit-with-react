@@ -54,19 +54,19 @@ function Explorer() {
       <div className="flex justify-between w-full space-x-1">
         <button
           onClick={() => switchToComponent('programs')}
-          className="flex-1 pl-10 pr-4  pt-2 text-lg  rounded-md"
+          className="flex-1 pl-10 pr-4  pt-2 text-base"
         >
           programs
         </button>
         <button
           onClick={() => switchToComponent('exercises')}
-          className="flex-1 px-4 pt-2 text-lg rounded-md"
+          className="flex-1 px-4 pt-2 text-base"
         >
           exercises
         </button>
         <button
           onClick={() => switchToComponent('workouts')}
-          className="flex-1 pr-10 pl-4 pt-2 text-lg rounded-md"
+          className="flex-1 pr-10 pl-4 pt-2 text-base"
         >
           workouts
         </button>
