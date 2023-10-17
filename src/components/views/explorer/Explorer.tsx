@@ -9,6 +9,7 @@ import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../Redux
 import loadingGif from '../../../assets/loading.gif';
 import Bars3BottomLeftIconSVG from '../../../SVG/Bars3BottomLeftIcon';
 
+
 function Explorer() {
   const [activeComponent, setActiveComponent] = useState('programs');
   const [searchQuery, setSearchQuery] = useState('');
@@ -84,7 +85,7 @@ function Explorer() {
         <div className={`w-1/3 h-0.5 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
       </div>
 
-      <button onClick={handleClick} className="flex items-center space-x-2">
+      <button onClick={handleClick} className="flex items-center space-x-2 ml-9 mb-3">
       <div dangerouslySetInnerHTML={{ __html: Bars3BottomLeftIconSVG }} />
       <span>hei</span>
     </button>
