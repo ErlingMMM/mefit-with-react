@@ -1,5 +1,5 @@
 
-function Workouts() {
+function Workouts({ searchQuery }: { searchQuery: string }) {
   return (
     <div>Workouts</div>
   )

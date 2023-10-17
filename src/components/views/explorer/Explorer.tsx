@@ -9,7 +9,7 @@ import { getExcersiceInfo, getProgramInfo } from '../../../Redux/GenericSlice';
 import loadingGif from '../../../assets/loading.gif';
 
 function Explorer() {
-  const [activeComponent, setActiveComponent] = useState('exercises');
+  const [activeComponent, setActiveComponent] = useState('programs');
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -46,8 +46,10 @@ function Explorer() {
       <br />
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} />
       <br />
-      <button onClick={() => switchToComponent('exercises')}>exercises</button>
       <button onClick={() => switchToComponent('programs')}>programs</button>
+      <button onClick={() => switchToComponent('exercises')}>exercises</button>
+      <button onClick={() => switchToComponent('workouts')}>workouts</button>
+
       {isLoading ? (
         <div>
           <img src={loadingGif} alt="Loading..." />

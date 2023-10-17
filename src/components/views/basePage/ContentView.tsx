@@ -1,4 +1,4 @@
-import Workouts from '../workouts/Workouts';
+import Workouts from '../explorer/Workouts';
 import Explorer from '../explorer/Explorer';
 import Dashboard from '../dashboard/Dashboard';
 import Profile from '../profile/Profile';
