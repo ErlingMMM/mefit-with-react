@@ -1,12 +1,12 @@
 import { XIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
-//import { setSelectedSearchOption } from '../../Redux/orderLists/SearchOptionSlice';
+import { setSelectedSortOption } from '../../Redux/GenericSlice';
 
 function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) {
   const dispatch = useDispatch();
 
   const searchSelector = (option: string) => {
-   // dispatch(setSelectedSearchOption(option.toString()));
+    dispatch(setSelectedSortOption(option.toString()));
     closeModal();
   }
 
@@ -30,9 +30,10 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
               />
             </div>
             <div className="p-4">
-              <button onClick={() => searchSelector("muscleGroup")}>Muscle Group</button>
-              <button onClick={() => searchSelector("difficulty")}>Difficulty</button>
-              <button onClick={() => searchSelector("name")}>Name</button>
+              <button onClick={() => searchSelector("a-z")}>A-Z</button>
+              <button onClick={() => searchSelector("z-a")}>Z-A</button>
+              <button onClick={() => searchSelector("most recent")}>most recent</button>
+              <button onClick={() => searchSelector("least recent")}>least recent</button>
             </div>
           </div>
         </div>

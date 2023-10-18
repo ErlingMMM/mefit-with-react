@@ -90,6 +90,7 @@ interface DataState {
   RegistrationValidation: RegistrationValidation;
   error: string | null;
   selectedSearchOption: string | null;
+  selectedSortOption: string | null;
 }
 
 /**
@@ -151,6 +152,7 @@ const initialState: DataState = {
   },
   
   selectedSearchOption: "name",
+  selectedSortOption: "reversed",
   loading: false,
   
   error: null,
@@ -595,6 +597,9 @@ setUserGender:(state, action) => {
 setSelectedSearchOption: (state, action) => {
   state.selectedSearchOption = action.payload;
 },
+setSelectedSortOption: (state, action) => {
+  state.selectedSortOption = action.payload;
+},
 setRegistrationBoolean: (state, action) => {
   state.RegistrationValidation.isRegistered = action.payload;
 },
@@ -702,6 +707,6 @@ setApplicationTextUser:(state, action) => {
   },
 });
 
-export const {setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
+export const {setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setSelectedSortOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
