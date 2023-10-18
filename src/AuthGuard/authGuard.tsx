@@ -17,7 +17,7 @@ useEffect(() => {
     .then((response) => {
       if (response.type !== "getLoginAsync/rejected") {
         dispatch(setRegistrationBoolean(true));
-        console.log("response fyttigrisen perry, det funker!");
+        console.log("authGuard: user is logged in");
       }
       setIsLoading(false);
     });
