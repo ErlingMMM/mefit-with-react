@@ -19,6 +19,10 @@ function Progress() {
   let numCompletedWorkouts = completedWorkouts.length;
   // The percentage of completed workouts with respect to the total amount of workouts this week
   let progress: number = Math.floor(numCompletedWorkouts/goalWorkouts*100); 
+  if(workouts.length == 0){
+    progress = 0; // If the user has no plan progress will become NaN so this handles that and overwrites the NaN
+  }
+
   return (
     <div className={styles.progressParentContainer}>
       <div className={styles.progressContainer}>
