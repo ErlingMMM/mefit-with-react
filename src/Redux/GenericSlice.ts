@@ -152,7 +152,7 @@ const initialState: DataState = {
   },
   
   selectedSearchOption: "name",
-  selectedSortOption: "reversed",
+  selectedSortOption: "most recent",
   loading: false,
   
   error: null,
