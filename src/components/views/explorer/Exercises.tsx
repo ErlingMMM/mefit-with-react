@@ -51,7 +51,7 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
   return (
     <div>
       <div>
-        <ul>
+        <ul className='ml-5'>
           {Array.isArray(orderedExercises) && orderedExercises.length > 0 ? (
             orderedExercises.map((exercise: any) => (
               <li key={exercise.id} className="mb-6">
@@ -81,7 +81,3 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
 }
 
 export default Exercises;
-
-
-
-

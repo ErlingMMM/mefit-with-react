@@ -413,8 +413,142 @@ interface UserDataUpdateAPI {
     }
   );
   
+  //-------------------------------------------------------------------------------------
+  interface UserExercisePostAPI{
+    EXname: string;
+    EXdescpription: string;
+    EXmusclegroup:string;
+    EXimgUrl:string;
+    EXvidurl:string;
+    EXTime:string;
+    EXSets:string;
+    EXReps:string;
+  }
   
+  /**
+   * Registers user onboarding stats asynchronously.
+   * @param {UserDatapostAPI} data - The user data to be posted to the API.
+   * @returns {Promise<void>} - A promise that resolves when the user is registered successfully.
+   * @throws {Error} - Throws an error if the response from the server is not valid.
+   */
+  export const AddExcersiceAsync = createAsyncThunk(
+    'AddExcersiceAsync',
+    
+    async ({ EXname, EXdescpription, EXmusclegroup, EXimgUrl, EXvidurl, EXTime, EXSets, EXReps }: UserExercisePostAPI ) => {{
+        console.log(EXname,EXdescpription,EXmusclegroup,typeof(EXimgUrl),typeof(EXvidurl),EXTime,EXSets,EXReps)
+      }
+  
+      const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Exercises`, {
+        headers: {
+          'Authorization':`Bearer ${keycloak.token}`,
+          'Content-Type':'application/json'
+      },
+        method: 'POST',
+        body: JSON.stringify({
+          name: EXname,
+          description: EXdescpription,
+          muscleGroup: EXmusclegroup,
+          image: EXimgUrl,
+          video: EXvidurl,
+          sets: EXSets,
+          reps: EXReps,
+          time: EXTime,
+          difficulty: 2,
+        }),
+      });
+      console.log(response)
+      if (response.ok) {
+        console.log("Gard mann1!")
+      }
+  
+      // Handles errors if the response is not ok
+      throw new Error('Error: Unvalid response from server.');
+    }
+  );
+//------------------------------------------------------- async metode N
 
+interface UserWorkoutAPI {
+  WRname: string;
+  WRdescription: string;
+  WRfintessLVL:string;
+  WRimgUrl:string;
+}
+
+/**
+ * Registers user onboarding stats asynchronously.
+ * @param {UserDatapostAPI} data - The user data to be posted to the API.
+ * @returns {Promise<void>} - A promise that resolves when the user is registered successfully.
+ * @throws {Error} - Throws an error if the response from the server is not valid.
+ */
+export const AddWorkoutAsync = createAsyncThunk(
+  'AddWorkoutAsync',
+  
+  async ({  WRname, WRdescription, WRfintessLVL, WRimgUrl}: UserWorkoutAPI) => {{   
+    }
+    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Workouts`, {
+      headers: {
+        'Authorization':`Bearer ${keycloak.token}`,
+        'Content-Type':'application/json'
+    },
+      method: 'POST',
+      body: JSON.stringify({
+        name: WRname,
+        description: WRdescription,
+        recommendedFitness: WRfintessLVL,
+        image: WRimgUrl,
+      }),
+    });
+    console.log(response.text())
+    if (response.ok) {
+      console.log("du vet at livet smiler for mefit boysen")
+      const user = await response.json();
+    }
+
+    // Handles errors if the response is not ok
+    throw new Error('Error: Unvalid response from server.');
+  }
+);
+
+//-----------------------------------------------------------------------------
+
+interface ProgramPostAPI {
+  name:string,
+  description:string,
+  image:string,
+  programDuration:number,
+  programDifficulty:number,
+  orderOfWorkouts:[],
+}
+
+export const AddProgramAsync = createAsyncThunk(
+  'AddProgramAsync',
+
+  async ({name, description, image, programDuration, programDifficulty, orderOfWorkouts}: ProgramPostAPI) => {
+
+    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Plan`, {
+      headers: {
+        'Authorization':`Bearer ${keycloak.token}`,
+        'Content-Type':'application/json'
+    },
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        description: description,
+        image: image,
+        programDifficulty:programDifficulty,
+        programDuration:programDuration,
+        orderOfWorkouts : orderOfWorkouts,
+      }),
+    });
+    console.log(response.text())
+    if (response.ok) {
+      const user = await response.json();
+    }
+
+    // Handles errors if the response is not ok
+    throw new Error('Error: Unvalid response from server.');
+  }
+);
 
 
 /**
@@ -463,6 +597,61 @@ setSelectedSearchOption: (state, action) => {
 setRegistrationBoolean: (state, action) => {
   state.RegistrationValidation.isRegistered = action.payload;
 },
+setNameExcersice: (state, action) => {
+  state.exerciseData.name = action.payload;
+},
+setDescriptionExcersice: (state, action) => {
+  state.exerciseData.description = action.payload;
+},
+setMusclegGroupExcersice: (state, action) => {
+  state.exerciseData.muscleGroup = action.payload;
+},
+setImgUrlExcersice: (state, action) => {
+  state.exerciseData.imageUrl = action.payload;
+},
+setVideoUrlExcersice: (state, action) => {
+  state.exerciseData.videoUrl = action.payload;
+},
+setTimeExcersice: (state, action) => {
+  state.exerciseData.time = action.payload;
+},
+setSetsExcersice: (state, action) => {
+  state.exerciseData.sets = action.payload;
+},
+setRepsExcersice: (state, action) => {
+  state.exerciseData.reps = action.payload;
+},
+setNameWorkout: (state, action) => {
+  state.workoutData.name = action.payload;
+},
+setDescriptionWorkout: (state, action) => { 
+  state.workoutData.description = action.payload;
+},
+setRecommendedFitnessWorkout: (state, action) => { 
+  state.workoutData.recommendedFitness = action.payload;
+},
+setRecommendedImage: (state, action) => { 
+  state.workoutData.image = action.payload;
+},
+setProgramName:(state, action) => {
+  state.programData.name = action.payload;
+},
+setProgramDesc:(state, action) => {
+  state.programData.description = action.payload;
+},
+setProgramImg:(state, action) => {
+  state.programData.image = action.payload;
+},
+setProgramDur:(state, action) => {
+  state.programData.programDuration = action.payload;
+},
+setProgramOrd:(state, action) => {
+  state.programData.orderOfWorkouts = action.payload;
+},
+
+
+
+
 
 
   },
@@ -509,7 +698,7 @@ setRegistrationBoolean: (state, action) => {
   },
 });
 
-export const {  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
+export const {setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
 

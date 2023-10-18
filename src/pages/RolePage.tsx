@@ -1,8 +1,10 @@
 import React from "react";
-import AddExcersiceForm from "../components/shared/addExcersiceForm";
-import AddWorkoutForm from "../components/shared/addWorkoutForm";
-import AddProgramForm from "../components/shared/addProgramForm";
+import AddExcersiceForm from "../components/shared/AddExcersiceForm";
+import AddWorkoutForm from "../components/shared/AddWorkoutForm";
+import AddProgramForm from "../components/shared/AddProgramForm";
 import { useState } from "react";
+import authGuard from "../AuthGuard/authGuard";
+import AuthGuardAdminContributor from "../AuthGuard/AuthGuardAdminContributor";
 
 function RolePage () {
     const [currentForm, setCurrentForm] = useState(1);
@@ -35,4 +37,6 @@ function RolePage () {
     );
 }
 
-export default RolePage;
+export default function() {
+    return <AuthGuardAdminContributor component={RolePage} path="/some-path" />;
+  }

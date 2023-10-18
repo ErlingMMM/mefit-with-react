@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 function WorkoutsInProgram() {
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const selectedProgramId = useSelector((state: any) => state.selectedProgramId);
+  const selectedProgramId = useSelector((state: any) => state.selectedId);
   const [workouts, setWorkouts] = useState([]);
 
 

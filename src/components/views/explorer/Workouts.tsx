@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import ExerciseModal from '../../modals/ExerciseModal';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import '../../../styles/ImageStyle.css'; 
 
 function Workouts({ searchQuery }: { searchQuery: string; }) {
   const workouts = useSelector((state: any) => state.data.workoutData);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (workout: any) => {
+  const handleClick = (workout: any) => {
     setSelectedWorkout(workout);
-    setIsModalOpen(true);
+   
   };
 
   const filteredWorkouts = Array.isArray(workouts)
@@ -38,17 +36,17 @@ function Workouts({ searchQuery }: { searchQuery: string; }) {
   return (
     <div>
       <div>
-        <ul>
+      <ul className='ml-5'>
           {Array.isArray(filteredWorkouts) && filteredWorkouts.length > 0 ? (
             filteredWorkouts.map((workout: any) => (
               <li key={workout.id} className="mb-6">
-                <button onClick={() => openModal(workout)} className="flex items-start">
+                <button onClick={() => handleClick(workout)} className="flex items-start">
                   <img src={getRandomDummyImageUrl()} alt={workout.name} className="custom-image-style" />
                   <div>
-                    <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
+                    <h3 className="text-lg font-bold">
                       {workout.name}
                     </h3>
-                    <p style={{ marginLeft: '-45px' }}>{workout.description}</p>
+                    <p>{workout.description}</p>
                   </div>
                 </button>
               </li>
@@ -60,11 +58,7 @@ function Workouts({ searchQuery }: { searchQuery: string; }) {
           )}
         </ul>
       </div>
-      <ExerciseModal
-        isOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
-        exercise={selectedWorkout}
-      />
+  
     </div>
   );
 }
