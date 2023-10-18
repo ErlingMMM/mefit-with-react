@@ -30,8 +30,8 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
               />
             </div>
             <div className="p-4">
-              <button onClick={() => sortSelector("a-z")}>A-Z</button>
-              <button onClick={() => sortSelector("z-a")}>Z-A</button>
+              <button onClick={() => sortSelector("a-z")}>a-z</button>
+              <button onClick={() => sortSelector("z-a")}>z-a</button>
               <button onClick={() => sortSelector("most recent")}>most recent</button>
               <button onClick={() => sortSelector("least recent")}>least recent</button>
             </div>

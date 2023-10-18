@@ -7,6 +7,7 @@ import '../../../../styles/ImageStyle.css';
 function Exercises({ searchQuery }: { searchQuery: string }) {
   const exercises = useSelector((state: any) => state.data.exerciseData);
   const selectedSearchOption = useSelector((state: any) => state.data.selectedSearchOption);
+  const selectedSortOption = useSelector((state: any) => state.data.selectedSortOption);
 
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,12 +29,15 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
     })
   : [];
 
-  //const orderedExercises = [...filteredExercises].reverse();
-  const orderedExercises = [...filteredExercises].sort((a, b) =>
-  a.name.toLowerCase().localeCompare(b.name.toLowerCase(), undefined, { sensitivity: 'base' })
-);
-
-
+  const sortingFunctions: { [key: string]: (a: any, b: any) => number } = {
+    "a-z": (a: any, b: any) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }),
+    "z-a": (a: any, b: any) => b.name.localeCompare(a.name, undefined, { sensitivity: 'base' }),
+    "most recent": (a: any, b: any) => filteredExercises.indexOf(b) - filteredExercises.indexOf(a),
+    "least recent": (a: any, b: any) => filteredExercises.indexOf(a) - filteredExercises.indexOf(b),
+  };
+  
+  const orderedExercises = [...filteredExercises].sort(sortingFunctions[selectedSortOption]);
+  
 
   // Define dummy exercise images URLs
   const dummyImageUrls = [

@@ -66,3 +66,7 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
 }
 
 export default SearchBar;
+
+
+
+

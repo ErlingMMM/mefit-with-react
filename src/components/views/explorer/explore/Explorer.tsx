@@ -9,6 +9,7 @@ import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../../Re
 import loadingGif from '../../../../assets/loading.gif';
 import SortButton from './SortButton';
 import { setSelectedSearchOption } from '../../../../Redux/GenericSlice';
+import { setSelectedSortOption } from '../../../../Redux/GenericSlice';
 
 
 function Explorer() {
@@ -40,6 +41,7 @@ function Explorer() {
   const switchToComponent = (component: string) => {
     setActiveComponent(component);
     dispatch(setSelectedSearchOption("name"));
+    dispatch(setSelectedSortOption("most recent"));
   };
 
   const isProgramsView = activeComponent === 'programs';
