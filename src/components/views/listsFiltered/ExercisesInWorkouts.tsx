@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
-import ExerciseInWorkoutsList from './ExerciseInWorkoutsList'; // Import the child component
+import ExerciseInWorkoutsList from './ExerciseInWorkoutsList'; 
 
 function ExercisesInWorkouts() {
   const [selectedExercise, setSelectedExercise] = useState(null);
