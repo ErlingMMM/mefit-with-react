@@ -6,6 +6,7 @@ import { store } from './Redux/Store';
 import './App.css';
 import EditProfile from './pages/EditProfile';
 import Rolepage from './pages/RolePage';
+import ApplicationPage from './pages/ApplicationPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/onboarding" element={<Onboarding/>} />
             <Route path="/editprofile" element={<EditProfile/>} />
             <Route path="/rolepage" element={<Rolepage/>}/>
+            <Route path="/app" element={<ApplicationPage/>}/>
           </Routes>
        </Router>
     </Provider>

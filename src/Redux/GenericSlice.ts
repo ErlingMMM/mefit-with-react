@@ -20,8 +20,8 @@ interface UserData {
   gender: number | null;
   timesAWeek: number | null;
   DurationTimeFrame: number | null;
-  
   startDate: string | null;
+  applicationText: string | null;
   
 }
 
@@ -111,6 +111,7 @@ const initialState: DataState = {
       DurationTimeFrame: null,
       timesAWeek: null,
       startDate: null,
+      applicationText: null,
   },
   programData: {
     name:null,
@@ -648,6 +649,9 @@ setProgramDur:(state, action) => {
 setProgramOrd:(state, action) => {
   state.programData.orderOfWorkouts = action.payload;
 },
+setApplicationTextUser:(state, action) => {
+  state.userData.applicationText = action.payload;
+},
 
 
 
@@ -698,7 +702,7 @@ setProgramOrd:(state, action) => {
   },
 });
 
-export const {setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
+export const {setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
 
