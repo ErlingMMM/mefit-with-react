@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import '../../../styles/ImageStyle.css'; 
+import { setSelectedWorkoutId } from '../../../Redux/selectId/SelectedWorkoutIdSlice';
+import { setActiveComponent } from '../../../Redux/NavigationSlice';
+
+
 
 function Workouts({ searchQuery }: { searchQuery: string; }) {
   const workouts = useSelector((state: any) => state.data.workoutData);
-  const [selectedWorkout, setSelectedWorkout] = useState(null);
+  const dispatch = useDispatch();
 
-  const handleClick = (workout: any) => {
-    setSelectedWorkout(workout);
-   
+
+  const handleClick = (id: number) => {    
+    dispatch(setActiveComponent('exercisesInWorkouts'));
+    dispatch(setSelectedWorkoutId(id));    
   };
 
   const filteredWorkouts = Array.isArray(workouts)
