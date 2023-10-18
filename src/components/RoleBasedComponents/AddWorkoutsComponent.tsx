@@ -27,7 +27,9 @@ function AddWorkoutsComponent() {
     };
 
     const handleAddButton = (workoutId: any) => {
-      console.log("THIS: " , typeof(workoutId))
+      console.log("Adding workout to plan:", workoutId);
+      console.log("Adding workout to plan:", planId);
+      
       addWorkoutToPlan(planId, workoutId, 1)  // Call the function with the plan and workout IDs
         .then(result => {
           console.log("Successfully added workout to plan:", result);
