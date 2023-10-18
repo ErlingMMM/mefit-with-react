@@ -2,14 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import dataReducer from './GenericSlice'
 import dashboardReducer from './DashboardSlice'
 import navigationReducer from './NavigationSlice';
-import selectedProgramIdReducer from './SelectedProgramIdSlice';
+import selectedIdReducer from './SelectedIdSlice';
 
 export const store = configureStore({
   reducer: {
     data: dataReducer,
     dashboard: dashboardReducer,
     navigation: navigationReducer,
-    selectedProgramId: selectedProgramIdReducer,
+    selectedId: selectedIdReducer,
   },
 });
 
