@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setActiveComponent } from '../../../Redux/NavigationSlice';
-import { setSelectedProgramId } from '../../../Redux/SelectedProgramIdSlice';
+import { setSelectedId } from '../../../Redux/SelectedIdSlice';
 
 function Programs({ searchQuery }: { searchQuery: string; }) {
   const programs = useSelector((state: any) => state.data.programData);
@@ -8,7 +8,7 @@ function Programs({ searchQuery }: { searchQuery: string; }) {
 
   const handleClick = (id: number) => {    
     dispatch(setActiveComponent('workoutsInProgram'));
-    dispatch(setSelectedProgramId(id));    
+    dispatch(setSelectedId(id));    
   };
 
   const filteredPrograms = Array.isArray(programs)
