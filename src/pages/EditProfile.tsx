@@ -59,7 +59,6 @@ function EditProfile() {
           weight: UserWeight,
           gender: UserGender,
         }))
-        navigate('/')
         dispatch(setActiveComponent('profile'));
       } 
 
