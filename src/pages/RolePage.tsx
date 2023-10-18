@@ -1,9 +1,8 @@
 import React from "react";
-import AddExcersiceForm from "../components/shared/AddExcersiceForm";
-import AddWorkoutForm from "../components/shared/AddWorkoutForm";
-import AddProgramForm from "../components/shared/AddProgramForm";
+import AddExcersiceForm from "../components/shared/ExcersiceFormAdd";
+import AddWorkoutForm from "../components/shared/WorkoutFormAdd";
+import AddProgramForm from "../components/shared/ProgramFormAdd";
 import { useState } from "react";
-import authGuard from "../AuthGuard/authGuard";
 import AuthGuardAdminContributor from "../AuthGuard/AuthGuardAdminContributor";
 
 function RolePage () {
