@@ -1,12 +1,12 @@
 import { XIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
-import { setSelectedSearchOption } from '../../Redux/orderLists/SearchOptionSlice';
+//import { setSelectedSearchOption } from '../../Redux/orderLists/SearchOptionSlice';
 
 function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) {
   const dispatch = useDispatch();
 
   const searchSelector = (option: string) => {
-    dispatch(setSelectedSearchOption(option.toString()));
+   // dispatch(setSelectedSearchOption(option.toString()));
     closeModal();
   }
 

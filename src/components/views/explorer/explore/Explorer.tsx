@@ -8,7 +8,7 @@ import { RootState } from '../../../../Redux/Store';
 import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../../Redux/GenericSlice';
 import loadingGif from '../../../../assets/loading.gif';
 import SortButton from './SortButton';
-import { setSelectedSearchOption } from '../../../../Redux/orderLists/SearchOptionSlice';
+import { setSelectedSearchOption } from '../../../../Redux/GenericSlice';
 
 
 function Explorer() {

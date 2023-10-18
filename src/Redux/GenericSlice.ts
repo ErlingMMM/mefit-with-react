@@ -89,7 +89,7 @@ interface DataState {
   loading: boolean;
   RegistrationValidation: RegistrationValidation;
   error: string | null;
-  
+  selectedSearchOption: string | null;
 }
 
 /**
@@ -150,7 +150,7 @@ const initialState: DataState = {
     isRegistered: false,
   },
   
- 
+  selectedSearchOption: "name",
   loading: false,
   
   error: null,
@@ -592,7 +592,9 @@ setUserGender:(state, action) => {
   state.userData.gender = action.payload
 },
 
-
+setSelectedSearchOption: (state, action) => {
+  state.selectedSearchOption = action.payload;
+},
 setRegistrationBoolean: (state, action) => {
   state.RegistrationValidation.isRegistered = action.payload;
 },
@@ -700,9 +702,6 @@ setApplicationTextUser:(state, action) => {
   },
 });
 
-export const {setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight} = dataSlice.actions;
+export const {setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
-
-
-
