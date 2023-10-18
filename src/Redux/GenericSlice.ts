@@ -46,6 +46,9 @@ interface programData {
   currentWorkoutId : number | null;
 }
 
+interface programId {
+  id:number |null,
+}
 
 /**
  * Represents the data for a given exercise.
@@ -85,7 +88,8 @@ interface DataState {
   userData: UserData;
   exerciseData: ExerciseData;
   workoutData: WorkoutData;
-  programData:programData
+  programData:programData;
+  programId:programId;
   loading: boolean;
   RegistrationValidation: RegistrationValidation;
   error: string | null;
@@ -123,6 +127,9 @@ const initialState: DataState = {
     orderOfWorkouts:null,
     workoutDates:null,
     currentWorkoutId :null,
+  },
+  programId:{
+    id: null,
   },
   exerciseData: {
       id: null,
@@ -540,9 +547,11 @@ export const AddProgramAsync = createAsyncThunk(
         orderOfWorkouts : orderOfWorkouts,
       }),
     });
-    console.log(response.text())
+    
     if (response.ok) {
-      const user = await response.json();
+      const jsonrespons = await response.json();
+      const id = jsonrespons.id;
+      return id;
     }
 
     // Handles errors if the response is not ok
@@ -648,6 +657,9 @@ setProgramDur:(state, action) => {
 setProgramOrd:(state, action) => {
   state.programData.orderOfWorkouts = action.payload;
 },
+setPlanId: (state, action) => {
+  state.programId.id = action.payload;
+}
 
 
 
@@ -698,7 +710,7 @@ setProgramOrd:(state, action) => {
   },
 });
 
-export const {setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
+export const {setPlanId, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
 

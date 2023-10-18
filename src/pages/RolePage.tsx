@@ -1,7 +1,7 @@
 import React from "react";
-import AddExcersiceForm from "../components/shared/AddExcersiceForm";
-import AddWorkoutForm from "../components/shared/AddWorkoutForm";
-import AddProgramForm from "../components/shared/AddProgramForm";
+import AddExcersiceForm from "../components/shared/addExcersiceForm";
+import AddWorkoutForm from "../components/shared/addWorkoutForm";
+import AddProgramForm from "../components/shared/addProgramForm";
 import { useState } from "react";
 import authGuard from "../AuthGuard/authGuard";
 import AuthGuardAdminContributor from "../AuthGuard/AuthGuardAdminContributor";
