@@ -8,6 +8,7 @@ import { RootState } from '../../../../Redux/Store';
 import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../../Redux/GenericSlice';
 import loadingGif from '../../../../assets/loading.gif';
 import SortButton from './SortButton';
+import { setSelectedSearchOption } from '../../../../Redux/GenericSlice';
 
 
 function Explorer() {
@@ -38,6 +39,7 @@ function Explorer() {
 
   const switchToComponent = (component: string) => {
     setActiveComponent(component);
+    dispatch(setSelectedSearchOption("name"));
   };
 
   const isProgramsView = activeComponent === 'programs';
