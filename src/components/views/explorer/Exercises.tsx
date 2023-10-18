@@ -81,7 +81,3 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
 }
 
 export default Exercises;
-
-
-
-
