@@ -43,8 +43,8 @@ function Explorer() {
   const placeholder = isProgramsView
     ? 'Search programs'
     : isExercisesView
-    ? 'Search exercises'
-    : 'Search workouts';
+      ? 'Search exercises'
+      : 'Search workouts';
 
   return (
     <>
@@ -52,27 +52,25 @@ function Explorer() {
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} />
       <br />
       <div className="flex justify-between w-full space-x-1">
-  <button
-    onClick={() => switchToComponent('programs')}
-    className="flex-1 pl-10 pr-4  py-2 text-lg  rounded-md"
-  >
-    Programs
-  </button>
-  <button
-    onClick={() => switchToComponent('exercises')}
-    className="flex-1 px-4 py-2 text-lg rounded-md"
-  >
-    Exercises
-  </button>
-  <button
-    onClick={() => switchToComponent('workouts')}
-    className="flex-1 pr-10 pl-4 py-2 text-lg rounded-md"
-  >
-    Workouts
-  </button>
-</div>
-
-
+        <button
+          onClick={() => switchToComponent('programs')}
+          className="flex-1 pl-10 pr-4  py-2 text-lg  rounded-md"
+        >
+          programs
+        </button>
+        <button
+          onClick={() => switchToComponent('exercises')}
+          className="flex-1 px-4 py-2 text-lg rounded-md"
+        >
+          exercises
+        </button>
+        <button
+          onClick={() => switchToComponent('workouts')}
+          className="flex-1 pr-10 pl-4 py-2 text-lg rounded-md"
+        >
+          workouts
+        </button>
+      </div>
 
       {isLoading ? (
         <div className="loading-container">
