@@ -1,5 +1,5 @@
-import { ChangeEvent, FormEvent, SetStateAction, useState } from "react";
-import { RegisterUserOnboardingStatsAsync, SetUserFitnessLVL, SetuserFName, setRegistrationBoolean } from "../../../Redux/GenericSlice";
+import { SetStateAction, useState } from "react";
+import { RegisterUserOnboardingStatsAsync, SetUserFitnessLVL, setRegistrationBoolean } from "../../../Redux/GenericSlice";
 import { ThunkDispatch } from "redux-thunk";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../Redux/Store";
@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
 function First() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-  const [fornavn, setFornavn] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState('option1');
   const navigate = useNavigate();
   const intensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
