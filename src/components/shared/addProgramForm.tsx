@@ -3,7 +3,7 @@ import React, { SetStateAction, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../Redux/Store';
-import { setUserBio, setUserAge, setUserHeight, setUserWeight, setProgramName, setProgramDesc, setProgramImg, setProgramDur, setProgramOrd, AddProgramAsync } from '../../Redux/GenericSlice';
+import { setProgramName, setProgramDesc, setProgramImg, setProgramDur, setProgramOrd, AddProgramAsync} from '../../Redux/GenericSlice';
 import { setActiveComponent } from '../../Redux/NavigationSlice';
 import AddWorkoutsCompoent from '../RoleBasedComponents/AddWorkoutsComponent';
 function AddProgramForm() {
