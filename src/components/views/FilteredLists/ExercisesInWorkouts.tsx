@@ -7,7 +7,7 @@ function WorkoutsInProgram() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const selectedWorkoutId = useSelector((state: any) => state.selectedWorkoutId);
   const [workouts, setWorkouts] = useState([]);
-
+  
 
   const openModal = (workout: any) => {
     setSelectedWorkout(workout);

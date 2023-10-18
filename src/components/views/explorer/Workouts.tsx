@@ -45,7 +45,7 @@ function Workouts({ searchQuery }: { searchQuery: string; }) {
           {Array.isArray(filteredWorkouts) && filteredWorkouts.length > 0 ? (
             filteredWorkouts.map((workout: any) => (
               <li key={workout.id} className="mb-6">
-                <button onClick={() => handleClick(workout)} className="flex items-start">
+                <button onClick={() => handleClick(workout.id)} className="flex items-start">
                   <img src={getRandomDummyImageUrl()} alt={workout.name} className="custom-image-style" />
                   <div>
                     <h3 className="text-lg font-bold">
