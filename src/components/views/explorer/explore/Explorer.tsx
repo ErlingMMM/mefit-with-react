@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import DisplayManager from './DisplayManager';
+import DisplayManager from '../DisplayManager';
 import SearchBar from './SearchBar';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
-import { RootState } from '../../../Redux/Store';
-import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../Redux/GenericSlice';
-import loadingGif from '../../../assets/loading.gif';
-import Bars3BottomLeftIconSVG from '../../../SVG/Bars3BottomLeftIcon';
+import { RootState } from '../../../../Redux/Store';
+import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../../Redux/GenericSlice';
+import loadingGif from '../../../../assets/loading.gif';
+import Bars3BottomLeftIconSVG from '../../../../SVG/Bars3BottomLeftIcon';
 
 
 function Explorer() {

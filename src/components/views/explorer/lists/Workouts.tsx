@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import '../../../styles/ImageStyle.css'; 
-import { setSelectedWorkoutId } from '../../../Redux/selectId/SelectedWorkoutIdSlice';
-import { setActiveComponent } from '../../../Redux/NavigationSlice';
+import '../../../../styles/ImageStyle.css'; 
+import { setSelectedWorkoutId } from '../../../../Redux/selectId/SelectedWorkoutIdSlice';
+import { setActiveComponent } from '../../../../Redux/NavigationSlice';
 
 
 

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setActiveComponent } from '../../../Redux/NavigationSlice';
-import { setSelectedProgramId } from '../../../Redux/selectId/SelectedProgramIdSlice';
+import { setActiveComponent } from '../../../../Redux/NavigationSlice';
+import { setSelectedProgramId } from '../../../../Redux/selectId/SelectedProgramIdSlice';
 
 function Programs({ searchQuery }: { searchQuery: string; }) {
   const programs = useSelector((state: any) => state.data.programData);

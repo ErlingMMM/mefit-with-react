@@ -1,6 +1,6 @@
-import Exercises from './Exercises';
-import Programs from './Programs';
-import Workouts from './Workouts';
+import Exercises from './lists/Exercises';
+import Programs from './lists/Programs';
+import Workouts from './lists/Workouts';
 
 function DisplayManager({ activeComponent, searchQuery }: { activeComponent: string; searchQuery: string; }) {
   switch (activeComponent) {

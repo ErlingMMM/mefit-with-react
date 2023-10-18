@@ -1,4 +1,4 @@
-import Explorer from '../explorer/Explorer';
+import Explorer from '../explorer/explore/Explorer';
 import Dashboard from '../dashboard/Dashboard';
 import Profile from '../profile/Profile';
 import WorkoutsInProgram from '../FilteredLists/WorkoutsInProgram';

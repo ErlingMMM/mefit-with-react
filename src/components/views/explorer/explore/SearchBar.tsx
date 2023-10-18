@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { SearchIcon } from '@heroicons/react/outline';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
-import '../../../styles/SearchBar.css';
-import SearchSelectorModal from '../../modals/SearchSelectorModal';
+import '../../../../styles/SearchBar.css';
+import SearchSelectorModal from '../../../modals/SearchSelectorModal';
 import { useSelector } from 'react-redux';
 
 interface SearchBarProps {
