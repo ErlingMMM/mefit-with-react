@@ -21,9 +21,11 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
 
   // Convert selectedSearchOptionRedux to lowercase and add spaces between words
   const selectedSearchOption = selectedSearchOptionRedux
-  .split(/(?=[A-Z])/)
-  .map((word: string) => word.toLowerCase())
-  .join(' ');
+    ? selectedSearchOptionRedux
+        .split(/(?=[A-Z])/)
+        .map((word: string) => word.toLowerCase())
+        .join(' ')
+    : 'name';
 
 
   return (

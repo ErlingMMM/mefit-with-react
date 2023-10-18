@@ -5,6 +5,9 @@ import navigationReducer from './NavigationSlice';
 import selectedProgramIdReducer from './selectId/SelectedProgramIdSlice';
 import selectedWorkoutIdReducer from './selectId/SelectedWorkoutIdSlice';
 import selectedDashboardWorkoutIdReducer from './selectId/SelectedDashboardWorkoutIdSlice';
+import searchOptionReducer from './orderLists/SearchOptionSlice';
+
+
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +17,7 @@ export const store = configureStore({
     selectedProgramId: selectedProgramIdReducer,
     selectedWorkoutId: selectedWorkoutIdReducer,
     selectedDashboardWorkoutId: selectedDashboardWorkoutIdReducer,
+    searchOption: searchOptionReducer,
   },
 });
 

@@ -1,6 +1,6 @@
 import { XIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
-import { setSelectedSearchOption } from '../../Redux/GenericSlice';
+import { setSelectedSearchOption } from '../../Redux/orderLists/SearchOptionSlice';
 
 function SearchSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) {
   const dispatch = useDispatch();
