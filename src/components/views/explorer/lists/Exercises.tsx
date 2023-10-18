@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ExerciseModal from '../../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
 import '../../../../styles/ImageStyle.css';
+import { OrderListUtils } from '../../../utils/OrderListUtils';
 
 
 function Exercises({ searchQuery }: { searchQuery: string }) {
@@ -17,27 +18,8 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
     setIsModalOpen(true);
   };
 
-  const filteredExercises = Array.isArray(exercises)
-  ? exercises.filter((exercise: any) => {
-      const query = searchQuery.toLowerCase();
-      let exerciseFilter = exercise[selectedSearchOption];
-      return (
-        searchQuery === "" ||
-        (typeof exerciseFilter === 'string' && exerciseFilter.toLowerCase().includes(query)) ||
-        (typeof exerciseFilter === 'number' && exerciseFilter === parseInt(query))
-      );
-    })
-  : [];
-
-  const sortingFunctions: { [key: string]: (a: any, b: any) => number } = {
-    "a-z": (a: any, b: any) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }),
-    "z-a": (a: any, b: any) => b.name.localeCompare(a.name, undefined, { sensitivity: 'base' }),
-    "most recent": (a: any, b: any) => filteredExercises.indexOf(b) - filteredExercises.indexOf(a),
-    "least recent": (a: any, b: any) => filteredExercises.indexOf(a) - filteredExercises.indexOf(b),
-  };
-  
-  const orderedExercises = [...filteredExercises].sort(sortingFunctions[selectedSortOption]);
-  
+  const orderedList = OrderListUtils(exercises, searchQuery, selectedSearchOption, selectedSortOption);
+ 
 
   // Define dummy exercise images URLs
   const dummyImageUrls = [
@@ -56,8 +38,8 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
     <div>
       <div>
         <ul className='ml-5'>
-          {Array.isArray(orderedExercises) && orderedExercises.length > 0 ? (
-            orderedExercises.map((exercise: any) => (
+          {Array.isArray(orderedList) && orderedList.length > 0 ? (
+            orderedList.map((exercise: any) => (
               <li key={exercise.id} className="mb-6">
                 <button onClick={() => openModal(exercise)} className="flex items-start">
                   <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
