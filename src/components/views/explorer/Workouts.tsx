@@ -8,12 +8,11 @@ import { setActiveComponent } from '../../../Redux/NavigationSlice';
 
 function Workouts({ searchQuery }: { searchQuery: string; }) {
   const workouts = useSelector((state: any) => state.data.workoutData);
-  const [selectedWorkout, setSelectedWorkout] = useState(null);
   const dispatch = useDispatch();
 
 
   const handleClick = (id: number) => {    
-    dispatch(setActiveComponent('hei'));
+    dispatch(setActiveComponent('exercisesInWorkouts'));
     dispatch(setSelectedWorkoutId(id));    
   };
 
