@@ -1,7 +1,7 @@
 import Explorer from '../explorer/Explorer';
 import Dashboard from '../dashboard/Dashboard';
 import Profile from '../profile/Profile';
-import WorkoutsInProgram from '../explorer/WorkoutsInProgram';
+import WorkoutsInProgram from '../FilteredLists/WorkoutsInProgram';
 
 function ContentView({ activeComponent = 'dashboard' }: { activeComponent?: string }) {
   switch (activeComponent) {
