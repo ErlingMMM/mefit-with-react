@@ -5,7 +5,7 @@ import { setSelectedSortOption } from '../../Redux/GenericSlice';
 function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) {
   const dispatch = useDispatch();
 
-  const searchSelector = (option: string) => {
+  const sortSelector = (option: string) => {
     dispatch(setSelectedSortOption(option.toString()));
     closeModal();
   }
@@ -30,10 +30,10 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
               />
             </div>
             <div className="p-4">
-              <button onClick={() => searchSelector("a-z")}>A-Z</button>
-              <button onClick={() => searchSelector("z-a")}>Z-A</button>
-              <button onClick={() => searchSelector("most recent")}>most recent</button>
-              <button onClick={() => searchSelector("least recent")}>least recent</button>
+              <button onClick={() => sortSelector("a-z")}>A-Z</button>
+              <button onClick={() => sortSelector("z-a")}>Z-A</button>
+              <button onClick={() => sortSelector("most recent")}>most recent</button>
+              <button onClick={() => sortSelector("least recent")}>least recent</button>
             </div>
           </div>
         </div>
