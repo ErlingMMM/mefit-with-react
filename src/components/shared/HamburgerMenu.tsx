@@ -55,12 +55,21 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent
         >
           MeFit
         </h1>
-
-        <div className={`text-white text-center text-xl h-full flex flex-col`}>
-          <button onClick={() => switchToComponent('dashboard')} className='mt-auto' >Dashboard</button>
-          <button onClick={() => switchToComponent('explorer')} className='mt-auto' style={{ marginBottom: '90px'}}>Explorer</button>
+        <div className={` text-center text-xl h-full flex flex-col`}>
+         
+         
+          <a onClick={() => switchToComponent('profile')} href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://unsplash.com/photos/smiling-woman-wearing-white-and-black-pinstriped-collared-top-QXevDflbl8A"
+              alt="ProfilePage"
+              style={{ borderRadius: '50%', width: '100px', height: '100px' }}
+            />
+          </a>
+          <div className='text-custom-green'>Jane Doe</div>
+          <button onClick={() => switchToComponent('dashboard')} className='text-white mt-auto' >Dashboard</button>
+          <button onClick={() => switchToComponent('explorer')} className='text-white mt-auto' style={{ marginBottom: '90px' }}>Explorer</button>
           {keycloak.authenticated && (
-            <button onClick={() => keycloak.logout()} className='mt-auto' style={{ marginBottom: '100px' }}
+            <button onClick={() => keycloak.logout()} className='text-white mt-auto' style={{ marginBottom: '100px' }}
             >Logout</button>
           )}
         </div>
