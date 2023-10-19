@@ -3,6 +3,7 @@ import Dashboard from '../dashboard/Dashboard';
 import Profile from '../profile/Profile';
 import WorkoutsInProgram from '../../lists/listsFiltered/WorkoutsInProgram';
 import ExercisesInWorkouts from '../../lists/listsFiltered/ExercisesInWorkouts';
+import ExercisesDisplayerDashboard from '../dashboard/ExercisesDisplayerDashboard';
 
 
 function ContentView({ activeComponent = 'dashboard' }: { activeComponent?: string }) {
@@ -17,6 +18,8 @@ function ContentView({ activeComponent = 'dashboard' }: { activeComponent?: stri
       return <WorkoutsInProgram />;
       case 'exercisesInWorkouts':
         return <ExercisesInWorkouts />;
+    case 'exercisesInDashboard' :
+      return <ExercisesDisplayerDashboard/>;
     default:
       return null;
   }

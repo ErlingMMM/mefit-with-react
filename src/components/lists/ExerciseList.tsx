@@ -44,15 +44,16 @@ function ExerciseList({ exercises, content }: {content: string, exercises: any[]
           )}
                 
            
-            {/*  
+              
             {content === 'dashboard' && (
               <>
-              <p >Text goes here {exercise.valueDashBoardExerciseObject}</p>
+              <b >{exercise.name}</b>
               <br />
-              <p > Text goes here {exercise.valueDashBoardExerciseObject}</p>
+              <p > {exercise.muscleGroup}</p>
+              <b > <span>Sets: {exercise.sets}     </span> <span>Reps: {exercise.reps}</span></b>
             </>
              )}
-            */}
+            
         
          
           </div>
