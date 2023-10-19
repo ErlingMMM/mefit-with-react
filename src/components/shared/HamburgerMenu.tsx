@@ -18,13 +18,13 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
   className={`block absolute h-0.5  bg-current transform transition duration-75 ease-in-out ${
     isOpen ? 'rotate-45 w-5' : 'w-4'
   }`}
-  style={{ left: '20px' }} 
+  style={{ left: '30px' }} 
 ></span>
 <span
   className={`block absolute h-0.5 bg-current transform transition duration-75 ease-in-out ${
     isOpen ? '-rotate-45 w-5' : 'w-4'
   }`}
-  style={{ left: '20px' }} 
+  style={{ left: '30px' }} 
 ></span>
 
           </div>
@@ -33,13 +33,13 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
               className={`block absolute h-0.5 w-4 bg-current transform transition duration-75 ease-in-out ${
                 isOpen ? 'opacity-0' : ''
               }`}
-              style={{ top: '13px', left: '30px' }} 
+              style={{ top: '13px', left: '40px' }} 
             ></span>
             <span
               className={`block absolute h-0.5 w-4 bg-current transform transition duration-75 ease-in-out ${
                 isOpen ? 'opacity-0' : ''
               }`}
-              style={{ top: '28px', left: '30px' }} 
+              style={{ top: '28px', left: '40px' }} 
             ></span>
           </div>
         </div>
