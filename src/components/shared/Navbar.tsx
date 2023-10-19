@@ -18,7 +18,7 @@ function Navbar() {
     <div>
       {/* Hamburger Menu on Mobile */}
       <div className="block sm:hidden relative">
-        <HamburgerMenu isOpen={menuOpen} toggleMenu={() => setMenuOpen(!menuOpen)} />
+        <HamburgerMenu isOpen={menuOpen} switchToComponent={switchToComponent}  toggleMenu={() => setMenuOpen(!menuOpen)} />
         {menuOpen ? null : (
           <h1
             className="font-bold text-lg italic text-center absolute top-0 left-1/2 transform -translate-x-1/2"
@@ -30,7 +30,7 @@ function Navbar() {
 
       {/* Navigation Links (hidden on mobile, visible on small screens and larger) */}
       <div className="sm:flex sm:space-x-4 nav-links hidden">
-        <div className="user-indicator">User: John Doe</div>
+        <div>User: John Doe</div>
         <button onClick={() => switchToComponent('dashboard')}>Dashboard</button>
         <button onClick={() => switchToComponent('profile')}>Profile</button>
         <button onClick={() => switchToComponent('explorer')}>Explorer</button>

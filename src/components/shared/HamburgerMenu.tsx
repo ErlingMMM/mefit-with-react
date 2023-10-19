@@ -1,11 +1,14 @@
 import React from 'react';
+import keycloak from "../../Keycloak";
+
 
 interface HamburgerMenuProps {
   isOpen: boolean;
+  switchToComponent: any;
   toggleMenu: () => void;
 }
 
-const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => {
+const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent, toggleMenu }) => {
   return (
     <div className="relative mt-5">
       {/* Hamburger button */}
@@ -46,26 +49,41 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
         </div>
       </button>
 
-      {/* Side menu */}
-      <div
+    {/* Side menu */}
+    <div
         className={`fixed left-0 top-0 h-full w-2/3 bg-black transform opacity-90 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-150`}
       >
         <h1
-          className={`font-bold text-custom-green text-2xl italic text-right absolute top-6 right-5 ${
-            isOpen ? 'top-2' : 'hidden'
-          }`}
-
+          className={`font-bold text-custom-green text-2xl italic text-right absolute top-6 right-5 `}
         >
           MeFit
         </h1>
-        <div className={`mt-20 text-center ${isOpen ? 'ml-12' : 'ml-0'}`}>
-          <button>Dashboard</button>
-        </div>
+        
+        <div className={`text-white text-center text-xl h-full flex flex-col`}>
+  {keycloak.authenticated && (
+    <button onClick={() => keycloak.logout()} 
+    className='mt-auto'
+    style={{ marginBottom: '30px' }}
+    >Logout</button>
+  )}
+</div>
       </div>
     </div>
   );
 };
 
 export default HamburgerMenu;
+
+{/*<div>User: John Doe</div>
+<button onClick={() => switchToComponent('dashboard')}>Dashboard</button>
+<button onClick={() => switchToComponent('profile')}>Profile</button>
+<button onClick={() => switchToComponent('explorer')}>Explorer</button>*/}
+
+
+
+
+
+
+
