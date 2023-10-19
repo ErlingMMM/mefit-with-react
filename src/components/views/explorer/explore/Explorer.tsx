@@ -86,9 +86,9 @@ function Explorer() {
 
       {/*Line under buttons*/}
       <div className="flex mb-5 mt-2">
-        <div className={`w-1/3 h-0.5 ${activeComponent === 'programs' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-0.5 ${activeComponent === 'exercises' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-0.5 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeComponent === 'programs' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeComponent === 'exercises' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
       </div>
 
       <div className='text-right sm:text-left mb-3 space-x-2 ml-12 sm:ml-32'>
