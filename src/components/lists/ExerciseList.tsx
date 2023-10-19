@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ExerciseModal from '../modals/ExerciseModal';
 import '../../styles/ImageStyle.css';
 
-function ExerciseList({ exercises, content }: {content: string, exercises: any[]; }) {
+function ExerciseList({ exercises, content }: { content: string, exercises: any[]; }) {
 
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,25 +36,20 @@ function ExerciseList({ exercises, content }: {content: string, exercises: any[]
               {exercise.name}
             </h3>
             {content === 'explorer' && (
-            <>
-              <p style={{ marginLeft: '-45px' }}>Level: {exercise.difficulty}</p>
-              <br />
-              <p style={{ marginLeft: '10px' }}>{exercise.muscleGroup}</p>
-            </>
-          )}
-                
-           
-              
+              <>
+                <p>Level: {exercise.difficulty}</p>
+                <p > {exercise.muscleGroup}</p>
+                <br />
+              </>
+            )}
+            
             {content === 'dashboard' && (
               <>
-              <p > {exercise.muscleGroup}</p>
-              <br />
-              <b > <span>Sets: {exercise.sets}     </span> <span>Reps: {exercise.reps}</span></b>
-            </>
-             )}
-            
-        
-         
+                <p > {exercise.muscleGroup}</p>
+                <br />
+                <b > <span>Sets: {exercise.sets}     </span> <span>Reps: {exercise.reps}</span></b>
+              </>
+            )}
           </div>
         </button>
       </li>
