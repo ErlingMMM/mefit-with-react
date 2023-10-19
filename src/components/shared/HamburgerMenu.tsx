@@ -57,10 +57,8 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent
         </h1>
 
         <div className={`text-white text-center text-xl h-full flex flex-col`}>
-          <div>User: John Doe</div>
-          <button onClick={() => switchToComponent('dashboard')}>Dashboard</button>
-          <button onClick={() => switchToComponent('profile')}>Profile</button>
-          <button onClick={() => switchToComponent('explorer')}>Explorer</button>
+          <button onClick={() => switchToComponent('dashboard')} className='mt-auto' >Dashboard</button>
+          <button onClick={() => switchToComponent('explorer')} className='mt-auto' style={{ marginBottom: '90px'}}>Explorer</button>
           {keycloak.authenticated && (
             <button onClick={() => keycloak.logout()} className='mt-auto' style={{ marginBottom: '100px' }}
             >Logout</button>
