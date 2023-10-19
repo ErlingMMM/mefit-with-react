@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import DisplayManager from '../ExploreManager';
+import ExploreManager from '../ExploreManager';
 import SearchBar from './SearchBar';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
@@ -100,7 +100,7 @@ function Explorer() {
           <img src={loadingGif} alt="Loading..." className="loading-image" />
         </div>
       ) : (
-        <DisplayManager activeComponent={activeComponent} searchQuery={searchQuery} />
+        <ExploreManager activeComponent={activeComponent} searchQuery={searchQuery} />
       )}
     </>
   );

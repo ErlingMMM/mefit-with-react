@@ -2,7 +2,7 @@ import Exercises from './content/Exercises';
 import Programs from './content/Programs';
 import Workouts from './content/Workouts';
 
-function DisplayManager({ activeComponent, searchQuery }: { activeComponent: string; searchQuery: string; }) {
+function ExploreManager({ activeComponent, searchQuery }: { activeComponent: string; searchQuery: string; }) {
   switch (activeComponent) {
     case 'exercises':
       return <Exercises searchQuery={searchQuery}  />;
@@ -15,4 +15,4 @@ function DisplayManager({ activeComponent, searchQuery }: { activeComponent: str
   }
 }
 
-export default DisplayManager;
+export default ExploreManager;
