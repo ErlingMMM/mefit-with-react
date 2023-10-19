@@ -1,12 +1,29 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { getWorkouts, completeWorkout } from '../endpoints/dashboard_endpoints';
 
+
+interface ExerciseData {
+  id: number;
+  name: string;
+  description: string;
+  muscleGroup: string;
+  imageUrl?: string;
+  time: number;
+  difficulty: number;
+  sets: number;
+  reps: number;
+}
+
 interface WorkoutData {
-    id: number;
-   name: string;
-   duration: number;
-   day: number;
-   isCompleted: boolean;
+  id: number;
+  name: string;
+  description?: string;
+  recommendedFitness: number;
+  image?: string;
+  duration: number;
+  day: number;
+  isCompleted: boolean;
+  exercises?: ExerciseData[];
 }
 
 
