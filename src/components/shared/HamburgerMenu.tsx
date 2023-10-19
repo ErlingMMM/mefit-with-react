@@ -18,13 +18,13 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
           <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <span
               className={`block absolute h-0.5 bg-current transform transition duration-300 ease-in-out ${
-                isOpen ? 'rotate-45 w-5 text-custom-green' : 'w-4'
+                isOpen ? 'rotate-45 w-6 text-custom-green' : 'w-4'
               }`}
               style={{ left: '30px' }}
             ></span>
             <span
               className={`block absolute h-0.5 bg-current transform transition duration-300 ease-in-out ${
-                isOpen ? '-rotate-45 w-5 text-custom-green' : 'w-4'
+                isOpen ? '-rotate-45 w-6 text-custom-green' : 'w-4'
               }`}
               style={{ left: '30px' }}
             ></span>
