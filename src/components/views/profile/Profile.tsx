@@ -13,8 +13,6 @@ function ProfilePage() {
    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const user = useSelector((state: any) => state.data.userData);
   const navigate = useNavigate();
-
-
   
   useEffect(() => {
     dispatch(getLoginAsync());
@@ -44,7 +42,7 @@ console.log(user)
         settings
     </button> 
     <br />
-    {isAdmin || isContributor ? null : (
+    {isAdmin || !isContributor ? null : (
         <button onClick={ handleApplicationClick} className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
             Apply to become a contributor
         </button> 

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import keycloak from "../Keycloak";
 import { Url } from 'url';
+import { stringify } from 'querystring';
 
 
 /**
@@ -23,6 +24,12 @@ interface UserData {
   startDate: string | null;
   applicationText: string | null;
   
+}
+
+interface UserApplication {
+  id: string | null;
+fitnessPreference: string | null;
+applicationText: string | null;
 }
 
 interface RegistrationValidation {
@@ -83,6 +90,7 @@ interface WorkoutData {
  */
 interface DataState {
   userData: UserData;
+  userApplication: UserApplication;
   exerciseData: ExerciseData;
   workoutData: WorkoutData;
   programData:programData
@@ -96,64 +104,68 @@ interface DataState {
  * Represents the initial state of the data in the Redux store.
  */
 const initialState: DataState = {
-  
   userData: {
-        id: null,
-      firstName: null,
-      lastName: null,
-      picture: null,
-      bio: null,
-      fitnessPreference: null,
-      height: null,
-      weight: null,
-      age:null,
-      gender: null,
-      DurationTimeFrame: null,
-      timesAWeek: null,
-      startDate: null,
-      applicationText: null,
+    id: null,
+    firstName: null,
+    lastName: null,
+    picture: null,
+    bio: null,
+    fitnessPreference: null,
+    height: null,
+    weight: null,
+    age: null,
+    gender: null,
+    DurationTimeFrame: null,
+    timesAWeek: null,
+    startDate: null,
+    applicationText: null,
   },
   programData: {
-    name:null,
-    description:null,
+    name: null,
+    description: null,
     image: null,
     workoutIds: null,
-    programDuration:null,
-    programDifficulty:null,
-    userIds:null,
-    orderOfWorkouts:null,
-    workoutDates:null,
-    currentWorkoutId :null,
+    programDuration: null,
+    programDifficulty: null,
+    userIds: null,
+    orderOfWorkouts: null,
+    workoutDates: null,
+    currentWorkoutId: null,
   },
   exerciseData: {
-      id: null,
-      name: null,
-      description: null,
-      muscleGroup: null,
-      imageUrl: null,
-      videoUrl: null,
-      time: null,
-      difficulty: null,
-      sets: null,
-      reps: null,
+    id: null,
+    name: null,
+    description: null,
+    muscleGroup: null,
+    imageUrl: null,
+    videoUrl: null,
+    time: null,
+    difficulty: null,
+    sets: null,
+    reps: null,
   },
-  
+
   workoutData: {
-       id:null,
+    id: null,
     name: null,
     description: null,
     recommendedFitness: null,
     image: null,
     exercises: null,
   },
-  RegistrationValidation: { 
+  RegistrationValidation: {
     isRegistered: false,
   },
-  
+
   selectedSearchOption: "name",
   loading: false,
-  
+
   error: null,
+  userApplication: {
+    id: null,
+    fitnessPreference: null,
+    applicationText: null,
+  }
 };
 
 
@@ -551,6 +563,63 @@ export const AddProgramAsync = createAsyncThunk(
   }
 );
 
+//---------------------------------------------------------------------------------------
+
+interface UserPostApplicationAPI {
+  ApplicationText : string;
+}
+
+export const AddApplicationUserAsync = createAsyncThunk(
+  'AddApplicationUserAsync',
+  async ({ApplicationText}: UserPostApplicationAPI) => {
+
+    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Users/user/application`, {  
+      method: 'PATCH',
+      headers: {
+        'Authorization':`Bearer ${keycloak.token}`,
+        'Content-Type':'application/json'
+    },
+    body:JSON.stringify(ApplicationText)
+    });
+    console.log(response.text())
+    if (response.ok) {
+      console.log("Forespørselen var vellykket!");
+    } else {  
+      throw new Error('Error: Unvalid response from server.');
+    }
+  }
+);
+
+//---------------------------------------------------------------------------------------
+export const getUserApplicationsAsync = createAsyncThunk(
+  "getUserApplicationsAsync",
+  async () => {
+    try {
+      const accessToken = keycloak.token; 
+      const resp = await fetch('https://mefit-backend.azurewebsites.net/api/Users/applications', {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`, 
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (resp.ok) {
+        const users = await resp.json();
+        if (users.length != null) {
+          console.log("user is  not null")
+          return { users };
+        } else {
+          throw new Error('Error. User not found');
+        }
+        
+      } else {
+        throw new Error('Error: Unvalid response from server.');
+      }
+    } catch (error) {
+      throw new Error(`Error`);
+    }
+  }
+);
 
 /**
  * Redux slice for managing user data, exercise data, workout data, and program data.
@@ -669,6 +738,16 @@ setApplicationTextUser:(state, action) => {
       .addCase(getLoginAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.userData = action.payload.user;
+      })
+
+      .addCase( getUserApplicationsAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase( getUserApplicationsAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userApplication = action.payload.users;
+        console.log(state.userApplication)
       })
       
       .addCase(getExcersiceInfo.pending, (state) => {
