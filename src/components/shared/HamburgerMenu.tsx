@@ -60,7 +60,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent
          
           <a onClick={() => switchToComponent('profile')} href="https://example.com" target="_blank" rel="noopener noreferrer">
             <img
-              src="https://unsplash.com/photos/smiling-woman-wearing-white-and-black-pinstriped-collared-top-QXevDflbl8A"
+              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1888&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="ProfilePage"
               style={{ borderRadius: '50%', width: '100px', height: '100px' }}
             />
