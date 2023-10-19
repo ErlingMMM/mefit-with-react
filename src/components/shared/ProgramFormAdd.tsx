@@ -3,7 +3,7 @@ import React, { SetStateAction, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../Redux/Store';
-import { setProgramName, setProgramDesc, setProgramImg, setProgramDur, setProgramOrd, AddProgramAsync} from '../../Redux/GenericSlice';
+import { setProgramName, setProgramDesc, setProgramImg, setProgramDur, setProgramOrd, AddProgramAsync, setPlanId} from '../../Redux/GenericSlice';
 import { setActiveComponent } from '../../Redux/NavigationSlice';
 import AddWorkoutsCompoent from '../RoleBasedComponents/AddWorkoutsComponent';
 function AddProgramForm() {
@@ -40,7 +40,8 @@ function AddProgramForm() {
       dispatch(setProgramOrd(event.target.value));
       console.log(ProgramOrd)
     }
-    const postProgram = () => {
+    const postProgram = (e: React.FormEvent) => {
+      e.preventDefault();
       dispatch(AddProgramAsync({
         name: ProgramName,
         description: ProgramDesc,
@@ -48,9 +49,17 @@ function AddProgramForm() {
         programDuration: ProgramDur,
         orderOfWorkouts: ProgramOrd,
         programDifficulty: 1,
-      }));
-      
-      setIsFormSubmitted(true);
+      }))
+      .then(response => {
+        console.log("Promise resolved", response);
+        if (response.payload) {
+          dispatch(setPlanId(response.payload));  // Set the plan ID in the state
+          setIsFormSubmitted(true);  // Ensure this line is being reached
+        }
+      })
+      .catch(error => {
+        console.log("Promise rejected", error);
+      });
     };
 
    

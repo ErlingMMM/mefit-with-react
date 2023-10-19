@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 function WorkoutsInProgram() {
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const selectedProgramId = useSelector((state: any) => state.selectedId);
+  const selectedWorkoutId = useSelector((state: any) => state.selectedWorkoutId);
   const [workouts, setWorkouts] = useState([]);
 
 
@@ -16,14 +16,12 @@ function WorkoutsInProgram() {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      if (selectedProgramId) {
+      if (selectedWorkoutId) {
         try {
           const response = await fetch(
-            `https://mefit-backend.azurewebsites.net/api/Plan/GetWorkouts/${parseInt(
-              selectedProgramId
-            )}`
+            `https://mefit-backend.azurewebsites.net/api/Workouts/${parseInt(selectedWorkoutId)}/exercises`
           );
-
+          
           if (response.ok) {
             const data = await response.json();
             setWorkouts(data); 
@@ -37,7 +35,7 @@ function WorkoutsInProgram() {
     };
 
     fetchWorkouts();
-  }, [selectedProgramId]);
+  }, [selectedWorkoutId]);
 
  
 
@@ -77,7 +75,7 @@ function WorkoutsInProgram() {
             ))
           ) : (
             <div>
-              <li>No matching workouts</li>
+              <li>No matching exercises</li>
             </div>
           )}
         </ul>
