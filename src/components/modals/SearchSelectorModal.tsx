@@ -2,7 +2,12 @@ import { XIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
 import { setSelectedSearchOption } from '../../Redux/GenericSlice';
 
-
+function toTitleCase(str: string) {
+  return str
+    .split(/(?=[A-Z])/)
+    .map(word => word.toLowerCase())
+    .join(' ');
+}
 
 function SearchSelectorModal({ isOpen, closeModal, availableSearchOptions }: { isOpen: boolean, closeModal: () => void, availableSearchOptions: string[] }) {
   const dispatch = useDispatch();
@@ -34,7 +39,7 @@ function SearchSelectorModal({ isOpen, closeModal, availableSearchOptions }: { i
             <div className="p-4">
               {availableSearchOptions.map((option) => (
                 <button key={option} onClick={() => searchSelector(option)}>
-                  {option}
+                  {toTitleCase(option)}
                 </button>
               ))}
             </div>
@@ -46,4 +51,3 @@ function SearchSelectorModal({ isOpen, closeModal, availableSearchOptions }: { i
 }
 
 export default SearchSelectorModal;
-
