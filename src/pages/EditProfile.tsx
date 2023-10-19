@@ -59,13 +59,20 @@ function EditProfile() {
           weight: UserWeight,
           gender: UserGender,
         }))
+        navigate('/');
         dispatch(setActiveComponent('profile'));
       } 
+      const onClickBack = () => { 
+        navigate('/');
+    }
+  
+
 
   return (
     <div className='bg-gray-500 h-screen flex flex-col justify-center items-center'>
       <h1 className='text-3xl font-bold mb-4 text-white'>Profile Editing Page</h1>
 
+      <button onClick={onClickBack} className='bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded absolute top-4 left-4'>Back</button>
       <form className='bg-white p-8 rounded shadow-md'>
         <label className='block mb-2 text-gray-800' htmlFor="bio">Bio:</label>
         <input  onChange={handleBioChange} className='w-full p-2 mb-4 border rounded' type="text" id="bio" name="bio" />

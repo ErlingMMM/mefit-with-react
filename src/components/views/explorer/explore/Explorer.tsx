@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import DisplayManager from './DisplayManager';
+import DisplayManager from '../ExploreManager';
 import SearchBar from './SearchBar';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
-import { RootState } from '../../../Redux/Store';
-import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../Redux/GenericSlice';
-import loadingGif from '../../../assets/loading.gif';
-import Bars3BottomLeftIconSVG from '../../../SVG/Bars3BottomLeftIcon';
+import { RootState } from '../../../../Redux/Store';
+import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../../Redux/GenericSlice';
+import loadingGif from '../../../../assets/loading.gif';
+import SortButton from './SortButton';
+import { setSelectedSearchOption } from '../../../../Redux/GenericSlice';
+import { setSelectedSortOption } from '../../../../Redux/GenericSlice';
 
 
 function Explorer() {
@@ -38,6 +40,8 @@ function Explorer() {
 
   const switchToComponent = (component: string) => {
     setActiveComponent(component);
+    dispatch(setSelectedSearchOption("name"));
+    dispatch(setSelectedSortOption("most recent"));
   };
 
   const isProgramsView = activeComponent === 'programs';
@@ -48,14 +52,16 @@ function Explorer() {
       ? 'Search exercises'
       : 'Search workouts';
 
-  const handleClick = () => {
-    console.log("Hello, World!");
-  };
+      const availableSearchOptions = {
+        exercises: ["name", "muscleGroup", "difficulty"],
+        programs: ["name", "description", "programDifficulty"],
+        workouts: ["name", "recommendedFitness", "description"],
+      };
 
   return (
     <>
       <br />
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} />
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} availableSearchOptions={availableSearchOptions[activeComponent as keyof typeof availableSearchOptions]} />
       <br />
       <div className="flex justify-between w-full space-x-1">
         <button
@@ -85,12 +91,10 @@ function Explorer() {
         <div className={`w-1/3 h-0.5 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
       </div>
 
-      <button onClick={handleClick} className="flex items-center space-x-2 ml-9 mb-3 text-gray-400">
-      <div dangerouslySetInnerHTML={{ __html: Bars3BottomLeftIconSVG }}/>
-      <span className=' mb-1'>A-Z</span>
-    </button>
-
-
+      <div className='text-right sm:text-left mb-3 space-x-2 ml-12 sm:ml-32'>
+      <SortButton />
+      </div>
+        
       {isLoading ? (
         <div className="loading-container">
           <img src={loadingGif} alt="Loading..." className="loading-image" />
