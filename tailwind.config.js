@@ -7,6 +7,9 @@ module.exports = {
         'custom-main': '#FF5733', 
       },
     },
+    fontFamily: {
+      sans: ['Montserrat', 'sans'], 
+    },
   },
   plugins: [],
 }
