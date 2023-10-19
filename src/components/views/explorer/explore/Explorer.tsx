@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import DisplayManager from '../DisplayManager';
+import DisplayManager from '../ExploreManager';
 import SearchBar from './SearchBar';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
