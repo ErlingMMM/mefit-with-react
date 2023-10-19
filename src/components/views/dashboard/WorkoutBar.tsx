@@ -3,6 +3,8 @@ import styles from "./Dashboard.module.css" //locally scoped
 import { ChevronUpIcon, ChevronDownIcon, ClockIcon, CheckCircleIcon, PlusCircleIcon } from '@heroicons/react/outline';
 import { useAppDispatch } from '../../../Redux/Hooks';
 import { completeWorkoutAction } from '../../../Redux/DashboardSlice';
+import { setActiveComponent } from '../../../Redux/NavigationSlice';
+import { setDisplayedWorkout } from '../../../Redux/DashboardSlice';
 
 interface ExerciseData {
   id: number;
@@ -63,6 +65,12 @@ function WorkoutBar({workoutData, updateWorkout} : WorkoutBarProps & { updateWor
   const weekday : string = dayDictionary[workoutData.day%7]; 
   //Keep in mind for this to make sense, the start date for the program has to be a monday
 
+  // To navigate to workout displayer when button is clicked
+  const handleClick = () => {    
+    dispatch(setDisplayedWorkout(workoutData))
+    dispatch(setActiveComponent('exercisesInDashboard'));   
+  };
+
   return (
     <div>
 
@@ -92,7 +100,7 @@ function WorkoutBar({workoutData, updateWorkout} : WorkoutBarProps & { updateWor
               <span>{exercise.reps}</span>
             </p>
           ))}
-          <button className={styles.seeDetailedWorkout}><b>See Workout</b></button>
+          <button onClick={() => handleClick()} className={styles.seeDetailedWorkout}><b>See Workout</b></button>
         </div>
       )}
 
