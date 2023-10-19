@@ -10,7 +10,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
     <div className="relative mt-5">
       {/* Hamburger button */}
       <button
-        className="text-black w-10 h-10 relative focus:outline-none bg-white z-50" // Set z-index to display above other content
+        className="text-black w-10 h-10 relative focus:outline-none bg-white z-50" 
         onClick={toggleMenu}
       >
         <div>
@@ -49,18 +49,11 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
       <div
         className={`fixed left-0 top-0 h-full w-1/2 bg-white transform ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 z-40`}// Set z-index to display above other content
+        } transition-transform duration-150`}
       >
-        <button
-          onClick={toggleMenu}
-          className="absolute top-5 right-5 text-black w-10 h-10 focus:outline-none"
-        >
-          X {/* Close button */}
-        </button>
+      
         <div className="mt-20 text-center">
-          {/* Place your navigation links here */}
-          <button >Dashboard</button>
-         
+          <button>Dashboard</button>
         </div>
       </div>
     </div>
