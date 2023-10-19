@@ -1,25 +1,25 @@
 import keycloak from "../Keycloak";
 
-export async function addWorkoutToPlan(planId: any, workoutId: number, day: number) {
+export async function addWorkoutToPlan(planId: any, workoutIds: number[], days: number[]) {
     const accessToken = keycloak.token;
     const apiURL = 'https://mefit-backend.azurewebsites.net/api/plan/addworkouttoplan';
 
     console.log("Access Token:", accessToken);  // Log the token
-    console.log(planId, workoutId, day);
+    console.log(planId, workoutIds, days);
+
     try {
         console.log("About to fetch data");  // Log before fetch
 
         const response = await fetch(apiURL, {
             method: 'POST',  // Make it a POST request
-            mode: 'cors',
             headers: {
-              'Authorization': `Bearer ${accessToken}`, 
-              'Content-Type': 'application/json'  // Note the change here to match the cURL request
+                'Authorization': `Bearer ${accessToken}`, 
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 id: planId,
-                workoutId: workoutId,
-                day: day
+                workoutIds: workoutIds, // Change to an array
+                days: days // Change to an array
             })
         });
        

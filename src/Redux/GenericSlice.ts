@@ -56,6 +56,9 @@ interface programData {
 interface programId {
   id:number |null,
 }
+interface workoutId {
+  id:number |null,
+}
 
 /**
  * Represents the data for a given exercise.
@@ -98,6 +101,7 @@ interface DataState {
   workoutData: WorkoutData;
   programData:programData;
   programId:programId;
+  workoutId: workoutId;
   loading: boolean;
   RegistrationValidation: RegistrationValidation;
   error: string | null;
@@ -140,6 +144,10 @@ const initialState: DataState = {
   programId:{
     id: null,
   },
+  workoutId : {
+    id: null,
+  },
+
   exerciseData: {
     id: null,
     name: null,
@@ -175,6 +183,7 @@ const initialState: DataState = {
     fitnessPreference: null,
     applicationText: null,
   }
+  
 };
 
 
@@ -738,6 +747,9 @@ setPlanId: (state, action) => {
 setApplicationTextUser:(state, action) => {
   state.userData.applicationText = action.payload;
 },
+setWorkoutId: (state, action) => {
+  state.workoutId.id = action.payload;
+}
 
 
 
