@@ -7,19 +7,15 @@ import { RootState } from "../../../Redux/Store";
 import keycloak from "../../../Keycloak";
 import { useNavigate } from "react-router-dom";
 
-
 function ProfilePage() {
-  console.log(keycloak.token);
    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const user = useSelector((state: any) => state.data.userData);
   const navigate = useNavigate();
-
-
-  
+  console.log(keycloak)
   useEffect(() => {
     dispatch(getLoginAsync());
   }, [dispatch]); 
-
+  
  const handleEditClick= () => {
   navigate('/editprofile')
  }
@@ -28,15 +24,18 @@ function ProfilePage() {
     navigate('/app')
    }
 
- const isAdmin = keycloak.hasRealmRole('admin');
+ const isAdmin = keycloak.hasRealmRole('manage-users');
  const isContributor = keycloak.hasRealmRole('contributor');
+ const isuser = keycloak.hasRealmRole('user');
 
 
 
 
 
 
-console.log(user)
+
+
+
   return (
 <div className="flex flex-col justify-center items-center p-4">
 
@@ -44,7 +43,7 @@ console.log(user)
         settings
     </button> 
     <br />
-    {isAdmin || isContributor ? null : (
+    {!isuser ? null : (
         <button onClick={ handleApplicationClick} className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
             Apply to become a contributor
         </button> 

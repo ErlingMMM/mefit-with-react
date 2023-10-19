@@ -1,63 +1,75 @@
-    import { useEffect, useState } from 'react';
-    import ExerciseModal from '../modals/ExerciseModal';
+import React, { useEffect, useState } from 'react';
+import { getAllWorkouts } from '../../endpoints/getAllWorkouts_endpoint';
+import { addWorkoutToPlan } from '../../endpoints/addWorkoutToPlan_endpoint';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../Redux/Store';
+import { useNavigate } from 'react-router-dom';
 
-import { AsyncThunkAction, Dispatch, AnyAction } from '@reduxjs/toolkit';
- 
+function AddWorkoutsComponent() {
+  const [workouts, setWorkouts] = useState([]);
+  const [workoutIdsList, setWorkoutIdsList] = useState<any[]>([]);
+  const [daysList, setDaysList] = useState<number[]>([]);
+  const navigate = useNavigate();
 
-    function AddWorkoutsCompoent() {
-        const [workouts, setWorkouts] = useState([]);
-  const [selectedWorkout, setSelectedWorkout] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const planId = useSelector((state: RootState) => state.data.programId.id);
 
   useEffect(() => {
-    fetch('https://mefit-backend.azurewebsites.net/api/Workouts') // Replace with your API URL
-      .then(response => response.json())
+    getAllWorkouts()
       .then(data => setWorkouts(data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
-      
-        const openModal = (workout: any) => {
-          setSelectedWorkout(workout);
-          setIsModalOpen(true);
-        }
 
-
-    return (
-        <div>
-          <div>
-            <ul>
-              {Array.isArray(workouts) && workouts.length > 0 ? (
-                workouts.map((workout: any) => (
-                  <li key={workout.id} className="mb-6">
-                    <button onClick={() => openModal(workout)} className="flex items-start">
-                 
-                      <div>
-                        <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
-                          {workout.name}
-                        </h3>
-                        <p style={{ marginLeft: '-45px' }}>{workout.description}</p>
-                      </div>
-                    </button>
-                  </li>
-                ))
-              ) : (
-                <div>
-                  <li>No matching workouts</li>
-                </div>
-              )}
-            </ul>
-          </div>
-          <ExerciseModal
-            isOpen={isModalOpen}
-            closeModal={() => setIsModalOpen(false)}
-            exercise={selectedWorkout}
-          />
-        </div>
-      );
+  const toggleWorkout = (workoutId: any) => {
+    const index = workoutIdsList.indexOf(workoutId);
+    if (index === -1) {
+      const day = prompt("Enter the day for the workout");
+      if (day !== null && !isNaN(parseInt(day))) {
+        setWorkoutIdsList([...workoutIdsList, workoutId]);
+        setDaysList([...daysList, parseInt(day)]);
+      }
+    } else {
+      const newWorkoutIdsList = [...workoutIdsList];
+      const newDaysList = [...daysList];
+      newWorkoutIdsList.splice(index, 1);
+      newDaysList.splice(index, 1);
+      setWorkoutIdsList(newWorkoutIdsList);
+      setDaysList(newDaysList);
     }
-    
-    export default AddWorkoutsCompoent;
+  };
 
-function dispatch(arg0: AsyncThunkAction<any, void, { state?: unknown; dispatch?: Dispatch<AnyAction> | undefined; extra?: unknown; rejectValue?: unknown; serializedErrorType?: unknown; pendingMeta?: unknown; fulfilledMeta?: unknown; rejectedMeta?: unknown; }>) {
-    throw new Error('Function not implemented.');
+  const handleSaveButton = () => {
+    addWorkoutToPlan(planId, workoutIdsList, daysList)
+      .then(result => navigate('/rolepage'))
+      .catch(error => console.error("Error adding workouts to plan:", error));
+  };
+
+  return (
+    <div className="container mx-auto p-4">
+      <ul>
+        {Array.isArray(workouts) && workouts.length > 0 ? (
+          workouts.map((workout: any) => (
+            <li
+              key={workout.id}
+              className={`mb-6 p-4 rounded-lg shadow-sm cursor-pointer ${workoutIdsList.includes(workout.id) ? 'bg-yellow-300' : 'bg-white'}`}
+              onClick={() => toggleWorkout(workout.id)}
+            >
+              <div className="flex items-center">
+                <img src={workout.imageUrl} alt="Workout" className="w-20 h-20 rounded-full mr-4" /> {/* Assuming there's an imageUrl property */}
+                <div>
+                  <h3 className="text-lg font-bold">{workout.name}</h3>
+                  <p>{workout.description}</p>
+                  <p className="text-sm text-gray-500">{workout.duration}</p> {/* Assuming there's a duration property */}
+                </div>
+              </div>
+            </li>
+          ))
+        ) : (
+          <li>No matching workouts</li>
+        )}
+      </ul>
+      <button className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save</button>
+    </div>
+  );
 }
+
+export default AddWorkoutsComponent;

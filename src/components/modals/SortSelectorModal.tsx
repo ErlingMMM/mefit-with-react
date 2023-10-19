@@ -1,12 +1,12 @@
 import { XIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
-import { setSelectedSearchOption } from '../../Redux/GenericSlice';
+import { setSelectedSortOption } from '../../Redux/GenericSlice';
 
 function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) {
   const dispatch = useDispatch();
 
-  const searchSelector = (option: string) => {
-    dispatch(setSelectedSearchOption(option.toString()));
+  const sortSelector = (option: string) => {
+    dispatch(setSelectedSortOption(option.toString()));
     closeModal();
   }
 
@@ -20,7 +20,7 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
           aria-modal="true"
           onClick={closeModal}
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-0 transition-opacity"></div>
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-20 transition-opacity"></div>
 
           <div className="relative overflow-hidden rounded-lg bg-white text-center shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl max-h-screen">
             <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 text-black">
@@ -30,9 +30,10 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
               />
             </div>
             <div className="p-4">
-              <button onClick={() => searchSelector("muscleGroup")}>Muscle Group</button>
-              <button onClick={() => searchSelector("difficulty")}>Difficulty</button>
-              <button onClick={() => searchSelector("name")}>Name</button>
+              <button onClick={() => sortSelector("a-z")}>a-z</button>
+              <button onClick={() => sortSelector("z-a")}>z-a</button>
+              <button onClick={() => sortSelector("most recent")}>most recent</button>
+              <button onClick={() => sortSelector("least recent")}>least recent</button>
             </div>
           </div>
         </div>

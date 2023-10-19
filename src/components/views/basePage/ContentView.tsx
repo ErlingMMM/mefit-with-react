@@ -1,8 +1,8 @@
-import Explorer from '../explorer/Explorer';
+import Explorer from '../explorer/explore/Explorer';
 import Dashboard from '../dashboard/Dashboard';
 import Profile from '../profile/Profile';
-import WorkoutsInProgram from '../FilteredLists/WorkoutsInProgram';
-import ExercisesInWorkouts from '../FilteredLists/ExercisesInWorkouts';
+import WorkoutsInProgram from '../../lists/listsFiltered/WorkoutsInProgram';
+import ExercisesInWorkouts from '../../lists/listsFiltered/ExercisesInWorkouts';
 
 
 function ContentView({ activeComponent = 'dashboard' }: { activeComponent?: string }) {
