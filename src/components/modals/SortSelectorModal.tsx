@@ -20,7 +20,7 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
           aria-modal="true"
           onClick={closeModal}
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-0 transition-opacity"></div>
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-20 transition-opacity"></div>
 
           <div className="relative overflow-hidden rounded-lg bg-white text-center shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl max-h-screen">
             <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 text-black">
