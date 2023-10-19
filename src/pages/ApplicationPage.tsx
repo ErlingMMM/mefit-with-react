@@ -5,21 +5,26 @@ import { AnyAction } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Redux/Store";
 import { SetStateAction } from "react";
-import { setApplicationTextUser } from "../Redux/GenericSlice";
+import { AddApplicationUserAsync, setApplicationTextUser } from "../Redux/GenericSlice";
 
 function ApplicationPage (){
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
     const UserApplicationText = useSelector((state: any) =>  state.data.userData.applicationText);
     const navigate = useNavigate();
     const onClickBack = () => { 
-    dispatch(setActiveComponent('profile'));
+        navigate('/');
     }
 
     const handleApplicationChange = (event: { target: { value: SetStateAction<string>; }; }) => {
         dispatch(setApplicationTextUser(event.target.value));
-        console.log(UserApplicationText)
-    
-      }
+    }
+
+    const handleApplicationSubmit = (event: { preventDefault: () => void; }) => {
+        console.log(UserApplicationText);
+        dispatch(AddApplicationUserAsync({ ApplicationText: UserApplicationText }));
+        dispatch(setActiveComponent('profile'));   
+        navigate('/');
+    }
 
     return (
         <div className='bg-gray-500 h-screen flex flex-col justify-center items-center'>
@@ -31,7 +36,7 @@ function ApplicationPage (){
                 <label className='block mb-2 text-gray-800' htmlFor="bio">Application text:</label>
                 <textarea onChange={handleApplicationChange} className='w-full h-40 p-2 mb-4 border rounded align-top' id="bio" name="bio"></textarea>
     
-                <button  className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' type="submit">Save</button>
+                <button  onClick={handleApplicationSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' type="submit">Send application</button>
             </form>
         </div>
     )
