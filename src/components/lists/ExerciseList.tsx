@@ -42,6 +42,19 @@ function ExerciseList({ exercises, content }: {content: string, exercises: any[]
               <p style={{ marginLeft: '10px' }}>{exercise.muscleGroup}</p>
             </>
           )}
+                
+           
+            {/*  
+            {content === 'dashboard' && (
+              <>
+              <p >Text goes here {exercise.valueDashBoardExerciseObject}</p>
+              <br />
+              <p > Text goes here {exercise.valueDashBoardExerciseObject}</p>
+            </>
+             )}
+            */}
+        
+         
           </div>
         </button>
       </li>
