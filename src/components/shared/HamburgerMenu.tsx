@@ -15,14 +15,14 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
         <div>
           <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <span
-  className={`block absolute h-0.5 w-5 bg-current transform transition duration-75 ease-in-out ${
-    isOpen ? 'rotate-45' : ''
+  className={`block absolute h-0.5  bg-current transform transition duration-75 ease-in-out ${
+    isOpen ? 'rotate-45 w-5' : 'w-4'
   }`}
   style={{ left: '20px' }} 
 ></span>
 <span
-  className={`block absolute h-0.5 w-5 bg-current transform transition duration-75 ease-in-out ${
-    isOpen ? '-rotate-45' : ''
+  className={`block absolute h-0.5 bg-current transform transition duration-75 ease-in-out ${
+    isOpen ? '-rotate-45 w-5' : 'w-4'
   }`}
   style={{ left: '20px' }} 
 ></span>
@@ -30,16 +30,16 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
           </div>
           <div>
             <span
-              className={`block absolute h-0.5 w-5 bg-current transform transition duration-75 ease-in-out ${
+              className={`block absolute h-0.5 w-4 bg-current transform transition duration-75 ease-in-out ${
                 isOpen ? 'opacity-0' : ''
               }`}
-              style={{ top: '10px', left: '30px' }} 
+              style={{ top: '13px', left: '30px' }} 
             ></span>
             <span
-              className={`block absolute h-0.5 w-5 bg-current transform transition duration-75 ease-in-out ${
+              className={`block absolute h-0.5 w-4 bg-current transform transition duration-75 ease-in-out ${
                 isOpen ? 'opacity-0' : ''
               }`}
-              style={{ top: '30px', left: '30px' }} 
+              style={{ top: '28px', left: '30px' }} 
             ></span>
           </div>
         </div>
