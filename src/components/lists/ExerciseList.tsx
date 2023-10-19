@@ -47,9 +47,9 @@ function ExerciseList({ exercises, content }: {content: string, exercises: any[]
               
             {content === 'dashboard' && (
               <>
-              <b >{exercise.name}</b>
+              
               <br />
-              <p > {exercise.muscleGroup}</p>
+            
               <b > <span>Sets: {exercise.sets}     </span> <span>Reps: {exercise.reps}</span></b>
             </>
              )}
