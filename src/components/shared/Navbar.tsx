@@ -19,9 +19,13 @@ function Navbar() {
       {/* Hamburger Menu on Mobile */}
       <div className="block sm:hidden relative">
         <HamburgerMenu isOpen={menuOpen} toggleMenu={() => setMenuOpen(!menuOpen)} />
-        <h1 className="font-bold text-lg italic text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          MeFit
-        </h1>
+        {menuOpen ? null : (
+          <h1
+            className="font-bold text-lg italic text-center absolute top-0 left-1/2 transform -translate-x-1/2"
+          >
+            MeFit
+          </h1>
+          )}
       </div>
 
       {/* Navigation Links (hidden on mobile, visible on small screens and larger) */}

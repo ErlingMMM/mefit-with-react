@@ -48,14 +48,19 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => 
 
       {/* Side menu */}
       <div
-        className={`fixed left-0 top-0 h-full w-2/3 bg-black transform ${
+        className={`fixed left-0 top-0 h-full w-2/3 bg-black transform opacity-90 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-150`}
       >
-         <h1 className="font-bold text-lg italic text-right absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <h1
+          className={`font-bold text-custom-green text-2xl italic text-right absolute top-6 right-5 ${
+            isOpen ? 'top-2' : 'hidden'
+          }`}
+
+        >
           MeFit
         </h1>
-        <div className="mt-20 text-center">
+        <div className={`mt-20 text-center ${isOpen ? 'ml-12' : 'ml-0'}`}>
           <button>Dashboard</button>
         </div>
       </div>
