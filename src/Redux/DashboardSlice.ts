@@ -23,7 +23,7 @@ interface WorkoutData {
   duration: number;
   day: number;
   isCompleted: boolean;
-  exercises?: ExerciseData[];
+  exercises: ExerciseData[];
 }
 
 
