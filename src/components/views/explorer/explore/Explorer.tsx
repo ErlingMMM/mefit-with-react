@@ -52,12 +52,16 @@ function Explorer() {
       ? 'Search exercises'
       : 'Search workouts';
 
-
+      const availableSearchOptions = {
+        exercises: ["name", "muscleGroup", "difficulty"],
+        programs: ["name", "description", "programDifficulty"],
+        workouts: ["name", "recommendedFitness", "description"],
+      };
 
   return (
     <>
       <br />
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} />
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} placeholder={placeholder} availableSearchOptions={availableSearchOptions[activeComponent as keyof typeof availableSearchOptions]} />
       <br />
       <div className="flex justify-between w-full space-x-1">
         <button
