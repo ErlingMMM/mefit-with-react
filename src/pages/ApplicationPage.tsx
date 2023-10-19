@@ -4,7 +4,7 @@ import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Redux/Store";
-import { SetStateAction } from "react";
+import { SetStateAction, useState } from "react";
 import { AddApplicationUserAsync, setApplicationTextUser } from "../Redux/GenericSlice";
 
 function ApplicationPage (){

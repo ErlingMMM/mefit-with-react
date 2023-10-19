@@ -32,7 +32,7 @@ function RolePage () {
             <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end" onClick={() => setCurrentForm(2)}>Add Workout</button>
  
             <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end" onClick={() => setCurrentForm(3)}>Add Program</button>
-            {isAdmin ? null : (
+            {!isAdmin ? null : (
                 <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end" onClick={() => setCurrentForm(4)}> Manage applications</button>
             )}
         </div>

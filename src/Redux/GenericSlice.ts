@@ -615,7 +615,7 @@ export const getUserApplicationsAsync = createAsyncThunk(
       if (resp.ok) {
         const users = await resp.json();
         if (users.length != null) {
-          console.log("user is  not null")
+          console.log(users)
           return { users };
         } else {
           throw new Error('Error. User not found');
@@ -759,7 +759,6 @@ setApplicationTextUser:(state, action) => {
       .addCase( getUserApplicationsAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.userApplication = action.payload.users;
-        console.log(state.userApplication)
       })
       
       .addCase(getExcersiceInfo.pending, (state) => {
