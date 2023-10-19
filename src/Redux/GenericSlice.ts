@@ -56,6 +56,9 @@ interface programData {
 interface programId {
   id:number |null,
 }
+interface workoutId {
+  id:number |null,
+}
 
 /**
  * Represents the data for a given exercise.
@@ -98,10 +101,12 @@ interface DataState {
   workoutData: WorkoutData;
   programData:programData;
   programId:programId;
+  workoutId: workoutId;
   loading: boolean;
   RegistrationValidation: RegistrationValidation;
   error: string | null;
   selectedSearchOption: string | null;
+  selectedSortOption: string | null;
 }
 
 /**
@@ -139,6 +144,10 @@ const initialState: DataState = {
   programId:{
     id: null,
   },
+  workoutId : {
+    id: null,
+  },
+
   exerciseData: {
     id: null,
     name: null,
@@ -165,6 +174,7 @@ const initialState: DataState = {
   },
 
   selectedSearchOption: "name",
+  selectedSortOption: "most recent",
   loading: false,
 
   error: null,
@@ -173,6 +183,7 @@ const initialState: DataState = {
     fitnessPreference: null,
     applicationText: null,
   }
+  
 };
 
 
@@ -673,6 +684,9 @@ setUserGender:(state, action) => {
 setSelectedSearchOption: (state, action) => {
   state.selectedSearchOption = action.payload;
 },
+setSelectedSortOption: (state, action) => {
+  state.selectedSortOption = action.payload;
+},
 setRegistrationBoolean: (state, action) => {
   state.RegistrationValidation.isRegistered = action.payload;
 },
@@ -733,6 +747,9 @@ setPlanId: (state, action) => {
 setApplicationTextUser:(state, action) => {
   state.userData.applicationText = action.payload;
 },
+setWorkoutId: (state, action) => {
+  state.workoutId.id = action.payload;
+}
 
 
 
@@ -792,9 +809,6 @@ setApplicationTextUser:(state, action) => {
   },
 });
 
-export const {setPlanId, setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption} = dataSlice.actions;
+export const {setPlanId, setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setSelectedSortOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
-
-
-

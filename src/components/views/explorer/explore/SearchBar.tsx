@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { SearchIcon } from '@heroicons/react/outline';
 import { DotsVerticalIcon } from '@heroicons/react/outline';
-import '../../../styles/SearchBar.css';
-import SearchSelectorModal from '../../modals/SearchSelectorModal';
+import '../../../../styles/SearchBar.css';
+import SearchSelectorModal from '../../../modals/SearchSelectorModal';
 import { useSelector } from 'react-redux';
 
 interface SearchBarProps {
@@ -11,7 +11,14 @@ interface SearchBarProps {
   placeholder: string;
 }
 
-function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps) {
+interface SearchBarProps {
+  searchQuery: string;
+  setSearchQuery: (value: string) => void;
+  placeholder: string;
+  availableSearchOptions: string[]; 
+}
+
+function SearchBar({ searchQuery, setSearchQuery, placeholder, availableSearchOptions }: SearchBarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const selectedSearchOptionRedux = useSelector((state: any) => state.data.selectedSearchOption);
 
@@ -60,9 +67,13 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder }: SearchBarProps)
           <DotsVerticalIcon className="w-6 h-6 text-gray-400 hover:text-black" />
         </button>
       </div>
-      <SearchSelectorModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
+      <SearchSelectorModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} availableSearchOptions={availableSearchOptions} />
     </div>
   );
 }
 
 export default SearchBar;
+
+
+
+
