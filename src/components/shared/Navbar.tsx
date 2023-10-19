@@ -4,7 +4,6 @@ import keycloak from "../../Keycloak";
 import { setActiveComponent } from '../../Redux/NavigationSlice';
 import { useDispatch } from 'react-redux';
 
-
 function Navbar() {
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,9 +24,8 @@ function Navbar() {
         </h1>
       </div>
 
-      {/* Navigation Links */}
-      <div className={`${menuOpen ? 'block' : 'hidden'
-        } sm:block sm:flex sm:space-x-4 nav-links`}>
+      {/* Navigation Links (hidden on mobile, visible on small screens and larger) */}
+      <div className="sm:flex sm:space-x-4 nav-links hidden">
         <div className="user-indicator">User: John Doe</div>
         <button onClick={() => switchToComponent('dashboard')}>Dashboard</button>
         <button onClick={() => switchToComponent('profile')}>Profile</button>
