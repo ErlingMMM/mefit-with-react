@@ -64,7 +64,18 @@ function DeleteUserView () {
             <h1 className="text-2xl font-bold mb-4">Delete Users</h1>
             {!isLoading && Users.map((user: any) => (
               <div key={user.id} className="mb-2 p-2 border-b border-gray-300 flex justify-between items-center">
-                <p className="text-lg">{user.id}</p>
+                <div>
+  <div className="mb-4">
+    <p className="text-lg">{user.firstName}</p>
+  </div>
+  <div className="mb-4">
+    <p className="text-lg">{user.lastName}</p>
+  </div>
+  <div className="mb-4">
+    <p className="text-lg">{user.id}</p>
+  </div>
+</div>
+
                 <button    onClick={() =>  DeleteUserClick(user.id)} className="bg-[#a3e635] hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                   Delete
                 </button>
