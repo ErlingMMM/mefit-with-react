@@ -7,10 +7,12 @@ import AuthGuardAdminContributor from '../AuthGuard/AuthGuardAdminContributor';
 import keycloak from '../Keycloak';
 import ContributorApplications from '../components/shared/ContributorApplications';
 import DeleteUserView from '../components/shared/DeleteUsersView';
+import { useNavigate } from "react-router-dom";
 
 function RolePage() {
     const isAdmin = keycloak.hasRealmRole('admin');
     const [currentForm, setCurrentForm] = useState(1);
+    const navigate = useNavigate();
 
     const renderForm = () => {
         switch (currentForm) {
@@ -27,7 +29,10 @@ function RolePage() {
             default:
                 return null;
         }
-    };
+    }
+    const onClickBack = () => { 
+        navigate('/');
+    }
 
     return (
         <div className="bg-white h-screen flex flex-col">
@@ -46,8 +51,15 @@ function RolePage() {
                     <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
                         onClick={() => setCurrentForm(5)}>Manage user</button>
                 )}
+                <button className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
+                    onClick={onClickBack}>Back</button>
             </div>
             <div className="bg-white flex-grow flex flex-col justify-center items-center">
+            <h1
+        className={`font-bold text-2xl italic text-right absolute top-6 right-5`}
+      >
+        MeFit
+      </h1>
                 {renderForm()}
             </div>
         </div>

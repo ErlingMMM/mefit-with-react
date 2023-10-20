@@ -78,7 +78,7 @@ function AddExcersiceForm() {
 
     return (
       <div>
-        <h1 className="text-2xl font-bold mb-4">Add Excersice</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Add Exercise</h1>
       <form className='bg-white p-8 rounded '>
       <label className='block mb-2 text-gray-800' htmlFor="name">name:</label>
       <input onChange={handleNameChange}  className='w-full p-2 mb-4 border rounded' type="text" id="name" name="name" />
