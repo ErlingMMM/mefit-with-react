@@ -11,7 +11,6 @@ function ProfilePage() {
    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const user = useSelector((state: any) => state.data.userData);
   const navigate = useNavigate();
-  console.log(keycloak)
   useEffect(() => {
     dispatch(getLoginAsync());
   }, [dispatch]); 

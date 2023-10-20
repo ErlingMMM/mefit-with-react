@@ -3,9 +3,14 @@ import HamburgerMenu from './HamburgerMenu';
 import keycloak from "../../../Keycloak";
 import { setActiveComponent } from '../../../Redux/NavigationSlice';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+  const isAdmin = keycloak.hasRealmRole('admin');
+ const isContributor = keycloak.hasRealmRole('contributor');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const [menuOpen, setMenuOpen] = useState(false);
 
   const switchToComponent = (component: string) => {
@@ -13,6 +18,12 @@ function Navbar() {
     // Close the menu on mobile after clicking a link
     setMenuOpen(false);
   };
+
+  const OnclickAdminContributor = () => {
+    console.log("hei")
+    navigate('/rolepage')
+    
+  }
 
   return (
     <div>
@@ -34,6 +45,10 @@ function Navbar() {
         <button onClick={() => switchToComponent('dashboard')}>Dashboard</button>
         <button onClick={() => switchToComponent('profile')}>Profile</button>
         <button onClick={() => switchToComponent('explorer')}>Explorer</button>
+
+        {(isAdmin || isContributor) && ( 
+          <button onClick={OnclickAdminContributor}>admin/contriutor area</button>
+        )}
         {keycloak.authenticated && (
           <button onClick={() => keycloak.logout()}>Logout</button>
         )}
