@@ -5,21 +5,20 @@ import { ThunkDispatch } from "redux-thunk";
 import { RootState } from "../../Redux/Store";
 import { AnyAction } from "@reduxjs/toolkit";
 import keycloak from "../../Keycloak";
+import { get } from "http";
 
 function ContributorApplications() {
+    const [userRoles, setUserRoles] = useState<{ [userId: string]: number }>({});
 
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [ApplicationApproved,setApplicationApproved] = useState(false);
 
-
-    const GetUserRole =  async (userId:string) => {
-        const keycloakBaseUrl = "https://lemur-10.cloud-iam.com/auth/"
-        const realm = "deploy-mefit"  
-        const clientId = "mefit-frontend-local"
-        const url = `${keycloakBaseUrl}/admin/realms/${realm}/users/${userId}/role-mappings/clients/${clientId}`;
-
+    const GetUserRole = async (userId: string) => {
+        const keycloakBaseUrl = keycloak.authServerUrl;
+        const realm = keycloak.realm;
+        const url = `${keycloakBaseUrl}/admin/realms/${realm}/users/${userId}/role-mappings/realm`;
 
         try {
             const response = await fetch(url, {
@@ -31,16 +30,22 @@ function ContributorApplications() {
             });
         
             if (response.ok) {
-              const data = await response.json();
-              console.log(data)
-              return data; 
-            } else {
-              throw new Error('Network response was not ok.');
+                const data = await response.json();
+                if(data.length >1){
+                    return  2 
+                }
+                else{
+                    return 1
+                }
+             
             }
-        } catch (error: any) {
-            throw new Error('There has been a problem with your fetch operation: ' + (error.message || error));
+        } 
+        catch (error) {
+            console.error(error);
         }
-        }
+    }
+    
+
     
 
   
@@ -103,31 +108,55 @@ function ContributorApplications() {
       [userId]: false, 
     }));
   };
+  
+useEffect(() => {
+    const fetchUserRoles = async () => {
+        const roles: { [userId: string]: number } = {};
+        await Promise.all(UserApplications.map(async (obj: any) => {
+            const userId = obj.id;
+            const role = await GetUserRole(userId);
+            roles[userId] = role || 0;
+        }));
+        setUserRoles(roles);
+    };
+    
+    fetchUserRoles();
+}, [UserApplications]);
+
+
+  
     return (
         <div>
         <h1 className="font-bold text-2xl text-black">Contributor Applications</h1>
-        {isLoading ? null : (
-        <ul>
-          {UserApplications.map((obj: any) => (
-            <li key={obj.id}>
-              {divVisibility[obj.id] !== false &&  ( // Vis diven hvis tilstanden er undefined eller true
-                <div>
-                  <br />
-                  <span className="font-bold text-white">id:</span> {obj.id} <br />
-                  <span className="font-bold text-white">fitnessPreference:</span> {obj.fitnessPreference} <br />
-                  <span className="font-bold text-white">application text:</span> {obj.applicationText}
-                  <button
-                    onClick={() => handleApplicationClick(obj.id)}
-                    className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline"
-                  >
-                    accept application
-                  </button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+{!isLoading && (
+  <ul>
+    {UserApplications.map((obj: any) => {
+      const userId = obj.id;
+      const userRole = userRoles[userId];
+      const isVisible = userRole === 1 && divVisibility[userId] !== false;
+
+      return (
+        isVisible && (
+          <li key={userId}>
+            <div>
+              <br />
+              <span className="font-bold text-white">id:</span> {userId} <br />
+              <span className="font-bold text-white">fitnessPreference:</span> {obj.fitnessPreference} <br />
+              <span className="font-bold text-white">application text:</span> {obj.applicationText}
+              <button
+                onClick={() => handleApplicationClick(userId)}
+                className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline"
+              >
+                accept application
+              </button>
+            </div>
+          </li>
+        )
+      );
+    })}
+  </ul>
+)}
+
       </div>
 
     );

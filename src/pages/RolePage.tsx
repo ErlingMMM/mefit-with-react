@@ -35,7 +35,7 @@ function RolePage() {
                     onClick={() => setCurrentForm(2)}>Add Workout</button>
                 <button className="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
                     onClick={() => setCurrentForm(3)}>Add Program</button>
-                {!isAdmin ? null : (
+                {isAdmin &&  (
                     <button className="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
                         onClick={() => setCurrentForm(4)}>Manage applications</button>
                 )}
