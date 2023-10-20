@@ -10,6 +10,8 @@ interface SideMenuProps {
 
 const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent }) => {
   const activeComponent = useSelector((state: RootState) => state.navigation.activeComponent);
+  const user = useSelector((state: any) => state.data.userData.fitnessPreference);
+
 
   return (
     <div
@@ -32,7 +34,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent }) => {
           </button>
         </div>
         <div className='text-white'>{keycloak.tokenParsed ? keycloak.tokenParsed.name : 'Unknown'}</div>
-        <div className='text-custom-green text-sm'>Beginner</div>
+        <div className='text-custom-green text-sm'>{user}</div>
         <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green": "text-white" } mt-auto`} >Dashboard</button>
         <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green": "text-white" } mt-auto`} >Explorer</button>
         {keycloak.authenticated && (
