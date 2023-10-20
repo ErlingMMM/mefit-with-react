@@ -41,7 +41,7 @@ function Navbar() {
 
       {/* Navigation Links (hidden on mobile, visible on small screens and larger) */}
       <div className="sm:flex sm:space-x-4 nav-links hidden">
-        <div>User: John Doe</div>
+        <div>User: {keycloak.tokenParsed ? keycloak.tokenParsed.name : 'Unknown'}</div>
         <button onClick={() => switchToComponent('dashboard')}>Dashboard</button>
         <button onClick={() => switchToComponent('profile')}>Profile</button>
         <button onClick={() => switchToComponent('explorer')}>Explorer</button>
