@@ -6,9 +6,12 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
 import { AddWorkoutAsync, setDescriptionWorkout, setNameWorkout, setRecommendedFitnessWorkout, setRecommendedImage } from '../../Redux/GenericSlice';
 import { workerData } from 'worker_threads';
+import AddExerciseComponent from '../RoleBasedComponents/AddExerciseComponent';
+import setWorkoutId from '../../Redux/GenericSlice';
 
 function AddWorkoutForm() {
   const navigate = useNavigate();
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
     const WorkoutName = useSelector((state: any) =>  state.data.workoutData.name);
     const WorkoutDescription = useSelector((state: any) =>  state.data.workoutData.description);
@@ -36,11 +39,26 @@ function AddWorkoutForm() {
   
     }
 
-    const handleSave = () => {   
+    const handleSave = (e: React.FormEvent) => {   
+      e.preventDefault();
       dispatch(AddWorkoutAsync({WRname: WorkoutName, WRdescription: WorkoutDescription,  WRfintessLVL: WorkoutFitnessLVL, WRimgUrl: WorkoutImage }))
-      navigate('/')
-    }
+      .then(response => {
+        console.log("Promise resolved", response);
+        if (response.payload) {
+          setIsFormSubmitted(true);  // Ensure this line is being reached
+          
+        }
+      })
+      .catch(error => {
+        console.log("Promise rejected", error);
+      });
+    };
+      
+    
     return (
+      isFormSubmitted
+        ? <AddExerciseComponent />
+        : (
       <form className='bg-white p-8 rounded shadow-md'>
       <label className='block mb-2 text-gray-800' htmlFor="bio">name:</label>
       <input  onChange={handleNameChange}  className='w-full p-2 mb-4 border rounded' type="text" id="name" name="name" />
@@ -56,7 +74,7 @@ function AddWorkoutForm() {
 
       <button onClick={handleSave} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' type="submit">Save</button>
 
-    </form>
+    </form>)
     );
 }
 

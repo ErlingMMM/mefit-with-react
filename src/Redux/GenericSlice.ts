@@ -529,10 +529,10 @@ export const AddWorkoutAsync = createAsyncThunk(
         image: WRimgUrl,
       }),
     });
-    console.log(response.text())
     if (response.ok) {
       console.log("du vet at livet smiler for mefit boysen")
-      const user = await response.json();
+      const workout = await response.json();
+      return workout.id;
     }
 
     // Handles errors if the response is not ok
@@ -857,7 +857,9 @@ setWorkoutId: (state, action) => {
       .addCase(getProgramInfo.fulfilled, (state, action) => {
         state.loading = false;
         state.programData = action.payload.program;
-
+      })
+      .addCase(AddWorkoutAsync.fulfilled, (state, action) => {
+        state.workoutId.id = action.payload; // Assuming you have workoutId.id in your initial state
       })
       .addCase(getAllUsersAsync.fulfilled, (state, action) => {
         state.loading = false;
@@ -865,7 +867,6 @@ setWorkoutId: (state, action) => {
         console.log(state.userData)
 
       })
-      
   },
 });
 
