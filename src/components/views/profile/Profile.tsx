@@ -24,7 +24,7 @@ function ProfilePage() {
     navigate('/app')
    }
 
- const isAdmin = keycloak.hasRealmRole('manage-users');
+ const isAdmin = keycloak.hasRealmRole('admin');
  const isContributor = keycloak.hasRealmRole('contributor');
  const isuser = keycloak.hasRealmRole('user');
 
@@ -43,7 +43,7 @@ function ProfilePage() {
         settings
     </button> 
     <br />
-    {!isuser ? null : (
+    { !(isAdmin || isContributor) && (
         <button onClick={ handleApplicationClick} className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
             Apply to become a contributor
         </button> 
