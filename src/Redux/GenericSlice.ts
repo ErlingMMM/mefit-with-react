@@ -673,6 +673,28 @@ export const getAllUsersAsync = createAsyncThunk(
   }
 );
 
+
+
+export const DeleteUserAsync = createAsyncThunk(
+  'DeleteUserAsync',
+  async ({GUID}: {GUID: string}) => {
+
+    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Users/user/${GUID}`, {  
+      method: 'DELETE',
+      headers: {
+        'Authorization':`Bearer ${keycloak.token}`,
+        'Content-Type':'application/json'
+    },
+    });
+    console.log(response.text())
+    if (response.ok) {
+      console.log("Forespørselen var vellykket!");
+    } else {  
+      throw new Error('Error: Unvalid response from server.');
+    }
+  }
+);
+
 /**
  * Redux slice for managing user data, exercise data, workout data, and program data.
  * @name dataSlice

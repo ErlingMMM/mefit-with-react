@@ -2,7 +2,7 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { useEffect, useState } from "react";
-import { getAllUsersAsync } from "../../Redux/GenericSlice";
+import { DeleteUserAsync, getAllUsersAsync } from "../../Redux/GenericSlice";
 import keycloak from "../../Keycloak";
 
 function DeleteUserView () {
@@ -22,7 +22,7 @@ function DeleteUserView () {
         const keycloakBaseUrl = keycloak.authServerUrl;
         const realm = keycloak.realm;
         const url = `${keycloakBaseUrl}admin/realms/${realm}/users/${userId}/`;
-
+        
         try {
             const response = await fetch(url, {
               method: 'DELETE',
@@ -42,11 +42,12 @@ function DeleteUserView () {
         }
     }
 
-      const DeleteUserClick =  (userId: string) => {
-        DeleteUser(userId)
-      }
+      const DeleteUserClick = (userId: string) => {
+        DeleteUser(userId);
+        dispatch(DeleteUserAsync({ GUID: userId }));
+      };
 
-      console.log(Users)
+      console.log(Users);
         return (
             <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
             <h1 className="text-2xl font-bold mb-4">Delete Users</h1>
