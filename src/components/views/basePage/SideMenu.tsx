@@ -31,7 +31,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent }) => {
             />
           </button>
         </div>
-        <div className='text-white'>Jane Doe</div>
+        <div className='text-white'>{keycloak.tokenParsed ? keycloak.tokenParsed.name : 'Unknown'}</div>
         <div className='text-custom-green text-sm'>Beginner</div>
         <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green": "text-white" } mt-auto`} >Dashboard</button>
         <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green": "text-white" } mt-auto`} >Explorer</button>
