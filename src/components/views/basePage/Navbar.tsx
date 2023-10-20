@@ -47,7 +47,7 @@ function Navbar() {
         <button onClick={() => switchToComponent('explorer')}>Explorer</button>
 
         {(isAdmin || isContributor) && ( 
-          <button onClick={OnclickAdminContributor}>admin/contriutor area</button>
+          <button onClick={OnclickAdminContributor}>Contributor</button>
         )}
         {keycloak.authenticated && (
           <button onClick={() => keycloak.logout()}>Logout</button>
