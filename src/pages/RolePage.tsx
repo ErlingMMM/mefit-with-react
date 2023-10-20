@@ -6,6 +6,7 @@ import { useState } from 'react';
 import AuthGuardAdminContributor from '../AuthGuard/AuthGuardAdminContributor';
 import keycloak from '../Keycloak';
 import ContributorApplications from '../components/shared/ContributorApplications';
+import DeleteUserView from '../components/shared/DeleteUsersView';
 
 function RolePage() {
     const isAdmin = keycloak.hasRealmRole('admin');
@@ -21,6 +22,8 @@ function RolePage() {
                 return <AddProgramForm />;
             case 4:
                 return <ContributorApplications />;
+            case 5:
+                return <DeleteUserView />;
             default:
                 return null;
         }
@@ -38,6 +41,10 @@ function RolePage() {
                 {isAdmin &&  (
                     <button className="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
                         onClick={() => setCurrentForm(4)}>Manage applications</button>
+                )}
+                 {isAdmin &&  (
+                    <button className="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
+                        onClick={() => setCurrentForm(5)}>Manage user</button>
                 )}
             </div>
             <div className="bg-gray-300 flex-grow flex flex-col justify-center items-center">
