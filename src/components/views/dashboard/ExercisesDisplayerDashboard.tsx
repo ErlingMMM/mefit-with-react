@@ -8,17 +8,20 @@ function ExercisesDisplayerDashboard() {
     const exercisesList = workout?.exercises;
 
     const dispatch = useAppDispatch();  // <-- useAppDispatch instead of useDispatch
-    // To navigate to workout displayer when button is clicked
+    // To navigate to dashboard when button is clicked
     const handleClick = () => {    
         dispatch(setActiveComponent('dashboard'));   
     };
     return (
         <>
-        <p>{workout?.image}</p>
-        <p>{workout?.name}</p>
-        <p>{workout?.description}</p>
+        <img src={workout?.image} alt="Workout visual representation" className={styles.workoutImage} />
+        <p className={styles.workoutName}>{workout?.name}</p>
+        <p className={styles.workoutDescription}>{workout?.description}</p>
+
+        <div className={styles.divider}></div> {/* divides the sections with a thin grey line */}
+
         <ExerciseList exercises={exercisesList as any[]} content={"dashboard"} /> 
-        <button onClick={() => handleClick()} className={styles.seeDetailedWorkout}><b>Return to dashboard</b></button>
+        <button onClick={() => handleClick()} className={styles.returnToDashboard}><b>Return to dashboard</b></button>
         </>
     ); //Må caste fra ExerciseData[] til any[] siden det er det ExerciseList forventer
 }

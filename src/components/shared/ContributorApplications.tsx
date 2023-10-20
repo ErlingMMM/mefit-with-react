@@ -5,9 +5,21 @@ import { ThunkDispatch } from "redux-thunk";
 import { RootState } from "../../Redux/Store";
 import { AnyAction } from "@reduxjs/toolkit";
 import keycloak from "../../Keycloak";
-import { get } from "http";
+
 
 function ContributorApplications() {
+
+    
+    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+    const UserApplications = useSelector((state: any) => state.data.userApplication);
+    useEffect(() => {
+        dispatch(getUserApplicationsAsync()).then((response) => {
+           if(response.type === "getUserApplicationsAsync/fulfilled"){
+            setIsLoading(false)
+           }
+        });
+      }, [dispatch]); 
+
     const [userRoles, setUserRoles] = useState<{ [userId: string]: number }>({});
 
     const [successMessage, setSuccessMessage] = useState("");
@@ -45,9 +57,6 @@ function ContributorApplications() {
         }
     }
     
-
-    
-
   
     const updateRole = (userId:string) => {
   
@@ -84,16 +93,6 @@ function ContributorApplications() {
         });
     };
 
-    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-    const UserApplications = useSelector((state: any) => state.data.userApplication);
-    useEffect(() => {
-        dispatch(getUserApplicationsAsync()).then((response) => {
-           if(response.type === "getUserApplicationsAsync/fulfilled"){
-            setIsLoading(false)
-           }
-        });
-      }, [dispatch]); 
-
     
       interface DivVisibility {
         [key: string]: boolean;
@@ -108,21 +107,22 @@ function ContributorApplications() {
       [userId]: false, 
     }));
   };
-  
-useEffect(() => {
-    const fetchUserRoles = async () => {
-        const roles: { [userId: string]: number } = {};
-        await Promise.all(UserApplications.map(async (obj: any) => {
-            const userId = obj.id;
-            const role = await GetUserRole(userId);
-            roles[userId] = role || 0;
-        }));
-        setUserRoles(roles);
-    };
-    
-    fetchUserRoles();
-}, [UserApplications]);
 
+useEffect(() => {
+  const fetchUserRoles = async () => {
+    const roles: { [userId: string]: number } = {};
+    await Promise.all(UserApplications.map(async (obj: any) => {
+      const userId = obj.id;
+      const role = await GetUserRole(userId);
+      roles[userId] = role || 0;
+    }));
+    setUserRoles(roles);
+  };
+
+  if (UserApplications.length > 0) {
+    fetchUserRoles();
+  }
+}, [UserApplications]);
 
   
     return (
@@ -136,7 +136,7 @@ useEffect(() => {
       const isVisible = userRole === 1 && divVisibility[userId] !== false;
 
       return (
-        isVisible && (
+        isVisible &&  (
           <li key={userId}>
             <div>
               <br />
