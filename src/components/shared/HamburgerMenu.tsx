@@ -1,5 +1,8 @@
 import React from 'react';
 import keycloak from "../../Keycloak";
+import { RootState } from '../../Redux/Store';
+import { useSelector } from 'react-redux';
+
 
 
 interface HamburgerMenuProps {
@@ -9,6 +12,8 @@ interface HamburgerMenuProps {
 }
 
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent, toggleMenu }) => {
+  const activeComponent = useSelector((state: RootState) => state.navigation.activeComponent);
+
   return (
     <div className="relative mt-5 z-50">
       {/* Hamburger button */}
@@ -58,16 +63,19 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent
         <div className={` text-center text-xl h-full flex flex-col`}>
          
          
-          <a onClick={() => switchToComponent('profile')} href="https://example.com" target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1888&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="ProfilePage"
-              style={{ borderRadius: '50%', width: '100px', height: '100px' }}
-            />
-          </a>
-          <div className='text-custom-green'>Jane Doe</div>
-          <button onClick={() => switchToComponent('dashboard')} className='text-white mt-auto' >Dashboard</button>
-          <button onClick={() => switchToComponent('explorer')} className='text-white mt-auto' style={{ marginBottom: '90px' }}>Explorer</button>
+        <div className='text-custom-green text-center' style={{ padding: '10px' }}>
+            <button onClick={() => switchToComponent('profile')} style={{ cursor: 'pointer', background: 'none', border: 'none', outline: 'none' }}>
+              <img
+                src="https://placekitten.com/200/200"
+                alt="ProfilePage"
+                style={{ borderRadius: '50%', width: '100px', height: '100px', border: '3px solid' }}
+              />
+            </button>
+          </div>
+          <div className='text-white'>Jane Doe</div>
+          <div className='text-custom-green text-sm'>Beginner</div>
+          <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green": "text-white" } mt-auto`} >Dashboard</button>
+          <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green": "text-white" } mt-auto`} style={{ marginBottom: '90px' }}>Explorer</button>
           {keycloak.authenticated && (
             <button onClick={() => keycloak.logout()} className='text-white mt-auto' style={{ marginBottom: '100px' }}
             >Logout</button>
