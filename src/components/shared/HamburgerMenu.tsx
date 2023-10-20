@@ -62,20 +62,19 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent
         </h1>
         <div className={` text-center text-xl h-full flex flex-col`}>
          
-         
-        <div className='text-custom-green text-center' style={{ padding: '10px' }}>
+        <div className='text-custom-green text-center mt-40'>
             <button onClick={() => switchToComponent('profile')} style={{ cursor: 'pointer', background: 'none', border: 'none', outline: 'none' }}>
               <img
                 src="https://placekitten.com/200/200"
                 alt="ProfilePage"
-                style={{ borderRadius: '50%', width: '100px', height: '100px', border: '3px solid' }}
+                style={{ borderRadius: '50%', width: '150px', height: '150px', border: '3px solid' }}
               />
             </button>
           </div>
           <div className='text-white'>Jane Doe</div>
           <div className='text-custom-green text-sm'>Beginner</div>
           <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green": "text-white" } mt-auto`} >Dashboard</button>
-          <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green": "text-white" } mt-auto`} style={{ marginBottom: '90px' }}>Explorer</button>
+          <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green": "text-white" } mt-auto`} >Explorer</button>
           {keycloak.authenticated && (
             <button onClick={() => keycloak.logout()} className='text-white mt-auto' style={{ marginBottom: '100px' }}
             >Logout</button>
