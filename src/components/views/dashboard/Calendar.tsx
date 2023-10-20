@@ -3,14 +3,36 @@ import styles from "./Dashboard.module.css" //locally scoped
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 import { useAppDispatch, useAppSelector } from '../../../Redux/Hooks';
 import { setCurrentWeek } from '../../../Redux/DashboardSlice'; // Assuming path to your slice file.
+import { getStartDateAction } from '../../../Redux/DashboardSlice';
+import { useEffect } from 'react';
 
 
 
 function Calendar() {
   const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getStartDateAction());
+  }, [dispatch]);
+
   const currentWeek = useAppSelector(state => state.dashboard.currentWeek);
   const maxWeek = useAppSelector(state => state.dashboard.maxWeek);
-  const { start, end } = getCurrentWeek(currentWeek);
+  const startDateString = useAppSelector(state => state.dashboard.startDate);
+  
+  let startDate;
+  try {
+    startDate = new Date(startDateString);
+    if (isNaN(startDate.getTime())) { // Check if the date is invalid
+      console.log("Invalid date format")
+      throw new Error("Invalid date format");
+    } 
+  } catch (error) {
+    startDate = new Date("2024-12-04"); //Set the start date to "2024-12-04" if the date is invalid
+  }
+
+  
+
+  const { start, end } = getStartWeek(startDate, currentWeek);
+
   return (
     <div className={styles.dateParentContainer}>
 
@@ -37,10 +59,9 @@ export default Calendar
 
 //------------------------------------------------------------------
 //Helper functions: 
-function getCurrentWeek(offset = 1) { //offset = integer value of current week
-  const now = new Date();
-  const monday = new Date(now);
-  monday.setDate(monday.getDate() - monday.getDay() + 1 + ((offset-1) * 7)); // getDay() returns 0 for Sunday, 1 for Monday, etc.
+function getStartWeek(startDate : Date, offset = 1) { //offset = integer value of current week
+  const monday = new Date(startDate);
+  monday.setDate(monday.getDate() - monday.getDay()  + 1 + ((offset-1) * 7)); // getDay() returns 0 for Sunday, 1 for Monday, etc.
                                                             //'offset*7' takes the current week into account
   const sunday = new Date(monday);
   sunday.setDate(sunday.getDate() + 6);
