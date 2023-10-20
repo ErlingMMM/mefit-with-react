@@ -8,7 +8,7 @@ function WorkoutsInProgram() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const selectedProgramId = useSelector((state: any) => state.selectedProgramId);
   const [workouts, setWorkouts] = useState([]);
-    
+  const [program, setProgram] = useState<{ image: string | null } | null>(null);
 
   const openModal = (workout: any) => {
     setSelectedWorkout(workout);
@@ -16,19 +16,28 @@ function WorkoutsInProgram() {
   };
 
   useEffect(() => {
-    const fetchWorkouts = async () => {
+    const fetchData = async () => {
       if (selectedProgramId) {
         try {
-          const response = await fetch(
+          // Fetch workouts
+          const workoutsResponse = await fetch(
             `https://mefit-backend.azurewebsites.net/api/Plan/GetWorkouts/${parseInt(selectedProgramId)}`
           );
 
-          
-          if (response.ok) {
-            const data = await response.json();
-            setWorkouts(data);
+          if (workoutsResponse.ok) {
+            const workoutsData = await workoutsResponse.json();
+            setWorkouts(workoutsData);
           } else {
-            console.error('Error fetching data');
+            console.error('Error fetching workouts data');
+          }
+
+          // Fetch program details
+          const programResponse = await fetch(`https://mefit-backend.azurewebsites.net/api/Plan/${selectedProgramId}`);
+          if (programResponse.ok) {
+            const programData = await programResponse.json();
+            setProgram(programData);
+          } else {
+            console.error('Error fetching program details data');
           }
         } catch (error) {
           console.error('Error:', error);
@@ -36,11 +45,14 @@ function WorkoutsInProgram() {
       }
     };
 
-    fetchWorkouts();
+    fetchData();
   }, [selectedProgramId]);
+
 
   return (
     <div>
+      <br />
+      <img className="h-52 w-screen" src={program?.image ?? ''} alt="ProgramImage" />
       <WorkoutsInProgramList workouts={workouts} onWorkoutClick={openModal} />
       <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedWorkout} />
     </div>
