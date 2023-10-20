@@ -1,4 +1,4 @@
-import Navbar from '../components/shared/Navbar';
+import Navbar from '../components/views/basePage/Navbar';
 import ContentView from '../components/views/basePage/ContentView';
 import authGuard from '../AuthGuard/authGuard';
 import { useSelector } from 'react-redux';

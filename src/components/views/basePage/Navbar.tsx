@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import HamburgerMenu from './HamburgerMenu';
-import keycloak from "../../Keycloak";
-import { setActiveComponent } from '../../Redux/NavigationSlice';
+import keycloak from "../../../Keycloak";
+import { setActiveComponent } from '../../../Redux/NavigationSlice';
 import { useDispatch } from 'react-redux';
 
 function Navbar() {
