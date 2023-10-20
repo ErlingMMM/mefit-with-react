@@ -679,7 +679,7 @@ export const DeleteUserAsync = createAsyncThunk(
   'DeleteUserAsync',
   async ({GUID}: {GUID: string}) => {
 
-    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Users/user/${GUID}`, {  
+    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Users/${GUID}`, {  
       method: 'DELETE',
       headers: {
         'Authorization':`Bearer ${keycloak.token}`,

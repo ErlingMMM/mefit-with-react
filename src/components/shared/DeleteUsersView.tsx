@@ -55,8 +55,8 @@ function DeleteUserView () {
           return;
         }
         else{
-          //DeleteUser(userId);
-        //dispatch(DeleteUserAsync({ GUID: userId }));
+          DeleteUser(userId);
+         dispatch(DeleteUserAsync({ GUID: userId }));
         }
       };
         return (
