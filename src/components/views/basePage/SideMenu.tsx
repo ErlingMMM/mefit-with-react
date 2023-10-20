@@ -52,7 +52,7 @@ const OnclickAdminContributor = () => {
         <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green": "text-white" } mt-auto`} >Dashboard</button>
         <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green": "text-white" } mt-auto`} >Explorer</button>
         {(isAdmin || isContributor) && ( 
-          <button onClick={OnclickAdminContributor}  className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}> admin/contriutor area</button>
+          <button onClick={OnclickAdminContributor}  className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}>Contributor</button>
         )}
         
         {keycloak.authenticated && (
