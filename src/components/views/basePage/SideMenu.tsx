@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import keycloak from "../../../Keycloak";
 import { RootState } from '../../../Redux/Store';
 import { useSelector } from 'react-redux';
@@ -14,17 +14,22 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent }) => {
   const activeComponent = useSelector((state: RootState) => state.navigation.activeComponent);
   const user = useSelector((state: any) => state.data.userData.fitnessPreference);
   const isAdmin = keycloak.hasRealmRole('admin');
-
   const isContributor = keycloak.hasRealmRole('contributor');
 
   const navigate = useNavigate();
-const onclickAdminContributor = () => {
-  navigate('/rolepage')
-  
-}
+  const onclickAdminContributor = () => {
+    navigate('/rolepage')
+  }
 
-  
 
+  useEffect(() => {
+    // Apply or remove overflow:hidden to prevent scrolling when the menu is open
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpen]);
 
   return (
     <div
@@ -48,12 +53,12 @@ const onclickAdminContributor = () => {
         </div>
         <div className='text-white'>{keycloak.tokenParsed ? keycloak.tokenParsed.name : 'Unknown'}</div>
         <div className='text-custom-green text-sm'>{user}</div>
-        <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green": "text-white" } mt-auto`} >Dashboard</button>
-        <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green": "text-white" } mt-auto`} >Explorer</button>
-        {(isAdmin || isContributor) && ( 
-          <button onClick={onclickAdminContributor}  className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}>Contributor</button>
+        <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green" : "text-white"} mt-auto`} >Dashboard</button>
+        <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green" : "text-white"} mt-auto`} >Explorer</button>
+        {(isAdmin || isContributor) && (
+          <button onClick={onclickAdminContributor} className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}>Contributor</button>
         )}
-        
+
         {keycloak.authenticated && (
           <button onClick={() => keycloak.logout()} className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}
           >Logout</button>
