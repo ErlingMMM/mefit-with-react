@@ -45,9 +45,6 @@ function ContributorApplications() {
         }
     }
     
-
-    
-
   
     const updateRole = (userId:string) => {
   
@@ -108,21 +105,22 @@ function ContributorApplications() {
       [userId]: false, 
     }));
   };
-  
-useEffect(() => {
-    const fetchUserRoles = async () => {
-        const roles: { [userId: string]: number } = {};
-        await Promise.all(UserApplications.map(async (obj: any) => {
-            const userId = obj.id;
-            const role = await GetUserRole(userId);
-            roles[userId] = role || 0;
-        }));
-        setUserRoles(roles);
-    };
-    
-    fetchUserRoles();
-}, [UserApplications]);
 
+useEffect(() => {
+  const fetchUserRoles = async () => {
+    const roles: { [userId: string]: number } = {};
+    await Promise.all(UserApplications.map(async (obj: any) => {
+      const userId = obj.id;
+      const role = await GetUserRole(userId);
+      roles[userId] = role || 0;
+    }));
+    setUserRoles(roles);
+  };
+
+  if (UserApplications.length > 0) {
+    fetchUserRoles();
+  }
+}, [UserApplications]);
 
   
     return (
@@ -136,7 +134,7 @@ useEffect(() => {
       const isVisible = userRole === 1 && divVisibility[userId] !== false;
 
       return (
-        isVisible && (
+        isVisible &&  (
           <li key={userId}>
             <div>
               <br />
