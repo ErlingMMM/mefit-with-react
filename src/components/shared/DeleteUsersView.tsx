@@ -42,12 +42,23 @@ function DeleteUserView () {
         }
     }
 
-      const DeleteUserClick = (userId: string) => {
-        DeleteUser(userId);
-        dispatch(DeleteUserAsync({ GUID: userId }));
-      };
+    const DClick = (userId: string) => {
+      if(userId === keycloak.subject){
+        alert("You can not delete the admin user")
+        return;
+      }
+    };
 
-      console.log(Users);
+      const DeleteUserClick = (userId: string) => {
+        if(userId === keycloak.subject){
+          alert("You can not delete yourself, you are the admin user")
+          return;
+        }
+        else{
+          //DeleteUser(userId);
+        //dispatch(DeleteUserAsync({ GUID: userId }));
+        }
+      };
         return (
             <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
             <h1 className="text-2xl font-bold mb-4">Delete Users</h1>
@@ -55,12 +66,14 @@ function DeleteUserView () {
               <div key={user.id} className="mb-2 p-2 border-b border-gray-300 flex justify-between items-center">
                 <p className="text-lg">{user.id}</p>
                 <button    onClick={() =>  DeleteUserClick(user.id)} className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                  Delete user
+                  Delete
                 </button>
               </div>
             ))}
           </div>
           
         );
-    }    export default DeleteUserView;
+    }    
+    
+    export default DeleteUserView;
 

@@ -60,10 +60,10 @@ function ContributorApplications() {
   
     const updateRole = (userId:string) => {
   
-      const contributorID = "a7209254-84a0-420d-bf67-bf5287738cd2"
+      const contributorID = "f8f42429-d0dd-436d-a7b8-8fcdf5ec7ee3"
       const roleName =  "contributor";
-      const keycloakBaseUrl = "https://lemur-10.cloud-iam.com/auth/"
-      const realm = "deploy-mefit"  
+      const keycloakBaseUrl = keycloak.authServerUrl;
+      const realm = keycloak.realm; 
       
   
       const url2 = `${keycloakBaseUrl}/admin/realms/${realm}/users/${userId}/role-mappings/realm`;
