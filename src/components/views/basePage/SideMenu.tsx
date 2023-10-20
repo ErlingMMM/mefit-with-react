@@ -2,15 +2,29 @@ import React from 'react';
 import keycloak from "../../../Keycloak";
 import { RootState } from '../../../Redux/Store';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 interface SideMenuProps {
   isOpen: boolean;
   switchToComponent: any;
 }
 
+
 const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent }) => {
   const activeComponent = useSelector((state: RootState) => state.navigation.activeComponent);
   const user = useSelector((state: any) => state.data.userData.fitnessPreference);
+  const isAdmin = keycloak.hasRealmRole('admin');
+
+  const isContributor = keycloak.hasRealmRole('contributor');
+
+  const navigate = useNavigate();
+const OnclickAdminContributor = () => {
+  console.log("hei")
+  navigate('/rolepage')
+  
+}
+
+  
 
 
   return (
@@ -37,6 +51,10 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent }) => {
         <div className='text-custom-green text-sm'>{user}</div>
         <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green": "text-white" } mt-auto`} >Dashboard</button>
         <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green": "text-white" } mt-auto`} >Explorer</button>
+        {(isAdmin || isContributor) && ( 
+          <button onClick={OnclickAdminContributor}  className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}> admin/contriutor area</button>
+        )}
+        
         {keycloak.authenticated && (
           <button onClick={() => keycloak.logout()} className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}
           >Logout</button>
