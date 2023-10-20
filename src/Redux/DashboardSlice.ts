@@ -1,12 +1,29 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { getWorkouts, completeWorkout } from '../endpoints/dashboard_endpoints';
 
+
+interface ExerciseData {
+  id: number;
+  name: string;
+  description: string;
+  muscleGroup: string;
+  imageUrl?: string;
+  time: number;
+  difficulty: number;
+  sets: number;
+  reps: number;
+}
+
 interface WorkoutData {
-    id: number;
-   name: string;
-   duration: number;
-   day: number;
-   isCompleted: boolean;
+  id: number;
+  name: string;
+  description?: string;
+  recommendedFitness: number;
+  image?: string;
+  duration: number;
+  day: number;
+  isCompleted: boolean;
+  exercises: ExerciseData[];
 }
 
 
@@ -23,12 +40,14 @@ export const completeWorkoutAction = createAsyncThunk('dashboard/completeWorkout
 
 type DashboardState = {
     workouts: WorkoutData[];
+    displayedWorkout: WorkoutData | null;
     currentWeek: number;
     maxWeek: number;
 };
   
 const initialState: DashboardState = {
     workouts: [],
+    displayedWorkout: null,
     currentWeek: 1, // Assuming the week starts from 1
     maxWeek: 1 //initialized to one but is updated immidiately
 };
@@ -44,6 +63,9 @@ export const dashboardSlice = createSlice({
         },
         setMaxWeek: (state, action: PayloadAction<number>) => {
             state.maxWeek = action.payload
+        },
+        setDisplayedWorkout: (state, action: PayloadAction<WorkoutData>) => {
+            state.displayedWorkout = action.payload
         }
     }, 
     // Handle the resolution of the promise in the thunk 
@@ -71,6 +93,6 @@ export const dashboardSlice = createSlice({
     },
 })
 
-export const { setCurrentWeek, setMaxWeek } = dashboardSlice.actions;
+export const { setCurrentWeek, setMaxWeek, setDisplayedWorkout } = dashboardSlice.actions;
 
 export default dashboardSlice.reducer

@@ -36,6 +36,7 @@ function ProfilePage() {
 
 
 
+
   return (
 <div className="flex flex-col justify-center items-center p-4">
 <button onClick={handleEditClick} className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end">

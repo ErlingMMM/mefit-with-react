@@ -3,13 +3,33 @@ import styles from "./Dashboard.module.css" //locally scoped
 import { ChevronUpIcon, ChevronDownIcon, ClockIcon, CheckCircleIcon, PlusCircleIcon } from '@heroicons/react/outline';
 import { useAppDispatch } from '../../../Redux/Hooks';
 import { completeWorkoutAction } from '../../../Redux/DashboardSlice';
+import { setActiveComponent } from '../../../Redux/NavigationSlice';
+import { setDisplayedWorkout } from '../../../Redux/DashboardSlice';
+
+interface ExerciseData {
+  id: number;
+  name: string;
+  description: string;
+  muscleGroup: string;
+  imageUrl?: string;
+  time: number;
+  difficulty: number;
+  sets: number;
+  reps: number;
+}
 
 type WorkoutBarProps = {
-  wId: number
-  isCompleted: boolean
-  day: number;
-  muscleGroup: string;
-  duration: number;
+  workoutData: {
+    id: number;
+    name: string;
+    description?: string;
+    recommendedFitness: number;
+    image?: string;
+    duration: number;
+    day: number;
+    isCompleted: boolean;
+    exercises: ExerciseData[]; 
+    };
 };
 
 const dayDictionary: { [key: number]: string } = {
@@ -22,7 +42,7 @@ const dayDictionary: { [key: number]: string } = {
   0: "Sunday"
 };
 
-function WorkoutBar({wId, isCompleted, day, muscleGroup, duration, updateWorkout} : WorkoutBarProps & { updateWorkout : React.Dispatch<React.SetStateAction<boolean>> }) { //The arguments are passed as props here, but need to come from the database in the parent component
+function WorkoutBar({workoutData, updateWorkout} : WorkoutBarProps & { updateWorkout : React.Dispatch<React.SetStateAction<boolean>> }) { 
 
   const dispatch = useAppDispatch();  // <-- useAppDispatch instead of useDispatch
 
@@ -42,23 +62,29 @@ function WorkoutBar({wId, isCompleted, day, muscleGroup, duration, updateWorkout
   }
   }
 
-  const weekday : string = dayDictionary[day%7]; 
+  const weekday : string = dayDictionary[workoutData.day%7]; 
   //Keep in mind for this to make sense, the start date for the program has to be a monday
+
+  // To navigate to workout displayer when button is clicked
+  const handleClick = () => {    
+    dispatch(setDisplayedWorkout(workoutData))
+    dispatch(setActiveComponent('exercisesInDashboard'));   
+  };
 
   return (
     <div>
 
       <div className = {styles.workoutBarWrapper}>
         <div>
-          <h1 className={styles.day_h1}><b>{weekday}</b>: {muscleGroup}</h1>
+          <h1 className={styles.day_h1}><b>{weekday}</b>: {workoutData.name}</h1>
           <div className={styles.durationWrapper}>
             <ClockIcon className="h-5 w-5 text-[#A8E52E]"/>
-            <span>{duration} min</span>
+            <span>{workoutData.duration} min</span>
           </div>
         </div>
 
         <div className={styles.buttonsGroup}>
-          <button onClick={() => updateCompletionStatus(wId)}>{isCompleted ? <CheckCircleIcon className="h-7 w-7 text-[#A8E52E]" /> : <PlusCircleIcon className="h-7 w-7 text-[#000000]" />}</button>
+          <button onClick={() => updateCompletionStatus(workoutData.id)}>{workoutData.isCompleted ? <CheckCircleIcon className="h-7 w-7 text-[#A8E52E]" /> : <PlusCircleIcon className="h-7 w-7 text-[#000000]" />}</button>
           <button onClick={toggleDetails}>{showDetails ? <ChevronUpIcon className="h-7 w-7 text-[#A8E52E]" /> : <ChevronDownIcon className="h-7 w-7 text-[#A8E52E]" />}</button>
         </div>
 
@@ -67,8 +93,14 @@ function WorkoutBar({wId, isCompleted, day, muscleGroup, duration, updateWorkout
       {showDetails && (
         <div className={styles.showDetailsWrapper}>
           <b className={styles.infoRow}><span>Excercise</span><span>Sets</span><span>Reps</span></b>
-          <p className={styles.infoRow}><span>Placeholder exercise</span><span>4</span><span>12</span></p> 
-          <button className={styles.seeDetailedWorkout}><b>See Workout</b></button>
+          {workoutData.exercises.map((exercise) => (
+            <p key={exercise.id} className={styles.infoRow}>
+              <span>{exercise.name}</span>
+              <span>{exercise.sets}</span>
+              <span>{exercise.reps}</span>
+            </p>
+          ))}
+          <button onClick={() => handleClick()} className={styles.seeDetailedWorkout}><b>See Workout</b></button>
         </div>
       )}
 

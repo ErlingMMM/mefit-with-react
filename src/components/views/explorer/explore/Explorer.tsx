@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import DisplayManager from '../ExploreManager';
+import ExploreManager from '../ExploreManager';
 import SearchBar from './SearchBar';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
@@ -86,9 +86,9 @@ function Explorer() {
 
       {/*Line under buttons*/}
       <div className="flex mb-5 mt-2">
-        <div className={`w-1/3 h-0.5 ${activeComponent === 'programs' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-0.5 ${activeComponent === 'exercises' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-0.5 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeComponent === 'programs' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeComponent === 'exercises' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeComponent === 'workouts' ? 'bg-green-300' : 'bg-gray-400'}`}></div>
       </div>
 
       <div className='text-right sm:text-left mb-3 space-x-2 ml-12 sm:ml-32'>
@@ -100,7 +100,7 @@ function Explorer() {
           <img src={loadingGif} alt="Loading..." className="loading-image" />
         </div>
       ) : (
-        <DisplayManager activeComponent={activeComponent} searchQuery={searchQuery} />
+        <ExploreManager activeComponent={activeComponent} searchQuery={searchQuery} />
       )}
     </>
   );

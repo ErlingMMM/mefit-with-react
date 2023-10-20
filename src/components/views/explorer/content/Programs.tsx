@@ -1,4 +1,3 @@
-// Programs.tsx
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setActiveComponent } from '../../../../Redux/NavigationSlice';

@@ -10,7 +10,7 @@ function Exercises({ searchQuery }: { searchQuery: string }) {
   const orderedList = OrderListUtils(exercises, searchQuery, selectedSearchOption, selectedSortOption);
 
   return (
-    <ExerciseList exercises={orderedList} />
+    <ExerciseList exercises={orderedList} content={"explorer"} />
   );
 }
 

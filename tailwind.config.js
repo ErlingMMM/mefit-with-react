@@ -4,8 +4,15 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'custom-main': '#FF5733', 
+        'custom-main': '#FF5733', //must be changed
+        'custom-green': '#A8E52D',
       },
+      textColor: {
+        'custom-green': '#A8E52E',
+      },
+    },
+    fontFamily: {
+      sans: ['Montserrat', 'sans'],
     },
   },
   plugins: [],

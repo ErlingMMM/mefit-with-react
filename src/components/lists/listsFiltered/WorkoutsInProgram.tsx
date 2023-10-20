@@ -6,9 +6,9 @@ import WorkoutsInProgramList from './WorkoutsInProgramList';
 function WorkoutsInProgram() {
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const selectedWorkoutId = useSelector((state: any) => state.selectedWorkoutId);
+  const selectedProgramId = useSelector((state: any) => state.selectedProgramId);
   const [workouts, setWorkouts] = useState([]);
-  
+    
 
   const openModal = (workout: any) => {
     setSelectedWorkout(workout);
@@ -17,12 +17,13 @@ function WorkoutsInProgram() {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      if (selectedWorkoutId) {
+      if (selectedProgramId) {
         try {
           const response = await fetch(
-            `https://mefit-backend.azurewebsites.net/api/Workouts/${parseInt(selectedWorkoutId)}/exercises`
+            `https://mefit-backend.azurewebsites.net/api/Plan/GetWorkouts/${parseInt(selectedProgramId)}`
           );
 
+          
           if (response.ok) {
             const data = await response.json();
             setWorkouts(data);
@@ -36,7 +37,7 @@ function WorkoutsInProgram() {
     };
 
     fetchWorkouts();
-  }, [selectedWorkoutId]);
+  }, [selectedProgramId]);
 
   return (
     <div>
@@ -47,3 +48,8 @@ function WorkoutsInProgram() {
 }
 
 export default WorkoutsInProgram;
+
+
+
+
+

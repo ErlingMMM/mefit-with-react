@@ -3,7 +3,7 @@ import Progress from "./Progress"
 import WorkoutBar from "./WorkoutBar"
 import styles from "./Dashboard.module.css" //locally scoped
 import { useEffect, useState } from "react"
-import { fetchWorkouts, setMaxWeek } from "../../../Redux/DashboardSlice"
+import { fetchWorkouts, setDisplayedWorkout, setMaxWeek } from "../../../Redux/DashboardSlice"
 import { useAppDispatch, useAppSelector } from "../../../Redux/Hooks"
 import { setActiveComponent } from '../../../Redux/NavigationSlice';
 
@@ -55,13 +55,13 @@ function Dashboard() {
     <h1 className={styles.upcoming_h1}><b>Upcoming Workouts:</b></h1>
     {
       upcomingWorkouts.map(workout => (
-        <WorkoutBar key={workout.id} isCompleted = {workout.isCompleted} wId={workout.id} day={workout.day} muscleGroup={workout.name} duration={workout.duration} updateWorkout={setWorkoutUpdated} />
+        <WorkoutBar key={workout.id} workoutData={workout} updateWorkout={setWorkoutUpdated} />
       ))
     }
     <h1 className={styles.completed_h1}><b>Completed Workouts:</b></h1>
     {
       completedWorkouts.map(workout => (
-        <WorkoutBar key={workout.id} isCompleted = {workout.isCompleted} wId={workout.id} day={workout.day} muscleGroup={workout.name} duration={workout.duration} updateWorkout={setWorkoutUpdated}/>
+        <WorkoutBar key={workout.id} workoutData={workout} updateWorkout={setWorkoutUpdated}/>
       ))
     }
     </>
