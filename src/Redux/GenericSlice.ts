@@ -321,9 +321,11 @@ export const RegisterUserOnboardingStatsAsync = createAsyncThunk(
       headers: {
         'Authorization':`Bearer ${keycloak.token}`,
         'Content-Type':'application/json'
-    },
+      },
       method: 'POST',
       body: JSON.stringify({
+        firstName: keycloak.tokenParsed?.given_name,
+        lastName: keycloak.tokenParsed?.family_name,
         fitnessPreference: fitnessLvl,
         timesAWeek: intensityInt,
         durationTimeframe: timeframeInt

@@ -30,24 +30,24 @@ function RolePage() {
     };
 
     return (
-        <div className="bg-gray-200 h-screen flex flex-col">
-            <div className="bg-blue-500 py-4">
-                <button className="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
+        <div className="bg-white h-screen flex flex-col">
+            <div className="bg-white py-4">
+                <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
                     onClick={() => setCurrentForm(1)}>Add Excersice</button>
-                <button className="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
+                <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
                     onClick={() => setCurrentForm(2)}>Add Workout</button>
-                <button className="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
+                <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
                     onClick={() => setCurrentForm(3)}>Add Program</button>
                 {isAdmin &&  (
-                    <button className="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
+                    <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
                         onClick={() => setCurrentForm(4)}>Manage applications</button>
                 )}
                  {isAdmin &&  (
-                    <button className="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
+                    <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
                         onClick={() => setCurrentForm(5)}>Manage user</button>
                 )}
             </div>
-            <div className="bg-gray-300 flex-grow flex flex-col justify-center items-center">
+            <div className="bg-white flex-grow flex flex-col justify-center items-center">
                 {renderForm()}
             </div>
         </div>

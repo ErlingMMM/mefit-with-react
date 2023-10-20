@@ -68,7 +68,7 @@ function AddProgramForm() {
         isFormSubmitted
         ? <AddWorkoutsCompoent />
         : (
-      <form className='bg-white p-8 rounded shadow-md'>
+      <form className='bg-white p-8 rounded '>
       <label className='block mb-2 text-gray-800'>name:</label>
       <input onChange={handleName}  className='w-full p-2 mb-4 border rounded' type="text" id="name" name="name" />
 
@@ -84,7 +84,7 @@ function AddProgramForm() {
       <label className='block mb-2 text-gray-800' htmlFor="weight">orderOfWorkouts:</label>
       <input onChange={handleOrd} className='w-full p-2 mb-4 border rounded' type="text" id="orderOfWorkouts" name="orderOfWorkouts" />
 
-      <button onClick={postProgram}className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' type="submit">Save</button>
+       <button onClick={postProgram} className="w-full bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline" type="submit">Save</button>
 
     </form>)
     );
