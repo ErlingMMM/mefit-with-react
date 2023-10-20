@@ -65,7 +65,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent
         <div className='text-custom-green text-center mt-40'>
             <button onClick={() => switchToComponent('profile')} style={{ cursor: 'pointer', background: 'none', border: 'none', outline: 'none' }}>
               <img
-                src="https://placekitten.com/200/200"
+                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="ProfilePage"
                 style={{ borderRadius: '50%', width: '150px', height: '150px', border: '3px solid' }}
               />
