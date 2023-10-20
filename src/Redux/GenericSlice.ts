@@ -529,10 +529,10 @@ export const AddWorkoutAsync = createAsyncThunk(
         image: WRimgUrl,
       }),
     });
-    console.log(response.text())
     if (response.ok) {
       console.log("du vet at livet smiler for mefit boysen")
-      const user = await response.json();
+      const workout = await response.json();
+      return workout.id;
     }
 
     // Handles errors if the response is not ok
@@ -637,6 +637,60 @@ export const getUserApplicationsAsync = createAsyncThunk(
       }
     } catch (error) {
       throw new Error(`Error`);
+    }
+  }
+);
+
+
+//---------------------------------------------------------------------------------------
+export const getAllUsersAsync = createAsyncThunk(
+  "getAllUsersAsync",
+  async () => {
+    try {
+      const accessToken = keycloak.token; 
+      const resp = await fetch('https://mefit-backend.azurewebsites.net/api/Users/', {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`, 
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (resp.ok) {
+        const users_array = await resp.json();
+        if (users_array.length > 0) {
+          console.log(users_array)
+          return { users_array };
+        } else {
+          throw new Error('Error. User not found');
+        }
+        
+      } else {
+        throw new Error('Error: Unvalid response from server.');
+      }
+    } catch (error) {
+      throw new Error(`Error`);
+    }
+  }
+);
+
+
+
+export const DeleteUserAsync = createAsyncThunk(
+  'DeleteUserAsync',
+  async ({GUID}: {GUID: string}) => {
+
+    const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Users/user/${GUID}`, {  
+      method: 'DELETE',
+      headers: {
+        'Authorization':`Bearer ${keycloak.token}`,
+        'Content-Type':'application/json'
+    },
+    });
+    console.log(response.text())
+    if (response.ok) {
+      console.log("Forespørselen var vellykket!");
+    } else {  
+      throw new Error('Error: Unvalid response from server.');
     }
   }
 );
@@ -803,9 +857,16 @@ setWorkoutId: (state, action) => {
       .addCase(getProgramInfo.fulfilled, (state, action) => {
         state.loading = false;
         state.programData = action.payload.program;
+      })
+      .addCase(AddWorkoutAsync.fulfilled, (state, action) => {
+        state.workoutId.id = action.payload; // Assuming you have workoutId.id in your initial state
+      })
+      .addCase(getAllUsersAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userData = action.payload.users_array;
+        console.log(state.userData)
 
       })
-      
   },
 });
 
