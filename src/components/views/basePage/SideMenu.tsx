@@ -18,8 +18,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent }) => {
   const isContributor = keycloak.hasRealmRole('contributor');
 
   const navigate = useNavigate();
-const OnclickAdminContributor = () => {
-  console.log("hei")
+const onclickAdminContributor = () => {
   navigate('/rolepage')
   
 }
@@ -52,7 +51,7 @@ const OnclickAdminContributor = () => {
         <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green": "text-white" } mt-auto`} >Dashboard</button>
         <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green": "text-white" } mt-auto`} >Explorer</button>
         {(isAdmin || isContributor) && ( 
-          <button onClick={OnclickAdminContributor}  className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}>Contributor</button>
+          <button onClick={onclickAdminContributor}  className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}>Contributor</button>
         )}
         
         {keycloak.authenticated && (

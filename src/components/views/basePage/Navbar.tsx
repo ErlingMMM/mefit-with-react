@@ -19,8 +19,7 @@ function Navbar() {
     setMenuOpen(false);
   };
 
-  const OnclickAdminContributor = () => {
-    console.log("hei")
+  const onclickAdminContributor = () => {
     navigate('/rolepage')
     
   }
@@ -47,7 +46,7 @@ function Navbar() {
         <button onClick={() => switchToComponent('explorer')}>Explorer</button>
 
         {(isAdmin || isContributor) && ( 
-          <button onClick={OnclickAdminContributor}>Contributor</button>
+          <button onClick={onclickAdminContributor}>Contributor</button>
         )}
         {keycloak.authenticated && (
           <button onClick={() => keycloak.logout()}>Logout</button>
