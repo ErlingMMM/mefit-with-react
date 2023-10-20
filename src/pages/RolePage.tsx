@@ -36,24 +36,25 @@ function RolePage() {
 
     return (
         <div className="bg-white h-screen flex flex-col">
-            <div className="bg-white py-4">
-                <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
-                    onClick={() => setCurrentForm(1)}>Add Excersice</button>
-                <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
-                    onClick={() => setCurrentForm(2)}>Add Workout</button>
-                <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
-                    onClick={() => setCurrentForm(3)}>Add Program</button>
-                {isAdmin &&  (
-                    <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
-                        onClick={() => setCurrentForm(4)}>Manage applications</button>
-                )}
-                 {isAdmin &&  (
-                    <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
-                        onClick={() => setCurrentForm(5)}>Manage user</button>
-                )}
-                <button className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
-                    onClick={onClickBack}>Back</button>
-            </div>
+          <div className="bg-white py-4 flex flex-col items-center sm:flex-row sm:justify-center">
+    <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-2 sm:mx-2"
+        onClick={() => setCurrentForm(1)}>Add Exercise</button>
+    <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-2 sm:mx-2"
+        onClick={() => setCurrentForm(2)}>Add Workout</button>
+    <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-2 sm:mx-2"
+        onClick={() => setCurrentForm(3)}>Add Program</button>
+    {isAdmin && (
+        <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-2 sm:mx-2"
+            onClick={() => setCurrentForm(4)}>Manage Applications</button>
+    )}
+    {isAdmin && (
+        <button className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-2 sm:mx-2"
+            onClick={() => setCurrentForm(5)}>Manage User</button>
+    )}
+    <button className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-2 sm:mx-2"
+        onClick={onClickBack}>Back</button>
+</div>
+
             <div className="bg-white flex-grow flex flex-col justify-center items-center">
             <h1
         className={`font-bold text-2xl italic text-right absolute top-6 right-5`}
