@@ -641,6 +641,38 @@ export const getUserApplicationsAsync = createAsyncThunk(
   }
 );
 
+
+//---------------------------------------------------------------------------------------
+export const getAllUsersAsync = createAsyncThunk(
+  "getAllUsersAsync",
+  async () => {
+    try {
+      const accessToken = keycloak.token; 
+      const resp = await fetch('https://mefit-backend.azurewebsites.net/api/Users/', {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`, 
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (resp.ok) {
+        const users_array = await resp.json();
+        if (users_array.length > 0) {
+          console.log(users_array)
+          return { users_array };
+        } else {
+          throw new Error('Error. User not found');
+        }
+        
+      } else {
+        throw new Error('Error: Unvalid response from server.');
+      }
+    } catch (error) {
+      throw new Error(`Error`);
+    }
+  }
+);
+
 /**
  * Redux slice for managing user data, exercise data, workout data, and program data.
  * @name dataSlice
@@ -803,6 +835,12 @@ setWorkoutId: (state, action) => {
       .addCase(getProgramInfo.fulfilled, (state, action) => {
         state.loading = false;
         state.programData = action.payload.program;
+
+      })
+      .addCase(getAllUsersAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userData = action.payload.users_array;
+        console.log(state.userData)
 
       })
       

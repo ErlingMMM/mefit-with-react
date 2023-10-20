@@ -5,9 +5,21 @@ import { ThunkDispatch } from "redux-thunk";
 import { RootState } from "../../Redux/Store";
 import { AnyAction } from "@reduxjs/toolkit";
 import keycloak from "../../Keycloak";
-import { get } from "http";
+
 
 function ContributorApplications() {
+
+    
+    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+    const UserApplications = useSelector((state: any) => state.data.userApplication);
+    useEffect(() => {
+        dispatch(getUserApplicationsAsync()).then((response) => {
+           if(response.type === "getUserApplicationsAsync/fulfilled"){
+            setIsLoading(false)
+           }
+        });
+      }, [dispatch]); 
+
     const [userRoles, setUserRoles] = useState<{ [userId: string]: number }>({});
 
     const [successMessage, setSuccessMessage] = useState("");
@@ -80,16 +92,6 @@ function ContributorApplications() {
           console.error(error);
         });
     };
-
-    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-    const UserApplications = useSelector((state: any) => state.data.userApplication);
-    useEffect(() => {
-        dispatch(getUserApplicationsAsync()).then((response) => {
-           if(response.type === "getUserApplicationsAsync/fulfilled"){
-            setIsLoading(false)
-           }
-        });
-      }, [dispatch]); 
 
     
       interface DivVisibility {
