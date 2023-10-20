@@ -226,3 +226,60 @@
   align-items: center;
   height: 100%; /* this assumes the parent is of a set height, if not, adjust accordingly */
 }
+
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/*Styling for ExerciseDisplayerDashboard*/
+
+/* Workout image styling */
+.workoutImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+/* Workout name styling */
+.workoutName {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 30px;  /* Added horizontal margins */
+  margin-bottom: 10px;
+}
+
+/* Workout description styling */
+.workoutDescription {
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #666;
+  margin: 10px 30px;  /* Added horizontal margins */
+}
+
+.divider {
+  height: 2px;
+  background-color: #ccc; /* This is a light gray color; adjust as needed */
+  margin-bottom: 20px;
+  width: calc(100%); /* To account for the 20px margins on both sides */
+}
+
+.returnToDashboard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #A8E52E;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  border-radius: 10px 10px 10px 10px; 
+  /* Box Shadow */
+  box-shadow: inset 0 0 10px rgba(41, 40, 40, 0.2); 
+  width: calc(100% - 60px); /* Reduce the width by 60px (30px on each side) */
+  margin-left: 30px;       /* 30px margin on the left */
+  margin-right: 30px;      /* 30px margin on the right */  
+  margin-bottom: 20px;
+}
