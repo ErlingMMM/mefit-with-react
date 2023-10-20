@@ -53,3 +53,31 @@ export async function completeWorkout(wId : number){
     }
 }
 
+//function to get the startDate for the users program
+export async function getStartDate(){
+    const accessToken = keycloak.token; 
+    const apiURL = 'https://mefit-backend.azurewebsites.net/api/Users/user/startdate'
+    try{
+        const response = await fetch(apiURL,{ 
+            headers: {
+              'Authorization': `Bearer ${accessToken}`, 
+              'Content-Type': 'text/plain'
+            }
+        });
+        // Check if the response is successful
+        if (!response.ok) {
+            const errorMessage = await response.text(); // Read the response body as text
+            throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
+        }
+
+        //If the response is a 200 Ok:
+        const results = await response.text(); // Notice the "await" here as well, since response.json() is asynchronous
+
+        return results
+    }
+    catch (error){
+        console.error("Error fetching start date:", error);
+        return ""; // Return an empty array or some default value if the fetch fails
+    }
+}
+

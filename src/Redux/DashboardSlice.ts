@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import { getWorkouts, completeWorkout } from '../endpoints/dashboard_endpoints';
+import { getWorkouts, completeWorkout, getStartDate } from '../endpoints/dashboard_endpoints';
 
 
 interface ExerciseData {
@@ -38,18 +38,25 @@ export const completeWorkoutAction = createAsyncThunk('dashboard/completeWorkout
   await completeWorkout(wId);
 });
 
+export const getStartDateAction = createAsyncThunk('dashboard/getStartDate', async () => {
+  const response = await getStartDate();
+  return response;
+});
+
 type DashboardState = {
     workouts: WorkoutData[];
     displayedWorkout: WorkoutData | null;
     currentWeek: number;
     maxWeek: number;
+    startDate: string;
 };
   
 const initialState: DashboardState = {
     workouts: [],
     displayedWorkout: null,
     currentWeek: 1, // Assuming the week starts from 1
-    maxWeek: 1 //initialized to one but is updated immidiately
+    maxWeek: 1, //initialized to one but is updated immidiately
+    startDate: "2023-12-04" //this returns todays date (by default)
 };
   
 
@@ -89,6 +96,9 @@ export const dashboardSlice = createSlice({
         .addCase(completeWorkoutAction.rejected, (state, action) => {
           // Handle the error. For now, just logging it.
           console.error("Failed to mark the workouts completion status.", action.error);
+        })
+        .addCase(getStartDateAction.fulfilled, (state, action) => {
+          state.startDate = action.payload;
         }); 
     },
 })
