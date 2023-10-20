@@ -1,7 +1,15 @@
 import Keycloak, { KeycloakInitOptions } from "keycloak-js";
 
+
+let keycloakConfig;
+// Uses "/keycloak.json" if local hosting or "/keycloakAzure.json" if deployed on Azure
+if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+    keycloakConfig = "/keycloak.json";
+} else {
+    keycloakConfig = "/keycloakAzure.json";
+}
 // NB! Leave the / or the relative path will use the Router path
-const keycloak = new Keycloak("/keycloak.json");
+const keycloak = new Keycloak(keycloakConfig);
 
 /**
  * Initialize Keycloak and silently checking for an existing login.
