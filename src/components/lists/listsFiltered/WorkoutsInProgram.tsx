@@ -114,11 +114,23 @@ function WorkoutsInProgram() {
   const handleNextNavigation = () => {
     const newActiveWorkoutList = activeWorkoutList + workoutsPerPage;
     if (newActiveWorkoutList < totalWorkouts) {
-      setActiveWorkoutList(newActiveWorkoutList);
-      setActiveWorkout(newActiveWorkoutList);
-      setActiveLine(0);
+      setActive(newActiveWorkoutList)
     }
   };
+
+  const handlePreviousNavigation = () => {
+    const newActiveWorkoutList = activeWorkoutList - workoutsPerPage;
+    if (newActiveWorkoutList >= 0) {
+     setActive(newActiveWorkoutList)
+    }
+  };
+
+
+  const setActive = (num: number) => {
+    setActiveWorkoutList(num);
+    setActiveWorkout(num);
+    setActiveLine(0);
+  }
 
 
 
@@ -169,7 +181,7 @@ function WorkoutsInProgram() {
         })}
       </div>
 
-      <button >Previous</button>
+      <button onClick={handlePreviousNavigation}>Previous</button>
       <button onClick={() => handleNextNavigation()}>Next</button>
 
       <WorkoutsInProgramList workouts={workouts} onWorkoutClick={openModal} />
