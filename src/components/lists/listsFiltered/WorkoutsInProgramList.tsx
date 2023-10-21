@@ -11,7 +11,6 @@ function WorkoutsInProgramList({ workouts, onWorkoutClick }: WorkoutsInProgramLi
     const dummyImageUrls = [
       'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&ixid=M3wxM…',
       'https://images.unsplash.com/photo-1434682881908-b43d0467b798?ixlib=rb-4.0.3&ixid=M3wxM…',
-      'https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-4.0.3&ixid=M3wxM…',
       'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&ixid=M3wxM…',
     ];
 
