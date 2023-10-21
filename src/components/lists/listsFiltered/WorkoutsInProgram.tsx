@@ -103,7 +103,7 @@ function WorkoutsInProgram() {
   const totalWorkouts = products.length;
 
 
- 
+
 
 
   const handleActiveWorkout = (workout: number) => {
@@ -111,7 +111,7 @@ function WorkoutsInProgram() {
     setActiveLine(workout % workoutsPerPage);
   };
 
-  const handleNavigation = () => {
+  const handleNextNavigation = () => {
     const newActiveWorkoutList = activeWorkoutList + workoutsPerPage;
     if (newActiveWorkoutList < totalWorkouts) {
       setActiveWorkoutList(newActiveWorkoutList);
@@ -121,18 +121,19 @@ function WorkoutsInProgram() {
   };
 
 
- 
+
 
 
 
   return (
     <div>
       <br />
-      <img
+      {/*   <img
         className="h-52 w-screen"
         src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
         alt="WorkoutImage"
-      />
+      />*/}
+
 
       <img
         className="h-52 w-screen"
@@ -141,40 +142,35 @@ function WorkoutsInProgram() {
       />
 
 
+      <div className="flex mb-5 mt-2">
+        {Array.from({ length: workoutsPerPage }).map((_, index) => {
+          const workoutIndex = activeWorkoutList + index;
+          const isButtonVisible = workoutIndex < totalWorkouts;
 
+          const lineClass = `w-${1 / workoutsPerPage} h-1 ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'
+            }`;
 
+          return (
+            <div key={index} className={lineClass}>
+              {isButtonVisible && (
+                <button
+                  onClick={() => handleActiveWorkout(workoutIndex)}
+                  className={`flex-1 pl-10 pr-6 pt-2 text-base ${isButtonVisible ? '' : 'hidden'
+                    }`}
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
 
-<div className="flex mb-5 mt-2">
-  {Array.from({ length: workoutsPerPage }).map((_, index) => {
-    const workoutIndex = activeWorkoutList + index;
-    const isButtonVisible = workoutIndex < totalWorkouts;
+                >
+                  {isButtonVisible ? products[workoutIndex].name : ''}
 
-    const lineClass = `w-${1 / workoutsPerPage} h-1 ${
-      activeLine === index ? 'bg-custom-green' : 'bg-gray-400'
-    }`;
-
-    return (
-      <div key={index} className={lineClass}>
-        {isButtonVisible && (
-          <button
-             onClick={() => handleActiveWorkout(workoutIndex)}
-            className={`flex-1 pl-10 pr-6 pt-2 text-base ${
-              isButtonVisible ? '' : 'hidden'
-            }`}
-            style={{ WebkitTapHighlightColor: 'transparent' }}
-
-          >
-            {isButtonVisible ? products[workoutIndex].name : ''}
-
-          </button>
-        )}
+                </button>
+              )}
+            </div>
+          );
+        })}
       </div>
-    );
-  })}
-</div>
 
-
-      <button onClick={() => handleNavigation()}>Next</button>
+      <button >Previous</button>
+      <button onClick={() => handleNextNavigation()}>Next</button>
 
       <WorkoutsInProgramList workouts={workouts} onWorkoutClick={openModal} />
       <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedWorkout} />
