@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
-import ExerciseInWorkoutsList from './ExerciseInWorkoutsList'; 
+import ExerciseList from '../../lists/ExerciseList';
 
 function ExercisesInWorkouts() {
   const [selectedExercise, setSelectedExercise] = useState(null);
@@ -39,7 +39,7 @@ function ExercisesInWorkouts() {
 
   return (
     <div>
-      <ExerciseInWorkoutsList exercises={exercises} onExerciseClick={openModal} /> 
+      <ExerciseList exercises={exercises} content={"explorer"} />
       <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedExercise} />
     </div>
   );

@@ -159,14 +159,14 @@ function WorkoutsInProgram() {
     <div>
       <br />
       {/*   <img
-        className="h-52 w-screen"
+        className="h-44 w-screen"
         src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
         alt="WorkoutImage"
       />*/}
 
 
       <img
-        className="h-52 w-screen"
+        className="h-44 w-screen"
         src={(products[activeWorkout] as { image: string } || {}).image || ''}
         alt="WorkoutImage"
       />
