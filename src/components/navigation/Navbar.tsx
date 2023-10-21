@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import HamburgerMenu from './HamburgerMenu';
-import keycloak from "../../../Keycloak";
-import { setActiveComponent } from '../../../Redux/NavigationSlice';
+import keycloak from "../../Keycloak";
+import { setActiveComponent } from '../../Redux/NavigationSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import NavigationLinks from './NavigationLinks'; 
+import NavigationLinks from '../views/basePage/NavigationLinks'; 
 
 interface NavbarProps {
 }
@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     <div>
       {/* Hamburger Menu on Mobile */}
       <div className="block sm:hidden relative">
-        <HamburgerMenu isOpen={menuOpen} switchToComponent={switchToComponent} toggleMenu={() => setMenuOpen(!menuOpen)} />
+        <HamburgerMenu isOpen={menuOpen} switchToComponent={switchToComponent} toggleMenu={() => setMenuOpen(!menuOpen)} page={"basePage"} />
         {menuOpen ? null : (
           <h1 className="font-bold text-lg italic text-center absolute top-0 left-1/2 transform -translate-x-1/2">
             MeFit

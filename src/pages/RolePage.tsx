@@ -44,11 +44,13 @@ function RolePage() {
   return (
     <div className="bg-white h-screen flex flex-col">
       <RolePageNavbar isAdmin={isAdmin} toggleMenu={() => setMenuOpen(!menuOpen)} switchToComponent={switchToComponent} />
-
+      
       <div className="bg-white flex-grow flex flex-col justify-center items-center">
         
         {renderForm()}
       </div>
+      <button className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
+                    onClick={onClickBack}>Back</button>
     </div>
   );
 }
