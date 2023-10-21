@@ -98,9 +98,9 @@ function WorkoutsInProgram() {
 
 
 
-  const productsPerPage = 3;
+  const workoutsPerPage = 3;
 
-  const totalProducts = products.length;
+  const totalWorkouts = products.length;
 
 
   /*const handleActiveWorkout = (chosen: number) => {
@@ -119,8 +119,8 @@ function WorkoutsInProgram() {
   };
 
   const handleActiveWorkoutList = () => {
-    const newActiveWorkoutList = activeWorkoutList + productsPerPage;
-    if (newActiveWorkoutList < totalProducts) {
+    const newActiveWorkoutList = activeWorkoutList + workoutsPerPage;
+    if (newActiveWorkoutList < totalWorkouts) {
       setActiveWorkoutList(newActiveWorkoutList);
       setActiveWorkout(newActiveWorkoutList);
       setActiveLine(0);
@@ -152,11 +152,11 @@ function WorkoutsInProgram() {
 
 
 <div className="flex mb-5 mt-2">
-  {Array.from({ length: productsPerPage }).map((_, index) => {
-    const productIndex = activeWorkoutList + index;
-    const isButtonVisible = productIndex < totalProducts;
+  {Array.from({ length: workoutsPerPage }).map((_, index) => {
+    const workoutIndex = activeWorkoutList + index;
+    const isButtonVisible = workoutIndex < totalWorkouts;
 
-    const lineClass = `w-${1 / productsPerPage} h-1 ${
+    const lineClass = `w-${1 / workoutsPerPage} h-1 ${
       activeLine === index ? 'bg-custom-green' : 'bg-gray-400'
     }`;
 
@@ -164,14 +164,14 @@ function WorkoutsInProgram() {
       <div key={index} className={lineClass}>
         {isButtonVisible && (
           <button
-             onClick={() => handleActiveWorkout(productIndex)}
+             onClick={() => handleActiveWorkout(workoutIndex)}
             className={`flex-1 pl-10 pr-6 pt-2 text-base ${
               isButtonVisible ? '' : 'hidden'
             }`}
             style={{ WebkitTapHighlightColor: 'transparent' }}
 
           >
-            {isButtonVisible ? products[productIndex].name : ''}
+            {isButtonVisible ? products[workoutIndex].name : ''}
 
           </button>
         )}
