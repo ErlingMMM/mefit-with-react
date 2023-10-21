@@ -115,6 +115,7 @@ function WorkoutsInProgram() {
 
   const handleActiveWorkout = (workout: number) => {
     setActiveWorkout(workout);
+    setActiveLine(workout % workoutsPerPage);
   };
 
   const handleNavigation = () => {
