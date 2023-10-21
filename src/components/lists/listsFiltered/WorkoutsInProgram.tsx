@@ -115,10 +115,9 @@ function WorkoutsInProgram() {
 
   const handleActiveWorkout = (workout: number) => {
     setActiveWorkout(workout);
-    setActiveLine(0); 
   };
 
-  const handleActiveWorkoutList = () => {
+  const handleNavigation = () => {
     const newActiveWorkoutList = activeWorkoutList + workoutsPerPage;
     if (newActiveWorkoutList < totalWorkouts) {
       setActiveWorkoutList(newActiveWorkoutList);
@@ -181,7 +180,7 @@ function WorkoutsInProgram() {
 </div>
 
 
-      <button onClick={() => handleActiveWorkoutList()}>Next</button>
+      <button onClick={() => handleNavigation()}>Next</button>
 
       <WorkoutsInProgramList workouts={workouts} onWorkoutClick={openModal} />
       <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedWorkout} />
