@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
 import ExerciseList from '../../lists/ExerciseList';
 
