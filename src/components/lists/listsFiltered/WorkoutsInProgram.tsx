@@ -2,10 +2,16 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import ExerciseList from '../../lists/ExerciseList';
 
+interface Workout {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+}
 
 function WorkoutsInProgram() {
   const selectedProgramId = useSelector((state: any) => state.selectedProgramId);
-  const [workouts, setWorkouts] = useState([]);
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [exercises, setExercises] = useState([]);
   const [activeWorkout, setActiveWorkout] = useState(0);
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
@@ -176,18 +182,19 @@ function WorkoutsInProgram() {
   return (
     <div>
       <br />
-      {/*   <img
+         <img
         className="h-44 w-screen"
         src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
         alt="WorkoutImage"
-      />*/}
+      />
 
-
-      <img
+<div>{workouts[activeWorkout].name}</div>
+<div>{workouts[activeWorkout].description}</div>
+     {/* <img
         className="h-44 w-screen"
         src={(products[activeWorkout] as { image: string } || {}).image || ''}
         alt="WorkoutImage"
-      />
+      />*/}
 
 
       <div className="flex mb-5 mt-2">
