@@ -1,4 +1,4 @@
-import Navbar from '../components/views/basePage/Navbar';
+import Navbar from '../components/navigation/Navbar';
 import ContentView from '../components/views/basePage/ContentView';
 import authGuard from '../AuthGuard/authGuard';
 import { useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ function Basepage() {
     <>
    {/*<div className='overflow-x-hidden bg-custom-main'>*/} 
    <div className='overflow-x-hidden'>
-    <Navbar />
+    <Navbar/>
         <ContentView activeComponent={activeComponent} />
     </div>
     </>

@@ -4,7 +4,6 @@ import dashboardReducer from './DashboardSlice'
 import navigationReducer from './NavigationSlice';
 import selectedProgramIdReducer from './selectId/SelectedProgramIdSlice';
 import selectedWorkoutIdReducer from './selectId/SelectedWorkoutIdSlice';
-import selectedDashboardWorkoutIdReducer from './selectId/SelectedDashboardWorkoutIdSlice';
 
 
 
@@ -15,7 +14,6 @@ export const store = configureStore({
     navigation: navigationReducer,
     selectedProgramId: selectedProgramIdReducer,
     selectedWorkoutId: selectedWorkoutIdReducer,
-    selectedDashboardWorkoutId: selectedDashboardWorkoutIdReducer,
   },
 });
 

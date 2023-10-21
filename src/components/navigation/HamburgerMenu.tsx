@@ -3,11 +3,12 @@ import SideMenu from './SideMenu';
 
 interface HamburgerMenuProps {
   isOpen: boolean;
+  page: string;
   switchToComponent: any;
   toggleMenu: () => void;
 }
 
-const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent, toggleMenu }) => {
+const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent, toggleMenu, page }) => {
   return (
     <div className="relative mt-5 z-50">
       {/* Hamburger button */}
@@ -45,7 +46,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent
       </button>
 
 
-      <SideMenu isOpen={isOpen} switchToComponent={switchToComponent} />
+      <SideMenu isOpen={isOpen} switchToComponent={switchToComponent} page={page} />
     </div>
   );
 };
