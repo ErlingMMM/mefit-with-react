@@ -103,13 +103,19 @@ function WorkoutsInProgram() {
   const totalProducts = products.length;
 
 
-  const handleActiveWorkout = (chosen: number) => {
+  /*const handleActiveWorkout = (chosen: number) => {
     const newActiveWorkout = activeWorkout + chosen;
     setActiveLine(chosen);
 
     if (newActiveWorkout < totalProducts) {
       setActiveWorkout(newActiveWorkout);
     }
+  };*/
+
+
+  const handleActiveWorkout = (workout: number) => {
+    setActiveWorkout(workout);
+    setActiveLine(0); 
   };
 
   const handleActiveWorkoutList = () => {
@@ -121,6 +127,8 @@ function WorkoutsInProgram() {
     }
   };
 
+
+ 
 
 
 
@@ -156,12 +164,15 @@ function WorkoutsInProgram() {
       <div key={index} className={lineClass}>
         {isButtonVisible && (
           <button
-            onClick={() => handleActiveWorkout(index)}
-            className={`flex-1 pl-10 pr-4 pt-2 text-base ${
+             onClick={() => handleActiveWorkout(productIndex)}
+            className={`flex-1 pl-10 pr-6 pt-2 text-base ${
               isButtonVisible ? '' : 'hidden'
             }`}
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+
           >
             {isButtonVisible ? products[productIndex].name : ''}
+
           </button>
         )}
       </div>
