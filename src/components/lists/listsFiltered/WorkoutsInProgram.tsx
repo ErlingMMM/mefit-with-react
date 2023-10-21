@@ -132,19 +132,20 @@ function WorkoutsInProgram() {
           onClick={() => handleActiveWorkout(0)}
           className="flex-1 pl-10 pr-4  pt-2 text-base"
         >
-          {products[activeWorkoutList].name}
+          {products[activeWorkoutList] && products[activeWorkoutList].name}
+
         </button>
         <button
           onClick={() => handleActiveWorkout(1)}
           className="flex-1 pl-10 pr-4  pt-2 text-base"
         >
-          {products[activeWorkoutList + 1].name}
+          {products[activeWorkoutList] && products[activeWorkoutList + 1].name}
         </button>
         <button
           onClick={() => handleActiveWorkout(2)}
           className="flex-1 pl-10 pr-4  pt-2 text-base"
         >
-          {products[activeWorkoutList + 2].name}
+          {products[activeWorkoutList] && products[activeWorkoutList + 2].name}
         </button>
       </div>
 
