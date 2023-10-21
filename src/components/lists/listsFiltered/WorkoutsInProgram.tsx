@@ -82,25 +82,7 @@ function WorkoutsInProgram() {
       id: 7,
       name: 'Product G',
       price: 79.99,
-      image: 'URL-to-Product-G-Image',
-    },
-    {
-      id: 8,
-      name: 'Product H',
-      price: 89.99,
-      image: 'URL-to-Product-H-Image',
-    },
-    {
-      id: 9,
-      name: 'Product I',
-      price: 99.99,
-      image: 'URL-to-Product-I-Image',
-    },
-    {
-      id: 10,
-      name: 'Product J',
-      price: 109.99,
-      image: 'URL-to-Product-J-Image',
+      image: 'https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
   ];
   
@@ -136,6 +118,36 @@ function WorkoutsInProgram() {
 <button onClick={() => handleActiveWorkout(1)}>{products[activeWorkoutList + 1].name}</button>
 <button onClick={() => handleActiveWorkout(2)}>{products[activeWorkoutList + 2].name}</button>
 
+
+
+<div className="flex justify-between w-full space-x-1">
+        <button
+          onClick={() => handleActiveWorkout(0)}
+          className="flex-1 pl-10 pr-4  pt-2 text-base"
+        >
+          {products[activeWorkoutList].name}
+        </button>
+        <button
+          onClick={() => handleActiveWorkout(1)}
+          className="flex-1 pl-10 pr-4  pt-2 text-base"
+        >
+          {products[activeWorkoutList + 1].name}
+        </button>
+        <button
+          onClick={() => handleActiveWorkout(2)}
+          className="flex-1 pl-10 pr-4  pt-2 text-base"
+        >
+          {products[activeWorkoutList + 2].name}
+        </button>
+      </div>
+
+      {/*Line under buttons*/}
+      <div className="flex mb-5 mt-2">
+        <div className={`w-1/3 h-1 ${activeWorkout === activeWorkoutList ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeWorkout === activeWorkoutList + 1 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeWorkout === activeWorkoutList + 2 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+      </div>
+
 <button onClick={() => handleActiveWorkoutList()}>Next</button>
 
       <WorkoutsInProgramList workouts={workouts} onWorkoutClick={openModal} />
@@ -145,8 +157,3 @@ function WorkoutsInProgram() {
 }
 
 export default WorkoutsInProgram;
-
-
-
-
-
