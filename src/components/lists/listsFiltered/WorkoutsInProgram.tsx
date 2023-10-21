@@ -10,6 +10,7 @@ function WorkoutsInProgram() {
   const [workouts, setWorkouts] = useState([]);
   const [activeWorkout, setActiveWorkout] = useState(0);
   const [activeWorkoutList, setActiveWorkoutList] = useState(0);
+  const [activeLine, setActiveLine] = useState(0);
 
   const openModal = (workout: any) => {
     setSelectedWorkout(workout);
@@ -85,40 +86,48 @@ function WorkoutsInProgram() {
       image: 'https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
   ];
-  
-  
 
-    const handleActiveWorkout = (chosen: number) => {
-      setActiveWorkout(chosen)
-}
 
-   const handleActiveWorkoutList = () => {
-    if((activeWorkoutList + 3) < products.length  ) 
-    setActiveWorkoutList(activeWorkoutList + 3)
-  setActiveWorkout(activeWorkout+3)
-       }
+
+  const handleActiveWorkout = (chosen: number) => {
+    const newActiveWorkout = activeWorkout + chosen;
+    if (newActiveWorkout < products.length) {
+      setActiveWorkout(newActiveWorkout);
+      setActiveLine(chosen);
+    }
+  }
+  
+  const handleActiveWorkoutList = () => {
+    const newActiveWorkoutList = activeWorkoutList + 3;
+    if (newActiveWorkoutList < products.length) {
+      setActiveWorkoutList(newActiveWorkoutList);
+      setActiveWorkout(newActiveWorkoutList);
+      setActiveLine(0);
+    }
+  }
+  
 
 
   return (
     <div>
       <br />
       <img
-  className="h-52 w-screen"
-  src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
-  alt="WorkoutImage"
-/>
+        className="h-52 w-screen"
+        src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
+        alt="WorkoutImage"
+      />
 
-<img
-  className="h-52 w-screen"
-  src={(products[activeWorkout] as { image: string } || {}).image || ''}
-  alt="WorkoutImage"
-/>
-
-
+      <img
+        className="h-52 w-screen"
+        src={(products[activeWorkout] as { image: string } || {}).image || ''}
+        alt="WorkoutImage"
+      />
 
 
 
-<div className="flex justify-between w-full space-x-1">
+
+
+      <div className="flex justify-between w-full space-x-1">
         <button
           onClick={() => handleActiveWorkout(0)}
           className="flex-1 pl-10 pr-4  pt-2 text-base"
@@ -141,12 +150,12 @@ function WorkoutsInProgram() {
 
       {/*Line under buttons*/}
       <div className="flex mb-5 mt-2">
-        <div className={`w-1/3 h-1 ${activeWorkout === activeWorkoutList ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-1 ${activeWorkout === activeWorkoutList + 1 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-1 ${activeWorkout === activeWorkoutList + 2 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeLine === 0 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeLine === 1 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 h-1 ${activeLine === 2 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
       </div>
 
-<button onClick={() => handleActiveWorkoutList()}>Next</button>
+      <button onClick={() => handleActiveWorkoutList()}>Next</button>
 
       <WorkoutsInProgramList workouts={workouts} onWorkoutClick={openModal} />
       <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedWorkout} />
