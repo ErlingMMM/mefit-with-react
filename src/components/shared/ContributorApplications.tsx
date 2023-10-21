@@ -138,18 +138,22 @@ useEffect(() => {
       return (
         isVisible &&  (
           <li key={userId}>
+           <div className="text-black mb-2 p-2  flex justify-between items-center">
             <div>
-              <br />
-              <span className="font-bold text-white">id:</span> {userId} <br />
-              <span className="font-bold text-white">fitnessPreference:</span> {obj.fitnessPreference} <br />
-              <span className="font-bold text-white">application text:</span> {obj.applicationText}
-              <button
-                onClick={() => handleApplicationClick(userId)}
-                className="bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline"
-              >
-                accept application
-              </button>
-            </div>
+
+    <p className="font-bold">ID: {userId}</p>
+    <p className="font-bold">First Name: {obj.firstName}</p>
+    <p className="font-bold">Last Name: {obj.lastName}</p>
+    <p className="font-bold">Fitness Preference: {obj.fitnessPreference}</p>
+    <p className="font-bold">Application Text: {obj.applicationText}</p>
+    </div>
+    <button
+        onClick={() => handleApplicationClick(userId)}
+        className="bg-[#a3e635] hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Accept Application
+    </button>
+</div>
+
           </li>
         )
       );

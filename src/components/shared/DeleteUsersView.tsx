@@ -60,19 +60,22 @@ function DeleteUserView () {
         }
       };
         return (
-            <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
-            <h1 className="text-2xl font-bold mb-4">Delete Users</h1>
+            <div className="max-w-md mx-auto p-4 bg-white ">
+            <h1 className="text-2xl font-bold mb-4">Area to delete users for admin</h1>
             {!isLoading && Users.map((user: any) => (
-              <div key={user.id} className="mb-2 p-2 border-b border-gray-300 flex justify-between items-center">
+              <div key={user.id} className="mb-2 p-2  flex justify-between items-center">
                 <div>
-  <div className="mb-4">
-    <p className="text-lg">{user.firstName}</p>
+                <div className="font bold">
+    <p className="font-bold">ID: {user.id}</p>
+  </div>
+  <div className="font bold">
+    <p className="font-bold">first name: {user.firstName}</p>
   </div>
   <div className="mb-4">
-    <p className="text-lg">{user.lastName}</p>
+    <p className="font-bold">last name: {user.lastName}</p>
   </div>
   <div className="mb-4">
-    <p className="text-lg">{user.id}</p>
+                                               
   </div>
 </div>
 
