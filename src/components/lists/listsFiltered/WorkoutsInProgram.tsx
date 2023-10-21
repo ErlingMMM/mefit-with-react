@@ -86,6 +86,13 @@ function WorkoutsInProgram() {
       image: 'https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
 
+    {
+      id: 8,
+      name: 'Product H',
+      price: 79.99,
+      image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+
   ];
 
 
@@ -95,13 +102,13 @@ function WorkoutsInProgram() {
 
   const totalProducts = products.length;
 
-  const totalPages = Math.ceil(totalProducts / productsPerPage);
 
   const handleActiveWorkout = (chosen: number) => {
     const newActiveWorkout = activeWorkout + chosen;
+    setActiveLine(chosen);
+
     if (newActiveWorkout < totalProducts) {
       setActiveWorkout(newActiveWorkout);
-      setActiveLine(chosen);
     }
   };
 
@@ -136,29 +143,32 @@ function WorkoutsInProgram() {
 
 
 
-      <div className="flex justify-between w-full space-x-1">
-        {Array.from({ length: productsPerPage }).map((_, index) => {
-          const productIndex = activeWorkoutList + index;
-          return (
-            productIndex < totalProducts && (
-              <button
-                key={productIndex}
-                onClick={() => handleActiveWorkout(index)}
-                className="flex-1 pl-10 pr-4 pt-2 text-base"
-              >
-                {products[productIndex].name}
-              </button>
-            )
-          );
-        })}
-      </div>
+<div className="flex mb-5 mt-2">
+  {Array.from({ length: productsPerPage }).map((_, index) => {
+    const productIndex = activeWorkoutList + index;
+    const isButtonVisible = productIndex < totalProducts;
 
-      {/*Line under buttons*/}
-      <div className="flex mb-5 mt-2">
-        <div className={`w-1/3 h-1 ${activeLine === 0 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-1 ${activeLine === 1 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-1 ${activeLine === 2 ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+    const lineClass = `w-${1 / productsPerPage} h-1 ${
+      activeLine === index ? 'bg-custom-green' : 'bg-gray-400'
+    }`;
+
+    return (
+      <div key={index} className={lineClass}>
+        {isButtonVisible && (
+          <button
+            onClick={() => handleActiveWorkout(index)}
+            className={`flex-1 pl-10 pr-4 pt-2 text-base ${
+              isButtonVisible ? '' : 'hidden'
+            }`}
+          >
+            {isButtonVisible ? products[productIndex].name : ''}
+          </button>
+        )}
       </div>
+    );
+  })}
+</div>
+
 
       <button onClick={() => handleActiveWorkoutList()}>Next</button>
 
