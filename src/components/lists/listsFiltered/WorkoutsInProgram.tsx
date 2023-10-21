@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import ExerciseList from '../../lists/ExerciseList';
 
@@ -13,60 +13,8 @@ function WorkoutsInProgram() {
 
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (selectedProgramId) {
-        try {
-          // Fetch workouts
-          const workoutsResponse = await fetch(
-            `https://mefit-backend.azurewebsites.net/api/Plan/GetWorkouts/${parseInt(selectedProgramId)}`
-          );
-
-          if (workoutsResponse.ok) {
-            const workoutsData = await workoutsResponse.json();
-            setWorkouts(workoutsData);
-          } else {
-            console.error('Error fetching workouts data');
-          }
-
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      }
-    };
-
-    fetchData();
-  }, [selectedProgramId]);
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-
-      try {
-        // Fetch exercises
-        const exercisesResponse = await fetch(
-          `https://mefit-backend.azurewebsites.net/api/Workouts/${products[activeWorkout].id.toString()}/exercises`
-        );
-
-        if (exercisesResponse.ok) {
-          const exercisesData = await exercisesResponse.json();
-          setExercises(exercisesData);
-        } else {
-          console.error('Error fetching exercises data');
-        }
-
-      } catch (error) {
-        console.error('Error:', error);
-      }
-
-    };
-
-    fetchData();
-  }, [activeWorkout]);
-
-
-
-  const products = [
+  const products = useMemo(() => [
+ 
     {
       id: 1,
       name: 'Product A',
@@ -135,7 +83,59 @@ function WorkoutsInProgram() {
       image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
 
-  ];
+  ], []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (selectedProgramId) {
+        try {
+          // Fetch workouts
+          const workoutsResponse = await fetch(
+            `https://mefit-backend.azurewebsites.net/api/Plan/GetWorkouts/${parseInt(selectedProgramId)}`
+          );
+
+          if (workoutsResponse.ok) {
+            const workoutsData = await workoutsResponse.json();
+            setWorkouts(workoutsData);
+          } else {
+            console.error('Error fetching workouts data');
+          }
+
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [selectedProgramId]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+
+      try {
+        // Fetch exercises
+        const exercisesResponse = await fetch(
+          `https://mefit-backend.azurewebsites.net/api/Workouts/${products[activeWorkout].id.toString()}/exercises`
+        );
+
+        if (exercisesResponse.ok) {
+          const exercisesData = await exercisesResponse.json();
+          setExercises(exercisesData);
+        } else {
+          console.error('Error fetching exercises data');
+        }
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+
+    };
+
+    fetchData();
+  }, [activeWorkout, products]); 
+
 
 
 
