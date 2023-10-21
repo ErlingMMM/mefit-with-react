@@ -85,27 +85,36 @@ function WorkoutsInProgram() {
       price: 79.99,
       image: 'https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
+
   ];
 
 
 
+
+  const productsPerPage = 3;
+
+  const totalProducts = products.length;
+
+  const totalPages = Math.ceil(totalProducts / productsPerPage);
+
   const handleActiveWorkout = (chosen: number) => {
     const newActiveWorkout = activeWorkout + chosen;
-    if (newActiveWorkout < products.length) {
+    if (newActiveWorkout < totalProducts) {
       setActiveWorkout(newActiveWorkout);
       setActiveLine(chosen);
     }
-  }
-  
+  };
+
   const handleActiveWorkoutList = () => {
-    const newActiveWorkoutList = activeWorkoutList + 3;
-    if (newActiveWorkoutList < products.length) {
+    const newActiveWorkoutList = activeWorkoutList + productsPerPage;
+    if (newActiveWorkoutList < totalProducts) {
       setActiveWorkoutList(newActiveWorkoutList);
       setActiveWorkout(newActiveWorkoutList);
       setActiveLine(0);
     }
-  }
-  
+  };
+
+
 
 
   return (
@@ -128,25 +137,20 @@ function WorkoutsInProgram() {
 
 
       <div className="flex justify-between w-full space-x-1">
-        <button
-          onClick={() => handleActiveWorkout(0)}
-          className="flex-1 pl-10 pr-4  pt-2 text-base"
-        >
-          {products[activeWorkoutList] && products[activeWorkoutList].name}
-
-        </button>
-        <button
-          onClick={() => handleActiveWorkout(1)}
-          className="flex-1 pl-10 pr-4  pt-2 text-base"
-        >
-          {products[activeWorkoutList] && products[activeWorkoutList + 1].name}
-        </button>
-        <button
-          onClick={() => handleActiveWorkout(2)}
-          className="flex-1 pl-10 pr-4  pt-2 text-base"
-        >
-          {products[activeWorkoutList] && products[activeWorkoutList + 2].name}
-        </button>
+        {Array.from({ length: productsPerPage }).map((_, index) => {
+          const productIndex = activeWorkoutList + index;
+          return (
+            productIndex < totalProducts && (
+              <button
+                key={productIndex}
+                onClick={() => handleActiveWorkout(index)}
+                className="flex-1 pl-10 pr-4 pt-2 text-base"
+              >
+                {products[productIndex].name}
+              </button>
+            )
+          );
+        })}
       </div>
 
       {/*Line under buttons*/}
