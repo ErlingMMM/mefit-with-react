@@ -72,8 +72,13 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) 
             <button onClick={() => switchToComponent('addExercise')} className="my-2">Add Exercise</button>
             <button onClick={() => switchToComponent('addWorkout')} className="my-2">Add Workout</button>
             <button onClick={() => switchToComponent('addProgram')} className="my-2">Add Program</button>
-            {isAdmin && <button onClick={() => switchToComponent('manageApplications')} className="my-2">Manage Applications</button>}
-        {isAdmin && <button onClick={() => switchToComponent('manageUsers')} className="my-2">Manage Users</button>}
+            {isAdmin && (
+              <>
+                <button onClick={() => switchToComponent('manageApplications')} className="my-2">Manage Applications</button>
+                <button onClick={() => switchToComponent('manageUsers')} className="my-2">Manage Users</button>
+              </>
+            )}
+
             {(isAdmin || isContributor) && (
               <button onClick={onclickAdminContributor} className="my-2">Contributor</button>
             )}

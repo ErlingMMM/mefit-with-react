@@ -28,8 +28,13 @@ const RolePageNavbar: React.FC<RolePageNavbarProps> = ({ switchToComponent, isAd
         <button onClick={() => switchToComponent('addExercise')}>Add Exercise</button>
         <button onClick={() => switchToComponent('addWorkout')}>Add Workout</button>
         <button onClick={() => switchToComponent('addProgram')}>Add Program</button>
-        {isAdmin && <button onClick={() => switchToComponent('manageApplications')}>Manage Applications</button>}
-        {isAdmin && <button onClick={() => switchToComponent('manageUsers')}>Manage Users</button>}
+        {isAdmin && (
+  <>
+    <button onClick={() => switchToComponent('manageApplications')}>Manage Applications</button>
+    <button onClick={() => switchToComponent('manageUsers')}>Manage Users</button>
+  </>
+)}
+
       </div>
     </div>
   );
