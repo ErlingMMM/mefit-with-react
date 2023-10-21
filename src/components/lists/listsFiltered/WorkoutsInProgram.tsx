@@ -103,14 +103,7 @@ function WorkoutsInProgram() {
   const totalWorkouts = products.length;
 
 
-  /*const handleActiveWorkout = (chosen: number) => {
-    const newActiveWorkout = activeWorkout + chosen;
-    setActiveLine(chosen);
-
-    if (newActiveWorkout < totalProducts) {
-      setActiveWorkout(newActiveWorkout);
-    }
-  };*/
+ 
 
 
   const handleActiveWorkout = (workout: number) => {

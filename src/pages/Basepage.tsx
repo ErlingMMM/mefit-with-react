@@ -12,7 +12,7 @@ function Basepage() {
     <>
    {/*<div className='overflow-x-hidden bg-custom-main'>*/} 
    <div className='overflow-x-hidden'>
-    <Navbar />
+    <Navbar/>
         <ContentView activeComponent={activeComponent} />
     </div>
     </>
