@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import ExerciseModal from '../../modals/ExerciseModal';
 import { useSelector } from 'react-redux';
-import WorkoutsInProgramList from './WorkoutsInProgramList';
+import ExerciseList from '../../lists/ExerciseList';
+
 
 function WorkoutsInProgram() {
-  const [selectedWorkout, setSelectedWorkout] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const selectedProgramId = useSelector((state: any) => state.selectedProgramId);
   const [workouts, setWorkouts] = useState([]);
+  const [exercises, setExercises] = useState([]);
   const [activeWorkout, setActiveWorkout] = useState(0);
   const [activeWorkoutList, setActiveWorkoutList] = useState(0);
   const [activeLine, setActiveLine] = useState(0);
 
-  const openModal = (workout: any) => {
-    setSelectedWorkout(workout);
-    setIsModalOpen(true);
-  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +37,34 @@ function WorkoutsInProgram() {
 
     fetchData();
   }, [selectedProgramId]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+
+      try {
+        // Fetch exercises
+        const exercisesResponse = await fetch(
+          `https://mefit-backend.azurewebsites.net/api/Workouts/${products[activeWorkout].id.toString()}/exercises`
+        );
+
+        if (exercisesResponse.ok) {
+          const exercisesData = await exercisesResponse.json();
+          setExercises(exercisesData);
+        } else {
+          console.error('Error fetching exercises data');
+        }
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+
+    };
+
+    fetchData();
+  }, [activeWorkout]);
+
+
 
   const products = [
     {
@@ -99,11 +123,7 @@ function WorkoutsInProgram() {
 
 
   const workoutsPerPage = 3;
-
   const totalWorkouts = products.length;
-
-
-
 
 
   const handleActiveWorkout = (workout: number) => {
@@ -121,7 +141,7 @@ function WorkoutsInProgram() {
   const handlePreviousNavigation = () => {
     const newActiveWorkoutList = activeWorkoutList - workoutsPerPage;
     if (newActiveWorkoutList >= 0) {
-     setActive(newActiveWorkoutList)
+      setActive(newActiveWorkoutList)
     }
   };
 
@@ -131,8 +151,6 @@ function WorkoutsInProgram() {
     setActiveWorkout(num);
     setActiveLine(0);
   }
-
-
 
 
 
@@ -184,8 +202,7 @@ function WorkoutsInProgram() {
       <button onClick={handlePreviousNavigation}>Previous</button>
       <button onClick={() => handleNextNavigation()}>Next</button>
 
-      <WorkoutsInProgramList workouts={workouts} onWorkoutClick={openModal} />
-      <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedWorkout} />
+      <ExerciseList exercises={exercises} content={"explorer"} />
     </div>
   );
 }

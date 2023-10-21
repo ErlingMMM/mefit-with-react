@@ -39,7 +39,7 @@ function ExercisesInWorkouts() {
 
   return (
     <div>
-      <ExerciseInWorkoutsList exercises={exercises} onExerciseClick={openModal} /> {/* Use the child component here */}
+      <ExerciseInWorkoutsList exercises={exercises} onExerciseClick={openModal} /> 
       <ExerciseModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} exercise={selectedExercise} />
     </div>
   );
