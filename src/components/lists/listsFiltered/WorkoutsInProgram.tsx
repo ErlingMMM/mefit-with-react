@@ -8,7 +8,7 @@ function WorkoutsInProgram() {
   const [workouts, setWorkouts] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [activeWorkout, setActiveWorkout] = useState(0);
-  const [activeWorkoutList, setActiveWorkoutList] = useState(0);
+  const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
   const [activeLine, setActiveLine] = useState(0);
 
 
@@ -150,23 +150,23 @@ function WorkoutsInProgram() {
   };
 
   const handleNextNavigation = () => {
-    const newActiveWorkoutList = activeWorkoutList + workoutsPerPage;
-    if (newActiveWorkoutList < totalWorkouts) {
-      setActive(newActiveWorkoutList)
+    const newCurrentWorkoutIndex = currentWorkoutIndex + workoutsPerPage;
+    if (newCurrentWorkoutIndex < totalWorkouts) {
+      setActive(newCurrentWorkoutIndex)
     }
   };
 
   const handlePreviousNavigation = () => {
-    const newActiveWorkoutList = activeWorkoutList - workoutsPerPage;
-    if (newActiveWorkoutList >= 0) {
-      setActive(newActiveWorkoutList)
+    const newCurrentWorkoutIndex = currentWorkoutIndex - workoutsPerPage;
+    if (newCurrentWorkoutIndex >= 0) {
+      setActive(newCurrentWorkoutIndex)
     }
   };
 
 
-  const setActive = (num: number) => {
-    setActiveWorkoutList(num);
-    setActiveWorkout(num);
+  const setActive = (index: number) => {
+    setCurrentWorkoutIndex(index);
+    setActiveWorkout(index);
     setActiveLine(0);
   }
 
@@ -192,7 +192,7 @@ function WorkoutsInProgram() {
 
       <div className="flex mb-5 mt-2">
         {Array.from({ length: workoutsPerPage }).map((_, index) => {
-          const workoutIndex = activeWorkoutList + index;
+          const workoutIndex = currentWorkoutIndex + index;
           const isButtonVisible = workoutIndex < totalWorkouts;
 
           const lineClass = `w-${1 / workoutsPerPage} h-1 ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'
@@ -219,6 +219,8 @@ function WorkoutsInProgram() {
 
       <button onClick={handlePreviousNavigation}>Previous</button>
       <button onClick={() => handleNextNavigation()}>Next</button>
+<br />
+<br />
 
       <ExerciseList exercises={exercises} content={"explorer"} />
     </div>
