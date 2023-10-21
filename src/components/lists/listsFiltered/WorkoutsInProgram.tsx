@@ -114,9 +114,7 @@ function WorkoutsInProgram() {
   alt="WorkoutImage"
 />
 
-<button onClick={() => handleActiveWorkout(0)}>{products[activeWorkoutList].name}</button>
-<button onClick={() => handleActiveWorkout(1)}>{products[activeWorkoutList + 1].name}</button>
-<button onClick={() => handleActiveWorkout(2)}>{products[activeWorkoutList + 2].name}</button>
+
 
 
 
