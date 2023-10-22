@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import ExerciseList from '../../lists/ExerciseList';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+import DurationUtils from '../../utils/DurationUtils';
 
 
 
@@ -130,8 +131,6 @@ function WorkoutsInProgram() {
 
 
 
-
-
   return (
     <div>
       <br />
@@ -142,14 +141,15 @@ function WorkoutsInProgram() {
           alt="WorkoutImage"
         />
         <div className="absolute bottom-0 right-0 p-2 md:mr-64  text-white z-10">
-          <span className="px-2 py-1 rounded">Duration: 1h 45 min</span>
+          <span className="px-2 py-1 rounded">Duration: {DurationUtils.formatDuration(products[activeWorkout].duration)}
+          </span>
         </div>
       </div>
 
 
       <div className='mx-11 sm:mx-0 my-5'>
-        <div className='font-bold text-lg sm:justify-center sm:flex '>{products[activeWorkout].name}</div>
-        <br />
+        <div className='font-bold text-lg sm:justify-center sm:flex sm:pb-5'>{products[activeWorkout].name}</div>
+        
         <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
           <div className={` ${descriptionFull ? 'h-auto' : 'h-12'} overflow-y-hidden`}>
             {products[activeWorkout].description}
