@@ -18,6 +18,8 @@ function WorkoutsInProgram() {
   const [activeWorkout, setActiveWorkout] = useState(0);
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
   const [activeLine, setActiveLine] = useState(0);
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
 
 
 
@@ -188,7 +190,12 @@ function WorkoutsInProgram() {
   }
 
 
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
 
+  const description = products[activeWorkout].description;
+  const shortDescription = description.slice(0, 4);
 
   return (
     <div>
@@ -208,7 +215,7 @@ function WorkoutsInProgram() {
      <div className='mx-11 sm:mx-0 my-5'>
   <div className='font-bold text-lg sm:justify-center sm:flex '>{products[activeWorkout].name}</div>
   <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
-    <div className='max-h-16 sm:h-16 overflow-y-auto'>{products[activeWorkout].description}</div>
+    <div className='sm:max-h-12 sm:h-12 max-h-12 h-12 overflow-y-hidden'>{products[activeWorkout].description}</div>
   </div>
 </div>
 
