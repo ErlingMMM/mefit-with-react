@@ -34,7 +34,9 @@ function SearchSelectorModal({ isOpen, closeModal, availableSearchOptions }: { i
           <div className="relative overflow-hidden rounded-lg bg-white text-center shadow-xl transition-all max-h-screen">
 
             <div className='pr-24 py-2'>
-              <div className="block pb-2 px-4 pr-10 rounded-md m-2 cursor-pointer">Sort by: {toTitleCase(selectedSearchOption)}</div>
+              <div className="block pb-2 px-4 pr-10 rounded-md m-2 cursor-pointer">
+                <span style={{ fontWeight: 'bold' }}>Search by:</span> {toTitleCase(selectedSearchOption)}
+              </div>
 
               {filteredOptions.map((option) => (
                 <>
