@@ -40,7 +40,7 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
           <div className="w-48">
             
               <div className='mr-20'>
-                <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
+                <h3 className="text-lg font-bold" style={{ marginLeft: '-10px' }}>
                   {exercise.name}
                 </h3>
               </div>
@@ -61,10 +61,10 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
                   </p>
                 </>
               ) : (
-                <>
-                  <p>{exercise.muscleGroup}</p>
+                <>                 
+                  <p style={{ marginRight: '4rem' }}>{exercise.muscleGroup}</p>
                   <br />
-                  <b className="flex space-x-2">
+                  <b className="flex space-x-2"style={{ marginLeft: '10px' }}>
                     <span className="mr-2">Sets: {exercise.sets}</span>
                     <span>Reps: {exercise.reps}</span>
                   </b>
