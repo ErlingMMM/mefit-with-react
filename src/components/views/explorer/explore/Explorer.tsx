@@ -91,7 +91,7 @@ function Explorer() {
         <div className={`w-1/3 lg:w-1/4 h-1 ${activeComponent === 'workouts' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
       </div>
 
-      <div className='text-right sm:text-left mb-3 space-x-2 ml-12 sm:ml-32'>
+      <div className='text-right sm:text-left mb-3 space-x-2 ml-12 sm:ml-72 translate-x-1'>
       <SortButton />
       </div>
         
