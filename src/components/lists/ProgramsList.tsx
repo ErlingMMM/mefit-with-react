@@ -36,7 +36,7 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
                 <img
                   src={getRandomDummyImageUrl()}
                   alt={program.name}
-                  className="w-80 h-24 rounded-lg mx-auto"
+                  className="w-80 h-24 rounded-lg mx-auto object-cover object-top overflow-hidden"
                 />
               </div>
               <div className="flex items-start">
