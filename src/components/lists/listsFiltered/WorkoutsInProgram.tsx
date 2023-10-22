@@ -130,7 +130,7 @@ function WorkoutsInProgram() {
     setActiveLine(0);
   }
 
-console.log("workouts", workouts);
+  console.log("workouts", workouts);
 
 
 
@@ -143,6 +143,7 @@ console.log("workouts", workouts);
           src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
           alt="WorkoutImage"
         />
+        {/**style={{ objectPosition: '50% 40%' }} */}
         <div className="absolute bottom-0 right-0 p-2 md:mr-64  text-white z-10">
           <span className="px-2 py-1">Duration: {DurationUtils.formatDuration(products[activeWorkout].duration)}
           </span>
