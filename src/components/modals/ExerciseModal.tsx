@@ -26,7 +26,12 @@ function ExerciseModal({ isOpen, closeModal, exercise }: { isOpen: boolean, exer
                 className="h-6 w-6 text-black hover:bg-gray-200 hover:bg-opacity-50 rounded-full cursor-pointer absolute left-3 top-3"
                 onClick={closeModal}
               />
-              {exercise.name}
+              <h3
+                className="font-bold text-2xl"
+              >
+                {exercise.name}
+              </h3>
+             
 
               <div className="mt-3 text-left">
                 <div className="max-h-96 overflow-y-auto">

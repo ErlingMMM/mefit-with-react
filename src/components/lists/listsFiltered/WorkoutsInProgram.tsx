@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import ExerciseList from '../../lists/ExerciseList';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+
 
 interface Workout {
   id: number;
@@ -201,11 +203,11 @@ function WorkoutsInProgram() {
       <div>{workouts[activeWorkout].name}</div>
       <div>{workouts[activeWorkout].description}</div>
 */}
-<div className='ml-11'>
-<div className='font-bold text-lg'>{products[activeWorkout].name}</div>
-      <div>{products[activeWorkout].description}</div>
-</div>
-     
+      <div className='mx-11'>
+        <div className='font-bold text-lg'>{products[activeWorkout].name}</div>
+        <div>{products[activeWorkout].description}</div>
+      </div>
+
 
       {/* <img
         className="h-44 w-screen"
@@ -214,20 +216,20 @@ function WorkoutsInProgram() {
       />*/}
 
 
-      <div className="flex mb-5 mt-2">
+      <div className="flex mb-5 mt-5 justify-center">
         {Array.from({ length: workoutsPerPage }).map((_, index) => {
           const workoutIndex = currentWorkoutIndex + index;
           const isButtonVisible = workoutIndex < totalWorkouts;
 
-          const lineClass = `w-${1 / workoutsPerPage} h-1 ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'
-            }`;
+          const lineClass = `w-${1 / workoutsPerPage} md:mx-16 h-1 ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'}`;
+
 
           return (
             <div key={index} className={lineClass}>
               {isButtonVisible && (
                 <button
                   onClick={() => handleActiveWorkout(workoutIndex)}
-                  className={`flex-1 pl-10 pr-6 pt-2 text-base ${isButtonVisible ? '' : 'hidden'
+                  className={`flex-1 pl-10 md-pl-0  pr-6 pt-2 text-base ${isButtonVisible ? '' : 'hidden'
                     }`}
                   style={{ WebkitTapHighlightColor: 'transparent' }}
 
