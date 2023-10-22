@@ -38,39 +38,39 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
         <button onClick={() => openModal(exercise)} className="flex items-start">
           <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
           <div className="w-48">
-            
-              <div className='mr-20'>
-                <h3 className="text-lg font-bold" style={{ marginLeft: '-10px' }}>
-                  {exercise.name}
-                </h3>
-              </div>
-              {content === 'explorer' ? (
-                <>
-                  <div className='mr-28'>
-                    <p>Level: {exercise.difficulty}</p>
-                  </div>
-                  <br />
 
-                  <p className="flex flex-wrap h-7 overflow-hidden">
-                    {exercise.muscleGroup.split(', ').map((group: string, index: number) => (
-                      <span key={index} className="whitespace-nowrap">
-                        {group}
-                        {index < exercise.muscleGroup.split(', ').length - 1 ? ', ' : ''}
-                      </span>
-                    ))}
-                  </p>
-                </>
-              ) : (
-                <>                 
-                  <p style={{ marginRight: '4rem' }}>{exercise.muscleGroup}</p>
-                  <br />
-                  <b className="flex space-x-2"style={{ marginLeft: '10px' }}>
-                    <span className="mr-2">Sets: {exercise.sets}</span>
-                    <span>Reps: {exercise.reps}</span>
-                  </b>
-                </>
-              )}
+            <div className='mr-20'>
+              <h3 className="text-lg font-bold" style={{ marginLeft: '-10px' }}>
+                {exercise.name}
+              </h3>
             </div>
+            {content === 'explorer' ? (
+              <>
+                <div className='mr-28'>
+                  <p>Level: {exercise.difficulty}</p>
+                </div>
+                <br />
+
+                <p className="flex flex-wrap h-7 overflow-hidden">
+                  {exercise.muscleGroup.split(', ').map((group: string, index: number) => (
+                    <span key={index} className="whitespace-nowrap">
+                      {group}
+                      {index < exercise.muscleGroup.split(', ').length - 1 ? ', ' : ''}
+                    </span>
+                  ))}
+                </p>
+              </>
+            ) : (
+              <>
+                <p style={{ marginRight: '4rem' }}>{exercise.muscleGroup}</p>
+                <br />
+                <b className="flex space-x-2" style={{ marginLeft: '10px' }}>
+                  <span className="mr-2">Sets: {exercise.sets}</span>
+                  <span>Reps: {exercise.reps}</span>
+                </b>
+              </>
+            )}
+          </div>
         </button>
       </li>
     ));
