@@ -27,7 +27,7 @@ function WorkoutsInProgram() {
       name: 'Product A',
       price: 19.99,
       image: 'https://images.unsplash.com/photo-1545575439-3261931f52f1?auto=format&fit=crop&q=80&w=2071&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      description: 'An affordable item priced at $19.99, ideal for everyday use.',
+      description: 'An affordable item priced at $19.99, ideal for everyday use.An affordable item priced at $19.99, ideal for everyday use.',
     },
     {
       id: 2,
@@ -41,7 +41,7 @@ function WorkoutsInProgram() {
       name: 'Product C',
       price: 39.99,
       image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1925&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      description: 'A stylish item priced at $39.99, suitable for fashion enthusiasts.',
+      description: 'A stylish item priced at $39.99, suitable for fashion enthusiasts.An affordable item priced at $19.99, ideal for everyday use.An affordable item priced at $19.99, ideal for everyday useAn affordable item priced at $19.99, ideal for everyday use.An affordable item priced at $19.99, ideal for everyday use',
     },
     {
       id: 4,
@@ -194,19 +194,24 @@ function WorkoutsInProgram() {
     <div>
       <br />
       <img
-        className="h-44 w-screen"
+        className="h-44 md:h-52 md:rounded-md w-screen max-w-screen-md mx-auto object-cover object-center overflow-hidden"
         src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
         alt="WorkoutImage"
       />
+
+
 
       {/*
       <div>{workouts[activeWorkout].name}</div>
       <div>{workouts[activeWorkout].description}</div>
 */}
-      <div className='mx-11'>
-        <div className='font-bold text-lg'>{products[activeWorkout].name}</div>
-        <div>{products[activeWorkout].description}</div>
-      </div>
+     <div className='mx-11 sm:mx-0 my-5'>
+  <div className='font-bold text-lg sm:justify-center sm:flex '>{products[activeWorkout].name}</div>
+  <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
+    <div className='max-h-16 sm:h-16 overflow-y-auto'>{products[activeWorkout].description}</div>
+  </div>
+</div>
+
 
 
       {/* <img
@@ -221,7 +226,7 @@ function WorkoutsInProgram() {
           const workoutIndex = currentWorkoutIndex + index;
           const isButtonVisible = workoutIndex < totalWorkouts;
 
-          const lineClass = `w-${1 / workoutsPerPage} md:mx-16 h-1 ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'}`;
+          const lineClass = `w-${1 / workoutsPerPage} h-1 ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'}`;
 
 
           return (
