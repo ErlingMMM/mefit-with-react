@@ -7,7 +7,6 @@ function ExercisesInWorkouts() {
   const [exercises, setExercises] = useState([]);
 
 
-
   useEffect(() => {
     const fetchExercises = async () => {
       if (selectedWorkoutId) {
