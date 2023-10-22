@@ -11,7 +11,7 @@ function AddWorkoutsComponent() {
   const [daysList, setDaysList] = useState<number[]>([]);
   const navigate = useNavigate();
 
-  const workoutId = useSelector((state: RootState) => state.data.workoutId.id);
+  const planId = useSelector((state: RootState) => state.data.programId.id);
 
   useEffect(() => {
     getAllWorkouts()
@@ -38,11 +38,11 @@ function AddWorkoutsComponent() {
   };
 
   
-  //const handleSaveButton = () => {
-  //  addWorkoutToPlan(planId, workoutIdsList, daysList)
-  //    .then(result => navigate('/rolepage'))
-  //    .catch(error => console.error("Error adding workouts to plan:", error));
-  //};
+  const handleSaveButton = () => {
+    addWorkoutToPlan(planId, workoutIdsList, daysList)
+      .then(result => navigate('/rolepage'))
+      .catch(error => console.error("Error adding workouts to plan:", error));
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -68,7 +68,7 @@ function AddWorkoutsComponent() {
           <li>No matching workouts</li>
         )}
       </ul>
-      <button className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save</button>
+      <button onClick={handleSaveButton}className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save</button>
     </div>
   );
 }
