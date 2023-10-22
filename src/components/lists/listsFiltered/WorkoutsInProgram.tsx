@@ -268,7 +268,7 @@ function WorkoutsInProgram() {
       <br />
       <br />
 
-      <ExerciseList exercises={exercises} content={"explorer"} />
+      <ExerciseList exercises={exercises} content={"program"} />
     </div>
   );
 }

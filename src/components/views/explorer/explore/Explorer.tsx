@@ -66,7 +66,7 @@ function Explorer() {
       <div className="flex justify-between w-full space-x-1">
         <button
           onClick={() => switchToComponent('programs')}
-          className="flex-1 pl-10 pr-4  pt-2 text-base"
+          className="flex-1 pl-10 lg:pl-48 pr-4  pt-2 text-base"
         >
           programs
         </button>
@@ -78,17 +78,17 @@ function Explorer() {
         </button>
         <button
           onClick={() => switchToComponent('workouts')}
-          className="flex-1 pr-10 pl-4 pt-2 text-base"
+          className="flex-1 pr-10 lg:pr-48 pl-4 pt-2 text-base"
         >
           workouts
         </button>
       </div>
 
       {/*Line under buttons*/}
-      <div className="flex mb-5 mt-2">
-        <div className={`w-1/3 h-1 ${activeComponent === 'programs' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-1 ${activeComponent === 'exercises' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 h-1 ${activeComponent === 'workouts' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+      <div className="flex mb-5 mt-2 justify-center items-center">
+        <div className={`w-1/3 lg:w-1/4 h-1 ${activeComponent === 'programs' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 lg:w-1/4 h-1 ${activeComponent === 'exercises' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 lg:w-1/4 h-1 ${activeComponent === 'workouts' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
       </div>
 
       <div className='text-right sm:text-left mb-3 space-x-2 ml-12 sm:ml-32'>
