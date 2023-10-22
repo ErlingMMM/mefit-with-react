@@ -1,10 +1,13 @@
 
 import React from 'react';
 
+
 interface Program {
   id: number;
   name: string;
   description: string;
+  duration: number; 
+  difficulty: number;
 }
 
 interface ProgramsListProps {
@@ -28,10 +31,10 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
 
   return (
     <div className="flex justify-center items-center">
-      <ul className='mx-9'>
+      <ul className="mx-9">
         {programs.map((program) => (
           <li key={program.id} className="mb-6">
-            <button onClick={() => onClick(program.id)}>                
+            <button onClick={() => onClick(program.id)}>
               <div>
                 <img
                   src={getRandomDummyImageUrl()}
@@ -39,11 +42,13 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
                   className="w-80 h-24 rounded-lg mx-auto object-cover object-top overflow-hidden"
                 />
               </div>
-              <div className="flex items-start">
+              
+              <div className="flex flex-col items-center"> 
                 <h3 className="text-lg font-bold">
                   {program.name}
                 </h3>
-                <p>{program.description}</p>
+                <p>{program.description}</p> 
+             
               </div>
             </button>
           </li>

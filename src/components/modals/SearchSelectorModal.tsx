@@ -33,7 +33,7 @@ function SearchSelectorModal({ isOpen, closeModal, availableSearchOptions }: { i
 
           <div className="relative overflow-hidden rounded-lg bg-white text-center shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl max-h-screen">
           
-            <div>Sort by: {selectedSearchOption}</div>
+            <div>Sort by: {toTitleCase(selectedSearchOption)}</div>
             <div className="p-4">
               {filteredOptions.map((option) => (
                 <button
