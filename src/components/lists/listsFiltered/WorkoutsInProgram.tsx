@@ -19,13 +19,14 @@ function WorkoutsInProgram() {
   const [activeWorkout, setActiveWorkout] = useState(0);
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
   const [activeLine, setActiveLine] = useState(0);
+  const [descriptionFull, setDescriptionVisible] = useState(false);
 
 
 
 
   const products = useMemo(() => [
-    { id: 1, name: 'Product A', price: 19.99, image: 'https://images.unsplash.com/photo-1545575439-3261931f52f1?auto=format&fit=crop&q=80&w=2071&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'An affordable item priced at $19.99, ideal for everyday use.', duration: 45 },
-    { id: 2, name: 'Product B', price: 29.99, image: 'https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?auto=format&fit=crop&q=80&w=2074&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A quality product priced at $29.99, perfect for various occasions.', duration: 60 },
+    { id: 1, name: 'Product A', price: 19.99, image: 'https://images.unsplash.com/photo-1545575439-3261931f52f1?auto=format&fit=crop&q=80&w=2071&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'An affordable item priced at $19.99, ideal for everyday use.A quality product priced at $29.99, perfect for various occasions.A quality product priced at $29.99, perfect for various occasions.An affordable item priced at $19.99, ideal for everyday use.A quality product priced at $29.99, perfect for various occasions.A quality product priced at $29.99, perfect for various occasions.', duration: 45 },
+    { id: 2, name: 'Product B', price: 29.99, image: 'https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?auto=format&fit=crop&q=80&w=2074&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A quality product priced at $29.99, perfect for various occasions.A quality product priced at $29.99, perfect for various occasionsA quality product priced at $29.99, perfect for various occasions', duration: 60 },
     { id: 3, name: 'Product C', price: 39.99, image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1925&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A stylish item priced at $39.99, suitable for fashion enthusiasts.', duration: 30 },
     { id: 4, name: 'Product D', price: 49.99, image: 'https://images.unsplash.com/photo-1690230677207-126e472f37dc?auto=format&fit=crop&q=80&w=1975&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A premium item priced at $49.99, great for luxury experiences.', duration: 75 },
     { id: 5, name: 'Product E', price: 59.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A versatile product priced at $59.99, adaptable for many uses.', duration: 80 },
@@ -36,7 +37,7 @@ function WorkoutsInProgram() {
     { id: 10, name: 'Product J', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Product H - An additional variation at $79.99, providing more options.', duration: 75 },
     { id: 11, name: 'Product K', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Product H - Yet another choice at $79.99, expanding your selection.', duration: 80 },
   ], []);
-  
+
 
 
   useEffect(() => {
@@ -149,7 +150,17 @@ function WorkoutsInProgram() {
       <div className='mx-11 sm:mx-0 my-5'>
         <div className='font-bold text-lg sm:justify-center sm:flex '>{products[activeWorkout].name}</div>
         <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
-          <div className='sm:max-h-12 sm:h-12 max-h-12 h-12 overflow-y-hidden'>{products[activeWorkout].description}</div>
+          <div className={` ${descriptionFull ? 'h-auto' : 'h-12'} overflow-y-hidden`}>
+            {products[activeWorkout].description}
+          </div>
+        </div>
+        <div className="text-center text-xs">
+          <button
+            className="text-blue-500 underline cursor-pointer"
+            onClick={() => setDescriptionVisible(!descriptionFull)}
+          >
+            {descriptionFull ? 'Show less' : 'Show more'}
+          </button>
         </div>
       </div>
 
