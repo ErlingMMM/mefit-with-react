@@ -15,7 +15,7 @@ function ExerciseModal({ isOpen, closeModal, exercise }: { isOpen: boolean, exer
           aria-modal="true"
           onClick={closeModal}
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+          <div className="fixed inset-0 bg-black bg-opacity-75 transition-opacity"></div>
 
           <div
             className="relative overflow-hidden rounded-lg bg-white text-center shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl max-h-screen"
