@@ -135,25 +135,27 @@ function WorkoutsInProgram() {
   return (
     <div>
       <br />
-      <img
-        className="h-44 md:h-52 md:rounded-md w-screen max-w-screen-md mx-auto object-cover object-center overflow-hidden"
-        src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
-        alt="WorkoutImage"
-      />
+      <div className="relative">
+        <img
+          className="h-44 md:h-52 md:rounded-md w-screen max-w-screen-md mx-auto object-cover object-center overflow-hidden"
+          src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
+          alt="WorkoutImage"
+        />
+        <div className="absolute bottom-0 right-0 p-2 md:mr-64  text-white z-10">
+          <span className="px-2 py-1 rounded">Duration: 1h 45 min</span>
+        </div>
+      </div>
 
 
       <div className='mx-11 sm:mx-0 my-5'>
-        <div className='flex justify-between items-center sm:mx-64'>
-          <div className='font-bold text-lg'>{products[activeWorkout].name}</div>
-          <div>Duration: 1h 45 min</div>
-        </div>
+        <div className='font-bold text-lg sm:justify-center sm:flex '>{products[activeWorkout].name}</div>
         <br />
         <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
           <div className={` ${descriptionFull ? 'h-auto' : 'h-12'} overflow-y-hidden`}>
             {products[activeWorkout].description}
           </div>
         </div>
-        
+
 
         <div className="text-center text-xs">
           <button
