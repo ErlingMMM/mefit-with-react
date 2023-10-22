@@ -149,7 +149,7 @@ function WorkoutsInProgram() {
           <span className="px-2 py-1">Duration: {DurationUtils.formatDuration(products[activeWorkout].duration)}
           </span>
         </div>
-        <div className="absolute bottom-0 left-0 p-2 md:ml-64  text-white z-10">
+        <div className="absolute left-0 p-2 bottom-0.5 md:ml-64  text-white z-10">
           <span className="px-2"> {DifficultyUtils.difficultyToLabel(products[activeWorkout].difficulty)}
           </span>
         </div>
@@ -160,32 +160,36 @@ function WorkoutsInProgram() {
         <div className='font-bold text-lg sm:justify-center sm:flex sm:pb-5'>{products[activeWorkout].name}</div>
 
         <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
-          <div className={showFullDescription ? 'mt-4 h-full' : 'mt-2 h-12'}>
-          {showFullDescription
-            ? products[activeWorkout].description
-            :  truncateDescription(products[activeWorkout].description, 200)}
+          <div className={showFullDescription ? ' h-full' : 'h-24 sm:h-12'}>
+            {showFullDescription
+              ? products[activeWorkout].description
+              : truncateDescription(products[activeWorkout].description, 150)}
           </div>
         </div>
 
-        <div className="text-center text-xs mt-1">
-        {products[activeWorkout].description.length > 200 && (
-          <button
-            onClick={() => setShowFullDescription(!showFullDescription)}
-            className="text-blue-500 cursor-pointer"
-          >
-            {showFullDescription ? 'Show Less' : 'Show More'}
-          </button>
-        )}
-        </div>
+
+        {products[activeWorkout].description.length > 150 ? (
+  <div className="text-center text-xs mt-1">
+    <button
+      onClick={() => setShowFullDescription(!showFullDescription)}
+      className="text-blue-500 cursor-pointer"
+    >
+      {showFullDescription ? 'Show Less' : 'Show More'}
+    </button>
+  </div>
+) : (
+  <div className="text-center text-xs mt-1">
+    <button
+      className="text-white cursor-none"
+    >
+      Show More
+    </button>
+  </div>
+)}
+
+
       </div>
 
-
-
-      {/* <img
-        className="h-44 w-screen"
-        src={(products[activeWorkout] as { image: string } || {}).image || ''}
-        alt="WorkoutImage"
-      />*/}
 
       <div className="flex justify-center ">
         <button onClick={handlePreviousNavigation} className="mr-4">
