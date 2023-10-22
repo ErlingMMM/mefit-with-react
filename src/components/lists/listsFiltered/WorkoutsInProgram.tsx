@@ -142,18 +142,19 @@ function WorkoutsInProgram() {
       />
 
 
-
-      {/*
-      <div>{workouts[activeWorkout].name}</div>
-      <div>{workouts[activeWorkout].description}</div>
-*/}
       <div className='mx-11 sm:mx-0 my-5'>
-        <div className='font-bold text-lg sm:justify-center sm:flex '>{products[activeWorkout].name}</div>
+        <div className='flex justify-between items-center sm:mx-64'>
+          <div className='font-bold text-lg'>{products[activeWorkout].name}</div>
+          <div>Duration: 1h 45 min</div>
+        </div>
+        <br />
         <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
           <div className={` ${descriptionFull ? 'h-auto' : 'h-12'} overflow-y-hidden`}>
             {products[activeWorkout].description}
           </div>
         </div>
+        
+
         <div className="text-center text-xs">
           <button
             className="text-blue-500 underline cursor-pointer"
