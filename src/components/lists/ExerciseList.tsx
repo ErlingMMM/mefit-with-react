@@ -38,17 +38,17 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
         <button onClick={() => openModal(exercise)} className="flex items-start">
           <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
           <div className="w-48">
-            <div className='ml-3'>
-            <div className='mr-20'>
-              <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
-                {exercise.name}
-              </h3>
+            
+              <div className='mr-20'>
+                <h3 className="text-lg font-bold" style={{ marginLeft: '-20px' }}>
+                  {exercise.name}
+                </h3>
               </div>
               {content === 'explorer' ? (
                 <>
-                <div className='mr-28'>
-                <p>Level: {exercise.difficulty}</p>
-                </div>
+                  <div className='mr-28'>
+                    <p>Level: {exercise.difficulty}</p>
+                  </div>
                   <br />
 
                   <p className="flex flex-wrap h-7 overflow-hidden">
@@ -64,15 +64,13 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
                 <>
                   <p>{exercise.muscleGroup}</p>
                   <br />
-                  <b>
-                    <span>Sets: {exercise.sets}</span>
+                  <b className="flex space-x-2">
+                    <span className="mr-2">Sets: {exercise.sets}</span>
                     <span>Reps: {exercise.reps}</span>
                   </b>
                 </>
               )}
             </div>
-
-          </div>
         </button>
       </li>
     ));

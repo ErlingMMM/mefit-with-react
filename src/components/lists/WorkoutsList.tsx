@@ -4,6 +4,8 @@ interface Workout {
   id: number;
   name: string;
   description: string;
+  duration: string;
+  exercises: string;
 }
 
 interface WorkoutsListProps {
@@ -34,8 +36,9 @@ function WorkoutsList({ workouts, onClick }: WorkoutsListProps) {
             <img src={getRandomDummyImageUrl()} alt={workout.name} className="custom-image-style" />
             <div>
               <h3 className="text-lg font-bold">{workout.name}</h3>
-              <p>{workout.description}</p>
+              <p>{workout.duration}</p>
             </div>
+            <p>{workout.exercises}</p>
           </button>
         </li>
       ))}
