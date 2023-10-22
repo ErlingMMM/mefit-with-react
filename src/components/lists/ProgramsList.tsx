@@ -6,7 +6,7 @@ interface Program {
   id: number;
   name: string;
   description: string;
-  duration: number; 
+  duration: number;
   difficulty: number;
 }
 
@@ -17,7 +17,7 @@ interface ProgramsListProps {
 
 function ProgramsList({ programs, onClick }: ProgramsListProps) {
   // Define dummy images URLs
-   const dummyImageUrls = [
+  const dummyImageUrls = [
     'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&ixid=M3wxM[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3269&q=80',
     'https://images.unsplash.com/photo-1434682881908-b43d0467b798?ixlib=rb-4.0.3&ixid=M3wxM[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3274&q=80',
     'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&ixid=M3wxM[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto.format&fit=crop&w=3270&q=80',
@@ -31,7 +31,7 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
 
   return (
     <div className="flex justify-center items-center">
-      <ul className="mx-9">
+      <ul className="flex flex-wrap justify-center mx-9 md:grid  md:gap-4 md:grid-cols-2">
         {programs.map((program) => (
           <li key={program.id} className="mb-6">
             <button onClick={() => onClick(program.id)}>
@@ -42,13 +42,12 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
                   className="w-80 h-24 rounded-lg mx-auto object-cover object-top overflow-hidden"
                 />
               </div>
-              
-              <div className="flex flex-col items-center"> 
+
+              <div className="flex flex-col items-center">
                 <h3 className="text-lg font-bold">
                   {program.name}
                 </h3>
-                <p>{program.description}</p> 
-             
+                <p>{program.description}</p>
               </div>
             </button>
           </li>
