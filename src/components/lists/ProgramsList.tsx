@@ -47,7 +47,7 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
                 <h3 className="text-lg font-bold">
                   {program.name}
                 </h3>
-                <p>{program.description}</p>
+                <p className="w-80">{program.description}</p> 
               </div>
             </button>
           </li>
