@@ -32,18 +32,25 @@ function SearchSelectorModal({ isOpen, closeModal, availableSearchOptions }: { i
           <div className="fixed inset-0 bg-gray-500 bg-opacity-20 transition-opacity"></div>
 
           <div className="relative overflow-hidden rounded-lg bg-white text-center shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl max-h-screen">
-          
-            <div>Sort by: {toTitleCase(selectedSearchOption)}</div>
-            <div className="p-4">
+
+            <div className='pr-24 py-2'>
+              <div className="block pb-2 px-4 pr-10 rounded-md m-2 cursor-pointer">Sort by: {toTitleCase(selectedSearchOption)}</div>
+
               {filteredOptions.map((option) => (
-                <button
-                  key={option}
-                  onClick={() => searchSelector(option)}
-                  className="block py-2 px-4 rounded-md m-2 cursor-pointer"
-                >
-                  {toTitleCase(option)}
-                </button>
+                <>
+                  <div className="absolute h-0.5 w-11/12 bg-gray-400 right-0 left-3"></div>
+
+                  <button
+                    key={option}
+                    onClick={() => searchSelector(option)}
+                    className="block pb-2 pt-3 px-4 rounded-md m-2 cursor-pointer"
+                  >
+                    {toTitleCase(option)}
+                  </button>
+                </>
+
               ))}
+
             </div>
           </div>
         </div>
