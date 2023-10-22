@@ -182,6 +182,7 @@ function WorkoutsInProgram() {
     <button
       className="text-white cursor-none"
     >
+      {/*To prevent taking up less space in the view. display-hidden did not help*/}
       Show More
     </button>
   </div>
