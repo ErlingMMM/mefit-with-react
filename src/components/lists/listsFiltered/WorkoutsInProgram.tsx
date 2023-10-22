@@ -130,6 +130,7 @@ function WorkoutsInProgram() {
     setActiveLine(0);
   }
 
+console.log("workouts", workouts);
 
 
 
@@ -143,11 +144,11 @@ function WorkoutsInProgram() {
           alt="WorkoutImage"
         />
         <div className="absolute bottom-0 right-0 p-2 md:mr-64  text-white z-10">
-          <span className="px-2 py-1 rounded">Duration: {DurationUtils.formatDuration(products[activeWorkout].duration)}
+          <span className="px-2 py-1">Duration: {DurationUtils.formatDuration(products[activeWorkout].duration)}
           </span>
         </div>
         <div className="absolute bottom-0 left-0 p-2 md:ml-64  text-white z-10">
-          <span className="px-2 rounded"> {DifficultyUtils.difficultyToLabel(products[activeWorkout].difficulty)}
+          <span className="px-2"> {DifficultyUtils.difficultyToLabel(products[activeWorkout].difficulty)}
           </span>
         </div>
       </div>
