@@ -4,6 +4,8 @@ import ExerciseList from '../../lists/ExerciseList';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 import DurationUtils from '../../utils/DurationUtils';
 import DifficultyUtils from '../../utils/DifficultyUtils';
+import { truncateDescription } from '../../utils/TruncateTextUtils';
+
 
 
 
@@ -21,7 +23,8 @@ function WorkoutsInProgram() {
   const [activeWorkout, setActiveWorkout] = useState(0);
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
   const [activeLine, setActiveLine] = useState(0);
-  const [descriptionFull, setDescriptionVisible] = useState(false);
+  const [showFullDescription, setShowFullDescription] = useState<boolean>(false);
+
 
 
 
@@ -130,8 +133,6 @@ function WorkoutsInProgram() {
     setActiveLine(0);
   }
 
-  console.log("workouts", workouts);
-
 
 
   return (
@@ -159,19 +160,22 @@ function WorkoutsInProgram() {
         <div className='font-bold text-lg sm:justify-center sm:flex sm:pb-5'>{products[activeWorkout].name}</div>
 
         <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
-          <div className={` ${descriptionFull ? 'h-auto' : 'h-12'} overflow-y-hidden`}>
-            {products[activeWorkout].description}
+          <div className={showFullDescription ? 'mt-4 h-full' : 'mt-2 h-12'}>
+          {showFullDescription
+            ? products[activeWorkout].description
+            :  truncateDescription(products[activeWorkout].description, 200)}
           </div>
         </div>
 
-
-        <div className="text-center text-xs">
+        <div className="text-center text-xs mt-1">
+        {products[activeWorkout].description.length > 200 && (
           <button
-            className="text-blue-500 underline cursor-pointer"
-            onClick={() => setDescriptionVisible(!descriptionFull)}
+            onClick={() => setShowFullDescription(!showFullDescription)}
+            className="text-blue-500 cursor-pointer"
           >
-            {descriptionFull ? 'Show less' : 'Show more'}
+            {showFullDescription ? 'Show Less' : 'Show More'}
           </button>
+        )}
         </div>
       </div>
 
