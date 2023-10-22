@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { truncateDescription } from '../utils/TruncateTextUtils';
 
 
 interface Program {
@@ -32,21 +33,7 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
     return dummyImageUrls[randomIndex];
   };
 
-  const truncateDescription = (description: string, maxLength: number) => {
-    if (description.length <= maxLength) {
-      return description;
-    }
-    const lastPunctuationIndex = Math.max(
-      description.lastIndexOf('.', maxLength),
-      description.lastIndexOf('?', maxLength),
-      description.lastIndexOf('!', maxLength)
-    );
-    if (lastPunctuationIndex >= 0) {
-      return description.slice(0, lastPunctuationIndex + 1);
-    }
-    // If no suitable punctuation is found, truncate at maxLength
-    return description.slice(0, maxLength);
-  };
+  
 
 
   return (
@@ -69,7 +56,7 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
                 </h3>
               </div>
             </button>
-            <div className="w-80 text-center"> {/* Center description and button */}
+            <div className="w-80 text-center"> 
               <p className={showFullDescription ? 'mt-4' : 'mt-2'}>
                 {showFullDescription
                   ? program.description
