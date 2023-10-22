@@ -4,6 +4,7 @@ import ExerciseList from '../../lists/ExerciseList';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 
 
+
 interface Workout {
   id: number;
   name: string;
@@ -18,7 +19,6 @@ function WorkoutsInProgram() {
   const [activeWorkout, setActiveWorkout] = useState(0);
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
   const [activeLine, setActiveLine] = useState(0);
-  const [showFullDescription, setShowFullDescription] = useState(false);
 
 
 
@@ -190,12 +190,9 @@ function WorkoutsInProgram() {
   }
 
 
-  const toggleDescription = () => {
-    setShowFullDescription(!showFullDescription);
-  };
 
-  const description = products[activeWorkout].description;
-  const shortDescription = description.slice(0, 4);
+
+
 
   return (
     <div>
@@ -212,12 +209,12 @@ function WorkoutsInProgram() {
       <div>{workouts[activeWorkout].name}</div>
       <div>{workouts[activeWorkout].description}</div>
 */}
-     <div className='mx-11 sm:mx-0 my-5'>
-  <div className='font-bold text-lg sm:justify-center sm:flex '>{products[activeWorkout].name}</div>
-  <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
-    <div className='sm:max-h-12 sm:h-12 max-h-12 h-12 overflow-y-hidden'>{products[activeWorkout].description}</div>
-  </div>
-</div>
+      <div className='mx-11 sm:mx-0 my-5'>
+        <div className='font-bold text-lg sm:justify-center sm:flex '>{products[activeWorkout].name}</div>
+        <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
+          <div className='sm:max-h-12 sm:h-12 max-h-12 h-12 overflow-y-hidden'>{products[activeWorkout].description}</div>
+        </div>
+      </div>
 
 
 
@@ -226,6 +223,16 @@ function WorkoutsInProgram() {
         src={(products[activeWorkout] as { image: string } || {}).image || ''}
         alt="WorkoutImage"
       />*/}
+
+      <div className="flex justify-center">
+        <button onClick={handlePreviousNavigation} className="mr-4">
+          <ChevronLeftIcon className="h-6 w-6" />
+        </button>
+        <p>Page {currentWorkoutIndex / workoutsPerPage + 1}</p>
+        <button onClick={handleNextNavigation} className="ml-4">
+          <ChevronRightIcon className="h-6 w-6" />
+        </button>
+      </div>
 
 
       <div className="flex mb-5 mt-5 justify-center">
@@ -255,8 +262,7 @@ function WorkoutsInProgram() {
         })}
       </div>
 
-      <button onClick={handlePreviousNavigation}>Previous</button>
-      <button onClick={() => handleNextNavigation()}>Next</button>
+
       <br />
       <br />
 
