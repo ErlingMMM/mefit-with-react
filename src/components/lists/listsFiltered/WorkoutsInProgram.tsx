@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import ExerciseList from '../../lists/ExerciseList';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 import DurationUtils from '../../utils/DurationUtils';
+import DifficultyUtils from '../../utils/DifficultyUtils';
 
 
 
@@ -26,18 +27,19 @@ function WorkoutsInProgram() {
 
 
   const products = useMemo(() => [
-    { id: 1, name: 'Product A', price: 19.99, image: 'https://images.unsplash.com/photo-1545575439-3261931f52f1?auto=format&fit=crop&q=80&w=2071&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'An affordable item priced at $19.99, ideal for everyday use.A quality product priced at $29.99, perfect for various occasions.A quality product priced at $29.99, perfect for various occasions.An affordable item priced at $19.99, ideal for everyday use.A quality product priced at $29.99, perfect for various occasions.A quality product priced at $29.99, perfect for various occasions.', duration: 45 },
-    { id: 2, name: 'Product B', price: 29.99, image: 'https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?auto=format&fit=crop&q=80&w=2074&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A quality product priced at $29.99, perfect for various occasions.A quality product priced at $29.99, perfect for various occasionsA quality product priced at $29.99, perfect for various occasions', duration: 60 },
-    { id: 3, name: 'Product C', price: 39.99, image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1925&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A stylish item priced at $39.99, suitable for fashion enthusiasts.', duration: 30 },
-    { id: 4, name: 'Product D', price: 49.99, image: 'https://images.unsplash.com/photo-1690230677207-126e472f37dc?auto=format&fit=crop&q=80&w=1975&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A premium item priced at $49.99, great for luxury experiences.', duration: 75 },
-    { id: 5, name: 'Product E', price: 59.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A versatile product priced at $59.99, adaptable for many uses.', duration: 80 },
-    { id: 6, name: 'Product F', price: 69.99, image: 'https://images.unsplash.com/photo-1690373403498-a29da916ecf9?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'An elegant choice at $69.99, suitable for special events.', duration: 55 },
-    { id: 7, name: 'Product G', price: 79.99, image: 'https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A high-end item priced at $79.99, excellent for discerning tastes.', duration: 70 },
-    { id: 8, name: 'Product H', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Another $79.99 option, offering style and quality.', duration: 65 },
-    { id: 9, name: 'Product I', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Product H - An alternative choice at $79.99, balancing price and features.', duration: 70 },
-    { id: 10, name: 'Product J', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Product H - An additional variation at $79.99, providing more options.', duration: 75 },
-    { id: 11, name: 'Product K', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Product H - Yet another choice at $79.99, expanding your selection.', duration: 80 },
+    { id: 1, name: 'Product A', price: 19.99, image: 'https://images.unsplash.com/photo-1545575439-3261931f52f1?auto=format&fit=crop&q=80&w=2071&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'An affordable item priced at $19.99, ideal for everyday use.A quality product priced at $29.99, perfect for various occasions.A quality product priced at $29.99, perfect for various occasions.An affordable item priced at $19.99, ideal for everyday use.A quality product priced at $29.99, perfect for various occasions.A quality product priced at $29.99, perfect for various occasions.', duration: 45, difficulty: 0 },
+    { id: 2, name: 'Product B', price: 29.99, image: 'https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?auto=format&fit=crop&q=80&w=2074&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A quality product priced at $29.99, perfect for various occasions.A quality product priced at $29.99, perfect for various occasionsA quality product priced at $29.99', duration: 60, difficulty: 2 },
+    { id: 3, name: 'Product C', price: 39.99, image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1925&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A stylish item priced at $39.99, suitable for fashion enthusiasts.', duration: 30, difficulty: 1 },
+    { id: 4, name: 'Product D', price: 49.99, image: 'https://images.unsplash.com/photo-1690230677207-126e472f37dc?auto=format&fit=crop&q=80&w=1975&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A premium item priced at $49.99, great for luxury experiences.', duration: 75, difficulty: 0 },
+    { id: 5, name: 'Product E', price: 59.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A versatile product priced at $59.99, adaptable for many uses.', duration: 80, difficulty: 1 },
+    { id: 6, name: 'Product F', price: 69.99, image: 'https://images.unsplash.com/photo-1690373403498-a29da916ecf9?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'An elegant choice at $69.99, suitable for special events.', duration: 55, difficulty: 2 },
+    { id: 7, name: 'Product G', price: 79.99, image: 'https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A high-end item priced at $79.99, excellent for discerning tastes.', duration: 70, difficulty: 0 },
+    { id: 8, name: 'Product H', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Another $79.99 option, offering style and quality.', duration: 65, difficulty: 1 },
+    { id: 9, name: 'Product I', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Product H - An alternative choice at $79.99, balancing price and features.', duration: 70, difficulty: 2 },
+    { id: 10, name: 'Product J', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Product H - An additional variation at $79.99, providing more options.', duration: 75, difficulty: 0 },
+    { id: 11, name: 'Product K', price: 79.99, image: 'https://images.unsplash.com/photo-1693892014158-fdab425b0e1e?auto.format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Product H - Yet another choice at $79.99, expanding your selection.', duration: 80, difficulty: 2 },
   ], []);
+
 
 
 
@@ -144,12 +146,16 @@ function WorkoutsInProgram() {
           <span className="px-2 py-1 rounded">Duration: {DurationUtils.formatDuration(products[activeWorkout].duration)}
           </span>
         </div>
+        <div className="absolute bottom-0 left-0 p-2 md:ml-64  text-white z-10">
+          <span className="px-2 rounded"> {DifficultyUtils.difficultyToLabel(products[activeWorkout].difficulty)}
+          </span>
+        </div>
       </div>
 
 
       <div className='mx-11 sm:mx-0 my-5'>
         <div className='font-bold text-lg sm:justify-center sm:flex sm:pb-5'>{products[activeWorkout].name}</div>
-        
+
         <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
           <div className={` ${descriptionFull ? 'h-auto' : 'h-12'} overflow-y-hidden`}>
             {products[activeWorkout].description}
