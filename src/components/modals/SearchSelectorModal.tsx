@@ -31,7 +31,7 @@ function SearchSelectorModal({ isOpen, closeModal, availableSearchOptions }: { i
         >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-20 transition-opacity"></div>
 
-          <div className="relative overflow-hidden rounded-lg bg-white text-center shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl max-h-screen">
+          <div className="relative overflow-hidden rounded-lg bg-white text-center shadow-xl transition-all max-h-screen">
 
             <div className='pr-24 py-2'>
               <div className="block pb-2 px-4 pr-10 rounded-md m-2 cursor-pointer">Sort by: {toTitleCase(selectedSearchOption)}</div>
