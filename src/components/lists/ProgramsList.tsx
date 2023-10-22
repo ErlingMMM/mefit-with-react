@@ -38,7 +38,7 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
 
   return (
     <div className="flex justify-center items-center">
-      <ul className="flex flex-wrap justify-center mx-9 md:grid md:gap-4 md:grid-cols-2">
+      <ul className="flex flex-wrap justify-center mx-9 md:grid md:gap-10 md:grid-cols-2">
         {programs.map((program) => (
           <li key={program.id} className="mb-6">
             <button onClick={() => onClick(program.id)}>
