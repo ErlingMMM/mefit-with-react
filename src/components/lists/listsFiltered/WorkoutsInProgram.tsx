@@ -161,6 +161,8 @@ function WorkoutsInProgram() {
 
   const workoutsPerPage = 3;
   const totalWorkouts = products.length;
+  const lastPage = Math.ceil(totalWorkouts / workoutsPerPage);
+
 
 
   const handleActiveWorkout = (workout: number) => {
@@ -224,13 +226,13 @@ function WorkoutsInProgram() {
         alt="WorkoutImage"
       />*/}
 
-      <div className="flex justify-center">
+      <div className="flex justify-center ">
         <button onClick={handlePreviousNavigation} className="mr-4">
-          <ChevronLeftIcon className="h-6 w-6" />
+          <ChevronLeftIcon className={`h-6 w-6 ${currentWorkoutIndex / workoutsPerPage + 1 > 1 ? "text-custom-green" : "text-gray-400 cursor-not-allowed"}`} />
         </button>
         <p>Page {currentWorkoutIndex / workoutsPerPage + 1}</p>
         <button onClick={handleNextNavigation} className="ml-4">
-          <ChevronRightIcon className="h-6 w-6" />
+          <ChevronRightIcon className={`h-6 w-6 ${currentWorkoutIndex / workoutsPerPage + 1 < lastPage ? "text-custom-green" : "text-gray-400 cursor-not-allowed"}`} />
         </button>
       </div>
 
