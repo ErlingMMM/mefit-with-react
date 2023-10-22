@@ -30,7 +30,7 @@ function AddExercisesComponent() {
     }
   };
 
-  const handleSaveButton = () => {
+  const handleSaveButton2 = () => {
     addExerciseToWorkout(workoutId, exerciseIdsList)
       .then(result => navigate('/rolepage'))
       .catch(error => console.error("Error adding exercises to workout:", error));
@@ -60,7 +60,7 @@ function AddExercisesComponent() {
           <li>No matching exercises</li>
         )}
       </ul>
-      <button onClick={handleSaveButton} className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save</button>
+      <button onClick={handleSaveButton2} className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save</button>
     </div>
   );
 }
