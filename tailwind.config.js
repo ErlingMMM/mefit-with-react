@@ -9,6 +9,9 @@ module.exports = {
       textColor: {
         'custom-green': '#A8E52E',
       },
+      spacing: {
+        '1/7': '14%',
+      },
      
     },
     fontFamily: {

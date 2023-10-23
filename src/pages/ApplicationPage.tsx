@@ -36,7 +36,7 @@ function ApplicationPage (){
       <br />
             <h1 className='text-3xl font-bold mb-4 text-black text-center'>Application to become a contributor</h1>
     
-            <button onClick={onClickBack} className='bg-custom-green text-gray-800 font-bold py-2 px-4 rounded absolute top-4 left-4'>Back</button>
+            <button onClick={onClickBack} className=' text-gray-800 font-bold py-2 px-4 rounded absolute top-4 left-4'>Back</button>
     
             <form className='bg-white p-8 rounded shadow-md'>
                 <label className='block mb-2 text-gray-800 font-bold' htmlFor="bio">Application text:</label>
