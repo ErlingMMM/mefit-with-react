@@ -36,7 +36,7 @@ function WorkoutsList({ workouts, onClick }: WorkoutsListProps) {
       {workouts.map((workout) => (
         <li key={workout.id} className="mb-6">
           <button onClick={() => onClick(workout.id)} className="flex items-start">
-            <img src={getRandomDummyImageUrl()} alt={workout.name} className="custom-image-style" />
+            <img src={getRandomDummyImageUrl()} alt={workout.name} className="custom-image-style hover:opacity-80" />
             <div>
               <div className="text-lg font-bold" style={{ marginRight: '70px' }}>{workout.name}</div>
               <p style={{ marginRight: '30px' }}>Duration: {DurationUtils.formatDuration(workout.duration)} </p>

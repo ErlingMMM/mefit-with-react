@@ -30,35 +30,53 @@ function Second() {
       dispatch(setRegistrationBoolean(true));
       navigate('/')
   };
-  console.log(registrationState.isRegistered)
+
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-4 ">
-    <h1 className="text-lg font-bold mb-6 self-end">Choose your wanted<br /> intensity level</h1>
+    <div className="min-h-screen flex flex-col justify-center items-center p-4">
+    <h1 className="text-lg font-bold mb-6 text-right">Choose your wanted<br /> intensity level</h1>
 
     <form className="">
 
-        <div className="mb-2 p-4 round hover:scale-110">
-            <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="3" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
+        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+            <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="1" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
             <div>
-                <label htmlFor="beginnerIntensity" className="text-lg font-bold">3 times a week</label>
-                <p>Perfect for deg som ønsker å komme form fort og som  vil spis kjøtt</p>
+                <label htmlFor="beginnerIntensity" className="text-lg font-bold">1 workout per week</label>
+                <p>For a light exercise routine</p>
             </div>
         </div>
 
-        <div className="mb-2 p-4 round hover:scale-110">
-            <input type="radio" id="intermediateIntensity" name="fitnessIntensity" value="5" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
+        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+            <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="2" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
             <div>
-                <label htmlFor="intermediateIntensity" className="text-lg font-bold">5 times a week</label>
-                <p>Perfect for deg som har tid til å gjete men også vil møte en som heter grete</p>
+                <label htmlFor="beginnerIntensity" className="text-lg font-bold">2 workout per week</label>
+                <p>For a balanced fitness regimen</p>
             </div>
         </div>
-        <div className="mb-2 p-4 round hover:scale-110">
-            <input type="radio" id="intermediateIntensity" name="fitnessIntensity" value="7" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
+
+        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+            <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="3" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
             <div>
-                <label htmlFor="intermediateIntensity" className="text-lg font-bold">7 times a week</label>
-                <p>Perfect for deg som har tid til å gjete men også vil møte en som heter grete</p>
+                <label htmlFor="beginnerIntensity" className="text-lg font-bold">3 workout per week</label>
+                <p>For a moderate workout commitment</p>
             </div>
         </div>
+
+        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+            <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="4" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
+            <div>
+                <label htmlFor="beginnerIntensity" className="text-lg font-bold">4 workout per week</label>
+                <p>For a dedicated fitness schedule</p>
+            </div>
+        </div>
+
+        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+            <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="5" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
+            <div>
+                <label htmlFor="beginnerIntensity" className="text-lg font-bold">5 workout per week</label>
+                <p>For an intense and rigorous fitness routine</p>
+            </div>
+        </div>
+    
 
     </form>
     <button className="underline" type="submit" onClick={handleRegistrerClick}>skip</button>
