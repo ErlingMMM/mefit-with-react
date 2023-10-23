@@ -24,18 +24,22 @@ const RolePageNavbar: React.FC<RolePageNavbarProps> = ({ switchToComponent, isAd
           </h1>
         )}
       </div>
-      <div className="sm:flex sm:space-x-4 nav-links hidden">
-        <button onClick={() => switchToComponent('addExercise')}>Add Exercise</button>
-        <button onClick={() => switchToComponent('addWorkout')}>Add Workout</button>
-        <button onClick={() => switchToComponent('addProgram')}>Add Program</button>
-        {isAdmin && (
-  <>
-    <button onClick={() => switchToComponent('manageApplications')}>Manage Applications</button>
-    <button onClick={() => switchToComponent('manageUsers')}>Manage Users</button>
-  </>
-)}
+      <div className="sm:flex sm:justify-between sm:space-x-4 bg-black py-4 px-7 hidden">
+      <div className="space-x-4">
+  <button className='text-custom-green italic text-lg font-sans font-bold'>Mefit</button>
+ 
+    <button className='text-white hover:text-custom-green' onClick={() => switchToComponent('addExercise')}>Add Exercise</button>
+    <button className='text-white hover:text-custom-green' onClick={() => switchToComponent('addWorkout')}>Add Workout</button>
+    <button className='text-white hover:text-custom-green' onClick={() => switchToComponent('addProgram')}>Add Program</button>
+  </div>
+  {isAdmin && (
+    <div className="space-x-4">
+      <button className='text-white hover:text-custom-green' onClick={() => switchToComponent('manageApplications')}>Manage Applications</button>
+      <button className='text-white hover:text-custom-green' onClick={() => switchToComponent('manageUsers')}>Manage Users</button>
+    </div>
+  )}
+</div>
 
-      </div>
     </div>
   );
 };
