@@ -2,7 +2,7 @@ import keycloak from "../Keycloak";
 
 export async function addExerciseToWorkout(workoutId: any, exerciseIds: number[]) {
     const accessToken = keycloak.token;
-    const apiURL = 'https://mefit-backend.azurewebsites.net/api/plan/addexercisetoworkout';
+    const apiURL = 'https://mefit-backend.azurewebsites.net/api/workouts/addexercisetoworkout';
 
     console.log("Access Token:", accessToken);  // Log the token
     console.log("------------------" + workoutId + " " + exerciseIds);
@@ -21,17 +21,13 @@ export async function addExerciseToWorkout(workoutId: any, exerciseIds: number[]
             })
         });
        
-        console.log("Fetched data:", response.body);  // Log the response
 
         if (!response.ok) {
             const errorMessage = await response.text();
             throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
         }
 
-        const results = await response.json();
-        console.log("JSON Results:", results);  // Log the results
 
-        return results;
     }
     catch (error) {
         console.error("Error fetching exercises:", error);
