@@ -43,7 +43,7 @@ function AddExercisesComponent() {
           exercises.map((exercise: any) => (
             <li
               key={exercise.id}
-              className={`mb-6 p-4 rounded-lg shadow-sm cursor-pointer ${exerciseIdsList.includes(exercise.id) ? 'bg-yellow-300' : 'bg-white'}`}
+              className={`mb-6 p-4 rounded-lg shadow-sm cursor-pointer ${exerciseIdsList.includes(exercise.id) ? 'bg-green-500' : 'bg-white'}`}
               onClick={() => toggleExercise(exercise.id)}
             >
               <div className="flex items-center">
