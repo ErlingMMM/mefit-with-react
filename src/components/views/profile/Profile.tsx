@@ -6,6 +6,7 @@ import { AnyAction } from "@reduxjs/toolkit";
 import { RootState } from "../../../Redux/Store";
 import keycloak from "../../../Keycloak";
 import { useNavigate } from "react-router-dom";
+import CurrentProgramDisplayer from "./CurrentProgramDisplayer";
 
 function ProfilePage() {
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
@@ -81,6 +82,7 @@ function ProfilePage() {
                         </div>
                     </div>
 
+                    <CurrentProgramDisplayer/>
                 </div>
             )}
         </div>

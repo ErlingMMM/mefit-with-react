@@ -12,7 +12,7 @@ interface ExerciseData {
   description: string;
   muscleGroup: string;
   imageUrl?: string;
-  time: number;
+  duration: number;
   difficulty: number;
   sets: number;
   reps: number;
@@ -23,7 +23,7 @@ type WorkoutBarProps = {
     id: number;
     name: string;
     description?: string;
-    recommendedFitness: number;
+    difficulty: number;
     image?: string;
     duration: number;
     day: number;
