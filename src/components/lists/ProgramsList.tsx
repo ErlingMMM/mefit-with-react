@@ -50,13 +50,13 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
                 />
               </div>
 
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-start ml-2">
                 <h3 className="text-lg font-bold">
                   {program.name}
                 </h3>
               </div>
             </button>
-            <div className="w-80 text-start"> 
+            <div className="w-80 text-start ml-2"> 
               <p className={showFullDescription ? 'mt-4' : 'mt-2'}>
                 {showFullDescription
                   ? program.description
