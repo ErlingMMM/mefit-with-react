@@ -348,8 +348,8 @@ interface UserDataUpdateAPI {
   height:string;
   weight:string;
   gender:String;
-  //intensity: string;
-  //fitnessLvl: string;
+  intensity: string;
+  fitnessLvl: string;
   //timeframe:string
 
 }
@@ -362,7 +362,7 @@ interface UserDataUpdateAPI {
   export const updateUserProfile = createAsyncThunk(
     'updateUserProfile',
     //intensity, fitnessLvl, timeframe 
-    async ({ bio, age, height, weight, gender}: UserDataUpdateAPI) => 
+    async ({ bio, age, height, weight, gender, intensity, fitnessLvl}: UserDataUpdateAPI) => 
     {
       
       const patchOps = [];
@@ -402,7 +402,7 @@ interface UserDataUpdateAPI {
           value: gender,
         });
       }
-      /*
+
       if (intensity !== null) {
         console.log(intensity)
         const timesAWeek = intensity
@@ -411,7 +411,9 @@ interface UserDataUpdateAPI {
           path: '/timesAWeek',
           value: timesAWeek,
         });
+        
       }
+
       if ( fitnessLvl !== null) {
         console.log(fitnessLvl)
         const fitnessPreference = fitnessLvl
@@ -421,6 +423,7 @@ interface UserDataUpdateAPI {
           value: fitnessPreference,
         });
       }
+      /*
       if ( timeframe !== null) {
         console.log(timeframe)
         const duratiomTimeframe = timeframe
