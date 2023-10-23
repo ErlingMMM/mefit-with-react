@@ -22,7 +22,7 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
       <li key={exercise.id} className="mb-6">
         <button onClick={() => openModal(exercise)} className="flex items-start">
           <img src={exercise.image} alt={exercise.name} className="custom-image-style hover:opacity-80" />
-          <div className="w-48">
+          <div className="w-48 ml-3">
           <div className="text-left">  
               <h3 className="text-lg font-bold">
                 {exercise.name}
