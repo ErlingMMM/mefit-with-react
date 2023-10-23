@@ -36,7 +36,7 @@ function ExerciseModal({ isOpen, closeModal, exercise }: { isOpen: boolean, exer
               <div className="mt-3 text-left">
                 <div className="max-h-96 overflow-y-auto">
                   <img
-                    src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-745x490.jpg"
+                    src={exercise.image}
                     alt="Exercise"
                     className="max-w-full h-auto md:max-w-md md:h-auto mx-auto"
                   />
