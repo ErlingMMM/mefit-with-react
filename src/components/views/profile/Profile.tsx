@@ -32,7 +32,7 @@ function ProfilePage() {
 
 
 
-
+ console.log(keycloak)
 
 
 
