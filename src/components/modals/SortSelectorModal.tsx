@@ -37,7 +37,7 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
                   <button
                     key={option}
                     onClick={() => sortSelector(option)}
-                    className="block px-2 rounded-md m-2 cursor-pointer"
+                    className="block px-2 rounded-md m-2 cursor-pointer hover:bg-gray-100"
                   >
                     {option}
                   </button>

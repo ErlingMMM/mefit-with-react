@@ -46,17 +46,17 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
                 <img
                   src={getRandomDummyImageUrl()}
                   alt={program.name}
-                  className="w-80 h-24 rounded-lg mx-auto object-cover object-top overflow-hidden"
+                  className="w-80 h-24 rounded-lg mx-auto object-cover object-top overflow-hidden hover:opacity-80"
                 />
               </div>
 
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-start">
                 <h3 className="text-lg font-bold">
                   {program.name}
                 </h3>
               </div>
             </button>
-            <div className="w-80 text-center"> 
+            <div className="w-80 text-start"> 
               <p className={showFullDescription ? 'mt-4' : 'mt-2'}>
                 {showFullDescription
                   ? program.description

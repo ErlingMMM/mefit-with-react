@@ -36,7 +36,7 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
     return exercises.map((exercise: any) => (
       <li key={exercise.id} className="mb-6">
         <button onClick={() => openModal(exercise)} className="flex items-start">
-          <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style" />
+          <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style hover:opacity-80" />
           <div className="w-48">
 
             <div className='mr-20'>

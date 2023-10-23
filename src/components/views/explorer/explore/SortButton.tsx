@@ -15,7 +15,7 @@ function SortButton() {
 
   return (
     <>
-      <button onClick={handleClick} className="flex items-center  text-gray-400">
+      <button onClick={handleClick} className="flex items-center  text-gray-400 hover:text-gray-500">
         <div dangerouslySetInnerHTML={{ __html: Bars3BottomLeftIconSVG }} />
         <span className='mb-1'>Sort by: {selectedSortOption}</span>
       </button>
