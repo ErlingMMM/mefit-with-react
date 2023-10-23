@@ -49,7 +49,7 @@ function RolePage() {
         
         {renderForm()}
       </div>
-      <button className="bg-black hover:bg-black text-white w-screen font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2"
+      <button className='bg-custom-green text-gray-800 font-bold py-2 px-4 rounded absolute top-4 right-4 sm:top-8 sm:right-8'
                     onClick={onClickBack}>Back</button>
     </div>
   );
