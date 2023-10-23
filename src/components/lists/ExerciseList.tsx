@@ -16,7 +16,6 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
 
 
 
-
   const renderExercises = () => {
     return exercises.map((exercise: any) => (
       <li key={exercise.id} className="mb-6">
@@ -46,9 +45,9 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
               </>
             ) : (
               <>
-                <p style={{ marginRight: '4rem' }}>{exercise.muscleGroup}</p>
+                <p className='text-left'>{exercise.muscleGroup}</p>
                 <br />
-                <b className="flex space-x-2" style={{ marginLeft: '10px' }}>
+                <b className="flex space-x-2"> 
                   <span className="mr-2">Sets: {exercise.sets}</span>
                   <span>Reps: {exercise.reps}</span>
                 </b>

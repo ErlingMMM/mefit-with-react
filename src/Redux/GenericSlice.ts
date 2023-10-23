@@ -46,7 +46,7 @@ interface programData {
   image:Url|null;
   workoutIds : []|null;
   programDuration:null|number;
-  programDifficulty:null|number;
+  difficulty:null|number;
   userIds:[]|null;
   orderOfWorkouts: number | null;
   workoutDates: number | null;
@@ -85,7 +85,7 @@ interface WorkoutData {
    id: number | null;
   name: string | null;
   description: string | null;
-  recommendedFitness: string | null;
+  difficulty: string | null;
   image: string | null;
   exercises: any[] | null;
 }
@@ -135,7 +135,7 @@ const initialState: DataState = {
     image: null,
     workoutIds: null,
     programDuration: null,
-    programDifficulty: null,
+    difficulty: null,
     userIds: null,
     orderOfWorkouts: null,
     workoutDates: null,
@@ -165,7 +165,7 @@ const initialState: DataState = {
     id: null,
     name: null,
     description: null,
-    recommendedFitness: null,
+    difficulty: null,
     image: null,
     exercises: null,
   },
@@ -814,7 +814,7 @@ setDescriptionWorkout: (state, action) => {
   state.workoutData.description = action.payload;
 },
 setRecommendedFitnessWorkout: (state, action) => { 
-  state.workoutData.recommendedFitness = action.payload;
+  state.workoutData.difficulty = action.payload;
 },
 setRecommendedImage: (state, action) => { 
   state.workoutData.image = action.payload;

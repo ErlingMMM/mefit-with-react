@@ -118,106 +118,106 @@ function WorkoutsInProgram() {
   }
 
 
-
   return (
-    <div>
-      <br />
-      {workouts[activeWorkout] ? (
-        <div className="relative">
-          <img
-            className="h-44 md:h-52 md:rounded-md w-screen max-w-screen-md mx-auto object-cover object-center overflow-hidden"
-            src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
-            alt="WorkoutImage"
-          />
-          <div className="absolute bottom-0 right-0 p-2 md:mr-64  text-white z-10">
-            <span className="px-2 py-1">Duration: {workouts[activeWorkout].duration ? DurationUtils.formatDuration(workouts[activeWorkout].duration) : ''}
-            </span>
-          </div>
-          <div className="absolute left-0 p-2 bottom-0.5 md:ml-64  text-white z-10">
-            <span className="px-2"> {workouts[activeWorkout].difficulty ? DifficultyUtils.difficultyToLabel(workouts[activeWorkout].difficulty) : ''}
-            </span>
-          </div>
+  <div>
+    <br />
+    {workouts[activeWorkout] ? (
+      <div className="relative">
+        <img
+          className="h-44 md:h-52 md:rounded-md w-screen max-w-screen-md mx-auto object-cover object-center overflow-hidden"
+          src={(workouts[activeWorkout] as { image: string } || {}).image || ''}
+          alt="WorkoutImage"
+        />
+        <div className="absolute bottom-0 right-0 p-2 md:mr-64  text-white z-10">
+          <span className="px-2 py-1">Duration: {workouts[activeWorkout].duration ? DurationUtils.formatDuration(workouts[activeWorkout].duration) : ''}
+          </span>
         </div>
-      ) : null}
-  
-      <div className='mx-11 sm:mx-0 my-5'>
-        <div className='font-bold text-lg sm:justify-center sm:flex sm:pb-5'>
-          {workouts[activeWorkout] ? workouts[activeWorkout].name : 'Loading...'}
+        <div className="absolute left-0 p-2 bottom-0.5 md:ml-64  text-white z-10">
+          <span className="px-2"> {workouts[activeWorkout].difficulty ? DifficultyUtils.difficultyToLabel(workouts[activeWorkout].difficulty) : ''}
+          </span>
         </div>
-  
-        <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
-          <div className={showFullDescription ? ' h-full' : 'h-24 sm:h-12'}>
-            {showFullDescription
-              ? workouts[activeWorkout]?.description || ''
-              : truncateDescription(workouts[activeWorkout]?.description || '', 150)}
-          </div>
+      </div>
+    ) : null}
+
+    <div className='mx-11 sm:mx-0 my-5'>
+      <div className='font-bold text-lg sm:justify-center sm:flex sm:pb-5'>
+        {workouts[activeWorkout] ? workouts[activeWorkout].name : 'Loading...'}
+      </div>
+
+      <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
+        <div className={showFullDescription ? ' h-full' : 'h-24 sm:h-12'}>
+          {showFullDescription
+            ? workouts[activeWorkout]?.description || ''
+            : truncateDescription(workouts[activeWorkout]?.description || '', 150)}
         </div>
-  
-        {workouts[activeWorkout]?.description?.length > 150 ? (
-          <div className="text-center text-xs mt-1">
-            <button
-              onClick={() => setShowFullDescription(!showFullDescription)}
-              className="text-blue-500 cursor-pointer"
-            >
-              {showFullDescription ? 'Show Less' : 'Show More'}
-            </button>
-          </div>
-        ) : (
-          <div className="text-center text-xs mt-1">
-            <button className="text-white cursor-none">
-              {/* To prevent taking up less space in the view. display-hidden did not help */}
-              Show More
-            </button>
-          </div>
-        )}
       </div>
-  
-      <div className="flex justify-center">
-        <button onClick={handlePreviousNavigation} className="mr-4">
-          <ChevronLeftIcon
-            className={`h-6 w-6 hover:brightness-110 ${currentWorkoutIndex / workoutsPerPage + 1 > 1
-              ? "text-custom-green"
-              : "text-gray-400 cursor-not-allowed"}`}
-          />
-        </button>
-        <p>Page {currentWorkoutIndex / workoutsPerPage + 1}</p>
-        <button onClick={handleNextNavigation} className="ml-4">
-          <ChevronRightIcon
-            className={`h-6 w-6 hover:brightness-110 ${currentWorkoutIndex / workoutsPerPage + 1 < lastPage
-              ? "text-custom-green"
-              : "text-gray-400 cursor-not-allowed"}`}
-          />
-        </button>
-      </div>
-  
-      <div className="flex mb-5 mt-5 justify-center">
-        {Array.from({ length: workoutsPerPage }).map((_, index) => {
-          const workoutIndex = currentWorkoutIndex + index;
-          const isButtonVisible = workoutIndex < totalWorkouts;
-          const lineClass = `w-${1 / workoutsPerPage} h-1 sm:h-[0.11rem] ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'}`;
-  
-          return (
-            <div key={index} className={lineClass}>
-              {isButtonVisible && (
-                <button
-                  onClick={() => handleActiveWorkout(workoutIndex)}
-                  className={`flex-1 pl-10 md-pl-0 hover:text-custom-green pr-6 pt-2 text-base ${isButtonVisible ? '' : 'hidden'}`}
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                >
-                  {isButtonVisible ? workouts[workoutIndex]?.name || '' : ''}
-                </button>
-              )}
-            </div>
-          );
-        })}
-      </div>
-  
-      <br />
-      <br />
-  
-      <ExerciseList exercises={exercises} content={"program"} />
+
+      {workouts[activeWorkout]?.description?.length > 150 ? (
+        <div className="text-center text-xs mt-1">
+          <button
+            onClick={() => setShowFullDescription(!showFullDescription)}
+            className="text-blue-500 cursor-pointer"
+          >
+            {showFullDescription ? 'Show Less' : 'Show More'}
+          </button>
+        </div>
+      ) : (
+        <div className="text-center text-xs mt-1">
+          <button className="text-white cursor-none">
+            {/* To prevent taking up less space in the view. display-hidden did not help */}
+            Show More
+          </button>
+        </div>
+      )}
     </div>
-  );  
+
+    <div className="flex justify-center">
+      <button onClick={handlePreviousNavigation} className="mr-4">
+        <ChevronLeftIcon
+          className={`h-6 w-6 hover:brightness-110 ${currentWorkoutIndex / workoutsPerPage + 1 > 1
+            ? "text-custom-green"
+            : "text-gray-400 cursor-not-allowed"}`}
+        />
+      </button>
+      <p>Page {currentWorkoutIndex / workoutsPerPage + 1}</p>
+      <button onClick={handleNextNavigation} className="ml-4">
+        <ChevronRightIcon
+          className={`h-6 w-6 hover:brightness-110 ${currentWorkoutIndex / workoutsPerPage + 1 < lastPage
+            ? "text-custom-green"
+            : "text-gray-400 cursor-not-allowed"}`}
+        />
+      </button>
+    </div>
+
+    <div className="flex mb-5 mt-5 justify-center">
+      {Array.from({ length: workoutsPerPage }).map((_, index) => {
+        const workoutIndex = currentWorkoutIndex + index;
+        const isButtonVisible = workoutIndex < totalWorkouts;
+        const lineClass = `w-${1 / workoutsPerPage} h-1 sm:h-[0.11rem] ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'}`;
+
+        return (
+          <div key={index} className={lineClass}>
+            {isButtonVisible && (
+              <button
+                onClick={() => handleActiveWorkout(workoutIndex)}
+                className={`flex-1 pl-10 md-pl-0 hover:text-custom-green pr-6 pt-2 text-base ${isButtonVisible ? '' : 'hidden'}`}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+              >
+                {isButtonVisible ? workouts[workoutIndex]?.name || '' : ''}
+              </button>
+            )}
+          </div>
+        );
+      })}
+    </div>
+
+    <br />
+    <br />
+
+    <ExerciseList exercises={exercises} content={"program"} />
+  </div>
+);
+
 }
 
 export default WorkoutsInProgram;

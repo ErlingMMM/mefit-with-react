@@ -19,7 +19,7 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
     <div>
       {isOpen && (
         <div
-          className="fixed inset-0 z-10 w-screen h-screen overflow-y-auto flex items-center justify-center"
+          className="fixed inset-0 z-50 w-screen h-screen overflow-y-auto flex items-center justify-center"
           aria-labelledby="modal-title"
           role="dialog"
           aria-modal="true"
