@@ -208,7 +208,7 @@ function WorkoutsInProgram() {
           const workoutIndex = currentWorkoutIndex + index;
           const isButtonVisible = workoutIndex < totalWorkouts;
 
-          const lineClass = `w-${1 / workoutsPerPage} h-1 ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'}`;
+          const lineClass = `w-${1 / workoutsPerPage} h-1 sm:h-[0.11rem] ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'}`;
 
 
           return (
