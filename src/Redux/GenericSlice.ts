@@ -45,7 +45,7 @@ interface programData {
   description:string|null;
   image:Url|null;
   workoutIds : []|null;
-  programDuration:null|number;
+  duration:null|number;
   difficulty:null|number;
   userIds:[]|null;
   orderOfWorkouts: number | null;
@@ -134,7 +134,7 @@ const initialState: DataState = {
     description: null,
     image: null,
     workoutIds: null,
-    programDuration: null,
+    duration: null,
     difficulty: null,
     userIds: null,
     orderOfWorkouts: null,
@@ -585,15 +585,15 @@ interface ProgramPostAPI {
   name:string,
   description:string,
   image:string,
-  programDuration:number,
-  programDifficulty:number,
+  duration:number,
+  difficulty:number,
   orderOfWorkouts:[],
 }
 
 export const AddProgramAsync = createAsyncThunk(
   'AddProgramAsync',
 
-  async ({name, description, image, programDuration, programDifficulty, orderOfWorkouts}: ProgramPostAPI) => {
+  async ({name, description, image, duration, difficulty, orderOfWorkouts}: ProgramPostAPI) => {
 
     const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Plan`, {
       headers: {
@@ -605,8 +605,8 @@ export const AddProgramAsync = createAsyncThunk(
         name: name,
         description: description,
         image: image,
-        programDifficulty:programDifficulty,
-        programDuration:programDuration,
+        difficulty:difficulty,
+        duration:duration,
         orderOfWorkouts : orderOfWorkouts,
       }),
     });
@@ -829,7 +829,7 @@ setProgramImg:(state, action) => {
   state.programData.image = action.payload;
 },
 setProgramDur:(state, action) => {
-  state.programData.programDuration = action.payload;
+  state.programData.duration = action.payload;
 },
 setProgramOrd:(state, action) => {
   state.programData.orderOfWorkouts = action.payload;

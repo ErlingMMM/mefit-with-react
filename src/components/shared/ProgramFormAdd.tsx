@@ -46,9 +46,9 @@ function AddProgramForm() {
         name: ProgramName,
         description: ProgramDesc,
         image: ProgramImg,
-        programDuration: ProgramDur,
+        duration: ProgramDur,
         orderOfWorkouts: ProgramOrd,
-        programDifficulty: 1,
+        difficulty: 1,
       }))
       .then(response => {
         console.log("Promise resolved", response);
