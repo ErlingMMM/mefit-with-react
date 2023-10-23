@@ -219,7 +219,7 @@ function WorkoutsInProgram() {
       {workout[activeWorkout] ? (
         <div className="flex justify-center">
           <div className="fixed sm:bottom-4 bottom-0">
-            <button className="bg-custom-green text-black w-screen sm:w-auto font-bold text-lg px-4 py-2 rounded-lg hover:bg-custom-green-hover">
+            <button className="bg-custom-green text-black w-screen sm:w-auto font-bold text-lg px-4 sm:py-2 py-6 rounded-lg hover:bg-custom-green-hover">
               Subscribe to {workout[activeWorkout].name}
             </button>
           </div>
