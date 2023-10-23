@@ -24,21 +24,21 @@ function Onboarding() {
  
 
   return (
-    <div className="p-0 bg-white overflow-x-hidden">
-
-  
+    <div className="bg-white overflow-hidden fixed bottom-0 left-0 w-screen">
     <ContentSwitch activeComponent={activeComponent} />
     <div className="w-screen flex justify-center">
-    <button className="bg-[#a3e635] text-black font-bold py-2 px-4 rounded focus:shadow-outline w-screen" onClick={handlePrevClick}>
-        Previous
-    </button> 
-    <button className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded focus:shadow-outline w-screen" onClick={handleNextClick}>
-        Next
-    </button> 
+        <button className="bg-[#a3e635] text-black font-bold py-3 px-4 rounded focus:shadow-outline w-screen " onClick={handlePrevClick}>
+            Previous
+        </button> 
+        <button className="bg-black hover:bg-black text-white font-bold py-6 px-4 rounded focus:shadow-outline w-screen " onClick={handleNextClick}>
+            Next
+        </button> 
+    </div> 
 </div>
 
-        
-  </div>
+
+
+      
     
   );
 }
