@@ -8,15 +8,27 @@ import { useNavigate } from 'react-router-dom';
 function AddExercisesComponent() {
   const [exercises, setExercises] = useState([]);
   const [exerciseIdsList, setExerciseIdsList] = useState<any[]>([]);
-  
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
+  const navigate = useNavigate();
   const workoutId = useSelector((state: RootState) => state.data.workoutId.id);
 
   useEffect(() => {
-    getAllExercises()
-      .then(data => setExercises(data))
-      .catch(error => console.error('Error fetching data:', error));
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const data = await getAllExercises();
+        setExercises(data);
+      } catch (error) {
+        setError('Error fetching data');
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const toggleExercise = (exerciseId: any) => {
@@ -30,11 +42,23 @@ function AddExercisesComponent() {
     }
   };
 
-  const handleSaveButton2 = () => {
-    addExerciseToWorkout(workoutId, exerciseIdsList)
-      .then(result => navigate('/'))
-      .catch(error => console.error("Error adding exercises to workout:", error));
+  const handleSaveButton = async () => {
+    try {
+      await addExerciseToWorkout(workoutId, exerciseIdsList);
+      navigate('/');
+    } catch (error) {
+      setError('Error adding exercises to workout');
+      console.error("Error adding exercises to workout:", error);
+    }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="container mx-auto p-4">
@@ -60,7 +84,7 @@ function AddExercisesComponent() {
           <li>No matching exercises</li>
         )}
       </ul>
-      <button onClick={handleSaveButton2} className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save</button>
+      <button onClick={handleSaveButton} className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save</button>
     </div>
   );
 }
