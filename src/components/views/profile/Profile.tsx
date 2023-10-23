@@ -33,18 +33,18 @@ function ProfilePage() {
 
 
 
-
+ console.log(keycloak)
 
 
 
     return (
         <div className="flex flex-col justify-center items-center p-4">
-            <button onClick={handleEditClick} className="bg-custom-green text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
-                settings
+            <button onClick={handleEditClick} className="bg-custom-green text-black font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
+                edit profile
             </button>
             <br />
             {!(isAdmin || isContributor) && (
-                <button onClick={handleApplicationClick} className="bg-custom-green text-white font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
+                <button onClick={handleApplicationClick} className="bg-custom-green text-black font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
                     Apply to become a contributor
                 </button>
             )}

@@ -45,7 +45,7 @@ function SearchSelectorModal({ isOpen, closeModal, availableSearchOptions }: { i
                   <button
                     key={option}
                     onClick={() => searchSelector(option)}
-                    className="block pb-2 pt-3 px-4 rounded-md m-2 cursor-pointer"
+                    className="block pb-2 pt-3 px-4 rounded-md m-2 cursor-pointer hover:bg-gray-100"
                   >
                     {toTitleCase(option)}
                   </button>

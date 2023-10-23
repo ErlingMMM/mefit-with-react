@@ -9,6 +9,7 @@ interface Program {
   description: string;
   duration: number;
   difficulty: number;
+  image: string;
 }
 
 interface ProgramsListProps {
@@ -20,18 +21,7 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
   const [showFullDescription, setShowFullDescription] = useState<boolean>(false);
 
 
-  // Define dummy images URLs
-  const dummyImageUrls = [
-    'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&ixid=M3wxM[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3269&q=80',
-    'https://images.unsplash.com/photo-1434682881908-b43d0467b798?ixlib=rb-4.0.3&ixid=M3wxM[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3274&q=80',
-    'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&ixid=M3wxM[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto.format&fit=crop&w=3270&q=80',
-  ];
 
-  // Helper function to get a random dummy image URL
-  const getRandomDummyImageUrl = () => {
-    const randomIndex = Math.floor(Math.random() * dummyImageUrls.length);
-    return dummyImageUrls[randomIndex];
-  };
 
   
 
@@ -44,19 +34,19 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
             <button onClick={() => onClick(program.id)}>
               <div>
                 <img
-                  src={getRandomDummyImageUrl()}
+                  src={program.image}
                   alt={program.name}
-                  className="w-80 h-24 rounded-lg mx-auto object-cover object-top overflow-hidden"
+                  className="w-80 h-24 rounded-lg mx-auto object-cover object-top overflow-hidden hover:opacity-80"
                 />
               </div>
 
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-start ml-2">
                 <h3 className="text-lg font-bold">
                   {program.name}
                 </h3>
               </div>
             </button>
-            <div className="w-80 text-center"> 
+            <div className="w-80 text-start ml-2"> 
               <p className={showFullDescription ? 'mt-4' : 'mt-2'}>
                 {showFullDescription
                   ? program.description

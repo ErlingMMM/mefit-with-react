@@ -194,11 +194,11 @@ function WorkoutsInProgram() {
 
       <div className="flex justify-center ">
         <button onClick={handlePreviousNavigation} className="mr-4">
-          <ChevronLeftIcon className={`h-6 w-6 ${currentWorkoutIndex / workoutsPerPage + 1 > 1 ? "text-custom-green" : "text-gray-400 cursor-not-allowed"}`} />
+          <ChevronLeftIcon className={`h-6 w-6 hover:brightness-110 ${currentWorkoutIndex / workoutsPerPage + 1 > 1 ? "text-custom-green" : "text-gray-400 cursor-not-allowed"}`} />
         </button>
         <p>Page {currentWorkoutIndex / workoutsPerPage + 1}</p>
         <button onClick={handleNextNavigation} className="ml-4">
-          <ChevronRightIcon className={`h-6 w-6 ${currentWorkoutIndex / workoutsPerPage + 1 < lastPage ? "text-custom-green" : "text-gray-400 cursor-not-allowed"}`} />
+          <ChevronRightIcon className={`h-6 w-6 hover:brightness-110 ${currentWorkoutIndex / workoutsPerPage + 1 < lastPage ? "text-custom-green" : "text-gray-400 cursor-not-allowed"}`} />
         </button>
       </div>
 
@@ -216,7 +216,7 @@ function WorkoutsInProgram() {
               {isButtonVisible && (
                 <button
                   onClick={() => handleActiveWorkout(workoutIndex)}
-                  className={`flex-1 pl-10 md-pl-0  pr-6 pt-2 text-base ${isButtonVisible ? '' : 'hidden'
+                  className={`flex-1 pl-10 md-pl-0 hover:text-custom-green pr-6 pt-2 text-base ${isButtonVisible ? '' : 'hidden'
                     }`}
                   style={{ WebkitTapHighlightColor: 'transparent' }}
 
