@@ -41,7 +41,7 @@ function WorkoutsList({ workouts, onClick }: WorkoutsListProps) {
               <div className="text-lg font-bold" style={{ marginRight: '70px' }}>{workout.name}</div>
               <p style={{ marginRight: '30px' }}>Duration: {DurationUtils.formatDuration(workout.duration)} </p>
               <br />
-              <p style={{ marginLeft: '10px' }}>Difficulty: {DifficultyUtils.difficultyToLabel(workout.difficulty)}</p>
+              <p style={{ marginLeft: '10px' }}>{DifficultyUtils.difficultyToLabel(workout.difficulty)}</p>
             </div>
           </button>
         </li>
