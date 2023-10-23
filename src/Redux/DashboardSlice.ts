@@ -8,7 +8,7 @@ interface ExerciseData {
   description: string;
   muscleGroup: string;
   image?: string;
-  time: number;
+  duration: number;
   difficulty: number;
   sets: number;
   reps: number;
@@ -18,7 +18,7 @@ interface WorkoutData {
   id: number;
   name: string;
   description?: string;
-  recommendedFitness: number;
+  difficulty: number;
   image?: string;
   duration: number;
   day: number;
