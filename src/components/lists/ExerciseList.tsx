@@ -39,14 +39,14 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
         <button onClick={() => openModal(exercise)} className="flex items-start">
           <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style hover:opacity-80" />
           <div className="w-48">
-            <div className='mr-20'>
-              <h3 className="text-lg font-bold" style={{ marginLeft: '-10px' }}>
+          <div className="text-left"> 
+              <h3 className="text-lg font-bold">
                 {exercise.name}
               </h3>
             </div>
             {content === 'explorer' ? (
               <>
-                <div className='mr-28'>
+                <div className="text-left">
                   <p>{DifficultyUtils.difficultyToLabel(exercise.difficulty)}</p>
                 </div>
                 <br />
