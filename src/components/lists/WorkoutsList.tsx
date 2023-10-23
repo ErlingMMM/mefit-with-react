@@ -28,7 +28,7 @@ function WorkoutsList({ workouts, onClick }: WorkoutsListProps) {
       <li key={workout.id} className="mb-6">
         <button onClick={() => onClick(workout.id)} className="flex items-start">
           <img src={workout.image} alt={workout.name} className="custom-image-style hover:opacity-80" />
-          <div className="text-left"> 
+          <div className="text-left ml-3"> 
             <div className="text-lg font-bold">{workout.name}</div>
             <p>Duration: {DurationUtils.formatDuration(workout.duration)}</p>
             <br />
