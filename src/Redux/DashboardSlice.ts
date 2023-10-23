@@ -7,7 +7,7 @@ interface ExerciseData {
   name: string;
   description: string;
   muscleGroup: string;
-  imageUrl?: string;
+  image?: string;
   time: number;
   difficulty: number;
   sets: number;
