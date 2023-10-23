@@ -35,31 +35,34 @@ const handleRegistrerClick = () => {
   console.log("timeframe:",fintessTimeFrame )
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-4 ">
-      <h1 className="text-lg font-bold mb-6 self-end">Choose your timeframe:</h1>
+    <div className="min-h-screen flex flex-col justify-center items-center p-4">
+      <h1 className="text-lg font-bold mb-6 text-right">Choose your timeframe</h1>
       <form className="">
 
-      <div className="mb-2 p-4 round hover:scale-110">
+      <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
         <input type="radio" id="html" name="fav_language" value="15"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
          <div>
         <label  className="text-lg font-bold">15 days</label><br />
-        <p>Perfect for som vil prøve og eventuelt utvide til en lenger periode. lykke til</p>
+        <p>For the shorter programs. great as a warm up for a new beginner  <br />
+        or a full intensity program</p>
          </div>
         </div>
 
-        <div className="mb-4 p-6 round hover:scale-110">
+        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
         <input type="radio" id="css" name="fav_language" value="30"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
         <div>
         <label   className="text-lg font-bold" >30 days</label><br />
-        <p>Perfect for som vil er erfaren og kan holde ut et treningsprogram i en hektisk hverdag.lykke til</p>
+        <p>For the shorter programs. great as a warm up for a new beginner  <br />
+        or a full intensity program for a veteran</p>
          </div>
         </div>
 
-        <div className="mb-4 p-6 round hover:scale-110">
+        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
         <input type="radio" id="javascript" name="fav_language" value="45"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
          <div>
         <label className="text-lg font-bold">45 days</label><br />
-        <p>Perfect for deg som trener mot et intens mål og har erfaringen og disiplin tol å fullføre et hardt løp.lykke til</p>
+        <p>For the shorter programs. great as a warm up for a new beginner  <br />
+        or a full intensity program for a veteran</p>
          </div>
         </div>
       </form>
