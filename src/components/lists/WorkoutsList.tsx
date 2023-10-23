@@ -23,7 +23,7 @@ function WorkoutsList({ workouts, onClick }: WorkoutsListProps) {
 
   return (
 <div className="sm:flex sm:justify-center sm:items-center">
-  <ul className="sm:flex sm:flex-wrap sm:justify-center mx-6 md:grid md:-mr-1 md:gap-10 md:grid-cols-2">
+  <ul className="sm:flex sm:flex-wrap sm:justify-center mx-6 sm:-mx-28  md:grid  md:-mr-1 md:gap-10 md:grid-cols-2">
     {workouts.map((workout) => (
       <li key={workout.id} className="mb-6">
         <button onClick={() => onClick(workout.id)} className="flex items-start">

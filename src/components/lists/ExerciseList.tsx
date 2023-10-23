@@ -39,7 +39,7 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
         <button onClick={() => openModal(exercise)} className="flex items-start">
           <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style hover:opacity-80" />
           <div className="w-48">
-          <div className="text-left"> 
+          <div className="text-left">  
               <h3 className="text-lg font-bold">
                 {exercise.name}
               </h3>
