@@ -1,9 +1,14 @@
 import React from 'react';
+import DurationUtils from '../utils/DurationUtils';
+import DifficultyUtils from '../utils/DifficultyUtils';
+
 
 interface Workout {
   id: number;
   name: string;
   description: string;
+  duration: number;
+  difficulty: number;
 }
 
 interface WorkoutsListProps {
@@ -33,14 +38,16 @@ function WorkoutsList({ workouts, onClick }: WorkoutsListProps) {
           <button onClick={() => onClick(workout.id)} className="flex items-start">
             <img src={getRandomDummyImageUrl()} alt={workout.name} className="custom-image-style" />
             <div>
-              <h3 className="text-lg font-bold">{workout.name}</h3>
-              <p>{workout.description}</p>
+              <div className="text-lg font-bold" style={{ marginRight: '70px' }}>{workout.name}</div>
+              <p style={{ marginRight: '30px' }}>Duration: {DurationUtils.formatDuration(workout.duration)} </p>
+              <br />
+              <p style={{ marginLeft: '10px' }}>Difficulty: {DifficultyUtils.difficultyToLabel(workout.difficulty)}</p>
             </div>
           </button>
         </li>
       ))}
     </ul>
   );
-}
+  }
 
 export default WorkoutsList;

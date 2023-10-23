@@ -32,12 +32,12 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, switchToComponent
           </div>
           <div>
             <span
-              className={`block absolute h-0.5 w-4 bg-current transform transition duration-300 ease-in-out ${isOpen ? 'opacity-0' : ''
+              className={`block absolute h-0.5 w-4 bg-current  ${isOpen ? 'opacity-0' : ''
                 }`}
               style={{ top: '13px', left: '40px' }}
             ></span>
             <span
-              className={`block absolute h-0.5 w-4 bg-current transform transition duration-300 ease-in-out ${isOpen ? 'opacity-0' : ''
+              className={`block absolute h-0.5 w-4 bg-current ${isOpen ? 'opacity-0' : ''
                 }`}
               style={{ top: '28px', left: '40px' }}
             ></span>

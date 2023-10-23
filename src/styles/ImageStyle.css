@@ -4,3 +4,12 @@
     margin-left: 30px;
     border-radius: 10px;
   }
+
+
+
+  .exercise-info {
+    width: 200px; /* Set a fixed width that works for your design */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
