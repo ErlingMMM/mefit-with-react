@@ -57,25 +57,36 @@ function AddWorkoutForm() {
     
     return (
       isFormSubmitted
-        ? <AddExerciseComponent />
-        : (
-      <form className='bg-white p-8 rounded '>
-      <label className='block mb-2 text-gray-800' htmlFor="bio">name:</label>
-      <input  onChange={handleNameChange}  className='w-full p-2 mb-4 border rounded' type="text" id="name" name="name" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="age">description:</label>
-      <input onChange={handleDescriptionChange} className='w-full p-2 mb-4 border rounded' type="text" id="description" name="description" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="height">"recommendedFitness:</label>
-      <input  onChange={handleRecommendedFitnessChange} className='w-full p-2 mb-4 border rounded' type="text" id="recommendedFitness" name="recommendedfitness" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="weight">image:</label>
-      <input onChange={handleImageChange} className='w-full p-2 mb-4 border rounded' type="text" id="image" name="image" />
-
-      <button onClick={handleSave} className="w-full bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline" type="submit">Save</button>
-
-    </form>)
-    );
+      ? <AddExerciseComponent />
+      : (
+        <form className='bg-white p-8 rounded-lg space-y-4 font-body'>
+          <div className="space-y-2">
+            <label className='text-lg text-gray-800' htmlFor="bio">Name:</label>
+            <input onChange={handleNameChange} className='w-full p-2 border rounded-lg' type="text" id="name" name="name" />
+          </div>
+  
+          <div className="space-y-2">
+            <label className='text-lg text-gray-800' htmlFor="age">Description:</label>
+            <input onChange={handleDescriptionChange} className='w-full p-2 border rounded-lg' type="text" id="description" name="description" />
+          </div>
+  
+          <div className="space-y-2">
+            <label className='text-lg text-gray-800' htmlFor="height">Recommended Fitness:</label>
+            <input onChange={handleRecommendedFitnessChange} className='w-full p-2 border rounded-lg' type="text" id="recommendedFitness" name="recommendedfitness" />
+          </div>
+  
+          <div className="space-y-2">
+            <label className='text-lg text-gray-800' htmlFor="weight">Image:</label>
+            <input onChange={handleImageChange} className='w-full p-2 border rounded-lg' type="text" id="image" name="image" />
+          </div>
+  
+          <div>
+            <button onClick={handleSave} className="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
+          </div>
+        </form>
+      )
+  );
+  
 }
 
 

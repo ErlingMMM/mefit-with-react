@@ -76,40 +76,57 @@ function AddExcersiceForm() {
           navigate('/')
       }
 
-    return (
-      <div>
-      <h1 className="text-2xl font-bold mb-4 text-center">Add Exercise</h1>
-      <form className='bg-white p-8 rounded '>
-      <label className='block mb-2 text-gray-800' htmlFor="name">name:</label>
-      <input onChange={handleNameChange}  className='w-full p-2 mb-4 border rounded' type="text" id="name" name="name" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="description">description:</label>
-      <input onChange={handleDescriptionChange} className='w-full p-2 mb-4 border rounded' type="text" id="descpription" name="despcription" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="muscleGroup">muscleGroup:</label>
-      <input onChange={handlemuscleGroupChange} className='w-full p-2 mb-4 border rounded' type="text" id="muscleGroup" name="muscleGroup" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="image">image:</label>
-      <input onChange={handleImageUrlChange} className='w-full p-2 mb-4 border rounded' type="text" id="image" name="image" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="video">video:</label>
-      <input onChange={handleVideoUrlChange} className='w-full p-2 mb-4 border rounded' type="text" id="video" name="video" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="sets">sets:</label>
-      <input onChange={handleSetsChange} className='w-full p-2 mb-4 border rounded' type="text" id="video" name="video" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="reps">reps:</label>
-      <input onChange={handleRepsChange} className='w-full p-2 mb-4 border rounded' type="text" id="reps" name="reps" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="time">time:</label>
-      <input onChange={handleTimeChange} className='w-full p-2 mb-4 border rounded' type="text" id="time" name="time" />
-
-      <button onClick={handleSave} className="w-full bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline" type="submit">Save</button>
-
-
-    </form>
-    </div>
+      return (
+        <div className="font-body">
+          <h1 className="text-2xl font-bold mb-8 text-center">Add Exercise</h1>
+          <form className='bg-white p-8 rounded-lg space-y-4'>
+            <div className="space-y-2">
+              <label className='text-lg text-gray-800' htmlFor="name">Name:</label>
+              <input onChange={handleNameChange} className='w-full p-2 border rounded-lg' type="text" id="name" name="name" />
+            </div>
+    
+            <div className="space-y-2">
+              <label className='text-lg text-gray-800' htmlFor="description">Description:</label>
+              <input onChange={handleDescriptionChange} className='w-full p-2 border rounded-lg' type="text" id="description" name="description" />
+            </div>
+    
+            <div className="space-y-2">
+              <label className='text-lg text-gray-800' htmlFor="muscleGroup">Muscle Group:</label>
+              <input onChange={handlemuscleGroupChange} className='w-full p-2 border rounded-lg' type="text" id="muscleGroup" name="muscleGroup" />
+            </div>
+    
+            <div className="space-y-2">
+              <label className='text-lg text-gray-800' htmlFor="image">Image:</label>
+              <input onChange={handleImageUrlChange} className='w-full p-2 border rounded-lg' type="text" id="image" name="image" />
+            </div>
+    
+            <div className="space-y-2">
+              <label className='text-lg text-gray-800' htmlFor="video">Video:</label>
+              <input onChange={handleVideoUrlChange} className='w-full p-2 border rounded-lg' type="text" id="video" name="video" />
+            </div>
+    
+            <div className="space-y-2">
+              <label className='text-lg text-gray-800' htmlFor="sets">Sets:</label>
+              <input onChange={handleSetsChange} className='w-full p-2 border rounded-lg' type="text" id="sets" name="sets" />
+            </div>
+    
+            <div className="space-y-2">
+              <label className='text-lg text-gray-800' htmlFor="reps">Reps:</label>
+              <input onChange={handleRepsChange} className='w-full p-2 border rounded-lg' type="text" id="reps" name="reps" />
+            </div>
+    
+            <div className="space-y-2">
+              <label className='text-lg text-gray-800' htmlFor="time">Time:</label>
+              <input onChange={handleTimeChange} className='w-full p-2 border rounded-lg' type="text" id="time" name="time" />
+            </div>
+    
+            <div>
+              <button onClick={handleSave} className="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
     );
+    
 }
 
 export default AddExcersiceForm;

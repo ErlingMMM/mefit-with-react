@@ -16,6 +16,7 @@ function AddProgramForm() {
   const ProgramOrd = useSelector((state: any) => state.data.programData.orderOfWorkouts);
   const navigate = useNavigate();
 
+
     const handleName = (event: { target: { value: SetStateAction<string>; }; }) => {
     
       dispatch(setProgramName(event.target.value));
@@ -31,9 +32,8 @@ function AddProgramForm() {
   
     }
     const handleDur = (event: { target: { value: SetStateAction<string>; }; }) => {
-
       dispatch(setProgramDur(event.target.value));
-      console.log(ProgramDur)
+      console.log(ProgramDur);
     }
     const handleOrd = (event: { target: { value: SetStateAction<string>; }; }) => {
 
@@ -55,6 +55,9 @@ function AddProgramForm() {
         if (response.payload) {
           dispatch(setPlanId(response.payload));  // Set the plan ID in the state
           setIsFormSubmitted(true);  // Ensure this line is being reached
+          // To store a variable
+          localStorage.setItem('duration', ProgramDur);
+    
         }
       })
       .catch(error => {
@@ -65,29 +68,51 @@ function AddProgramForm() {
    
 
     return (
-        isFormSubmitted
-        ? <AddWorkoutsCompoent />
-        : (
-      <form className='bg-white p-8 rounded '>
-      <label className='block mb-2 text-gray-800'>name:</label>
-      <input onChange={handleName}  className='w-full p-2 mb-4 border rounded' type="text" id="name" name="name" />
-
-      <label className='block mb-2 text-gray-800'>description:</label>
-      <input onChange={handleDesc} className='w-full p-2 mb-4 border rounded' type="text" id="description" name="description" />
-
-      <label className='block mb-2 text-gray-800'>"image:</label>
-      <input onChange={handleImg}  className='w-full p-2 mb-4 border rounded' type="text" id="image" name="image" />
-
-      <label className='block mb-2 text-gray-800'>programDuration:</label>
-      <input onChange={handleDur} className='w-full p-2 mb-4 border rounded' type="text" id="programDuration" name="programDuration" />
-
-      <label className='block mb-2 text-gray-800' htmlFor="weight">orderOfWorkouts:</label>
-      <input onChange={handleOrd} className='w-full p-2 mb-4 border rounded' type="text" id="orderOfWorkouts" name="orderOfWorkouts" />
-
-       <button onClick={postProgram} className="w-full bg-[#a3e635] text-white font-bold py-2 px-4 rounded focus:shadow-outline" type="submit">Save</button>
-
-    </form>)
-    );
+      isFormSubmitted
+      ? <AddWorkoutsCompoent />
+      : (
+        <form className='bg-white p-8 rounded-lg space-y-4'>
+          <div className="space-y-2">
+            <label className='text-lg text-gray-800' htmlFor="name">Name:</label>
+            <input onChange={handleName} className='w-full p-2 border rounded-lg' type="text" id="name" name="name" />
+          </div>
+  
+          <div className="space-y-2">
+            <label className='text-lg text-gray-800' htmlFor="description">Description:</label>
+            <input onChange={handleDesc} className='w-full p-2 border rounded-lg' type="text" id="description" name="description" />
+          </div>
+  
+          <div className="space-y-2">
+            <label className='text-lg text-gray-800' htmlFor="image">Image:</label>
+            <input onChange={handleImg} className='w-full p-2 border rounded-lg' type="text" id="image" name="image" />
+          </div>
+  
+          <div className="space-y-2">
+            <label className='text-lg text-gray-800' htmlFor="programDuration">Program Duration:</label>
+            <div className="flex flex-col">
+              <label className="inline-flex items-center">
+                <input onChange={handleDur} type="radio" value="15" name="programDuration" checked={ProgramDur === '15'} />
+                <span className="ml-2">15 days</span>
+              </label>
+              <label className="inline-flex items-center">
+                <input onChange={handleDur} type="radio" value="30" name="programDuration" checked={ProgramDur === '30'} />
+                <span className="ml-2">30 days</span>
+              </label>
+              <label className="inline-flex items-center">
+                <input onChange={handleDur} type="radio" value="60" name="programDuration" checked={ProgramDur === '60'} />
+                <span className="ml-2">60 days</span>
+              </label>
+            </div>
+          </div>
+  
+        
+          <div>
+            <button onClick={postProgram} className="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
+          </div>
+        </form>
+      )
+  );
+  
 }
 
 
