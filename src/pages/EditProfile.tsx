@@ -94,9 +94,9 @@ function EditProfile() {
       >
         MeFit
       </h1>
-     <h1 className='text-3xl sm:text-4xl font-bold mb-4 text-black justify-end'>edit info </h1>
      <button onClick={onClickBack} className='bg-custom-green text-gray-800 font-bold py-2 px-4 rounded absolute top-4 left-4 sm:top-8 sm:left-8'>Back</button>
-
+     <br />
+     
       <form className="bg-white p-8 rounded">
         <label className='block mb-2 text-black font-bold ' htmlFor="bio">Bio:</label>
         <input  onChange={handleBioChange} className='w-full p-2 mb-4 border rounded' type="text" id="bio" name="bio" />
