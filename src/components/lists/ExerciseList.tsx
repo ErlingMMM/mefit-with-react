@@ -14,22 +14,6 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
     setIsModalOpen(true);
   };
 
-  // Define dummy exercise images URLs
-  const dummyImageUrls = [
-    'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80',
-    'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80',
-    'https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto.format&fit=crop&w=3269&q=80',
-  ];
-
-  // Helper function to get a random dummy image URL
-  const getRandomDummyImageUrl = () => {
-    const randomIndex = Math.floor(Math.random() * dummyImageUrls.length);
-    return dummyImageUrls[randomIndex];
-  };
-
-
-
-
 
 
 
@@ -37,16 +21,16 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
     return exercises.map((exercise: any) => (
       <li key={exercise.id} className="mb-6">
         <button onClick={() => openModal(exercise)} className="flex items-start">
-          <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style hover:opacity-80" />
+          <img src={exercise.image} alt={exercise.name} className="custom-image-style hover:opacity-80" />
           <div className="w-48">
-            <div className='mr-20'>
-              <h3 className="text-lg font-bold" style={{ marginLeft: '-10px' }}>
+          <div className="text-left">  
+              <h3 className="text-lg font-bold">
                 {exercise.name}
               </h3>
             </div>
             {content === 'explorer' ? (
               <>
-                <div className='mr-28'>
+                <div className="text-left">
                   <p>{DifficultyUtils.difficultyToLabel(exercise.difficulty)}</p>
                 </div>
                 <br />
