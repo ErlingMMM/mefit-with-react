@@ -33,8 +33,21 @@ function First() {
 
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-4">
-      <h1 className="text-lg font-bold mb-6 text-right">What is your<br />current fitness<br />level?</h1>
+    <div className="min-h-screen flex flex-col justify-center items-center p-4 overflow-hidden">
+    <div className="mt-10">
+  <div>
+    <h1 className={`font-bold text-black text-2xl italic text-center`}>
+      MeFit
+    </h1>
+    <br />
+    <h1 className="text-lg font-bold mb-6 text-right ">What is your<br />current fitness<br />level?</h1>
+  </div>
+</div>
+     
+
+     <div>
+      
+     </div>
 
     <form className="">
         <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
