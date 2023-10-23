@@ -35,7 +35,7 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder, availableSearchOp
 
   return (
     <div className="flex justify-center">
-      <div className="external-input-style border-2 border-gray-400 bg-white h-12 w-10/12 lg:w-7/12 rounded-3xl text-sm focus:outline-none inline-block relative">
+      <div className="external-input-style border-2 border-gray-400 bg-white h-12 w-10/12 sm:w-5/12 rounded-3xl text-sm focus:outline-none inline-block relative">
         <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
           <SearchIcon className="w-4 h-4" />
         </div>
