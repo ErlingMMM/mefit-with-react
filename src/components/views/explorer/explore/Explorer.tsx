@@ -66,7 +66,7 @@ function Explorer() {
       <div className="flex justify-between w-full space-x-1">
         <button
           onClick={() => switchToComponent('programs')}
-          className="flex-1 pl-10 sm:pl-96 pr-4  pt-2 text-base"
+          className="flex-1 pl-10 sm:pl-80 pr-4  pt-2 text-base"
         >
           programs
         </button>
@@ -78,7 +78,7 @@ function Explorer() {
         </button>
         <button
           onClick={() => switchToComponent('workouts')}
-          className="flex-1 pr-10 sm:pr-96 pl-4 pt-2 text-base"
+          className="flex-1 pr-10 sm:pr-80 pl-4 pt-2 text-base"
         >
           workouts
         </button>
