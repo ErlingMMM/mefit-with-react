@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import ExerciseModal from '../modals/ExerciseModal';
 import '../../styles/ImageStyle.css';
+import DifficultyUtils from '../utils/DifficultyUtils';
 
 function ExerciseList({ exercises, content }: { content: string, exercises: any[]; }) {
 
@@ -38,7 +39,6 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
         <button onClick={() => openModal(exercise)} className="flex items-start">
           <img src={getRandomDummyImageUrl()} alt={exercise.name} className="custom-image-style hover:opacity-80" />
           <div className="w-48">
-
             <div className='mr-20'>
               <h3 className="text-lg font-bold" style={{ marginLeft: '-10px' }}>
                 {exercise.name}
@@ -47,7 +47,7 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
             {content === 'explorer' ? (
               <>
                 <div className='mr-28'>
-                  <p>Level: {exercise.difficulty}</p>
+                  <p>{DifficultyUtils.difficultyToLabel(exercise.difficulty)}</p>
                 </div>
                 <br />
 
@@ -78,8 +78,8 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
 
   return (
     <div>
-      <div>
-        <ul className='ml-5'>
+    <div className="sm:flex sm:justify-center">
+        <ul className='ml-5 sm:grid sm:grid-cols-2 sm:gap-4 sm:mr-28'>
           {exercises.length > 0 ? (
             renderExercises()
           ) : (
