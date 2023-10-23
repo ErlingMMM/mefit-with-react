@@ -1,6 +1,9 @@
 .dashboardContainer {
   padding-left: 20px;  /* adjust this value to your preference */
   padding-right: 20px; /* adjust this value to your preference */
+  width: 100%;       /* Ensure it takes full width by default */
+  max-width: 600px;  /* Restrict the maximum width to 600px */
+  margin: 0 auto;    /* Center the container on larger screens */
 }
 
 
