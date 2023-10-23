@@ -79,7 +79,7 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
   return (
     <div>
       <div>
-        <ul className='ml-5'>
+        <ul className='ml-5 sm:grid sm:grid-cols-2 sm:gap-4'>
           {exercises.length > 0 ? (
             renderExercises()
           ) : (
