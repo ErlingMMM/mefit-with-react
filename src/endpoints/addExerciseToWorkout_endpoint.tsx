@@ -2,7 +2,7 @@ import keycloak from "../Keycloak";
 
 export async function addExerciseToWorkout(workoutId: any, exerciseIds: number[]) {
     const accessToken = keycloak.token;
-    const apiURL = 'https://mefit-backend.azurewebsites.net/api/plan/addworkouttoplan';
+    const apiURL = 'https://mefit-backend.azurewebsites.net/api/plan/addexercisetoworkout';
 
     console.log("Access Token:", accessToken);  // Log the token
     console.log("------------------" + workoutId + " " + exerciseIds);

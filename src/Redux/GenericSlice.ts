@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import keycloak from "../Keycloak";
 import { Url } from 'url';
-import { stringify } from 'querystring';
+
 
 
 /**
@@ -348,6 +348,9 @@ interface UserDataUpdateAPI {
   height:string;
   weight:string;
   gender:String;
+  //intensity: string;
+  //fitnessLvl: string;
+  //timeframe:string
 
 }
 
@@ -358,9 +361,13 @@ interface UserDataUpdateAPI {
    */
   export const updateUserProfile = createAsyncThunk(
     'updateUserProfile',
-    async ({ bio, age, height, weight, gender }: UserDataUpdateAPI) => {
+    //intensity, fitnessLvl, timeframe 
+    async ({ bio, age, height, weight, gender}: UserDataUpdateAPI) => 
+    {
+      
       const patchOps = [];
       if (bio !== null) {
+        
         patchOps.push({
           op: 'replace',
           path: '/bio',
@@ -395,6 +402,35 @@ interface UserDataUpdateAPI {
           value: gender,
         });
       }
+      /*
+      if (intensity !== null) {
+        console.log(intensity)
+        const timesAWeek = intensity
+        patchOps.push({
+          op: 'replace',
+          path: '/timesAWeek',
+          value: timesAWeek,
+        });
+      }
+      if ( fitnessLvl !== null) {
+        console.log(fitnessLvl)
+        const fitnessPreference = fitnessLvl
+        patchOps.push({
+          op: 'replace',
+          path: '/fitnessPreference',
+          value: fitnessPreference,
+        });
+      }
+      if ( timeframe !== null) {
+        console.log(timeframe)
+        const duratiomTimeframe = timeframe
+        patchOps.push({
+          op: 'replace',
+          path: '/duratiomTimeframe',
+          value: duratiomTimeframe,
+        });
+      }
+      */
   
       try {
         const response = await fetch('https://mefit-backend.azurewebsites.net/api/users/updateuser', {
@@ -413,9 +449,7 @@ interface UserDataUpdateAPI {
           throw new Error('Network response was not ok');
         }
   
-        const data = await response.json();
-        console.log(data)
-        return data;
+ 
       } catch (error) {
         console.error('Error:', error);
         throw error;

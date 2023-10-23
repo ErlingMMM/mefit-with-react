@@ -2,7 +2,7 @@ import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 import React, { SetStateAction, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../Redux/Store';
-import { setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, updateUserProfile } from '../Redux/GenericSlice';
+import { SetUserFitnessLVL, setUserAge, setUserBio, setUserGender, setUserHeight, setUserTimeFrame, setUserTimesAWeek, setUserWeight, updateUserProfile } from '../Redux/GenericSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { setActiveComponent } from '../Redux/NavigationSlice';
 
@@ -21,13 +21,30 @@ function EditProfile() {
     const UserHeight = useSelector((state: any) => state.data.userData.height);
     const UserWeight = useSelector((state: any) => state.data.userData.weight);
     const UserGender = useSelector((state: any) => state.data.userData.gender);
+    const UserFitnessPreference = useSelector((state: any) => state.data.userData.fitnessPreference);
+    const UserIntensityPreference = useSelector((state: any) => state.data.userData.timesAWeek);
+    const UserDurationTimeFrame  = useSelector((state: any) => state.data.userData.DurationTimeFrame);
 
+  
     const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
         setSelectedGender(event.target.value);
         dispatch(setUserGender(event.target.value));
-    
-    
       }
+
+      const handleRadio2Change = (event: { target: { value: SetStateAction<string>; }; }) => {
+        dispatch(SetUserFitnessLVL(event.target.value));
+      }
+
+      const handleRadio3Change = (event: { target: { value: SetStateAction<string>; }; }) => {
+        dispatch(setUserTimeFrame(event.target.value));
+      }
+
+      const handleRadio4Change = (event: { target: { value: SetStateAction<string>; }; }) => {
+        dispatch(setUserTimesAWeek(event.target.value));
+      }
+
+
+
       const handleBioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
         setSelectedBio(event.target.value);
         dispatch(setUserBio(event.target.value));
@@ -58,6 +75,9 @@ function EditProfile() {
           height: UserHeight,
           weight: UserWeight,
           gender: UserGender,
+          //intensity:UserIntensityPreference,
+         // fitnessLvl: UserFitnessPreference,
+          //timeframe:UserDurationTimeFrame,
         }))
         navigate('/');
         dispatch(setActiveComponent('profile'));
@@ -66,7 +86,6 @@ function EditProfile() {
         navigate('/');
     }
   
-
 
   return (
     <div className='bg-gray-500 h-screen flex flex-col justify-center items-center'>
@@ -96,6 +115,49 @@ function EditProfile() {
 
           <input onChange={handleRadioChange} className='mx-2' type="radio" id="other" name="gender" value="other" />
           <label className='text-gray-800' htmlFor="other" >Other</label>
+        </div>
+
+        <label className='block mb-2 text-gray-800'>Fitness preference:</label>
+        <div className='flex items-center mb-4'>
+          <input  onChange={handleRadio2Change} className='mr-2' type="radio" id="male" name="gender" value="0" />
+          <label className='text-gray-800' htmlFor="male">Beginner</label>
+
+          <input onChange={handleRadio2Change} className='mx-2' type="radio" id="female" name="gender" value="1" />
+          <label className='text-gray-800' htmlFor="female">Intermediate</label>
+
+          <input onChange={handleRadio2Change} className='mx-2' type="radio" id="other" name="gender" value="2" />
+          <label className='text-gray-800' htmlFor="other" >Advanced</label>
+        </div>
+
+        <label className='block mb-2 text-gray-800'>Timeframe:</label>
+        <div className='flex items-center mb-4'>
+          <input  onChange={handleRadio3Change} className='mr-2' type="radio" id="male" name="gender" value="15" />
+          <label className='text-gray-800' htmlFor="male">15 days</label>
+
+          <input onChange={handleRadio3Change} className='mx-2' type="radio" id="female" name="gender" value="30" />
+          <label className='text-gray-800' htmlFor="female">30 days</label>
+
+          <input onChange={handleRadio3Change} className='mx-2' type="radio" id="other" name="gender" value="45" />
+          <label className='text-gray-800' htmlFor="other" >45 days</label>
+        </div>
+
+        <label className='block mb-2 text-gray-800'>intensity (workouts per week - wpw)</label>
+        <div className='flex items-center mb-4'>
+          
+          <input  onChange={handleRadio4Change} className='mr-2' type="radio" id="male" name="gender" value="1" />
+          <label className='text-gray-800' htmlFor="male">1 wpw</label>
+
+          <input onChange={handleRadio4Change} className='mx-2' type="radio" id="female" name="gender" value="2" />
+          <label className='text-gray-800' htmlFor="female">2 wpw</label>
+
+          <input onChange={handleRadio4Change} className='mx-2' type="radio" id="other" name="gender" value="3" />
+          <label className='text-gray-800' htmlFor="other" >3 wpw</label>
+          <br />
+          <input onChange={handleRadio4Change} className='mx-2' type="radio" id="other" name="gender" value="4" />
+          <label className='text-gray-800' htmlFor="other" >4 wpw</label>
+
+          <input onChange={handleRadio4Change} className='mx-2' type="radio" id="other" name="gender" value="5" />
+          <label className='text-gray-800' htmlFor="other" >5 wpw</label>
         </div>
 
         <button onClick={handleSave} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' type="submit">Save</button>
