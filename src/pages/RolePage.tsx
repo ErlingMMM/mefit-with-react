@@ -42,7 +42,7 @@ function RolePage() {
   };
 
   return (
-    <div className="bg-white h-screen flex flex-col">
+    <div className="bg-white h-screen flex flex-col overflow-x-hidden">
       <RolePageNavbar isAdmin={isAdmin} toggleMenu={() => setMenuOpen(!menuOpen)} switchToComponent={switchToComponent} />
       
       <div className="bg-white flex-grow flex flex-col justify-center items-center">
