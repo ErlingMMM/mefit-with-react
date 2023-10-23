@@ -22,7 +22,7 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
       <li key={exercise.id} className="mb-6">
         <button onClick={() => openModal(exercise)} className="flex items-start">
           <img src={exercise.image} alt={exercise.name} className="custom-image-style hover:opacity-80" />
-          <div className="w-48">
+          <div className="w-48 ml-3">
           <div className="text-left">  
               <h3 className="text-lg font-bold">
                 {exercise.name}
@@ -63,7 +63,7 @@ function ExerciseList({ exercises, content }: { content: string, exercises: any[
   return (
     <div>
     <div className={`sm:flex sm:justify-center`}>
-        <ul className={`${content === "program" ? "" : "sm:mr-28"} ml-5 sm:grid sm:grid-cols-2 sm:gap-4`}>
+        <ul className={`${content === "program" ? "" : "sm:mr-20"} ml-5 sm:grid sm:grid-cols-2 sm:gap-4`}>
           {exercises.length > 0 ? (
             renderExercises()
           ) : (

@@ -1,8 +1,9 @@
 import { XIcon } from '@heroicons/react/outline';
+import DifficultyUtils from '../utils/DifficultyUtils';
 
 function ExerciseModal({ isOpen, closeModal, exercise }: { isOpen: boolean, exercise: any; closeModal: () => void }) {
   const modalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
   };
 
   return (
@@ -31,15 +32,18 @@ function ExerciseModal({ isOpen, closeModal, exercise }: { isOpen: boolean, exer
               >
                 {exercise.name}
               </h3>
-             
+
 
               <div className="mt-3 text-left">
-                <div className="max-h-96 overflow-y-auto">
+                <div className=" overflow-y-auto">
                   <img
-                    src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-745x490.jpg"
+                    src={exercise.image}
                     alt="Exercise"
                     className="max-w-full h-auto md:max-w-md md:h-auto mx-auto"
                   />
+                  <br />
+                  <p>Diffilculty: {DifficultyUtils.difficultyToLabel(exercise.difficulty)}</p>
+                  <br />
                   <h3
                     className="text-base font-semibold leading-6 text-black"
                     id="modal-title"
