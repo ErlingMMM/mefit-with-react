@@ -2,7 +2,7 @@ import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 import React, { SetStateAction, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../Redux/Store';
-import { SetUserFitnessLVL, setUserAge, setUserBio, setUserGender, setUserHeight, setUserTimeFrame, setUserTimesAWeek, setUserWeight, updateUserProfile } from '../Redux/GenericSlice';
+import { SetUserFitnessLVL, setUserAge, setUserBio, setUserGender, setUserHeight, setUserPicture, setUserTimeFrame, setUserTimesAWeek, setUserWeight, updateUserProfile } from '../Redux/GenericSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { setActiveComponent } from '../Redux/NavigationSlice';
 
@@ -24,6 +24,7 @@ function EditProfile() {
     const UserFitnessPreference = useSelector((state: any) => state.data.userData.fitnessPreference);
     const UserIntensityPreference = useSelector((state: any) => state.data.userData.timesAWeek);
     const UserDurationTimeFrame  = useSelector((state: any) => state.data.userData.DurationTimeFrame);
+    const UserPicture =  useSelector((state: any) => state.data.userData.picture);
 
   
     const handleRadioChange = (event: { target: { value: SetStateAction<string>; }; }) => {
@@ -65,6 +66,11 @@ function EditProfile() {
         dispatch(setUserWeight(event.target.value));
   
       }
+      const handleImageChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+        dispatch(setUserPicture(event.target.value));
+        console.log(UserPicture)
+  
+      }
 
 
       
@@ -77,7 +83,7 @@ function EditProfile() {
           gender: UserGender,
           intensity:UserIntensityPreference,
           fitnessLvl: UserFitnessPreference,
-         // timeframe:UserDurationTimeFrame,
+          picture:UserPicture,
         }))
         navigate('/');
         dispatch(setActiveComponent('profile'));
@@ -108,6 +114,11 @@ function EditProfile() {
 
         <label className='block mb-2 text-gray-800 font-bold' htmlFor="weight">Weight:</label>
         <input onChange={handleWeightChange} className='w-full p-2 mb-4 border rounded' type="text" id="weight" name="weight" />
+
+        
+        <label className='block mb-2 text-gray-800 font-bold' htmlFor="weight">image:</label>
+        <input onChange={handleImageChange} className='w-full p-2 mb-4 border rounded' type="text" id="weight" name="image" />
+
 
         <label className='block mb-2 text-gray-800 font-bold text-xl'>Gender:</label>
         <div className='flex items-center mb-4'>

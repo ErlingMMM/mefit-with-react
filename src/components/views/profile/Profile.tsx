@@ -33,7 +33,7 @@ function ProfilePage() {
 
 
 
- console.log(keycloak)
+ console.log(user.picture)
 
 
 
@@ -51,7 +51,7 @@ function ProfilePage() {
             {keycloak.tokenParsed && keycloak.tokenParsed.name && (
                 <div className="flex flex-col items-center justify-center max-w-screen-md mx-auto p-4 text-center">
                     <div className='text-custom-green'>
-                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80"
+                        <img src={user.picture ? user.picture : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"}
                             alt="Cheetah!" className="w-32 h-32 object-cover rounded-full mb-4" style={{ border: '5px solid' }} />
                     </div>
                     <h1 className="text-2xl font-bold mb-2">{keycloak.tokenParsed.name}</h1>
