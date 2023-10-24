@@ -5,6 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 import DurationUtils from '../../utils/DurationUtils';
 import DifficultyUtils from '../../utils/DifficultyUtils';
 import { truncateDescription } from '../../utils/TruncateTextUtils';
+import { useStickyHeader } from '../../utils/OnUserScrollUtils';
 
 
 
@@ -26,6 +27,8 @@ function WorkoutsInProgram() {
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
   const [activeLine, setActiveLine] = useState(0);
   const [showFullDescription, setShowFullDescription] = useState<boolean>(false);
+  const isSticky = useStickyHeader();
+
 
 
 
@@ -118,23 +121,7 @@ function WorkoutsInProgram() {
   }
 
 
-  const [isSticky, setIsSticky] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) { 
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <div>
