@@ -99,7 +99,7 @@ function EditProfile() {
   
 
   return (
-    <div className='bg-white w-screen h-screen flex flex-col justify-center items-center'>
+    <div className='bg-gray w-screen h-screen flex flex-col justify-center items-center'>
       <h1
         className={`font-bold text-black text-2xl italic text-right absolute top-6`}
       >
@@ -108,7 +108,7 @@ function EditProfile() {
      <br />
      <div className="sm:w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto">
 
-      <form className="bg-white p-8 rounded">
+      <form className="bg-gray p-8 rounded">
         <label className='block mb-2 text-black font-bold ' htmlFor="bio">Bio:</label>
         <input  onChange={handleBioChange} className='w-full p-2 mb-4 border rounded' type="text" id="bio" name="bio" />
 
