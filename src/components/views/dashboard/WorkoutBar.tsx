@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../../Redux/Hooks';
 import { completeWorkoutAction } from '../../../Redux/DashboardSlice';
 import { setActiveComponent } from '../../../Redux/NavigationSlice';
 import { setDisplayedWorkout } from '../../../Redux/DashboardSlice';
-
+import { useTheme } from '../../../styles/ThemeContext';
 interface ExerciseData {
   id: number;
   name: string;
@@ -43,7 +43,7 @@ const dayDictionary: { [key: number]: string } = {
 };
 
 function WorkoutBar({workoutData, updateWorkout} : WorkoutBarProps & { updateWorkout : React.Dispatch<React.SetStateAction<boolean>> }) { 
-
+  const { isDarkMode } = useTheme();
   const dispatch = useAppDispatch();  // <-- useAppDispatch instead of useDispatch
 
   const [showDetails, setShowDetails] = useState(false);
@@ -84,7 +84,7 @@ function WorkoutBar({workoutData, updateWorkout} : WorkoutBarProps & { updateWor
         </div>
 
         <div className={styles.buttonsGroup}>
-          <button onClick={() => updateCompletionStatus(workoutData.id)}>{workoutData.isCompleted ? <CheckCircleIcon className="h-7 w-7 text-[#A8E52E]" /> : <PlusCircleIcon className="h-7 w-7 text-[#000000]" />}</button>
+          <button onClick={() => updateCompletionStatus(workoutData.id)}>{workoutData.isCompleted ? <CheckCircleIcon className="h-7 w-7 text-[#A8E52E]" /> : <PlusCircleIcon className={`h-7 w-7 ${isDarkMode ? 'text-white' : 'text-[#000000]'}`}></PlusCircleIcon>}</button>
           <button onClick={toggleDetails}>{showDetails ? <ChevronUpIcon className="h-7 w-7 text-[#A8E52E]" /> : <ChevronDownIcon className="h-7 w-7 text-[#A8E52E]" />}</button>
         </div>
 

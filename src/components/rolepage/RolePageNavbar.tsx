@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HamburgerMenu from '../navigation/HamburgerMenu';
+import { useNavigate } from 'react-router-dom';
 
 interface RolePageNavbarProps {
   switchToComponent: (component: string) => void;
@@ -9,7 +10,7 @@ interface RolePageNavbarProps {
 
 const RolePageNavbar: React.FC<RolePageNavbarProps> = ({ switchToComponent, isAdmin }) => {
     const [menuOpen, setMenuOpen] = useState(false);
-
+    const navigate = useNavigate();
     useEffect(() => {
         setMenuOpen(false); // Close the menu whenever switchToComponent is called
       }, [switchToComponent]);
@@ -26,7 +27,7 @@ const RolePageNavbar: React.FC<RolePageNavbarProps> = ({ switchToComponent, isAd
       </div>
       <div className="sm:flex sm:justify-between sm:space-x-4 bg-black py-4 px-7 hidden">
       <div className="space-x-4">
-  <button className='text-custom-green italic text-lg font-sans font-bold'>Mefit</button>
+  <button onClick={()=> navigate("/")}className='text-custom-green italic text-lg font-sans font-bold'>Mefit</button>
  
     <button className='text-white hover:text-custom-green' onClick={() => switchToComponent('addExercise')}>Add Exercise</button>
     <button className='text-white hover:text-custom-green' onClick={() => switchToComponent('addWorkout')}>Add Workout</button>

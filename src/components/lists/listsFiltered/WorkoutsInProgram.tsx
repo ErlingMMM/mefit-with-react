@@ -33,6 +33,9 @@ function WorkoutsInProgram() {
   const isSticky = useStickyHeader();
 
 
+
+
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -66,28 +69,27 @@ function WorkoutsInProgram() {
 
   useEffect(() => {
     const fetchData = async () => {
-
-      try {
-        // Fetch exercises
-        const exercisesResponse = await fetch(
-          `https://mefit-backend.azurewebsites.net/api/Workouts/${workout[activeWorkout].id.toString()}/exercises`
-        );
-
-        if (exercisesResponse.ok) {
-          const exercisesData = await exercisesResponse.json();
-          setExercises(exercisesData);
-        } else {
-          console.error('Error fetching exercises data');
+      if (activeWorkout >= 0 && workout.length > activeWorkout) {
+        try {
+          // Fetch exercises
+          const exercisesResponse = await fetch(
+            `https://mefit-backend.azurewebsites.net/api/Workouts/${workout[activeWorkout].id.toString()}/exercises`
+          );
+          if (exercisesResponse.ok) {
+            const exercisesData = await exercisesResponse.json();
+            setExercises(exercisesData);
+          } else {
+            console.error('Error fetching exercises data');
+          }
+        } catch (error) {
+          console.error('Error:', error);
         }
-
-      } catch (error) {
-        console.error('Error:', error);
       }
-
     };
-
+  
     fetchData();
   }, [activeWorkout, workout]);
+  
 
 
 

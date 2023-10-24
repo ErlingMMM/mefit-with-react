@@ -1,19 +1,72 @@
 import { XIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
 import { setActiveComponent } from '../../Redux/NavigationSlice';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import keycloak from '../../Keycloak';
 
 
 
 
 function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: number, closeModal: () => void }) {
+
+    function subscribe(id: number | undefined) {
+        console.log(id);
+        
+        if (id === undefined) {
+          console.error('ID is undefined. Cannot make the API request.');
+          return;
+        }
+      
+        const requestOptions = {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${keycloak.token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            planId: id,
+            startDate: '2023-10-23'
+            }
+        )};
+      
+        fetch('https://mefit-backend.azurewebsites.net/api/Users/AddPlanToUser', requestOptions)
+          .then(response => {
+            if (response.ok) {
+              console.log(response.status);
+              return response.text(); // Read the response as text
+            }
+            if (!response.ok) {
+              console.error('Network response was not ok.');
+              return Promise.reject('Network response was not ok.');
+            }
+          })
+          .then(responseText => {
+            if (responseText) {
+              try {
+                // Parse the response as JSON
+                const user = JSON.parse(responseText);
+                console.log(user);
+              } catch (error) {
+                console.error('Error parsing JSON:', error);
+              }
+            } else {
+              console.error('Response text is undefined or empty.');
+            }
+          })
+          .catch(error => {
+            // Handle errors here
+            console.error('There has been a problem with your fetch operation:', error);
+          });
+      }
+      
+  
+
     const dispatch = useDispatch();
     const modalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
     };
 
-    function subscribe(id: number) {
-        console.log(id)
-    }
+  
 
     function navigateDashboard() {
         dispatch(setActiveComponent('dashboard'));
@@ -50,8 +103,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 <div className="bg-custom-green py-6 px-4 hover:opacity-90"> 
                   <button
                     onClick={() => navigateDashboard()}
-                    className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600 "
-                  >
+                    className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600 ">
                     Go back to dashboard
                   </button>
                 </div>

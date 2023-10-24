@@ -4,73 +4,71 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../Redux/Store';
 import {setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice, AddExcersiceAsync} from '../../Redux/GenericSlice';
 import { useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
 function AddExcersiceForm() {
-    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-    const navigate = useNavigate();
-    const ExcersiceName = useSelector((state: any) =>  state.data.exerciseData.name);
-    const ExcersiceDescription = useSelector((state: any) => state.data.exerciseData.description);
-    const ExcersicemuscleGroup = useSelector((state: any) => state.data.exerciseData.muscleGroup);
-    const ExcersiceImageUrl= useSelector((state: any) => state.data.exerciseData.imageUrl);
-    const ExcersiceVideoUrl= useSelector((state: any) => state.data.exerciseData.videoUrl);
-    const ExcersiceTime= useSelector((state: any) => state.data.exerciseData.time);
-    const ExcersiceSets= useSelector((state: any) => state.data.exerciseData.sets);
-    const ExcersiceReps= useSelector((state: any) => state.data.exerciseData.reps);
+  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+  const [exerciseName, setExerciseName] = useState('');
+  const [exerciseDescription, setExerciseDescription] = useState('');
+  const [exerciseMuscleGroup, setExerciseMuscleGroup] = useState('');
+  const [exerciseImageUrl, setExerciseImageUrl] = useState('');
+  const [exerciseVideoUrl, setExerciseVideoUrl] = useState('');
+  const [exerciseTime, setExerciseTime] = useState('');
+  const [exerciseSets, setExerciseSets] = useState('');
+  const [exerciseReps, setExerciseReps] = useState('');
 
-
+  const navigate = useNavigate();
     
-    const handleNameChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        dispatch(setNameExcersice(event.target.value));
-    
-      }
-      const handleDescriptionChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        dispatch(setDescriptionExcersice(event.target.value));
-        console.log(ExcersiceDescription)
-    
-      }
-      const handlemuscleGroupChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        dispatch(setMusclegGroupExcersice(event.target.value));
-        console.log(ExcersicemuscleGroup)
-    
-      }
-      const handleImageUrlChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        dispatch(setImgUrlExcersice(event.target.value));
-        console.log(ExcersiceImageUrl)
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setExerciseName(event.target.value);
+  }
   
-      }
-      const handleVideoUrlChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        dispatch(setVideoUrlExcersice(event.target.value));
-        console.log(ExcersiceVideoUrl)
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setExerciseDescription(event.target.value);
+    console.log(exerciseDescription);
+  }
   
-      }
-      const handleTimeChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        dispatch(setTimeExcersice(event.target.value));
-        console.log(ExcersiceTime)
+  const handlemuscleGroupChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setExerciseMuscleGroup(event.target.value);
+    console.log(exerciseMuscleGroup);
+  }
   
-      }
-      const handleSetsChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        dispatch(setSetsExcersice(event.target.value));
-        console.log(ExcersiceSets)
+  const handleImageUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setExerciseImageUrl(event.target.value);
+    console.log(exerciseImageUrl);
+  }
   
-      }
-
-      const handleRepsChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-        dispatch(setRepsExcersice(event.target.value));
-        console.log(ExcersiceReps)
+  const handleVideoUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setExerciseVideoUrl(event.target.value);
+    console.log(exerciseVideoUrl);
+  }
   
-      }
+  const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setExerciseTime(event.target.value);
+    console.log(exerciseTime);
+  }
+  
+  const handleSetsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setExerciseSets(event.target.value);
+    console.log(exerciseSets);
+  }
+  
+  const handleRepsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setExerciseReps(event.target.value);
+    console.log(exerciseReps);
+  }
+  
 
 
       const handleSave = () => {   
         dispatch( AddExcersiceAsync({
-            EXname : ExcersiceName ,
-            EXdescpription: ExcersiceDescription,
-            EXmusclegroup : ExcersicemuscleGroup, 
-            EXimgUrl : ExcersiceImageUrl,
-            EXvidurl: ExcersiceVideoUrl, 
-            EXTime : ExcersiceTime, 
-            EXSets : ExcersiceSets, 
-            EXReps : ExcersiceReps,
+            EXname : exerciseName ,
+            EXdescpription: exerciseDescription,
+            EXmusclegroup : exerciseMuscleGroup, 
+            EXimgUrl : exerciseImageUrl,
+            EXvidurl: exerciseVideoUrl, 
+            EXTime : exerciseTime, 
+            EXSets : exerciseSets, 
+            EXReps : exerciseReps,
           }))
           navigate('/')
       }

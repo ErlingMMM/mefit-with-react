@@ -14,8 +14,6 @@ function AddWorkoutsComponent() {
   const planId = useSelector((state: RootState) => state.data.programId.id);
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-  const allDays = [1, 2, 3, 4, 5, 6, 7];
-
   const duration = parseInt(localStorage.getItem('duration') || '0');
   const weeks = Math.floor(duration / 7);
   const remainingDays = duration % 7;
@@ -145,8 +143,8 @@ function AddWorkoutsComponent() {
           <li>Loading...</li>
         )}
       </ul>
-      <button onClick={handleSaveButton} className="bg-blue-600 text-white rounded px-4 py-2 mt-4">
-        Save
+      <button onClick={handleSaveButton} className="bg-custom-green text-white rounded px-4 py-2 mt-4">
+        Save Program
       </button>
     </div>
   );
