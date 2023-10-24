@@ -1,16 +1,17 @@
 import { XIcon } from '@heroicons/react/outline';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { setActiveComponent } from '../../Redux/NavigationSlice';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import keycloak from '../../Keycloak';
-
-
-
+import WeekPicker from '../shared/Calendar';
+import { RootState } from '../../Redux/Store';
 
 function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: number, closeModal: () => void }) {
-
+  const StartingDate = useSelector((state: RootState) => state.data.startingDateUser.startingDate);
+  
     function subscribe(id: number | undefined) {
         console.log(id);
+        console.log(StartingDate)
+        //dispatch(setActiveComponent('dashboard'));
         
         if (id === undefined) {
           console.error('ID is undefined. Cannot make the API request.');
@@ -25,7 +26,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
           },
           body: JSON.stringify({
             planId: id,
-            startDate: '2023-10-23'
+            startDate: StartingDate
             }
         )};
       
@@ -36,7 +37,8 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
               return response.text(); // Read the response as text
             }
             if (!response.ok) {
-              console.error('Network response was not ok.');
+              console.log(response.status);
+              console.log(response.text())
               return Promise.reject('Network response was not ok.');
             }
           })
@@ -90,6 +92,9 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                     className="h-6 w-6 text-black hover:bg-gray-200 hover:bg-opacity-50 rounded-full cursor-pointer absolute left-3 top-3"
                     onClick={closeModal}
                   />
+                  <div className='pt-4'>
+                  <WeekPicker/>
+                  </div>
       
                   <div className=" px-4 pb-6 rounded-b-lg">
                     <button
