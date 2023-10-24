@@ -46,7 +46,6 @@ function AddWorkoutForm() {
         console.log("Promise resolved", response);
         if (response.payload) {
           setIsFormSubmitted(true);  // Ensure this line is being reached
-          
         }
       })
       .catch(error => {

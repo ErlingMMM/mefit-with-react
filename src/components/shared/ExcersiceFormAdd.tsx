@@ -21,7 +21,6 @@ function AddExcersiceForm() {
     
     const handleNameChange = (event: { target: { value: SetStateAction<string>; }; }) => {
         dispatch(setNameExcersice(event.target.value));
-        console.log(ExcersiceName)
     
       }
       const handleDescriptionChange = (event: { target: { value: SetStateAction<string>; }; }) => {
