@@ -9,40 +9,56 @@ import keycloak from '../../Keycloak';
 
 function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: number, closeModal: () => void }) {
 
-  const AddprogramToUser = () => {
-    const requestOptions = {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${keycloak.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        planId: 1,
-        startDate: '2023-10-23'
-      })
-    };
-  
-    fetch('https://mefit-backend.azurewebsites.net/api/Users/AddPlanToUser', requestOptions)
-      .then(response => {
-        if (response.ok) {
-          console.log(response.status)
-          return response.json();
+    function subscribe(id: number | undefined) {
+        console.log(id);
+        
+        if (id === undefined) {
+          console.error('ID is undefined. Cannot make the API request.');
+          return;
         }
-        if(!response.ok){
-          console.log(response.text())
-          console.log(response.status)
-        }
-        throw new Error('Network response was not ok.');
-      })
-      .then(user => {
-        // Handle the successful response here
-        console.log(user);
-      })
-      .catch(error => {
-        // Handle errors here
-        console.error('There has been a problem with your fetch operation:', error);
-      });
-  };
+      
+        const requestOptions = {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${keycloak.token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            planId: id,
+            startDate: '2023-10-23'
+            }
+        )};
+      
+        fetch('https://mefit-backend.azurewebsites.net/api/Users/AddPlanToUser', requestOptions)
+          .then(response => {
+            if (response.ok) {
+              console.log(response.status);
+              return response.text(); // Read the response as text
+            }
+            if (!response.ok) {
+              console.error('Network response was not ok.');
+              return Promise.reject('Network response was not ok.');
+            }
+          })
+          .then(responseText => {
+            if (responseText) {
+              try {
+                // Parse the response as JSON
+                const user = JSON.parse(responseText);
+                console.log(user);
+              } catch (error) {
+                console.error('Error parsing JSON:', error);
+              }
+            } else {
+              console.error('Response text is undefined or empty.');
+            }
+          })
+          .catch(error => {
+            // Handle errors here
+            console.error('There has been a problem with your fetch operation:', error);
+          });
+      }
+      
   
 
     const dispatch = useDispatch();
@@ -50,12 +66,9 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
         e.stopPropagation();
     };
 
-    function subscribe(id: number) {
-        console.log(id)
-    }
+  
 
     function navigateDashboard() {
-      AddprogramToUser()
         dispatch(setActiveComponent('dashboard'));
     }
 
