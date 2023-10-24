@@ -1,11 +1,50 @@
 import { XIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
 import { setActiveComponent } from '../../Redux/NavigationSlice';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import keycloak from '../../Keycloak';
 
 
 
 
 function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: number, closeModal: () => void }) {
+
+  const AddprogramToUser = () => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${keycloak.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        planId: 1,
+        startDate: '2023-10-23'
+      })
+    };
+  
+    fetch('https://mefit-backend.azurewebsites.net/api/Users/AddPlanToUser', requestOptions)
+      .then(response => {
+        if (response.ok) {
+          console.log(response.status)
+          return response.json();
+        }
+        if(!response.ok){
+          console.log(response.text())
+          console.log(response.status)
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(user => {
+        // Handle the successful response here
+        console.log(user);
+      })
+      .catch(error => {
+        // Handle errors here
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  };
+  
+
     const dispatch = useDispatch();
     const modalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
@@ -16,6 +55,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
     }
 
     function navigateDashboard() {
+      AddprogramToUser()
         dispatch(setActiveComponent('dashboard'));
     }
 
@@ -50,8 +90,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 <div className="bg-custom-green py-6 px-4 hover:opacity-90"> 
                   <button
                     onClick={() => navigateDashboard()}
-                    className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600 "
-                  >
+                    className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600 ">
                     Go back to dashboard
                   </button>
                 </div>
