@@ -3,7 +3,9 @@ import { setSelectedSortOption } from '../../Redux/GenericSlice';
 
 function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: () => void }) {
   const selectedSortOption = useSelector((state: any) => state.data.selectedSortOption);
-
+  const modalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+};
   const dispatch = useDispatch();
 
   const sortSelector = (option: string) => {
@@ -28,7 +30,7 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
           <div className="fixed inset-0"></div>
 
           <div className="relative overflow-hidden pr-10 sm:-left-96 -left-16 sm:mr-72 sm:-top-56 rounded-lg bg-white text-center shadow-xl transition-all max-h-screen">
-            <div className="p-1">
+            <div className="p-1" onClick={modalContentClick}>
             <div className="block px-4 rounded-md cursor-pointer text-gray-400">
                 Sort by: {selectedSortOption}
               </div>
