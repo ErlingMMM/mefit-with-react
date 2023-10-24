@@ -20,6 +20,8 @@ export function OrderListUtils(
     const sortingFunctions: { [key: string]: (a: any, b: any) => number } = {
       "a-z": (a: any, b: any) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }),
       "z-a": (a: any, b: any) => b.name.localeCompare(a.name, undefined, { sensitivity: 'base' }),
+      "least difficult": (a: any, b: any) => a.difficulty - b.difficulty,
+      "most difficult": (a: any, b: any) => b.difficulty - a.difficulty,      
       "most recent": (a: any, b: any) => filteredList.indexOf(b) - filteredList.indexOf(a),
       "least recent": (a: any, b: any) => filteredList.indexOf(a) - filteredList.indexOf(b),
     };
