@@ -350,7 +350,7 @@ interface UserDataUpdateAPI {
   gender:String;
   intensity: string;
   fitnessLvl: string;
-  //timeframe:string
+  picture:string
 
 }
 
@@ -361,8 +361,7 @@ interface UserDataUpdateAPI {
    */
   export const updateUserProfile = createAsyncThunk(
     'updateUserProfile',
-    //intensity, fitnessLvl, timeframe 
-    async ({ bio, age, height, weight, gender, intensity, fitnessLvl}: UserDataUpdateAPI) => 
+    async ({ bio, age, height, weight, gender, intensity, fitnessLvl, picture}: UserDataUpdateAPI) => 
     {
       
       const patchOps = [];
@@ -404,7 +403,6 @@ interface UserDataUpdateAPI {
       }
 
       if (intensity !== null) {
-        console.log(intensity)
         const timesAWeek = intensity
         patchOps.push({
           op: 'replace',
@@ -421,6 +419,15 @@ interface UserDataUpdateAPI {
           op: 'replace',
           path: '/fitnessPreference',
           value: fitnessPreference,
+        });
+      }
+      
+       if (picture !== null) {
+        console.log(picture)
+        patchOps.push({
+          op: 'replace',
+          path: '/picture',
+          value: picture,
         });
       }
       /*
@@ -449,6 +456,7 @@ interface UserDataUpdateAPI {
         }
   
         if (!response.ok) {
+          console.log(response.text)
           throw new Error('Network response was not ok');
         }
   
@@ -773,6 +781,9 @@ setUserAge:(state, action) => {
 setUserGender:(state, action) => {
   state.userData.gender = action.payload
 },
+setUserPicture:(state, action) => {
+  state.userData.picture = action.payload
+},
 
 setSelectedSearchOption: (state, action) => {
   state.selectedSearchOption = action.payload;
@@ -909,6 +920,6 @@ setWorkoutId: (state, action) => {
   },
 });
 
-export const {setPlanId, setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setSelectedSortOption} = dataSlice.actions;
+export const {setUserPicture,setPlanId, setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setSelectedSortOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
