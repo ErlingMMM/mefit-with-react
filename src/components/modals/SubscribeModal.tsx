@@ -47,10 +47,10 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                     </button>
                   </div>
                 </div>
-                <div className="bg-custom-green py-6 px-4"> 
+                <div className="bg-custom-green py-6 px-4 hover:opacity-90"> 
                   <button
                     onClick={() => navigateDashboard()}
-                    className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600"
+                    className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600 "
                   >
                     Go back to dashboard
                   </button>
