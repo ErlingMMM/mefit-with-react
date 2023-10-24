@@ -27,16 +27,22 @@ function ApplicationPage (){
     }
 
     return (
-        <div className='bg-gray-500 h-screen flex flex-col justify-center items-center'>
-            <h1 className='text-3xl font-bold mb-4 text-white'>Application to become a contributor</h1>
+        <div className='bg-white h-screen flex flex-col justify-center items-center'>
+              <h1
+        className={`font-bold text-black text-2xl italic text-right absolute top-6 right-5`}
+      >
+        MeFit
+      </h1>
+      <br />
+            <h1 className='text-3xl font-bold mb-4 text-black text-center'>Application to become a contributor</h1>
     
-            <button onClick={onClickBack} className='bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded absolute top-4 left-4'>Back</button>
+            <button onClick={onClickBack} className=' text-gray-800 font-bold py-2 px-4 rounded absolute top-4 left-4'>Back</button>
     
             <form className='bg-white p-8 rounded shadow-md'>
-                <label className='block mb-2 text-gray-800' htmlFor="bio">Application text:</label>
+                <label className='block mb-2 text-gray-800 font-bold' htmlFor="bio">Application text:</label>
                 <textarea onChange={handleApplicationChange} className='w-full h-40 p-2 mb-4 border rounded align-top' id="bio" name="bio"></textarea>
     
-                <button  onClick={handleApplicationSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' type="submit">Send application</button>
+                <button  onClick={handleApplicationSubmit} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Send application</button>
             </form>
         </div>
     )

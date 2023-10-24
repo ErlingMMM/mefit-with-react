@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import keycloak from "../Keycloak";
 import { Url } from 'url';
-import { stringify } from 'querystring';
+
 
 
 /**
@@ -45,8 +45,8 @@ interface programData {
   description:string|null;
   image:Url|null;
   workoutIds : []|null;
-  programDuration:null|number;
-  programDifficulty:null|number;
+  duration:null|number;
+  difficulty:null|number;
   userIds:[]|null;
   orderOfWorkouts: number | null;
   workoutDates: number | null;
@@ -85,7 +85,7 @@ interface WorkoutData {
    id: number | null;
   name: string | null;
   description: string | null;
-  recommendedFitness: string | null;
+  difficulty: string | null;
   image: string | null;
   exercises: any[] | null;
 }
@@ -134,8 +134,8 @@ const initialState: DataState = {
     description: null,
     image: null,
     workoutIds: null,
-    programDuration: null,
-    programDifficulty: null,
+    duration: null,
+    difficulty: null,
     userIds: null,
     orderOfWorkouts: null,
     workoutDates: null,
@@ -165,7 +165,7 @@ const initialState: DataState = {
     id: null,
     name: null,
     description: null,
-    recommendedFitness: null,
+    difficulty: null,
     image: null,
     exercises: null,
   },
@@ -348,6 +348,9 @@ interface UserDataUpdateAPI {
   height:string;
   weight:string;
   gender:String;
+  intensity: string;
+  fitnessLvl: string;
+  picture:string
 
 }
 
@@ -358,9 +361,12 @@ interface UserDataUpdateAPI {
    */
   export const updateUserProfile = createAsyncThunk(
     'updateUserProfile',
-    async ({ bio, age, height, weight, gender }: UserDataUpdateAPI) => {
+    async ({ bio, age, height, weight, gender, intensity, fitnessLvl, picture}: UserDataUpdateAPI) => 
+    {
+      
       const patchOps = [];
       if (bio !== null) {
+        
         patchOps.push({
           op: 'replace',
           path: '/bio',
@@ -395,6 +401,46 @@ interface UserDataUpdateAPI {
           value: gender,
         });
       }
+
+      if (intensity !== null) {
+        const timesAWeek = intensity
+        patchOps.push({
+          op: 'replace',
+          path: '/timesAWeek',
+          value: timesAWeek,
+        });
+        
+      }
+
+      if ( fitnessLvl !== null) {
+        console.log(fitnessLvl)
+        const fitnessPreference = fitnessLvl
+        patchOps.push({
+          op: 'replace',
+          path: '/fitnessPreference',
+          value: fitnessPreference,
+        });
+      }
+      
+       if (picture !== null) {
+        console.log(picture)
+        patchOps.push({
+          op: 'replace',
+          path: '/picture',
+          value: picture,
+        });
+      }
+      /*
+      if ( timeframe !== null) {
+        console.log(timeframe)
+        const duratiomTimeframe = timeframe
+        patchOps.push({
+          op: 'replace',
+          path: '/duratiomTimeframe',
+          value: duratiomTimeframe,
+        });
+      }
+      */
   
       try {
         const response = await fetch('https://mefit-backend.azurewebsites.net/api/users/updateuser', {
@@ -410,12 +456,11 @@ interface UserDataUpdateAPI {
         }
   
         if (!response.ok) {
+          console.log(response.text)
           throw new Error('Network response was not ok');
         }
   
-        const data = await response.json();
-        console.log(data)
-        return data;
+ 
       } catch (error) {
         console.error('Error:', error);
         throw error;
@@ -548,15 +593,15 @@ interface ProgramPostAPI {
   name:string,
   description:string,
   image:string,
-  programDuration:number,
-  programDifficulty:number,
+  duration:number,
+  difficulty:number,
   orderOfWorkouts:[],
 }
 
 export const AddProgramAsync = createAsyncThunk(
   'AddProgramAsync',
 
-  async ({name, description, image, programDuration, programDifficulty, orderOfWorkouts}: ProgramPostAPI) => {
+  async ({name, description, image, duration, difficulty, orderOfWorkouts}: ProgramPostAPI) => {
 
     const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Plan`, {
       headers: {
@@ -568,8 +613,8 @@ export const AddProgramAsync = createAsyncThunk(
         name: name,
         description: description,
         image: image,
-        programDifficulty:programDifficulty,
-        programDuration:programDuration,
+        difficulty:difficulty,
+        duration:duration,
         orderOfWorkouts : orderOfWorkouts,
       }),
     });
@@ -736,6 +781,9 @@ setUserAge:(state, action) => {
 setUserGender:(state, action) => {
   state.userData.gender = action.payload
 },
+setUserPicture:(state, action) => {
+  state.userData.picture = action.payload
+},
 
 setSelectedSearchOption: (state, action) => {
   state.selectedSearchOption = action.payload;
@@ -777,7 +825,7 @@ setDescriptionWorkout: (state, action) => {
   state.workoutData.description = action.payload;
 },
 setRecommendedFitnessWorkout: (state, action) => { 
-  state.workoutData.recommendedFitness = action.payload;
+  state.workoutData.difficulty = action.payload;
 },
 setRecommendedImage: (state, action) => { 
   state.workoutData.image = action.payload;
@@ -792,7 +840,7 @@ setProgramImg:(state, action) => {
   state.programData.image = action.payload;
 },
 setProgramDur:(state, action) => {
-  state.programData.programDuration = action.payload;
+  state.programData.duration = action.payload;
 },
 setProgramOrd:(state, action) => {
   state.programData.orderOfWorkouts = action.payload;
@@ -872,6 +920,6 @@ setWorkoutId: (state, action) => {
   },
 });
 
-export const {setPlanId, setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setSelectedSortOption} = dataSlice.actions;
+export const {setUserPicture,setPlanId, setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setSelectedSortOption} = dataSlice.actions;
 
 export default dataSlice.reducer;

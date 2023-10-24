@@ -15,6 +15,8 @@ interface SideMenuProps {
 const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) => {
   const activeComponent = useSelector((state: RootState) => state.navigation.activeComponent);
   const user = useSelector((state: any) => state.data.userData.fitnessPreference);
+  const userPicture = useSelector((state: any) => state.data.userData.picture);
+
   const isAdmin = keycloak.hasRealmRole('admin');
   const isContributor = keycloak.hasRealmRole('contributor');
   const dispatch = useDispatch();
@@ -58,7 +60,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) 
         <div className='text-custom-green text-center mt-40'>
           <button onClick={() => onImageClick()} style={{ cursor: 'pointer', background: 'none', border: 'none', outline: 'none' }}>
             <img
-              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src={userPicture ? userPicture : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"}
               alt="ProfilePage"
               style={{ borderRadius: '50%', width: '150px', height: '150px', border: '4px solid' }}
             />

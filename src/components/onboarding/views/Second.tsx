@@ -33,6 +33,10 @@ function Second() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center p-4">
+        <h1 className={`font-bold text-black text-2xl italic text-right`}>
+      MeFit
+    </h1>
+    <br />
     <h1 className="text-lg font-bold mb-6 text-right">Choose your wanted<br /> intensity level</h1>
 
     <form className="">

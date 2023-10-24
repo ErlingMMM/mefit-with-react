@@ -5,9 +5,13 @@ module.exports = {
       backgroundColor: {
         'custom-main': '#FF5733', // Modify as needed
         'custom-green': '#A8E52D',
+        'custom-green-hover': '#D0FF70',
       },
       textColor: {
         'custom-green': '#A8E52E',
+      },
+      spacing: {
+        '1/7': '14%',
       },
      
     },

@@ -19,7 +19,7 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
     <div>
       {isOpen && (
         <div
-          className="fixed inset-0 z-10 w-screen h-screen overflow-y-auto flex items-center justify-center"
+          className="fixed inset-0 z-50 w-screen h-screen overflow-y-auto flex items-center justify-center"
           aria-labelledby="modal-title"
           role="dialog"
           aria-modal="true"
@@ -27,7 +27,7 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
         >
           <div className="fixed inset-0"></div>
 
-          <div className="relative overflow-hidden pr-10 -left-96 mr-60 -top-56 rounded-lg bg-white text-center shadow-xl transition-all max-h-screen">
+          <div className="relative overflow-hidden pr-10 sm:-left-96 -left-16 sm:mr-72 sm:-top-56 rounded-lg bg-white text-center shadow-xl transition-all max-h-screen">
             <div className="p-1">
             <div className="block px-4 rounded-md cursor-pointer text-gray-400">
                 Sort by: {selectedSortOption}

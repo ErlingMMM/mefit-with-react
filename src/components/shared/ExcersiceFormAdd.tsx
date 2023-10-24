@@ -77,7 +77,7 @@ function AddExcersiceForm() {
 
       return (
         <div className="font-body">
-          <h1 className="text-2xl font-bold mb-8 text-center">Add Exercise</h1>
+          <h1 className="text-2xl font-bold mb-8 text-center">Create Exercise</h1>
           <form className='bg-white p-8 rounded-lg space-y-4'>
             <div className="space-y-2">
               <label className='text-lg text-gray-800' htmlFor="name">Name:</label>
