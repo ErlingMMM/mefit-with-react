@@ -5,8 +5,15 @@ import { RootState } from '../Redux/Store';
 import { SetUserFitnessLVL, setUserAge, setUserBio, setUserGender, setUserHeight, setUserPicture, setUserTimeFrame, setUserTimesAWeek, setUserWeight, updateUserProfile } from '../Redux/GenericSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { setActiveComponent } from '../Redux/NavigationSlice';
-
+import { useTheme } from '../styles/ThemeContext';
+import { useEffect } from 'react';
 function EditProfile() {
+  const { isDarkMode } = useTheme();
+
+  useEffect(() => {
+    document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+  }, [isDarkMode]);
+  
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
     const [selectedBio, setSelectedBio] = useState("");
     const navigate = useNavigate();

@@ -7,8 +7,10 @@ import { RootState } from "../../../Redux/Store";
 import keycloak from "../../../Keycloak";
 import { useNavigate } from "react-router-dom";
 import CurrentProgramDisplayer from "./CurrentProgramDisplayer";
+import { useTheme } from "../../../styles/ThemeContext";
 
 function ProfilePage() {
+    const { isDarkMode, setIsDarkMode } = useTheme(); // Added line for Dark Mode
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
     const user = useSelector((state: any) => state.data.userData);
     const navigate = useNavigate();
@@ -28,7 +30,11 @@ function ProfilePage() {
     const isContributor = keycloak.hasRealmRole('contributor');
     const isuser = keycloak.hasRealmRole('user');
 
-
+    const toggleDarkMode = () => {  // Added function for Dark Mode
+        setIsDarkMode(!isDarkMode);
+      };
+         
+    
 
 
 
@@ -81,10 +87,14 @@ function ProfilePage() {
                             <p className="text-lg mb-4">{user.gender}</p>
                         </div>
                     </div>
-
+                    
                     <CurrentProgramDisplayer/>
                 </div>
             )}
+             {/* Dark Mode Toggle Button */}
+          <button onClick={toggleDarkMode}>
+            {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          </button>
         </div>
 
 

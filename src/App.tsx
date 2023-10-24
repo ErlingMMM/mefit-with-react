@@ -7,10 +7,12 @@ import './App.css';
 import EditProfile from './pages/EditProfile';
 import Rolepage from './pages/RolePage';
 import ApplicationPage from './pages/ApplicationPage';
-
+import { ThemeProvider, useTheme } from './styles/ThemeContext';
+import { useEffect } from 'react';
 function App() {
+ 
   return (
-  
+  <ThemeProvider>
     <Provider store={store}>
       <Router>
         <Routes>
@@ -22,6 +24,7 @@ function App() {
           </Routes>
        </Router>
     </Provider>
+    </ThemeProvider>
   );
 }
 export default App;

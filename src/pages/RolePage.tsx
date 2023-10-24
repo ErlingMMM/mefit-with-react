@@ -9,7 +9,15 @@ import ContributorApplications from '../components/shared/ContributorApplication
 import DeleteUserView from '../components/shared/DeleteUsersView';
 import RolePageNavbar from '../components/rolepage/RolePageNavbar';
 import '../App.css';
+import { useTheme } from '../styles/ThemeContext';
+import { useEffect } from 'react';
 function RolePage() {
+    const { isDarkMode } = useTheme();
+
+    useEffect(() => {
+      document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+    }, [isDarkMode]);
+    
   const isAdmin = keycloak.hasRealmRole('admin');
   const [currentForm, setCurrentForm] = useState('addExercise');
   const navigate = useNavigate();
