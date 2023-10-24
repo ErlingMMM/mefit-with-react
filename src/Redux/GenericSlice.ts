@@ -595,13 +595,12 @@ interface ProgramPostAPI {
   image:string,
   duration:number,
   difficulty:number,
-  orderOfWorkouts:[],
 }
 
 export const AddProgramAsync = createAsyncThunk(
   'AddProgramAsync',
 
-  async ({name, description, image, duration, difficulty, orderOfWorkouts}: ProgramPostAPI) => {
+  async ({name, description, image, duration, difficulty}: ProgramPostAPI) => {
 
     const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Plan`, {
       headers: {
@@ -615,7 +614,6 @@ export const AddProgramAsync = createAsyncThunk(
         image: image,
         difficulty:difficulty,
         duration:duration,
-        orderOfWorkouts : orderOfWorkouts,
       }),
     });
     

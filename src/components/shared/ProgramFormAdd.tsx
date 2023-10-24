@@ -7,47 +7,44 @@ import { setProgramName, setProgramDesc, setProgramImg, setProgramDur, setProgra
 import { setActiveComponent } from '../../Redux/NavigationSlice';
 import AddWorkoutsCompoent from '../RoleBasedComponents/AddWorkoutsComponent';
 function AddProgramForm() {
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-  const ProgramName = useSelector((state: any) => state.data.programData.name);
-  const ProgramDesc = useSelector((state: any) => state.data.programData.description);
-  const ProgramImg = useSelector((state: any) => state.data.programData.image);
-  const ProgramDur = useSelector((state: any) => state.data.programData.programDuration);
-  const ProgramOrd = useSelector((state: any) => state.data.programData.orderOfWorkouts);
-  const navigate = useNavigate();
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [programName, setProgramName] = useState("");
+  const [programDesc, setProgramDesc] = useState("");
+  const [programImg, setProgramImg] = useState("");
+  const [programDur, setProgramDur] = useState("");
 
+  const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setProgramName(event.target.value);
+  }
 
-    const handleName = (event: { target: { value: SetStateAction<string>; }; }) => {
-    
-      dispatch(setProgramName(event.target.value));
-      console.log(ProgramName)
-    }
-    const handleDesc = (event: { target: { value: SetStateAction<string>; }; }) => {
-      dispatch(setProgramDesc(event.target.value));
-  
-    }
-    const handleImg = (event: { target: { value: SetStateAction<string>; }; }) => {
-     
-      dispatch(setProgramImg(event.target.value));
-  
-    }
-    const handleDur = (event: { target: { value: SetStateAction<string>; }; }) => {
-      dispatch(setProgramDur(event.target.value));
-      console.log(ProgramDur);
-    }
-    const handleOrd = (event: { target: { value: SetStateAction<string>; }; }) => {
+  const handleDesc = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setProgramDesc(event.target.value);
+  }
 
-      dispatch(setProgramOrd(event.target.value));
-      console.log(ProgramOrd)
-    }
+  const handleImg = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setProgramImg(event.target.value);
+  }
+
+  const handleDur = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setProgramDur(event.target.value);
+  }
+
+/*
+  name: name,
+        description: description,
+        image: image,
+        difficulty:difficulty,
+        duration:duration,
+        orderOfWorkouts : orderOfWorkouts,*/
+
     const postProgram = (e: React.FormEvent) => {
       e.preventDefault();
       dispatch(AddProgramAsync({
-        name: ProgramName,
-        description: ProgramDesc,
-        image: ProgramImg,
-        duration: ProgramDur,
-        orderOfWorkouts: ProgramOrd,
+        name: programName,
+        description: programDesc,
+        image: programImg,
+        duration: parseInt(programDur),
         difficulty: 1,
       }))
       .then(response => {
@@ -56,8 +53,7 @@ function AddProgramForm() {
           dispatch(setPlanId(response.payload));  // Set the plan ID in the state
           setIsFormSubmitted(true);  // Ensure this line is being reached
           // To store a variable
-          localStorage.setItem('duration', ProgramDur);
-    
+          localStorage.setItem('duration', programDur);
         }
       })
       .catch(error => {
@@ -71,8 +67,6 @@ function AddProgramForm() {
       isFormSubmitted
       ? <AddWorkoutsCompoent />
       : (
-        <div>
-          <h1 className='text-2xl font-bold mb-8 text-center'>Create Program</h1>
         <form className='bg-white p-8 rounded-lg space-y-4'>
           <div className="space-y-2">
             <label className='text-lg text-gray-800' htmlFor="name">Name:</label>
@@ -93,15 +87,15 @@ function AddProgramForm() {
             <label className='text-lg text-gray-800' htmlFor="programDuration">Program Duration:</label>
             <div className="flex flex-col">
               <label className="inline-flex items-center">
-                <input onChange={handleDur} type="radio" value="15" name="programDuration" checked={ProgramDur === '15'} />
+                <input onChange={handleDur} type="radio" value="15" name="programDuration" checked={programDur === '15'} />
                 <span className="ml-2">15 days</span>
               </label>
               <label className="inline-flex items-center">
-                <input onChange={handleDur} type="radio" value="30" name="programDuration" checked={ProgramDur === '30'} />
+                <input onChange={handleDur} type="radio" value="30" name="programDuration" checked={programDur === '30'} />
                 <span className="ml-2">30 days</span>
               </label>
               <label className="inline-flex items-center">
-                <input onChange={handleDur} type="radio" value="60" name="programDuration" checked={ProgramDur === '60'} />
+                <input onChange={handleDur} type="radio" value="60" name="programDuration" checked={programDur === '60'} />
                 <span className="ml-2">60 days</span>
               </label>
             </div>
@@ -109,10 +103,9 @@ function AddProgramForm() {
   
         
           <div>
-            <button onClick={postProgram} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
+            <button onClick={postProgram} className="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
           </div>
         </form>
-        </div>
       )
   );
   
