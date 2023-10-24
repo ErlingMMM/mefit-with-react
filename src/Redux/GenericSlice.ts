@@ -550,6 +550,7 @@ interface UserWorkoutAPI {
   WRdescription: string;
   WRfintessLVL:string;
   WRimgUrl:string;
+  WRDuration: number;
 }
 
 /**
@@ -561,7 +562,7 @@ interface UserWorkoutAPI {
 export const AddWorkoutAsync = createAsyncThunk(
   'AddWorkoutAsync',
   
-  async ({  WRname, WRdescription, WRfintessLVL, WRimgUrl}: UserWorkoutAPI) => {{   
+  async ({  WRname, WRdescription, WRfintessLVL, WRimgUrl, WRDuration}: UserWorkoutAPI) => {{   
     }
     const response = await fetch(`https://mefit-backend.azurewebsites.net/api/Workouts`, {
       headers: {
@@ -574,6 +575,7 @@ export const AddWorkoutAsync = createAsyncThunk(
         description: WRdescription,
         recommendedFitness: WRfintessLVL,
         image: WRimgUrl,
+        duration: WRDuration,
       }),
     });
     if (response.ok) {

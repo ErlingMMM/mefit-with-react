@@ -20,6 +20,7 @@ function AddWorkoutForm() {
     const [WorkoutDescription, setWorkoutDescription] = useState("");
     const [WorkoutFitnessLVL, setWorkoutFitnessLVL] = useState("");
     const [WorkoutImage, setWorkoutImage] = useState("");
+    const [WorkoutDuration, setWorkoutDuration] = useState("");
   
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setWorkoutName(event.target.value);
@@ -36,10 +37,13 @@ function AddWorkoutForm() {
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setWorkoutImage(event.target.value);
     };
+    const handleDurationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setWorkoutDuration(event.target.value);
+    }
 
     const handleSave = (e: React.FormEvent) => {   
       e.preventDefault();
-      dispatch(AddWorkoutAsync({WRname: WorkoutName, WRdescription: WorkoutDescription,  WRfintessLVL: WorkoutFitnessLVL, WRimgUrl: WorkoutImage }))
+      dispatch(AddWorkoutAsync({WRname: WorkoutName, WRdescription: WorkoutDescription,  WRfintessLVL: WorkoutFitnessLVL, WRimgUrl: WorkoutImage, WRDuration: parseInt(WorkoutDuration) }))
       .then(response => {
         console.log("Promise resolved", response);
         if (response.payload) {
@@ -77,7 +81,11 @@ function AddWorkoutForm() {
             <label className='text-lg text-gray-800' htmlFor="weight">Image:</label>
             <input onChange={handleImageChange} className='w-full p-2 border rounded-lg' type="text" id="image" name="image" />
           </div>
-  
+
+          <div className="space-y-2">
+            <label className='text-lg text-gray-800' htmlFor="weight">Duration:</label>
+            <input onChange={handleDurationChange} className='w-full p-2 border rounded-lg' type="text" id="duration" name="duration" />
+          </div>
           <div>
             <button onClick={handleSave} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
           </div>

@@ -145,7 +145,7 @@ function AddWorkoutsComponent() {
           <li>Loading...</li>
         )}
       </ul>
-      <button onClick={handleSaveButton} className="bg-blue-600 text-white rounded px-4 py-2 mt-4">
+      <button onClick={handleSaveButton} className="bg-custom-green text-white rounded px-4 py-2 mt-4">
         Save
       </button>
     </div>
