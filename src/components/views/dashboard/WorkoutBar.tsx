@@ -74,17 +74,21 @@ function WorkoutBar({workoutData, updateWorkout} : WorkoutBarProps & { updateWor
   return (
     <div>
 
-      <div className = {styles.workoutBarWrapper}>
+      <div className = {styles.workoutBarWrapper} style={{ 
+        backgroundImage: `linear-gradient(rgba(44, 44, 44, 0.7), rgba(44, 44, 44, 0.7)), url(${workoutData.image})`,
+        backgroundSize: 'cover',      // equivalent to "object-cover"
+        backgroundPosition: 'center'  // equivalent to "object-center"
+        }}> 
         <div>
           <h1 className={styles.day_h1}><b>{weekday}</b>: {workoutData.name}</h1>
           <div className={styles.durationWrapper}>
             <ClockIcon className="h-5 w-5 text-[#A8E52E]"/>
-            <span>{workoutData.duration} min</span>
+            <span className='text-white'>{workoutData.duration} min</span>
           </div>
         </div>
 
         <div className={styles.buttonsGroup}>
-          <button onClick={() => updateCompletionStatus(workoutData.id)}>{workoutData.isCompleted ? <CheckCircleIcon className="h-7 w-7 text-[#A8E52E]" /> : <PlusCircleIcon className={`h-7 w-7 ${isDarkMode ? 'text-white' : 'text-[#000000]'}`}></PlusCircleIcon>}</button>
+          <button onClick={() => updateCompletionStatus(workoutData.id)}>{workoutData.isCompleted ? <CheckCircleIcon className="h-7 w-7 text-[#A8E52E]" /> : <PlusCircleIcon className={`h-7 w-7 ${isDarkMode ? 'text-white' : 'text-white'}`}></PlusCircleIcon>}</button>
           <button onClick={toggleDetails}>{showDetails ? <ChevronUpIcon className="h-7 w-7 text-[#A8E52E]" /> : <ChevronDownIcon className="h-7 w-7 text-[#A8E52E]" />}</button>
         </div>
 
