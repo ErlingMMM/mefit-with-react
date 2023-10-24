@@ -84,7 +84,7 @@ function AddExercisesComponent() {
           <li>No matching exercises</li>
         )}
       </ul>
-      <button onClick={handleSaveButton} className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save</button>
+      <button onClick={handleSaveButton} className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save Workout</button>
     </div>
   );
 }

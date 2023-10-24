@@ -1,5 +1,5 @@
 
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 
 html::-webkit-scrollbar {
@@ -21,6 +21,11 @@ html::-webkit-scrollbar {
   border-radius: 999px;
   /*Round egdes*/
   background-color: #A8E52D;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #EFEFEF;
 }
 
 
