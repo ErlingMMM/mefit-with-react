@@ -249,7 +249,9 @@ function WorkoutsInProgram() {
 
       ) : null}
 
-<SubscribeModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} workout={activeWorkout}/>
+{workout.length > 0 && (
+  <SubscribeModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} id={workout[activeWorkout].id} />
+)}
 
     </div>
   );
