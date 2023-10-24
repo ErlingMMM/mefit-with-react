@@ -58,9 +58,12 @@ function AddWorkoutForm() {
       
     
     return (
+      
       isFormSubmitted
       ? <AddExerciseComponent />
       : (
+        <div>
+           <h1 className="text-2xl font-bold mb-8 text-center"> Create Workout</h1>
         <form className='bg-white p-8 rounded-lg space-y-4 font-body'>
           <div className="space-y-2">
             <label className='text-lg text-gray-800' htmlFor="bio">Name:</label>
@@ -90,6 +93,7 @@ function AddWorkoutForm() {
             <button onClick={handleSave} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Add Workout</button>
           </div>
         </form>
+        </div>
       )
   );
   
