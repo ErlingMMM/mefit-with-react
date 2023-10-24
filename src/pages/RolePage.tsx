@@ -8,7 +8,7 @@ import AddProgramForm from '../components/shared/ProgramFormAdd';
 import ContributorApplications from '../components/shared/ContributorApplications';
 import DeleteUserView from '../components/shared/DeleteUsersView';
 import RolePageNavbar from '../components/rolepage/RolePageNavbar';
-
+import '../App.css';
 function RolePage() {
   const isAdmin = keycloak.hasRealmRole('admin');
   const [currentForm, setCurrentForm] = useState('addExercise');
