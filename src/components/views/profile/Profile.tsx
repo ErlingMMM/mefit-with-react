@@ -7,6 +7,7 @@ import { RootState } from "../../../Redux/Store";
 import keycloak from "../../../Keycloak";
 import { useNavigate } from "react-router-dom";
 import CurrentProgramDisplayer from "./CurrentProgramDisplayer";
+import { useAppDispatch, useAppSelector } from "../../../Redux/Hooks"
 
 function ProfilePage() {
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
@@ -28,8 +29,9 @@ function ProfilePage() {
     const isContributor = keycloak.hasRealmRole('contributor');
     const isuser = keycloak.hasRealmRole('user');
 
-
-
+    const workouts = useAppSelector(state => state.dashboard.workouts);  // <-- useAppSelector instead of useSelector
+    const completedWorkouts = workouts.filter(workout => workout.isCompleted);
+    const percentage = Math.floor(completedWorkouts.length/workouts.length*100);  // You can replace this with a dynamic value later
 
 
 
@@ -82,9 +84,14 @@ function ProfilePage() {
                         </div>
                     </div>
 
+                    <div className="w-full text-left px-1">
+                        <h1 className="mb-1/2"><b className="text-sm">Current Program</b></h1>
+                        <h1 className="mb-1"><b className="text-lg">Full Body</b> {"("}{percentage}%{")"} completed</h1>
+                    </div>
                     <CurrentProgramDisplayer/>
                 </div>
             )}
+            
         </div>
 
 

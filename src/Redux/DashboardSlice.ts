@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import { getWorkouts, completeWorkout, getStartDate } from '../endpoints/dashboard_endpoints';
+import { getWorkouts, completeWorkout, getStartDate, getPlan } from '../endpoints/dashboard_endpoints';
 
 
 interface ExerciseData {
@@ -26,6 +26,13 @@ interface WorkoutData {
   exercises: ExerciseData[];
 }
 
+interface PlanData {
+  id: number;
+  name: string;
+  image?: string;
+  difficulty: number;
+}
+
 
 // Create an asyncThunk for asynchronous operation (i.e fetching data from the API).
 // Note that the thunk is exported as it is being defined. 
@@ -43,12 +50,18 @@ export const getStartDateAction = createAsyncThunk('dashboard/getStartDate', asy
   return response;
 });
 
+export const getPlanAction = createAsyncThunk('dashboard/getPlan', async () => {
+  const response = await getPlan();
+  return response;
+});
+
 type DashboardState = {
     workouts: WorkoutData[];
     displayedWorkout: WorkoutData | null;
     currentWeek: number;
     maxWeek: number;
     startDate: string;
+    plan: PlanData | null;
 };
   
 const initialState: DashboardState = {
@@ -56,7 +69,8 @@ const initialState: DashboardState = {
     displayedWorkout: null,
     currentWeek: 1, // Assuming the week starts from 1
     maxWeek: 1, //initialized to one but is updated immidiately
-    startDate: "2023-12-04" //this returns todays date (by default)
+    startDate: "2023-12-04", //this returns todays date (by default)
+    plan: null
 };
   
 
@@ -99,7 +113,10 @@ export const dashboardSlice = createSlice({
         })
         .addCase(getStartDateAction.fulfilled, (state, action) => {
           state.startDate = action.payload;
-        }); 
+        })
+        .addCase(getPlanAction.fulfilled, (state, action) => {
+          state.plan = action.payload;
+        });
     },
 })
 
