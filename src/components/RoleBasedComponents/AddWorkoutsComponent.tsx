@@ -144,7 +144,7 @@ function AddWorkoutsComponent() {
         )}
       </ul>
       <button onClick={handleSaveButton} className="bg-custom-green text-white rounded px-4 py-2 mt-4">
-        Save
+        Save Program
       </button>
     </div>
   );

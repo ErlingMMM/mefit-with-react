@@ -51,7 +51,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) 
         } transition-transform duration-150`}
     >
       <h1
-        className={`font-bold text-custom-green text-2xl italic text-right absolute top-6 right-5`}
+        className={`font-bold text-custom-green text-2xl italic text-right absolute top-6 right-5`} onClick={() => {dispatch(setActiveComponent('dashboard'))}}
       >
         MeFit
       </h1>

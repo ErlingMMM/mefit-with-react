@@ -23,9 +23,6 @@ function ProgramsList({ programs, onClick }: ProgramsListProps) {
 
 
 
-  
-
-
   return (
     <div className="flex justify-center items-center">
       <ul className="flex flex-wrap justify-center mx-9 md:grid md:gap-10 md:grid-cols-2">

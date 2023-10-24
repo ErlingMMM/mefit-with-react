@@ -1,6 +1,8 @@
 class DifficultyUtils {
-    static difficultyToLabel(difficulty: number): string {
+    static difficultyToLabel(difficulty: number | undefined): string {
       switch (difficulty) {
+        case undefined:
+          return "Unknown";
         case 0:
           return "Beginner";
         case 1:

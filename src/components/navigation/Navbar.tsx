@@ -4,8 +4,8 @@ import keycloak from "../../Keycloak";
 import { setActiveComponent } from '../../Redux/NavigationSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import NavigationLinks from '../views/basePage/NavigationLinks'; 
-
+import NavigationLinks from '../views/basePage/NavigationLinks';
+import { useTheme } from '../../styles/ThemeContext';
 interface NavbarProps {
 }
 
@@ -14,8 +14,9 @@ const Navbar: React.FC<NavbarProps> = () => {
   const isContributor = keycloak.hasRealmRole('contributor');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const [menuOpen, setMenuOpen] = useState(false);
+
 
   const switchToComponent = (component: string) => {
     dispatch(setActiveComponent(component));
@@ -26,6 +27,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     navigate('/rolepage');
   }
 
+ 
   return (
     <div>
       {/* Hamburger Menu on Mobile */}
@@ -38,14 +40,14 @@ const Navbar: React.FC<NavbarProps> = () => {
         )}
       </div>
 
-      
-        <NavigationLinks
-          switchToComponent={switchToComponent}
-          isAdmin={isAdmin}
-          isContributor={isContributor}
-          onclickAdminContributor={onclickAdminContributor}
-        />
-      
+
+      {/* Navigation Links */}
+      <NavigationLinks
+        switchToComponent={switchToComponent}
+        isAdmin={isAdmin}
+        isContributor={isContributor}
+        onclickAdminContributor={onclickAdminContributor}
+      />
     </div>
   );
 };

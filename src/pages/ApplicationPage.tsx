@@ -6,8 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Redux/Store";
 import { SetStateAction, useState } from "react";
 import { AddApplicationUserAsync, setApplicationTextUser } from "../Redux/GenericSlice";
-
+import { useTheme } from "../styles/ThemeContext";
+import { useEffect } from "react";
 function ApplicationPage (){
+    const { isDarkMode } = useTheme();
+
+    useEffect(() => {
+      document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+    }, [isDarkMode]);
+    
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
     const UserApplicationText = useSelector((state: any) =>  state.data.userData.applicationText);
     const navigate = useNavigate();

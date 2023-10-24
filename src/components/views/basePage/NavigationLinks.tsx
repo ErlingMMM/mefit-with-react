@@ -19,7 +19,7 @@ const NavigationLinks: React.FC<NavigationLinksProps> = ({
   return (
     <div className="sm:flex sm:space-x-4 nav-links hidden justify-between bg-black py-2">
       <div className="space-x-10 flex items-center ml-7 ">
-        <p className='text-custom-green italic text-lg font-sans font-bold'>Mefit</p>
+        <p className='text-custom-green italic text-lg font-sans font-bold hover:text-white'>Mefit</p>
         <button className='text-white hover:text-custom-green' onClick={() => switchToComponent('dashboard')}>Dashboard</button>
         <button className='text-white hover:text-custom-green' onClick={() => switchToComponent('explorer')}>Explorer</button>
         {(isAdmin || isContributor) && (

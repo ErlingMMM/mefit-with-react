@@ -3,7 +3,7 @@ import Progress from "./Progress"
 import WorkoutBar from "./WorkoutBar"
 import styles from "./Dashboard.module.css" //locally scoped
 import { useEffect, useState } from "react"
-import { fetchWorkouts, setDisplayedWorkout, setMaxWeek } from "../../../Redux/DashboardSlice"
+import { fetchWorkouts, setDisplayedWorkout, setMaxWeek, getPlanAction } from "../../../Redux/DashboardSlice"
 import { useAppDispatch, useAppSelector } from "../../../Redux/Hooks"
 import { setActiveComponent } from '../../../Redux/NavigationSlice';
 import keycloak from "../../../Keycloak";
@@ -32,6 +32,11 @@ function Dashboard() {
     useEffect(() => {
         dispatch(fetchWorkouts());
     }, [dispatch, workoutUpdated]);
+
+    // UseEffect to Fetch plan to the store
+    useEffect(() => {
+      dispatch(getPlanAction());
+  }, [dispatch]);
 
     // To navigate to explorer when button is clicked
     const handleClick = () => {    
