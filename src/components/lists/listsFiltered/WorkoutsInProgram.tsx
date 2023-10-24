@@ -240,7 +240,7 @@ function WorkoutsInProgram() {
              className={`bg-custom-green text-black w-full sm:w-auto font-bold text-lg px-4 sm:py-2 py-6 rounded-lg hover:bg-custom-green-hover`}
              onClick={() => openModal()}
            >
-             Subscribe to {workout[activeWorkout].name}
+             Subscribe to this program
            </button>
          </div>
        </div>
@@ -249,9 +249,9 @@ function WorkoutsInProgram() {
 
       ) : null}
 
-{workout.length > 0 && (
-  <SubscribeModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} id={workout[activeWorkout].id} />
-)}
+
+  <SubscribeModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} id={selectedProgramId} />
+
 
     </div>
   );
