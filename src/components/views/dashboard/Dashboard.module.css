@@ -237,8 +237,7 @@
 /* Workout image styling */
 .workoutImage {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
+  height: 200px;
   margin-bottom: 20px;
   object-fit: cover;
 }
