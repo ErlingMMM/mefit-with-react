@@ -107,7 +107,7 @@ function ProfilePage() {
                 
             
              {/* Dark Mode Toggle Button */}
-          <button onClick={toggleDarkMode}>
+          <button className="hover:text-custom-green"  onClick={toggleDarkMode}>
             {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           </button>
         </div>
