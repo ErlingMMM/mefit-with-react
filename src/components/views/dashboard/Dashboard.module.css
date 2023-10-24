@@ -272,23 +272,30 @@
   width: calc(100%); /* To account for the 20px margins on both sides */
 }
 
-.returnToDashboard{
+.returnToDashboard {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
   width: 100%;
-  height: 100%;
   border: none;
   background-color: #A8E52E;
   cursor: pointer;
   font-size: 16px;
   transition: background 0.3s ease;
-  border-radius: 10px 10px 10px 10px; 
+  border-radius: 10px;
+
   /* Box Shadow */
-  box-shadow: inset 0 0 10px rgba(41, 40, 40, 0.2); 
+  box-shadow: inset 0 0 10px rgba(41, 40, 40, 0.2);
+
+  /* Default width, padding, and margins */
   width: calc(100% - 60px); /* Reduce the width by 60px (30px on each side) */
-  margin-left: 30px;       /* 30px margin on the left */
-  margin-right: 30px;      /* 30px margin on the right */  
+  margin-left: 30px; /* 30px margin on the left */
+  margin-right: 30px; /* 30px margin on the right */
   margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    width: auto; /* Allow the button to take its natural width on desktop */
+    margin: 20px auto; /* Center the button horizontally with auto left and right margins */
+  }
 }
