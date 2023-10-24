@@ -18,7 +18,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
       },
       body: JSON.stringify({
         planId: 1,
-        startDate: '23-05-2023'
+        startDate: '2023-10-23'
       })
     };
   
