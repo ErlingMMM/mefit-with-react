@@ -54,8 +54,8 @@ function Explorer() {
 
       const availableSearchOptions = {
         exercises: ["name", "muscleGroup", "difficulty"],
-        programs: ["name", "description", "programDifficulty"],
-        workouts: ["name", "recommendedFitness", "description"],
+        programs: ["name", "description", "difficulty"],
+        workouts: ["name", "description", "difficulty"],
       };
 
   return (
