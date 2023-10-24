@@ -13,7 +13,7 @@ function SortSelectorModal({ isOpen, closeModal }: { isOpen: boolean, closeModal
     closeModal();
   }
 
-  const sortOptions = ["a-z", "z-a", "most recent", "least recent"];
+  const sortOptions = ["a-z", "z-a", "most recent", "least recent", "most difficult", "least difficult"];
  const filteredOptions = sortOptions.filter(option => option !== selectedSortOption);
 
 
