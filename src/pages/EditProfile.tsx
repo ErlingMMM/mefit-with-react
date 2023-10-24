@@ -90,11 +90,10 @@ function EditProfile() {
   return (
     <div className='bg-white h-screen flex flex-col justify-center items-center'>
       <h1
-        className={`font-bold text-black text-2xl italic text-right absolute top-6 right-5`}
+        className={`font-bold text-black text-2xl italic text-right absolute top-6`}
       >
         MeFit
       </h1>
-     <button onClick={onClickBack} className='bg-custom-green text-gray-800 font-bold py-2 px-4 rounded absolute top-4 left-4 sm:top-8 sm:left-8'>Back</button>
      <br />
      
       <form className="bg-white p-8 rounded">
