@@ -88,9 +88,7 @@ function EditProfile() {
         navigate('/');
         dispatch(setActiveComponent('profile'));
       } 
-      const onClickBack = () => { 
-        navigate('/');
-    }
+  
   
 
   return (
