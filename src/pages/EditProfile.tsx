@@ -144,36 +144,7 @@ function EditProfile() {
           <label className="text-gray-800 text-xl"  htmlFor="other" >Advanced</label>
         </div>
 
-        <label className='block mb-2 text-gray-800 font-bold text-xl'>Timeframe:</label>
-        <div className='flex items-center mb-4'>
-          <input  onChange={handleRadio3Change} className='mr-2' type="radio" id="male" name="gender" value="15" />
-          <label className='text-gray-800  text-xl' htmlFor="male">15 days</label>
 
-          <input onChange={handleRadio3Change} className='mx-2' type="radio" id="female" name="gender" value="30" />
-          <label className='text-gray-800  text-xl' htmlFor="female">30 days</label>
-
-          <input onChange={handleRadio3Change} className='mx-2' type="radio" id="other" name="gender" value="45" />
-          <label className='text-gray-800  text-xl' htmlFor="other" >45 days</label>
-        </div>
-
-        <label className='block mb-2 text-gray-800 font-bold text-xl'>intensity (workouts per week - wpw)</label>
-        <div className='flex items-center mb-4'>
-          
-          <input  onChange={handleRadio4Change} className='mr-2' type="radio" id="male" name="gender" value="1" />
-          <label className='text-gray-800 text-xl' htmlFor="male">1 a/w </label>
-
-          <input onChange={handleRadio4Change} className='mx-2' type="radio" id="female" name="gender" value="2" />
-          <label className='text-gray-800  text-xl' htmlFor="female">2 a/w  </label>
-
-          <input onChange={handleRadio4Change} className='mx-2' type="radio" id="other" name="gender" value="3" />
-          <label className='text-gray-800  text-xl' htmlFor="other" >3 a/w </label>
-          <br />
-          <input onChange={handleRadio4Change} className='mx-2' type="radio" id="other" name="gender" value="4" />
-          <label className='text-gray-800 text-xl' htmlFor="other" >4  a/w</label>
-
-          <input onChange={handleRadio4Change} className='mx-2' type="radio" id="other" name="gender" value="5" />
-          <label className='text-gray-800  text-xl' htmlFor="other" >5  a/w</label>
-        </div>
 
         <button onClick={handleSave} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
 
