@@ -26,6 +26,7 @@ function WorkoutsInProgram() {
   const [exercises, setExercises] = useState([]);
   const [activeWorkout, setActiveWorkout] = useState(0);
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
+  const [activeWorkoutIndex, setActiveWorkoutIndex] = useState(currentWorkoutIndex);
   const [activeLine, setActiveLine] = useState(0);
   const [showFullDescription, setShowFullDescription] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -202,14 +203,19 @@ function WorkoutsInProgram() {
         {Array.from({ length: workoutsPerPage }).map((_, index) => {
           const workoutIndex = currentWorkoutIndex + index;
           const isButtonVisible = workoutIndex < totalWorkouts;
-          const lineClass = `w-${1 / workoutsPerPage} h-1 sm:h-[0.11rem] ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'}`;
+          const lineClass = `w-${1 / workoutsPerPage} hover:bg-custom-green h-1 sm:h-[0.11rem] ${activeLine === index ? 'bg-custom-green' : 'bg-gray-400'}`;
+          const isButtonActive = workoutIndex === activeWorkoutIndex;
+
 
           return (
             <div key={index} className={lineClass}>
               {isButtonVisible && (
                 <button
-                  onClick={() => handleActiveWorkout(workoutIndex)}
-                  className={`flex-1 pl-10 md-pl-0 hover:text-custom-green pr-6 pt-2 text-base ${isButtonVisible ? '' : 'hidden'}`}
+                  onClick={() => { handleActiveWorkout(workoutIndex)
+                    setActiveWorkoutIndex(workoutIndex)
+                  }}
+                 
+                  className={`flex-1 pl-10 md-pl-0 pr-6 pt-2 text-base ${isButtonActive ? 'cursor-default' : 'hover:text-custom-green cursor-pointer'} ${isButtonVisible ? '' : 'hidden'}`}
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {isButtonVisible ? workout[workoutIndex]?.name || '' : ''}
