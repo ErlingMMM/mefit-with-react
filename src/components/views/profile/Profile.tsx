@@ -39,8 +39,7 @@ function ProfilePage() {
       };
          
     
-
-
+    const plan = useAppSelector(state => state.dashboard.plan)
 
 
  console.log(user.picture)
@@ -92,11 +91,14 @@ function ProfilePage() {
                         </div>
                     </div>
 
-                    <div className="w-full text-left px-1">
-                        <h1 className="mb-1/2"><b className="text-sm">Current Program</b></h1>
-                        <h1 className="mb-1"><b className="text-lg">Full Body</b> {"("}{percentage}%{")"} completed</h1>
-                    </div>
-                    <CurrentProgramDisplayer/>
+                    {plan && (
+                        <div className="w-full text-left px-1">
+                            <h1 className="mb-1/2"><b className="text-sm">Current Program</b></h1>
+                            <h1 className="mb-1"><b className="text-lg">{plan.name}</b> {"("}{percentage}%{")"} completed</h1>
+                        </div>
+                    )}
+                    {plan && <CurrentProgramDisplayer/>}
+                    
                 </div>
             )}
             

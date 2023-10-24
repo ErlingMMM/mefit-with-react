@@ -23,11 +23,23 @@ function Progress() {
     progress = 0; // If the user has no plan progress will become NaN so this handles that and overwrites the NaN
   }
 
+  //Get the plan
+  const plan = useAppSelector(state => state.dashboard.plan); // <-- useAppSelector instead of useSelector
+  //Default image in case there is no plan attached to the logged in user:
+  let progressImage : string  = "https://images.unsplash.com/photo-1536922246289-88c42f957773?auto=format&fit=crop&q=80&w=3304&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  if (plan?.image != undefined){
+    progressImage = plan?.image
+  }
+
   return (
-    <div className={styles.progressParentContainer}>
+    <div className={styles.progressParentContainer} style={{ 
+      backgroundImage: `linear-gradient(rgba(44, 44, 44, 0.7), rgba(44, 44, 44, 0.7)), url(${progressImage})`,
+      backgroundSize: 'cover',      // equivalent to "object-cover"
+      backgroundPosition: 'center'  // equivalent to "object-center"
+    }}>
       <div className={styles.progressContainer}>
 
-        <h1><b>Week {currentWeek}</b></h1>
+        <h1 className='text-white'><b>Week {currentWeek}</b></h1>
 
         <div className={styles.goalWrapper}>
           <h1 className={styles.goalText}><b>Goal:</b></h1>
