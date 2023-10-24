@@ -33,6 +33,9 @@ function WorkoutsInProgram() {
   const isSticky = useStickyHeader();
 
 
+
+
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -72,7 +75,6 @@ function WorkoutsInProgram() {
         const exercisesResponse = await fetch(
           `https://mefit-backend.azurewebsites.net/api/Workouts/${workout[activeWorkout].id.toString()}/exercises`
         );
-
         if (exercisesResponse.ok) {
           const exercisesData = await exercisesResponse.json();
           setExercises(exercisesData);
