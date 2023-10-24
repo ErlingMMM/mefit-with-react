@@ -88,7 +88,10 @@
   border: 1px solid black;   /* Specify the width (1px) and style (solid) */ 
   border-radius: 10px;
   margin-top: 10px; /* Adds a 10px gap below each workout bar */
+  background-size: cover;
+  background-position: center;
 }
+
 
 .buttonsGroup {
   display: flex;
@@ -208,6 +211,7 @@
 
 .day_h1{
   margin-top: 10px;
+  color: white;
 }
 
 .duration_h1{
@@ -237,8 +241,7 @@
 /* Workout image styling */
 .workoutImage {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
+  height: 200px;
   margin-bottom: 20px;
   object-fit: cover;
 }
