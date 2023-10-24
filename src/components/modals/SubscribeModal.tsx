@@ -7,11 +7,21 @@ import { RootState } from '../../Redux/Store';
 
 function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: number, closeModal: () => void }) {
   const StartingDate = useSelector((state: RootState) => state.data.startingDateUser.startingDate);
+  const dispatch = useDispatch();
+  const modalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+};
   
+
+
+function navigateDashboard() {
+  dispatch(setActiveComponent('dashboard'));
+}
+
+
     function subscribe(id: number | undefined) {
         console.log(id);
         console.log(StartingDate)
-        //dispatch(setActiveComponent('dashboard'));
         
         if (id === undefined) {
           console.error('ID is undefined. Cannot make the API request.');
@@ -62,17 +72,6 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
       }
       
   
-
-    const dispatch = useDispatch();
-    const modalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.stopPropagation();
-    };
-
-  
-
-    function navigateDashboard() {
-        dispatch(setActiveComponent('dashboard'));
-    }
 
     return (
         <>
