@@ -99,14 +99,15 @@ function EditProfile() {
   
 
   return (
-    <div className='bg-white h-screen flex flex-col justify-center items-center'>
+    <div className='bg-white w-screen h-screen flex flex-col justify-center items-center'>
       <h1
         className={`font-bold text-black text-2xl italic text-right absolute top-6`}
       >
         MeFit
       </h1>
      <br />
-     
+     <div className="sm:w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto">
+
       <form className="bg-white p-8 rounded">
         <label className='block mb-2 text-black font-bold ' htmlFor="bio">Bio:</label>
         <input  onChange={handleBioChange} className='w-full p-2 mb-4 border rounded' type="text" id="bio" name="bio" />
@@ -137,23 +138,33 @@ function EditProfile() {
           <label className='text-gray-800   text-xl' htmlFor="other" >Other</label>
         </div>
 
-        <label className='block mb-2 text-gray-800 font-bold text-xl'>Fitness preference:</label>
-        <div className='flex items-center mb-4'>
-          <input  onChange={handleRadio2Change} className='mr-2' type="radio" id="male" name="gender" value="Beginner" />
-          <label className="text-gray-800 text-xl" htmlFor="male">Beginner</label>
+        <div className='block mb-4'>
+  <label className='block mb-2 text-gray-800 font-bold text-xl'>Fitness preference:</label>
+  <div className='flex flex-col items-start'>
+    <div className='mb-2'>
+      <input onChange={handleRadio2Change} type="radio" id="male" name="gender" value="Beginner" />
+      <label className="text-gray-800 text-xl ml-2" htmlFor="male">Beginner</label>
+    </div>
+    
+    <div className='mb-2'>
+      <input onChange={handleRadio2Change} type="radio" id="female" name="gender" value="Intermediate" />
+      <label className="text-gray-800 text-xl ml-2" htmlFor="female">Intermediate</label>
+    </div>
+    
+    <div className='mb-2'>
+      <input onChange={handleRadio2Change} type="radio" id="other" name="gender" value="Expert" />
+      <label className="text-gray-800 text-xl ml-2" htmlFor="other">Advanced</label>
+    </div>
+  </div>
+</div>
 
-          <input onChange={handleRadio2Change} className='mx-2' type="radio" id="female" name="gender" value="Intermediate" />
-          <label className="text-gray-800  text-xl" htmlFor="female">Intermediate</label>
-
-          <input onChange={handleRadio2Change} className='mx-2' type="radio" id="other" name="gender" value="Expert" />
-          <label className="text-gray-800 text-xl"  htmlFor="other" >Advanced</label>
-        </div>
 
 
 
         <button onClick={handleSave} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
 
       </form>
+      </div>
     </div>
   );
 } 
