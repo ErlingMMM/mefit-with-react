@@ -96,8 +96,8 @@ function Explorer() {
       </div>
         
       {isLoading ? (
-        <div className="loading-container">
-          <img src={loadingGif} alt="Loading..." className="loading-image" />
+        <div>
+          <img src={loadingGif} alt="Loading..." />
         </div>
       ) : (
         <ExploreManager activeComponent={activeComponent} searchQuery={searchQuery} />
