@@ -9,7 +9,7 @@ import { setActiveComponent } from '../../../Redux/NavigationSlice';
 import keycloak from "../../../Keycloak";
 
 function Dashboard() {
-    console.log(keycloak.token) //log the token to console
+   // console.log(keycloak.token) //log the token to console
 
     const dispatch = useAppDispatch();  // <-- useAppDispatch instead of useDispatch
 

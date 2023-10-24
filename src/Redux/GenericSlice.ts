@@ -36,6 +36,11 @@ interface RegistrationValidation {
   isRegistered: boolean;
 }
 
+interface startingDateUser {
+  startingDate: String | null;
+}
+
+
 /**
  * Represents the data for a fitness program.
  * @interface
@@ -107,6 +112,7 @@ interface DataState {
   error: string | null;
   selectedSearchOption: string | null;
   selectedSortOption: string | null;
+  startingDateUser: startingDateUser;
 }
 
 /**
@@ -171,6 +177,9 @@ const initialState: DataState = {
   },
   RegistrationValidation: {
     isRegistered: false,
+  },
+  startingDateUser: {
+  startingDate: null,
   },
 
   selectedSearchOption: "name",
@@ -853,6 +862,9 @@ setApplicationTextUser:(state, action) => {
 },
 setWorkoutId: (state, action) => {
   state.workoutId.id = action.payload;
+},
+setStartingDateUser: (state, action) => {
+  state.startingDateUser = action.payload;
 }
 
 
@@ -920,6 +932,6 @@ setWorkoutId: (state, action) => {
   },
 });
 
-export const {setUserPicture,setPlanId, setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setSelectedSortOption} = dataSlice.actions;
+export const {setStartingDateUser, setUserPicture,setPlanId, setApplicationTextUser, setProgramDur, setProgramOrd,setProgramImg,setProgramDesc,setProgramName, setRecommendedImage,setRecommendedFitnessWorkout,setDescriptionWorkout,setNameWorkout,setTimeExcersice, setNameExcersice,setDescriptionExcersice, setImgUrlExcersice, setMusclegGroupExcersice, setRepsExcersice, setSetsExcersice, setVideoUrlExcersice,  SetuserFName,  setRegistrationBoolean, setUserTimeFrame, SetuserLName, SetUserFitnessLVL, setUserTimesAWeek, setUserAge, setUserBio, setUserGender, setUserHeight, setUserWeight, setSelectedSearchOption, setSelectedSortOption} = dataSlice.actions;
 
 export default dataSlice.reducer;
