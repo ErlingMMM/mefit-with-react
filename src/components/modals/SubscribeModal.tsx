@@ -9,7 +9,7 @@ import keycloak from '../../Keycloak';
 
 function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: number, closeModal: () => void }) {
 
-  const AddprogramToUser = () => {
+  const subscribe = (id: number) => {
     const requestOptions = {
       method: 'PUT',
       headers: {
@@ -17,7 +17,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        planId: 1,
+        planId: id,
         startDate: '2023-10-23'
       })
     };
@@ -50,12 +50,9 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
         e.stopPropagation();
     };
 
-    function subscribe(id: number) {
-        console.log(id)
-    }
+  
 
     function navigateDashboard() {
-      AddprogramToUser()
         dispatch(setActiveComponent('dashboard'));
     }
 
