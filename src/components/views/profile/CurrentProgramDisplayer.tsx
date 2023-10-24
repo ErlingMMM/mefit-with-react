@@ -3,8 +3,15 @@ import DifficultyUtils from "../../utils/DifficultyUtils";
 import ProgressBar from "./ProgressBar";
 
 function CurrentProgramDisplayer(){
+
+    const workouts = useAppSelector(state => state.dashboard.workouts);  // <-- useAppSelector instead of useSelector
+    const completedWorkouts = workouts.filter(workout => workout.isCompleted);
+    const percentage = Math.floor(completedWorkouts.length/workouts.length*100);  // You can replace this with a dynamic value later
+
     const dummyUrl: string = 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&ixid=M3wxM[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3269&q=80';
-    const percentage = 60;  // You can replace this with a dynamic value later
+    
+
+
     return (
         <div className="relative w-80 h-24 mx-auto overflow-hidden rounded-lg">
             <ProgressBar percentage={percentage} />
