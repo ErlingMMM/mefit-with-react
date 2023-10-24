@@ -6,6 +6,7 @@ import DurationUtils from '../../utils/DurationUtils';
 import DifficultyUtils from '../../utils/DifficultyUtils';
 import { truncateDescription } from '../../utils/TruncateTextUtils';
 import { useStickyHeader } from '../../utils/OnUserScrollUtils';
+import SubscribeModal from '../../modals/SubscribeModal';
 
 
 
@@ -27,10 +28,13 @@ function WorkoutsInProgram() {
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
   const [activeLine, setActiveLine] = useState(0);
   const [showFullDescription, setShowFullDescription] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const isSticky = useStickyHeader();
 
 
-
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
 
   useEffect(() => {
@@ -228,6 +232,7 @@ function WorkoutsInProgram() {
          <div className="flex justify-center"> 
            <button
              className={`bg-custom-green text-black w-full sm:w-auto font-bold text-lg px-4 sm:py-2 py-6 rounded-lg hover:bg-custom-green-hover`}
+             onClick={() => openModal()}
            >
              Subscribe to {workout[activeWorkout].name}
            </button>
@@ -238,7 +243,7 @@ function WorkoutsInProgram() {
 
       ) : null}
 
-
+<SubscribeModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} workout={activeWorkout}/>
 
     </div>
   );
