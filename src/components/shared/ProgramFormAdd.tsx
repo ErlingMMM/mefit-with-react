@@ -14,6 +14,8 @@ function AddProgramForm() {
   const [programImg, setProgramImg] = useState("");
   const [programDur, setProgramDur] = useState("");
   const [programDif, setProgramDif] = useState("0");
+  const [hovered, setHovered] = useState(false);
+
 
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setProgramName(event.target.value);
@@ -59,7 +61,13 @@ function AddProgramForm() {
       });
     };
 
-   
+    const handleMouseEnter = () => {
+      setHovered(true);
+    };
+  
+    const handleMouseLeave = () => {
+      setHovered(false);
+    };
 
     return (
       isFormSubmitted
@@ -120,9 +128,22 @@ function AddProgramForm() {
     </div>
   
         
-          <div>
-            <button onClick={postProgram} className="font-extrabold italic text-[18px] text-custom-black w-full bg-custom-green font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Add Program</button>
-          </div>
+      
+          <button
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={postProgram}
+      className="w-full overflow-hidden font-bold sm:py-2 py-6 mt-2 rounded-lg relative block leading-tight ease-in"
+      type="submit">
+      <div className="absolute -inset-6 rounded-lg transition-color group italic bg-custom-green text-lg"></div>
+      <span className={`absolute -inset-6 rounded-lg text-${hovered ? 'white' : 'black'} `}></span>
+
+      <span
+        className={`absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 text-${hovered ? 'white' : 'black'} bg-black transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 ease ${hovered ? '-rotate-180' : ' -rotate-90'}`}
+      ></span>
+
+      <span className={`relative text-lg bottom-2 ease-in italic text-${hovered ? 'white' : 'black'} top-0.5`}>Add Program</span>
+    </button>
         </form>
         </div>
       )

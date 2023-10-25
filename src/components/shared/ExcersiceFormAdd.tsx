@@ -15,6 +15,8 @@ function AddExcersiceForm() {
   const [exerciseTime, setExerciseTime] = useState('');
   const [exerciseSets, setExerciseSets] = useState('');
   const [exerciseReps, setExerciseReps] = useState('');
+  const [hovered, setHovered] = useState(false);
+
 
   const navigate = useNavigate();
     
@@ -73,6 +75,14 @@ function AddExcersiceForm() {
           navigate('/')
       }
 
+      const handleMouseEnter = () => {
+        setHovered(true);
+      };
+    
+      const handleMouseLeave = () => {
+        setHovered(false);
+      };
+
       return (
         <div className="font-body">
           <h1 className="text-2xl font-bold mb-8 text-center">Create Exercise</h1>
@@ -117,9 +127,21 @@ function AddExcersiceForm() {
               <input onChange={handleTimeChange} className='w-full p-2 border rounded-lg' type="text" id="time" name="time" />
             </div>
     
-            <div>
-              <button onClick={handleSave} className="font-extrabold italic text-[18px] w-full bg-custom-green text-custom-black hover:bg-custom-green-hover py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
-            </div>
+            <button
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleSave}
+      className="w-full overflow-hidden font-bold sm:py-2 py-6 mt-2 rounded-lg relative block leading-tight ease-in"
+    >
+      <div className="absolute -inset-6 rounded-lg transition-color group italic bg-custom-green text-lg"></div>
+      <span className={`absolute -inset-6 rounded-lg text-${hovered ? 'white' : 'black'} `}></span>
+
+      <span
+        className={`absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 text-${hovered ? 'white' : 'black'} bg-black transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 ease ${hovered ? '-rotate-180' : ' -rotate-90'}`}
+      ></span>
+
+      <span className={`relative text-lg bottom-2 ease-in italic text-${hovered ? 'white' : 'black'} top-0.5`}>Save</span>
+    </button>
           </form>
         </div>
     );
