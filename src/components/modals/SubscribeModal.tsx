@@ -147,7 +147,6 @@ export default SubscribeModal;
 
 
 
-{/*<div className="relative inline-block text-lg group p-5  w-96 h-7 "></div>*/ }
 
 
 
