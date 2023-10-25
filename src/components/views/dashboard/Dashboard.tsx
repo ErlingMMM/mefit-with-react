@@ -48,7 +48,6 @@ function Dashboard() {
     const storedFlag = localStorage.getItem("showCompletedModal");
 
     if (completedWorkouts && (storedFlag === "true" || storedFlag === null)) {
-      console.log("100% completed");
       setIsModalOpen(true);
     }
   }, [completedWorkouts]);
