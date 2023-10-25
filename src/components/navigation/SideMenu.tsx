@@ -62,7 +62,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) 
             <img
             src={userPicture ? userPicture : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"}
               alt="ProfileImage"
-              style={{ borderRadius: '50%', width: '150px', height: '150px', border: '4px solid' }}
+              style={{ borderRadius: '50%', width: '100px', height: '100px', border: '4px solid' }}
               className='object-cover object-center overflow-hidden'
             />
           </button>
