@@ -254,8 +254,6 @@ function WorkoutsInProgram() {
          </div>
        </div>
      </div>
-     
-
       ) : null}
 
 
