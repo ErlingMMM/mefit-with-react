@@ -14,7 +14,7 @@ interface SideMenuProps {
 
 const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) => {
   const activeComponent = useSelector((state: RootState) => state.navigation.activeComponent);
-  const user = useSelector((state: any) => state.data.userData.fitnessPreference);
+  const difficulty = useSelector((state: any) => state.data.userData.fitnessPreference);
   const userPicture = useSelector((state: any) => state.data.userData.picture);
 
   const isAdmin = keycloak.hasRealmRole('admin');
@@ -89,7 +89,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) 
           <>
             <div className='text-white'>{keycloak.tokenParsed ? keycloak.tokenParsed.name : 'Unknown'}</div>
 
-            <div className='text-custom-green text-sm'>{user}</div>
+            <div className='text-custom-green text-sm'>{difficulty}</div>
             <button onClick={() => switchToComponent('dashboard')} className={`${activeComponent === "dashboard" ? "text-custom-green" : "text-white"} mt-auto`}>Dashboard</button>
             <button onClick={() => switchToComponent('explorer')} className={`${activeComponent === "explorer" ? "text-custom-green" : "text-white"} mt-auto`}>Explorer</button>
             {(isAdmin || isContributor) && (
