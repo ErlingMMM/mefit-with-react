@@ -89,6 +89,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 onClick={closeModal}
               />
               <div className="sm:pt-4 pt-7">
+              {isSubscribed ? null : <h1 className='font-bold '>Select starting week</h1>}
                 {isSubscribed ? null : <WeekPicker />}
               </div>
 
@@ -98,11 +99,11 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 ) : null}
               </div>
 
-              <div className="px-4 pb-6 rounded-b-lg">
+              <div className="px-4 pb-6 rounded-b-lg justify-center flex items-center">
                 {isSubscribed ? null : (
                   <button
                     onClick={() => subscribe(id)}
-                    className="block pb-2 sm:pt-3 px-4 rounded-md sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#A8E52D] hover:border-[#A8E52D]"
+                    className="block pb-2 sm:pt-3 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#A8E52D] hover:border-[#A8E52D] items-center"
                   >
                     Subscribe
                   </button>
