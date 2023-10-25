@@ -109,11 +109,11 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 ) : null}
               </div>
 
-              <div className="px-4 pb-6 rounded-b-lg justify-center flex items-center">
+              <div className="px-4 pb-6 sm:pb-10 rounded-b-lg justify-center flex items-center">
                 {isSubscribed ? null : (
                   <button
                     onClick={() => navigateDashboard()}
-                    className="block pb-2 sm:pt-3 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#C0392B] hover:border-[#e3897f] items-center"
+                    className="block pb-2 sm:pt-3 sm:mb-5 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#C0392B] hover:border-[#e3897f] items-center"
                   >
                     Go back to dashboard
                   </button>
