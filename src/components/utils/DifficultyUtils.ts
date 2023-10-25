@@ -8,13 +8,11 @@ class DifficultyUtils {
         case 2:
           return "Expert";
         default:
-          return "Unknown"; // Handle unexpected values if necessary
+          return "Unknown"; 
       }
     }
 
 }
   
-
-
   export default DifficultyUtils;
   

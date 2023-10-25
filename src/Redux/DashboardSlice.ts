@@ -69,7 +69,7 @@ const initialState: DashboardState = {
     displayedWorkout: null,
     currentWeek: 1, // Assuming the week starts from 1
     maxWeek: 1, //initialized to one but is updated immidiately
-    startDate: "2023-12-04", //this returns todays date (by default)
+    startDate: "2023-12-04", //some arbitrary default date
     plan: null
 };
   
