@@ -10,7 +10,7 @@ function AddExercisesComponent() {
   const [exerciseIdsList, setExerciseIdsList] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const [exerciseCount, setExerciseCount] = useState(0);
   const navigate = useNavigate();
   const workoutId = useSelector((state: RootState) => state.data.workoutId.id);
 
@@ -35,6 +35,7 @@ function AddExercisesComponent() {
     const index = exerciseIdsList.indexOf(exerciseId);
     if (index === -1) {
       setExerciseIdsList([...exerciseIdsList, exerciseId]);
+      setExerciseCount(exerciseCount + 1);
     } else {
       const newExerciseIdsList = [...exerciseIdsList];
       newExerciseIdsList.splice(index, 1);
@@ -62,6 +63,7 @@ function AddExercisesComponent() {
 
   return (
     <div className="container mx-auto p-4">
+      <button onClick={handleSaveButton} className={`mt-4 px-6 py-2 rounded-lg bg-custom-green text-white ${exerciseCount > 0 ? '' : 'hidden'}`}>Save Workout</button>
       <ul>
         {Array.isArray(exercises) && exercises.length > 0 ? (
           exercises.map((exercise: any) => (
@@ -84,7 +86,7 @@ function AddExercisesComponent() {
           <li>No matching exercises</li>
         )}
       </ul>
-      <button onClick={handleSaveButton} className="mt-4 px-6 py-2 rounded-lg bg-blue-600 text-white">Save Workout</button>
+      
     </div>
   );
 }
