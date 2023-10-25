@@ -104,16 +104,16 @@ function AddWorkoutForm() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleSave}
-      className="w-full overflow-hidden font-bold sm:py-2 py-6 mt-2 rounded-lg relative block leading-tight ease-in"
+      className="w-full overflow-hidden font-bold sm:py-2 py-6 mt-2 rounded-lg relative block leading-tight ease-out"
     >
-      <div className="absolute -inset-6 rounded-lg transition-color group duration-700 italic text-lg"></div>
-      <span className={`absolute -inset-6 rounded-lg text-${hovered ? 'white' : 'black'} bg-black`}></span>
+      <div className="absolute -inset-6 rounded-lg transition-color group duration-700 italic bg-custom-green text-lg"></div>
+      <span className={`absolute -inset-6 rounded-lg text-${hovered ? 'white' : 'black'} `}></span>
 
       <span
-        className={`absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 text-${hovered ? 'white' : 'black'} bg-custom-green transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 ease ${hovered ? '-rotate-90' : '-rotate-180'}`}
+        className={`absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 text-${hovered ? 'white' : 'black'} bg-black transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 ease ${hovered ? '-rotate-180' : ' -rotate-90'}`}
       ></span>
 
-      <span className={`relative text-lg bottom-2 text-${hovered ? 'white' : 'black'}`}>Save</span>
+      <span className={`relative text-lg bottom-2 duration-600 ease-out text-${hovered ? 'white' : 'black'}`}>Save</span>
     </button>
 
 
