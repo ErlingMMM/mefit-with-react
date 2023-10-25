@@ -42,7 +42,6 @@ function ProfilePage() {
     const plan = useAppSelector(state => state.dashboard.plan)
 
 
- console.log(user.picture)
 
 
 

@@ -68,7 +68,6 @@ const handleRegistrerClick = () => {
          </div>
         </div>
       </form>
-      <button className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleRegistrerClick} type="submit">registrer</button>
       <div className="mb-8 flex justify-center">
      </div>
     </div>
