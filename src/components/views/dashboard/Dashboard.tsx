@@ -52,10 +52,6 @@ function Dashboard() {
     }
   }, [completedWorkouts]);
 
-  useEffect(() => {
-    localStorage.setItem("showCompletedModal", "upcomingWorkouts");
-
-  }, [upcomingWorkouts]);
  
 
   const handleCloseModal = () => {
