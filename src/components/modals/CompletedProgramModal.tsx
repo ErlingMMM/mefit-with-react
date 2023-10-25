@@ -39,7 +39,7 @@ function SubscribeModal({ isOpen, closeModal }: { isOpen: boolean, closeModal: (
 
               <div className="sm:pt-4 pt-7 text-center">
                
-                  <h1>Congratulations! You have subscribed to the program</h1>
+                  <h1>Congratulations! You have completed the program</h1>
               
               </div>
 
