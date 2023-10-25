@@ -111,29 +111,31 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
 
               <div className="px-4 pb-6 sm:pb-10 rounded-b-lg justify-center flex items-center">
                 {isSubscribed ? null : (
-                  <button
-                    onClick={() => navigateDashboard()}
-                    className="block pb-2 sm:pt-3 sm:mb-5 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#C0392B] hover:border-[#e3897f] items-center"
+                  <button onClick={() => subscribe(id)}
+
+                    className="block pb-2 sm:pt-3 sm:mb-5 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#A8E52E] hover:border-[#D0FF70] items-center"
                   >
-                    Go back to dashboard
+                    Subscribe
                   </button>
                 )}
               </div>
             </div>
             <div>
               <button
+                onClick={() => navigateDashboard()}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                onClick={() => subscribe(id)}
+
                 className="w-full  font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in"
               >
-                <span className="absolute -inset-6 rounded-lg bg-[#d2f48e]"></span>
+                <div className="relative text-lg text-white bottom-2 group transition-color duration-700 hover:text-black">
+                  <span className="absolute -inset-6 rounded-lg bg-black "></span>
 
-                <span
-                  className={`absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 bg-custom-green ease ${hovered ? '-rotate-90' : '-rotate-180 '
-                    }`}
-                ></span>
-                <span className="relative text-lg bottom-2 ">Subscribe</span>
+                  <span className="absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 transition-all bg-custom-green duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24  ease -rotate-90 group-hover:-rotate-180"></span>
+
+                  <span className="relative">Go back to dashboard</span>
+                </div>
+
               </button>
             </div>
           </div>
