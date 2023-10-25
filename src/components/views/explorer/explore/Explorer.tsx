@@ -6,11 +6,10 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../../Redux/Store';
 import { getExcersiceInfo, getProgramInfo, getWorkoutInfo } from '../../../../Redux/GenericSlice';
-import loadingGif from '../../../../assets/loading.gif';
 import SortButton from './SortButton';
 import { setSelectedSearchOption } from '../../../../Redux/GenericSlice';
 import { setSelectedSortOption } from '../../../../Redux/GenericSlice';
-
+import LoadingAnimation from '../../../loading/LoadingAnimation';
 
 function Explorer() {
   const [activeComponent, setActiveComponent] = useState('programs');
@@ -94,13 +93,16 @@ function Explorer() {
       <div className='text-right sm:text-left mb-3 space-x-2 ml-12 sm:ml-72 translate-x-1'>
       <SortButton />
       </div>
+
+  
         
       {isLoading ? (
         <div>
-          <img src={loadingGif} alt="Loading..." />
+          <LoadingAnimation />
         </div>
       ) : (
         <ExploreManager activeComponent={activeComponent} searchQuery={searchQuery} />
+        
       )}
     </>
   );
