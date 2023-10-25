@@ -120,7 +120,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 )}
               </div>
             </div>
-            <div className=" ">
+            <div>
               <button
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
