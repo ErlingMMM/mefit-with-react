@@ -43,6 +43,16 @@ function Dashboard() {
       dispatch(setActiveComponent('explorer'));   
     };
     
+    // todo add modal when this function is at 100&\%
+    function CompletionRate(){
+      const percentage = Math.floor(completedWorkouts.length/workouts.length*100);  // You can replace 
+      return percentage
+    }
+
+    if(CompletionRate() == 100){
+      console.log("heieheh")
+    }
+    
 
   return (
     <div className={styles.dashboardContainer}>
