@@ -101,20 +101,20 @@ function AddWorkoutForm() {
             </div>
             <div>
             <button
-  onMouseEnter={handleMouseEnter}
-  onMouseLeave={handleMouseLeave}
-  onClick={handleSave}
-  className="w-full overflow-hidden font-bold sm:py-2 py-6 mt-2 rounded-lg relative block leading-tight ease-in"
->
-  <div className="absolute  -inset-6 rounded-lg transition-color  group duration-700 italic text-lg "></div>
-  <span className="absolute -inset-6 rounded-lg text-white bg-black "></span>
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleSave}
+      className="w-full overflow-hidden font-bold sm:py-2 py-6 mt-2 rounded-lg relative block leading-tight ease-in"
+    >
+      <div className="absolute -inset-6 rounded-lg transition-color group duration-700 italic text-lg"></div>
+      <span className={`absolute -inset-6 rounded-lg text-${hovered ? 'white' : 'black'} bg-black`}></span>
 
-  <span
-    className={`absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 text-black bg-custom-green transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24  ease ${hovered ? '-rotate-90' : '-rotate-180'}`}
-  ></span>
+      <span
+        className={`absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 text-${hovered ? 'white' : 'black'} bg-custom-green transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 ease ${hovered ? '-rotate-90' : '-rotate-180'}`}
+      ></span>
 
-  <span className="relative text-lg bottom-2 ">Save</span>
-</button>
+      <span className={`relative text-lg bottom-2 text-${hovered ? 'white' : 'black'}`}>Save</span>
+    </button>
 
 
 
