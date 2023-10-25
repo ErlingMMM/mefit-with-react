@@ -9,9 +9,19 @@ import { RootState } from '../../Redux/Store';
 function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: number, closeModal: () => void }) {
   const StartingDate = useSelector((state: RootState) => state.data.startingDateUser.startingDate);
   const dispatch = useDispatch();
+  const [hovered, setHovered] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const modalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
+  };
+
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
   };
 
   function navigateDashboard() {
@@ -69,16 +79,6 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
       });
   }
 
-
-  const [hovered, setHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHovered(false);
-  };
 
   return (
     <>
