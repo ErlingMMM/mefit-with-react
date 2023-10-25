@@ -8,6 +8,7 @@ module.exports = {
       },
       textColor: {
         'custom-green': '#A8E52E',
+        'custom-black': '#333333',
       },
       spacing: {
         '1/7': '14%',
@@ -17,6 +18,7 @@ module.exports = {
     fontFamily: {
       sans: ['Montserrat', 'sans'],
     },
+
   },
   plugins: [],
 }

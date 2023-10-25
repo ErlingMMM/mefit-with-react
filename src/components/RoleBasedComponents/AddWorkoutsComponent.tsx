@@ -39,6 +39,7 @@ function AddWorkoutsComponent() {
       .sort();
   };
 
+  const difficultys = ["beginner", "intermidiate", "advanced"];
 
   const toggleWorkout = (workoutId: any) => {
     const index = workoutIdsList.findIndex((id, idx) => id === workoutId && Math.floor(daysList[idx] / 7) + 1 === currentWeek);
@@ -123,12 +124,18 @@ function AddWorkoutsComponent() {
               onClick={() => toggleWorkout(workout.id)}
             >
               <div className="flex items-center">
+                
                 <img
                   src={workout.image}
                   alt={workout.title}
                   className="w-16 h-16 rounded-full object-cover mr-4"
                 />
                 <div>
+                <h1 className="text-black font-bold text-2xl">{workout.name}</h1>
+                <h2 className="text-black-600 italic text-xl">Duration: {workout.duration} min  </h2>
+                <h2 className="text-black-600 italic text-xl">Difficulty: {difficultys[workout.difficulty]}</h2>
+
+
                   <h3 className="text-lg font-bold">{workout.title}</h3>
                   <p>{workout.description}</p>
                 </div>
