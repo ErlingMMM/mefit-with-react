@@ -127,14 +127,14 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 onClick={() => subscribe(id)}
                 className="w-full  font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in"
               >
-                  <span className="absolute -inset-6 rounded-lg bg-[#6664AC]"></span>
+                  <span className="absolute -inset-6 rounded-lg bg-[#d2f48e]"></span>
 
   <span
-    className={`absolute -left-48 w-[47rem] h-[8rem] transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 bg-custom-green ease ${
-      hovered ? '-rotate-90' : '-rotate-180'
+    className={`absolute -left-48 w-[47rem] sm:h-[8rem] h-36 transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 bg-custom-green ease ${
+      hovered ? '-rotate-90' : '-rotate-180 '
     }`}
   ></span>
-  <span className="relative text-lg bottom-2">Subscribe</span>
+  <span className="relative text-lg bottom-2 ">Subscribe</span>
 
               </button>
             </div>
