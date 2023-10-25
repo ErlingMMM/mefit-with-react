@@ -126,9 +126,9 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
 
-                className="w-full  font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in"
+                className="w-full font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in"
               >
-                <div className="relative text-lg hover:text-white bottom-2 group transition-color duration-700 text-black">
+                <div className="relative text-lg hover:text-white sm:bottom-2 group transition-color duration-700 text-black">
                   <span className="absolute -inset-6 rounded-lg bg-custom-green "></span>
 
                   <span className="absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 bg-black transition-all  duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24  ease -rotate-90 group-hover:-rotate-180"></span>
