@@ -47,7 +47,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) 
 
   return (
     <div
-      className={`fixed left-0 top-0 h-full w-2/3 bg-black transform opacity-90 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+      className={`fixed left-0 top-0 h-full w-2/3 bg-black transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-150`}
     >
       <h1
