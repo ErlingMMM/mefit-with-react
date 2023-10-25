@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RegisterUserOnboardingStatsAsync, getLoginAsync } from "../../../Redux/GenericSlice";
+import { getLoginAsync } from "../../../Redux/GenericSlice";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "@reduxjs/toolkit";
 import { RootState } from "../../../Redux/Store";
 import keycloak from "../../../Keycloak";
 import { useNavigate } from "react-router-dom";
 import CurrentProgramDisplayer from "./CurrentProgramDisplayer";
-import { useAppDispatch, useAppSelector } from "../../../Redux/Hooks"
+import {  useAppSelector } from "../../../Redux/Hooks"
 import { useTheme } from "../../../styles/ThemeContext";
 
 function ProfilePage() {
@@ -29,7 +29,6 @@ function ProfilePage() {
 
     const isAdmin = keycloak.hasRealmRole('admin');
     const isContributor = keycloak.hasRealmRole('contributor');
-    const isuser = keycloak.hasRealmRole('user');
 
     const workouts = useAppSelector(state => state.dashboard.workouts);  // <-- useAppSelector instead of useSelector
     const completedWorkouts = workouts.filter(workout => workout.isCompleted);
@@ -38,12 +37,7 @@ function ProfilePage() {
         setIsDarkMode(!isDarkMode);
       };
          
-    
     const plan = useAppSelector(state => state.dashboard.plan)
-
-
-
-
 
     return (
         <div className="flex flex-col justify-center items-center p-4">

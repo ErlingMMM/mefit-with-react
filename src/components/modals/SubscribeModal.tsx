@@ -9,9 +9,19 @@ import { RootState } from '../../Redux/Store';
 function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: number, closeModal: () => void }) {
   const StartingDate = useSelector((state: RootState) => state.data.startingDateUser.startingDate);
   const dispatch = useDispatch();
+  const [hovered, setHovered] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const modalContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
+  };
+
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
   };
 
   function navigateDashboard() {
@@ -89,7 +99,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 onClick={closeModal}
               />
               <div className="sm:pt-4 pt-7">
-              {isSubscribed ? null : <h1 className='font-bold '>Select starting week</h1>}
+                {isSubscribed ? null : <h1 className='font-bold '>Select starting week</h1>}
                 {isSubscribed ? null : <WeekPicker />}
               </div>
 
@@ -99,23 +109,33 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 ) : null}
               </div>
 
-              <div className="px-4 pb-6 rounded-b-lg justify-center flex items-center">
+              <div className="px-4 pb-6 sm:pb-10 rounded-b-lg justify-center flex items-center">
                 {isSubscribed ? null : (
-                  <button
-                    onClick={() => subscribe(id)}
-                    className="block pb-2 sm:pt-3 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#A8E52D] hover:border-[#A8E52D] items-center"
+                  <button onClick={() => subscribe(id)}
+
+                    className="block pb-2 sm:pt-3 sm:mb-5 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#A8E52E] hover:border-[#D0FF70] items-center"
                   >
                     Subscribe
                   </button>
                 )}
               </div>
             </div>
-            <div className="bg-custom-green py-6 px-4 hover:opacity-90">
+            <div>
               <button
                 onClick={() => navigateDashboard()}
-                className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+
+                className="w-full  font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in"
               >
-                Go back to dashboard
+                <div className="relative text-lg hover:text-white bottom-2 group transition-color duration-700 text-black">
+                  <span className="absolute -inset-6 rounded-lg bg-custom-green "></span>
+
+                  <span className="absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 bg-black transition-all  duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24  ease -rotate-90 group-hover:-rotate-180"></span>
+
+                  <span className="relative">Go back to dashboard</span>
+                </div>
+
               </button>
             </div>
           </div>
@@ -126,4 +146,13 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
 }
 
 export default SubscribeModal;
+
+
+
+
+
+
+
+
+
 

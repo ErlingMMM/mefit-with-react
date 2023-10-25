@@ -61,8 +61,9 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) 
           <button onClick={() => onImageClick()} style={{ cursor: 'pointer', background: 'none', border: 'none', outline: 'none' }}>
             <img
             src={userPicture ? userPicture : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"}
-              alt="ProfilePage"
-              style={{ borderRadius: '50%', width: '150px', height: '150px', border: '4px solid' }}
+              alt="ProfileImage"
+              style={{ borderRadius: '50%', width: '100px', height: '100px', border: '4px solid' }}
+              className='object-cover object-center overflow-hidden'
             />
           </button>
         </div>
@@ -99,8 +100,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) 
         )}
 
         {keycloak.authenticated && (
-          <button onClick={() => keycloak.logout()} className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}
-          >Logout</button>
+          <button onClick={() => keycloak.logout()} className='text-white text-sm mt-auto' style={{ marginBottom: '100px' }}
+          >Log out</button>
         )}
       </div>
     </div>
