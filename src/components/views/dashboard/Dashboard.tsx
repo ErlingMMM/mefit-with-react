@@ -47,14 +47,20 @@ function Dashboard() {
   useEffect(() => {
     const storedFlag = localStorage.getItem("showCompletedModal");
 
-    if (completedWorkouts && (storedFlag === "true" || storedFlag === null)) {
+    if (completedWorkouts && (storedFlag !== "completed")) {
       setIsModalOpen(true);
     }
   }, [completedWorkouts]);
 
+  useEffect(() => {
+    localStorage.setItem("showCompletedModal", "upcomingWorkouts");
+
+  }, [upcomingWorkouts]);
+ 
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    localStorage.setItem("showCompletedModal", "false");
+    localStorage.setItem("showCompletedModal", "completed");
   };
 
 
