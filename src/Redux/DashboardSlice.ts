@@ -97,10 +97,9 @@ export const dashboardSlice = createSlice({
           // Update the workouts with that data:
           state.workouts = action.payload;
 
-          // Calculate the last week of the workout based on the day of the last workout:
+          // Find the maximum day value among the workouts:
           if (state.workouts.length) {
-            const lastWorkout = state.workouts[state.workouts.length - 1];
-            state.maxWeek = Math.ceil(lastWorkout.day / 7);
+          state.maxWeek = Math.ceil(Math.max(...state.workouts.map(workout => workout.day)) / 7);
           }
         })
         .addCase(completeWorkoutAction.fulfilled, (state, action) => {

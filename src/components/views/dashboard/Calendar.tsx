@@ -17,7 +17,7 @@ function Calendar() {
   const currentWeek = useAppSelector(state => state.dashboard.currentWeek);
   const maxWeek = useAppSelector(state => state.dashboard.maxWeek);
   const startDateString = useAppSelector(state => state.dashboard.startDate);
-  
+  console.log(`maxWeek: ${maxWeek}`)
   let startDate;
   try {
     startDate = new Date(startDateString);
