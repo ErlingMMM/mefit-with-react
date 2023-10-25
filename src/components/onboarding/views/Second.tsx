@@ -41,7 +41,7 @@ function Second() {
 
     <form className="">
 
-        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+        <div className="mb-2 p-4 rounded flex items-start">
             <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="1" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
             <div>
                 <label htmlFor="beginnerIntensity" className="text-lg font-bold">1 workout per week</label>
@@ -49,7 +49,7 @@ function Second() {
             </div>
         </div>
 
-        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+        <div className="mb-2 p-4 rounded flex items-start">
             <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="2" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
             <div>
                 <label htmlFor="beginnerIntensity" className="text-lg font-bold">2 workout per week</label>
@@ -57,7 +57,7 @@ function Second() {
             </div>
         </div>
 
-        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+        <div className="mb-2 p-4 rounded flex items-start">
             <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="3" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
             <div>
                 <label htmlFor="beginnerIntensity" className="text-lg font-bold">3 workout per week</label>
@@ -65,7 +65,7 @@ function Second() {
             </div>
         </div>
 
-        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+        <div className="mb-2 p-4 rounded  flex items-start">
             <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="4" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
             <div>
                 <label htmlFor="beginnerIntensity" className="text-lg font-bold">4 workout per week</label>
@@ -73,7 +73,7 @@ function Second() {
             </div>
         </div>
 
-        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+        <div className="mb-2 p-4 rounded  flex items-start">
             <input type="radio" id="beginnerIntensity" name="fitnessIntensity" value="5" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
             <div>
                 <label htmlFor="beginnerIntensity" className="text-lg font-bold">5 workout per week</label>
