@@ -67,6 +67,8 @@ function AddProgramForm() {
       isFormSubmitted
       ? <AddWorkoutsCompoent />
       : (
+        <div>
+          <h1 className="text-2xl font-bold mb-8 text-center">Create Program</h1>
         <form className='bg-white p-8 rounded-lg space-y-4'>
           <div className="space-y-2">
             <label className='text-lg text-gray-800' htmlFor="name">Name:</label>
@@ -103,9 +105,10 @@ function AddProgramForm() {
   
         
           <div>
-            <button onClick={postProgram} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Add Workouts</button>
+            <button onClick={postProgram} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Add Program</button>
           </div>
         </form>
+        </div>
       )
   );
   

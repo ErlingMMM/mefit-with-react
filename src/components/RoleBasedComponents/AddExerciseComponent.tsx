@@ -4,6 +4,7 @@ import { addExerciseToWorkout } from '../../endpoints/addExerciseToWorkout_endpo
 import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/Store';
 import { useNavigate } from 'react-router-dom';
+import LoadingAnimation from '../loading/LoadingAnimation';
 
 function AddExercisesComponent() {
   const [exercises, setExercises] = useState([]);
@@ -54,7 +55,7 @@ function AddExercisesComponent() {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingAnimation/>
   }
 
   if (error) {
