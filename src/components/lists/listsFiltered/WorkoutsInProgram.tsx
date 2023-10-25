@@ -240,19 +240,26 @@ function WorkoutsInProgram() {
 
 
       {uniqueWorkouts[activeWorkout] ? (
-       <div className="flex justify-center">
-       <div className={`fixed ${isSticky ? 'sm:bottom-4' : 'sm:-bottom-20'} bottom-0 w-full`}>
-         <div className="flex justify-center"> 
-           <button
-             className={`bg-custom-green text-black w-full sm:w-auto font-bold text-lg px-4 sm:py-2 py-6 rounded-lg hover:bg-custom-green-hover`}
-             onClick={() => openModal()}
-           >
-             Subscribe to this program
-           </button>
-         </div>
-       </div>
-     </div>
-      ) : null}
+  <div className="flex justify-center">
+    <div
+      className={`fixed ${isSticky ? 'sm:bottom-4' : 'sm:-bottom-20'} bottom-0 w-full`}
+    >
+      <div className="flex justify-center">
+        <button
+          onClick={() => openModal()}
+          className={`w-full sm:w-auto font-bold text-lg px-4 sm:py-6 py-6 relative rounded-lg group transition-color duration-700 hover:bg-custom-green-hover`}
+        >
+          <div className="relative overflow-hidden text-lg hover:text-white sm:bottom-2 group transition-color duration-700 italic text-black">
+            <span className="absolute -inset-6 rounded-lg bg-custom-green"></span>
+            <span className="absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 bg-black transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 ease -rotate-90 group-hover:-rotate-180"></span>
+            <span className="relative">Subscribe to this program</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+) : null}
+
 
 
   <SubscribeModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} id={selectedProgramId} />
