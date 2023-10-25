@@ -99,7 +99,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 onClick={closeModal}
               />
               <div className="sm:pt-4 pt-7">
-              {isSubscribed ? null : <h1 className='font-bold '>Select starting week</h1>}
+                {isSubscribed ? null : <h1 className='font-bold '>Select starting week</h1>}
                 {isSubscribed ? null : <WeekPicker />}
               </div>
 
@@ -122,20 +122,18 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
             </div>
             <div className=" ">
               <button
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 onClick={() => subscribe(id)}
                 className="w-full  font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in"
               >
-                  <span className="absolute -inset-6 rounded-lg bg-[#d2f48e]"></span>
+                <span className="absolute -inset-6 rounded-lg bg-[#d2f48e]"></span>
 
-  <span
-    className={`absolute -left-48 w-[47rem] sm:h-[8rem] h-36 transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 bg-custom-green ease ${
-      hovered ? '-rotate-90' : '-rotate-180 '
-    }`}
-  ></span>
-  <span className="relative text-lg bottom-2 ">Subscribe</span>
-
+                <span
+                  className={`absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 bg-custom-green ease ${hovered ? '-rotate-90' : '-rotate-180 '
+                    }`}
+                ></span>
+                <span className="relative text-lg bottom-2 ">Subscribe</span>
               </button>
             </div>
           </div>
@@ -149,7 +147,7 @@ export default SubscribeModal;
 
 
 
-{/*<div className="relative inline-block text-lg group p-5  w-96 h-7 "></div>*/}
+{/*<div className="relative inline-block text-lg group p-5  w-96 h-7 "></div>*/ }
 
 
 
