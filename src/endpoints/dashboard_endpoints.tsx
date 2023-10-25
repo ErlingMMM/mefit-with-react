@@ -28,17 +28,22 @@ export async function getWorkouts(){
     }
 }
 
+interface CompleteWorkoutDTO {
+    workoutId: number;
+    day: number;
+}
 //function to to update the completion status of a workout associated with a user given the id of the workout
-export async function completeWorkout(wId : number){
+export async function completeWorkout(data: CompleteWorkoutDTO){
     const accessToken = keycloak.token; 
-    const apiURL = `https://mefit-backend.azurewebsites.net/api/Users/user/workout/isCompleted/${wId}`;
+    const apiURL = `https://mefit-backend.azurewebsites.net/api/Users/user/workout/isCompleted`;
     try{
         const response = await fetch(apiURL, { 
             method: 'PUT',
             headers: {
               'Authorization': `Bearer ${accessToken}`, 
               'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(data)  // Send the object as a JSON string in the request body
         });
 
         // Check if the response indicates success (204 No Content)
