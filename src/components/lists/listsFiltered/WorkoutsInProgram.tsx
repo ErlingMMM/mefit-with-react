@@ -74,8 +74,6 @@ function WorkoutsInProgram() {
 
 
   
-  
-
   useEffect(() => {
     const fetchData = async () => {
       if (activeWorkout >= 0 && uniqueWorkouts.length > activeWorkout) {

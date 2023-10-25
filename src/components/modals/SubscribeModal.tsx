@@ -102,20 +102,20 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
               <div className="px-4 pb-6 rounded-b-lg justify-center flex items-center">
                 {isSubscribed ? null : (
                   <button
-                    onClick={() => subscribe(id)}
-                    className="block pb-2 sm:pt-3 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#A8E52D] hover:border-[#A8E52D] items-center"
+                    onClick={() => navigateDashboard()}
+                    className="block pb-2 sm:pt-3 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#C0392B] hover:border-[#e3897f] items-center"
                   >
-                    Subscribe
+                    Go back to dashboard
                   </button>
                 )}
               </div>
             </div>
             <div className="bg-custom-green py-6 px-4 hover:opacity-90">
               <button
-                onClick={() => navigateDashboard()}
+                onClick={() => subscribe(id)}
                 className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600"
               >
-                Go back to dashboard
+                 Subscribe
               </button>
             </div>
           </div>
