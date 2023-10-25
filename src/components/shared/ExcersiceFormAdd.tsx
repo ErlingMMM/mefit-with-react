@@ -118,7 +118,7 @@ function AddExcersiceForm() {
             </div>
     
             <div>
-              <button onClick={handleSave} className="font-extrabold italic text-[18px] w-full bg-custom-green text-custom-black font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
+              <button onClick={handleSave} className="font-extrabold italic text-[18px] w-full bg-custom-green text-custom-black hover:bg-custom-green-hover py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
             </div>
           </form>
         </div>

@@ -41,13 +41,13 @@ function ProfilePage() {
 
     return (
         <div className="flex flex-col justify-center items-center p-4">
-            <button onClick={handleEditClick} className="bg-custom-green text-black font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
+            <button onClick={handleEditClick} className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
                 edit profile
             </button>
             <br />
             {!(isAdmin || isContributor) && (
-                <button onClick={handleApplicationClick} className="bg-custom-green text-black font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
-                    Apply to become a contributor
+                <button onClick={handleApplicationClick} className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
+                    apply to become a contributor
                 </button>
             )}
             {keycloak.tokenParsed && keycloak.tokenParsed.name && (

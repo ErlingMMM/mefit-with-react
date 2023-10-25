@@ -90,7 +90,7 @@ function AddWorkoutForm() {
             <input onChange={handleDurationChange} className='w-full p-2 border rounded-lg' type="text" id="duration" name="duration" />
           </div>
           <div>
-            <button onClick={handleSave} className="font-extrabold italic text-[18px] w-full bg-custom-green text-custom-black font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Add Workout</button>
+            <button onClick={handleSave} className="font-extrabold italic text-[18px] w-full bg-custom-green hover:bg-custom-green-hover text-custom-black py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Add Workout</button>
           </div>
         </form>
         </div>
