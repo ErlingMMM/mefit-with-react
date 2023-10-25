@@ -70,24 +70,25 @@ function Explorer() {
           programs
         </button>
         <button
-          onClick={() => switchToComponent('exercises')}
-          className="flex-1 px-4 pt-2 text-base hover:text-custom-green"
-        >
-          exercises
-        </button>
-        <button
           onClick={() => switchToComponent('workouts')}
-          className="flex-1 pr-10 sm:pr-80 pl-4 pt-2 text-base hover:text-custom-green"
+          className="flex-1 px-4 pt-2 text-base hover:text-custom-green"
         >
           workouts
         </button>
+        <button
+          onClick={() => switchToComponent('exercises')}
+          className="flex-1 pr-10 sm:pr-80 pl-4 text-base pt-2 hover:text-custom-green"
+        >
+          exercises
+        </button>
+      
       </div>
 
       {/*Line under buttons*/}
       <div className="flex mb-5 mt-2 justify-center items-center">
         <div className={`w-1/3 sm:w-[18%] h-1 sm:h-[0.11rem] ${activeComponent === 'programs' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
-        <div className={`w-1/3 sm:w-[18%] h-1 sm:h-[0.11rem] ${activeComponent === 'exercises' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
         <div className={`w-1/3 sm:w-[18%] h-1 sm:h-[0.11rem] ${activeComponent === 'workouts' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
+        <div className={`w-1/3 sm:w-[18%] h-1 sm:h-[0.11rem] ${activeComponent === 'exercises' ? 'bg-custom-green' : 'bg-gray-400'}`}></div>
       </div>
 
       <div className='text-right sm:text-left mb-3 space-x-2 ml-12 sm:ml-72 translate-x-1'>

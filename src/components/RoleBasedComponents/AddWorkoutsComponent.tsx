@@ -71,12 +71,12 @@ function AddWorkoutsComponent() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl mb-4">Week {currentWeek}</h1>
+      <h1 className="text-2xl mb-4 text-custom-black font-extrabold italic text-[30px]">Week {currentWeek}</h1>
       <div>
         <button
           disabled={currentWeek === 1}
           onClick={() => setCurrentWeek(currentWeek - 1)}
-          className="bg-custom-green text-white rounded px-4 py-2 m-2"
+          className="bg-custom-black rounded px-4 py-2 m-2 text-custom-white font-extrabold italic text-[14px]"
         >
           Previous Week
         </button>
@@ -84,13 +84,13 @@ function AddWorkoutsComponent() {
         <button
           disabled={currentWeek === weeks + (remainingDays > 0 ? 1 : 0)}
           onClick={() => setCurrentWeek(currentWeek + 1)}
-          className="bg-custom-green text-white rounded px-4 py-2 m-2"
+          className="bg-custom-green rounded px-4 py-2 m-2 text-custom-black font-extrabold italic text-[14px]"
         >
           Next Week
         </button>
         <button
           onClick={handleSaveButton}
-          className={`bg-custom-green text-white rounded px-4 py-2 m-2 ${currentWeek === (weeks + 1) ? "" : "hidden"}`}
+          className={`font-extrabold italic text-[14px] text-custom-black border-4 border-custom-green rounded px-4 py-2 m-2 ${currentWeek === (weeks + 1) ? "" : "hidden"} `}
         >
           Accept
         </button>
@@ -103,7 +103,7 @@ function AddWorkoutsComponent() {
             {getAvailableDays().map(day => (
               <button
                 key={day}
-                className="bg-custom-green text-white rounded px-4 py-2 m-1"
+                className="text-custom-black bg-custom-green text-custom-black rounded px-4 py-2 m-1 font-extrabold italic text-[14px]"
                 onClick={() => handleDaySelection(day)}
               >
                 {daysOfWeek[(day) % 7]}
