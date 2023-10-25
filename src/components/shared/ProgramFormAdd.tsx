@@ -37,7 +37,7 @@ function AddProgramForm() {
   }
     const postProgram = (e: React.FormEvent) => {
       e.preventDefault();
-      console.log("Hei");
+    
       dispatch(AddProgramAsync({
         name: programName,
         description: programDesc,
