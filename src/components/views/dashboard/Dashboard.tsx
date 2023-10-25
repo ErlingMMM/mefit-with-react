@@ -77,13 +77,13 @@ function Dashboard() {
           <h1 className={styles.upcoming_h1}><b>Upcoming Workouts:</b></h1>
           {
             upcomingWorkouts.map(workout => (
-              <WorkoutBar key={workout.id} workoutData={workout} updateWorkout={setWorkoutUpdated} />
+              <WorkoutBar key={`${workout.id}-${workout.day}`} workoutData={workout} updateWorkout={setWorkoutUpdated} />
             ))
           }
           <h1 className={styles.completed_h1}><b>Completed Workouts:</b></h1>
           {
             completedWorkouts.map(workout => (
-              <WorkoutBar key={workout.id} workoutData={workout} updateWorkout={setWorkoutUpdated} />
+              <WorkoutBar key={`${workout.id}-${workout.day}`} workoutData={workout} updateWorkout={setWorkoutUpdated} />
             ))
           }
         </>
