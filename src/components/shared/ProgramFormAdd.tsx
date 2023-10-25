@@ -40,6 +40,7 @@ function AddProgramForm() {
 
     const postProgram = (e: React.FormEvent) => {
       e.preventDefault();
+      console.log("Hei");
       dispatch(AddProgramAsync({
         name: programName,
         description: programDesc,
@@ -105,7 +106,7 @@ function AddProgramForm() {
   
         
           <div>
-            <button onClick={postProgram} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Add Program</button>
+            <button onClick={postProgram} className="font-extrabold italic text-[18px] text-custom-black w-full bg-custom-green font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Add Program</button>
           </div>
         </form>
         </div>
