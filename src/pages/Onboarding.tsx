@@ -30,7 +30,7 @@ function Onboarding() {
         <button className="bg-black text-white font-bold py-3 px-4 rounded focus:shadow-outline w-screen " onClick={handlePrevClick}>
             Previous
         </button> 
-        <button className="bg-[#a3e635] hover:bg-black text-black font-bold py-6 px-4 rounded focus:shadow-outline w-screen " onClick={handleNextClick}>
+        <button className="bg-[#a3e635] hover:bg-[#a3e635] text-black font-bold py-6 px-4 rounded focus:shadow-outline w-screen " onClick={handleNextClick}>
             Next
         </button> 
     </div> 

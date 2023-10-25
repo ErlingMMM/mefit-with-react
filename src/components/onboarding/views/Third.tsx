@@ -43,7 +43,7 @@ const handleRegistrerClick = () => {
       <h1 className="text-lg font-bold mb-6 text-right">Choose your timeframe</h1>
       <form className="">
 
-      <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+      <div className="mb-2 p-4 rounded flex items-start">
         <input type="radio" id="html" name="fav_language" value="15"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
          <div>
         <label  className="text-lg font-bold">15 days</label><br />
@@ -52,7 +52,7 @@ const handleRegistrerClick = () => {
          </div>
         </div>
 
-        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+        <div className="mb-2 p-4 rounded flex items-start">
         <input type="radio" id="css" name="fav_language" value="30"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
         <div>
         <label   className="text-lg font-bold" >30 days</label><br />
@@ -60,7 +60,7 @@ const handleRegistrerClick = () => {
          </div>
         </div>
 
-        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+        <div className="mb-2 p-4 rounded flex items-start">
         <input type="radio" id="javascript" name="fav_language" value="60"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
          <div>
         <label className="text-lg font-bold">60 days</label><br />

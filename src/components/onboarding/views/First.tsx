@@ -50,7 +50,7 @@ function First() {
      </div>
 
     <form className="">
-        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+        <div className="mb-2 p-4 rounded flex items-start">
             <input type="radio" id="Beginner" name="fitnessLevel" value="Beginner" onChange={handleRadioChange} className="mr-2 h-8 w-8"  />
             <div>
             <label htmlFor="Beginner" className="text-lg font-bold">Beginner</label>
@@ -60,7 +60,7 @@ function First() {
             </div> 
         </div>
 
-        <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+        <div className="mb-2 p-4 rounded flex items-start">
     <input type="radio" id="Intermediate" name="fitnessLevel" value="Intermediate" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
     <div>
         <label htmlFor="Intermediate" className="text-lg font-bold inline-block mb-1">Intermediate</label>
@@ -70,7 +70,7 @@ function First() {
 
     </div>
 
-    <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
+    <div className="mb-2 p-4 rounded flex items-start">
             <input type="radio" id="Expert" name="fitnessLevel" value="Expert" onChange={handleRadioChange} className="mr-2 h-8 w-8" />
             <div>
             <label htmlFor="Expert" className="text-lg font-bold">Expert</label>
