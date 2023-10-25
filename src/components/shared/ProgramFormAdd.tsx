@@ -13,6 +13,7 @@ function AddProgramForm() {
   const [programDesc, setProgramDesc] = useState("");
   const [programImg, setProgramImg] = useState("");
   const [programDur, setProgramDur] = useState("");
+  const [programDif, setProgramDif] = useState("0");
 
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setProgramName(event.target.value);
@@ -30,14 +31,10 @@ function AddProgramForm() {
     setProgramDur(event.target.value);
   }
 
-/*
-  name: name,
-        description: description,
-        image: image,
-        difficulty:difficulty,
-        duration:duration,
-        orderOfWorkouts : orderOfWorkouts,*/
-
+  const handleDif = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setProgramDif(event.target.value);
+    console.log(programDif)
+  }
     const postProgram = (e: React.FormEvent) => {
       e.preventDefault();
       console.log("Hei");
@@ -46,7 +43,7 @@ function AddProgramForm() {
         description: programDesc,
         image: programImg,
         duration: parseInt(programDur),
-        difficulty: 1,
+        difficulty: parseInt(programDif),
       }))
       .then(response => {
         console.log("Promise resolved", response);
@@ -103,6 +100,24 @@ function AddProgramForm() {
               </label>
             </div>
           </div>
+
+          <div className="space-y-2">
+      <label className='text-lg text-gray-800' htmlFor="programDifficulty">Program Difficulty:</label>
+      <div className="flex flex-col">
+        <label className="inline-flex items-center">
+          <input onChange={handleDif} type="radio" value="0" name="programDifficulty" checked={programDif === '0'} />
+          <span className="ml-2">Beginner</span>
+        </label>
+        <label className="inline-flex items-center">
+          <input onChange={handleDif} type="radio" value="1" name="programDifficulty" checked={programDif === '1'} />
+          <span className="ml-2">Intermediate</span>
+        </label>
+        <label className="inline-flex items-center">
+          <input onChange={handleDif} type="radio" value="2" name="programDifficulty" checked={programDif === '2'} />
+          <span className="ml-2">Advanced</span>
+        </label>
+      </div>
+    </div>
   
         
           <div>
