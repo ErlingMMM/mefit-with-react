@@ -70,17 +70,18 @@ function Explorer() {
           programs
         </button>
         <button
-          onClick={() => switchToComponent('exercises')}
-          className="flex-1 px-4 pt-2 text-base hover:text-custom-green"
-        >
-          exercises
-        </button>
-        <button
           onClick={() => switchToComponent('workouts')}
           className="flex-1 pr-10 sm:pr-80 pl-4 pt-2 text-base hover:text-custom-green"
         >
           workouts
         </button>
+        <button
+          onClick={() => switchToComponent('exercises')}
+          className="flex-1 px-4 pt-2 text-base hover:text-custom-green"
+        >
+          exercises
+        </button>
+      
       </div>
 
       {/*Line under buttons*/}
