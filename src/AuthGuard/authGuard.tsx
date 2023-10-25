@@ -6,6 +6,7 @@ import { RootState } from "../Redux/Store";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "@reduxjs/toolkit";
 import { getLoginAsync, setRegistrationBoolean } from "../Redux/GenericSlice";
+import LoadingAnimation from "../components/loading/LoadingAnimation";
 const authGuard = (Component: ComponentType<any>): ((props: any) => ReactElement) => (props: any): ReactElement => {
     
 const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
@@ -24,7 +25,7 @@ useEffect(() => {
 }, [dispatch]);
 
 if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingAnimation/>
   } else if ( registrationState.isRegistered) {
     return <Component {...props} />;
   } else {
