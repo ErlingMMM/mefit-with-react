@@ -70,6 +70,16 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
   }
 
 
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
+
   return (
     <>
       {isOpen && (
@@ -110,12 +120,22 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 )}
               </div>
             </div>
-            <div className="bg-custom-green py-6 px-4 hover:opacity-90">
+            <div className=" ">
               <button
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
                 onClick={() => subscribe(id)}
-                className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600"
+                className="w-full  font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in"
               >
-                 Subscribe
+                  <span className="absolute -inset-6 rounded-lg bg-[#6664AC]"></span>
+
+  <span
+    className={`absolute -left-48 w-[47rem] h-[8rem] transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 bg-custom-green ease ${
+      hovered ? '-rotate-90' : '-rotate-180'
+    }`}
+  ></span>
+  <span className="relative text-lg bottom-2">Subscribe</span>
+
               </button>
             </div>
           </div>
@@ -126,4 +146,14 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
 }
 
 export default SubscribeModal;
+
+
+
+{/*<div className="relative inline-block text-lg group p-5  w-96 h-7 "></div>*/}
+
+
+
+
+
+
 
