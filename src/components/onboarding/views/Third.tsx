@@ -47,8 +47,8 @@ const handleRegistrerClick = () => {
         <input type="radio" id="html" name="fav_language" value="15"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
          <div>
         <label  className="text-lg font-bold">15 days</label><br />
-        <p>For the shorter programs. great as a warm up for a new beginner  <br />
-        or a full intensity program</p>
+        <p>Kickstart your fitness journey with our 15-day program. <br />
+           In just over two weeks, you'll build a foundation for a healthier, more active lifestyle.</p>
          </div>
         </div>
 
@@ -56,17 +56,15 @@ const handleRegistrerClick = () => {
         <input type="radio" id="css" name="fav_language" value="30"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
         <div>
         <label   className="text-lg font-bold" >30 days</label><br />
-        <p>For the shorter programs. great as a warm up for a new beginner  <br />
-        or a full intensity program for a veteran</p>
+        <p>The 30-day program is designed for those seeking significant progress and sustainable results.</p>
          </div>
         </div>
 
         <div className="mb-2 p-4 rounded hover:scale-110 flex items-start">
-        <input type="radio" id="javascript" name="fav_language" value="45"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
+        <input type="radio" id="javascript" name="fav_language" value="60"  onChange={handleRadioChange} className="mr-2 h-8 w-8"/>
          <div>
-        <label className="text-lg font-bold">45 days</label><br />
-        <p>For the shorter programs. great as a warm up for a new beginner  <br />
-        or a full intensity program for a veteran</p>
+        <label className="text-lg font-bold">60 days</label><br />
+        <p>For a comprehensive fitness transformation, the 60-day programs is the way to go. Over a month and a half, you'll undergo a holistic fitness journey.</p>
          </div>
         </div>
       </form>
