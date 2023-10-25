@@ -109,7 +109,7 @@ function AddWorkoutsComponent() {
             {getAvailableDays().map(day => (
               <button
                 key={day}
-                className="text-custom-black bg-custom-green text-custom-black rounded px-4 py-2 m-1 font-extrabold italic text-[14px]"
+                className="text-custom-black bg-custom-green  rounded px-4 py-2 m-1 font-extrabold italic text-[14px]"
                 onClick={() => handleDaySelection(day)}
               >
                 {daysOfWeek[(day) % 7]}
