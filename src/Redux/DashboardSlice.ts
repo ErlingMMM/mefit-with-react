@@ -33,6 +33,11 @@ interface PlanData {
   difficulty: number;
 }
 
+interface CompleteWorkoutDTO {
+  workoutId: number;
+  day: number;
+}
+
 
 // Create an asyncThunk for asynchronous operation (i.e fetching data from the API).
 // Note that the thunk is exported as it is being defined. 
@@ -41,8 +46,8 @@ export const fetchWorkouts = createAsyncThunk('dashboard/fetchWorkouts', async (
     return response;
 });
 
-export const completeWorkoutAction = createAsyncThunk('dashboard/completeWorkout', async (wId : number) => {
-  await completeWorkout(wId);
+export const completeWorkoutAction = createAsyncThunk('dashboard/completeWorkout', async (data : CompleteWorkoutDTO) => {
+  await completeWorkout(data);
 });
 
 export const getStartDateAction = createAsyncThunk('dashboard/getStartDate', async () => {

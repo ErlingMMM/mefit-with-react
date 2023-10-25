@@ -32,6 +32,11 @@ type WorkoutBarProps = {
     };
 };
 
+interface CompleteWorkoutDTO {
+  workoutId: number;
+  day: number;
+}
+
 const dayDictionary: { [key: number]: string } = {
   1: "Monday",
   2: "Tuesday",
@@ -43,6 +48,11 @@ const dayDictionary: { [key: number]: string } = {
 };
 
 function WorkoutBar({workoutData, updateWorkout} : WorkoutBarProps & { updateWorkout : React.Dispatch<React.SetStateAction<boolean>> }) { 
+  const completeData: CompleteWorkoutDTO = {
+    workoutId: workoutData.id,
+    day: workoutData.day
+  };
+
   const { isDarkMode } = useTheme();
   const dispatch = useAppDispatch();  // <-- useAppDispatch instead of useDispatch
 
@@ -52,9 +62,9 @@ function WorkoutBar({workoutData, updateWorkout} : WorkoutBarProps & { updateWor
     setShowDetails(!showDetails);
   };
 
-  const updateCompletionStatus = async (workoutId:number) => {
+  const updateCompletionStatus = async (data:CompleteWorkoutDTO) => {
     try {
-      await dispatch(completeWorkoutAction(workoutId)).unwrap(); // unwrap() will throw an error if the promise is rejected
+      await dispatch(completeWorkoutAction(data)).unwrap(); // unwrap() will throw an error if the promise is rejected
       updateWorkout(prev => !prev); // updateWorkout is the same function as setWorkoutUpdated passed down from the parent. This will automatically toggle the value of workoutUpdated
   } catch (error) {
       console.error("Failed to complete workout:", error);
@@ -88,7 +98,7 @@ function WorkoutBar({workoutData, updateWorkout} : WorkoutBarProps & { updateWor
         </div>
 
         <div className={styles.buttonsGroup}>
-          <button onClick={() => updateCompletionStatus(workoutData.id)}>{workoutData.isCompleted ? <CheckCircleIcon className="h-7 w-7 text-[#A8E52E]" /> : <PlusCircleIcon className={`h-7 w-7 ${isDarkMode ? 'text-white' : 'text-white'}`}></PlusCircleIcon>}</button>
+          <button onClick={() => updateCompletionStatus(completeData)}>{workoutData.isCompleted ? <CheckCircleIcon className="h-7 w-7 text-[#A8E52E]" /> : <PlusCircleIcon className={`h-7 w-7 ${isDarkMode ? 'text-white' : 'text-white'}`}></PlusCircleIcon>}</button>
           <button onClick={toggleDetails}>{showDetails ? <ChevronUpIcon className="h-7 w-7 text-[#A8E52E]" /> : <ChevronDownIcon className="h-7 w-7 text-[#A8E52E]" />}</button>
         </div>
 
