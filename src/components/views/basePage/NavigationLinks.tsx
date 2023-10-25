@@ -35,7 +35,7 @@ const NavigationLinks: React.FC<NavigationLinksProps> = ({
             <img src={user.picture ? user.picture : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"}
                         alt="ProfilePage"
               style={{ borderRadius: '50%', width: '50px', height: '50px', border: '3px solid' }}
-              className="hover:opacity-80"
+              className="hover:opacity-80 object-cover object-center overflow-hidden"
               onMouseEnter={(e) => (e.currentTarget.style.border = '3px solid white')}
               onMouseLeave={(e) => (e.currentTarget.style.border = '3px solid')}
               />
