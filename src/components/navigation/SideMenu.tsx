@@ -100,8 +100,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ isOpen, switchToComponent, page }) 
         )}
 
         {keycloak.authenticated && (
-          <button onClick={() => keycloak.logout()} className='text-white text-lg mt-auto' style={{ marginBottom: '100px' }}
-          >Logout</button>
+          <button onClick={() => keycloak.logout()} className='text-white text-sm mt-auto' style={{ marginBottom: '100px' }}
+          >Log out</button>
         )}
       </div>
     </div>
