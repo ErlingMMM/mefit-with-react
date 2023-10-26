@@ -145,11 +145,11 @@ useEffect(() => {
     <p className="font-bold">First Name: {obj.firstName}</p>
     <p className="font-bold">Last Name: {obj.lastName}</p>
     <p className="font-bold">Fitness Preference: {obj.fitnessPreference}</p>
-    <p className="font-bold">Application Text: {obj.applicationText}</p>
+    <p className="font-bold">Application Text:  <br />{obj.applicationText}</p>
     </div>
     <button
         onClick={() => handleApplicationClick(userId)}
-        className="bg-[#a3e635] hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        className="bg-[#a3e635] hover:bg-red-600 text-custom-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         Accept Application
     </button>
 </div>
