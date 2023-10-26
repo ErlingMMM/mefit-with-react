@@ -120,7 +120,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                   <span className="absolute -inset-6 rounded-lg bg-black"></span>
 
                   <span className="absolute left-0 w-0 sm:w-[47rem] h-36 bg-custom-green transition-all duration-300 origin-left transform -translate-x-full -translate-y-2 ease-in group-hover:translate-x-0 -translate-y-4">
-                  </span>
+                  </span> {/*Needs both translate for higth of sliding bd*/}
                   <span className="relative">Go back to dashboard</span>
                 </div>
               </button>
