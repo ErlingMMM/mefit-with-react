@@ -42,15 +42,15 @@ function Onboarding() {
     <div className="bg-white overflow-hidden fixed bottom-0 left-0 w-screen">
         <ContentSwitch activeComponent={activeComponent} />
         <div className="w-screen flex justify-center">
-            <button className="bg-black text-white font-bold py-3 px-4 rounded focus:shadow-outline w-screen" onClick={handlePrevClick}>
+            <button className="bg-custom-black hover:bg-opacity-95 text-white font-bold py-3 px-4 rounded focus:shadow-outline w-screen" onClick={handlePrevClick}>
                 Previous
             </button>
             {activeComponent === 3 ? (
-               <button className="bg-[#a3e635] hover:bg-[#a3e635] text-black font-bold py-6 px-4 rounded focus:shadow-outline w-screen" onClick={handleRegistrerClick}>
+               <button className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-6 px-4 rounded focus:shadow-outline w-screen" onClick={handleRegistrerClick}>
                Register
            </button>
             ) : (
-                <button className="bg-[#a3e635] hover:bg-[#a3e635] text-black font-bold py-6 px-4 rounded focus:shadow-outline w-screen" onClick={handleNextClick}>
+                <button className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-6 px-4 rounded focus:shadow-outline w-screen" onClick={handleNextClick}>
                     Next
                 </button>
             )}
