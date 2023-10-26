@@ -103,19 +103,18 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
               <div className="px-4 pb-6 sm:pb-10 rounded-b-lg justify-center flex items-center">
                 {isSubscribed ? null : (
                   <button onClick={() => subscribe(id)}
-
-                  className="w-full sm:w-40 font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in overflow-hidden"
+                    className="w-full sm:w-40 font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in overflow-hidden"
                   >
                     <div className="relative text-sm hover:text-white  group transition-color duration-700 italic text-black">
                       <span className="absolute -inset-6 rounded-lg bg-custom-green"></span>
-    
-                      <span className="absolute left-0 w-0 sm:w-[47rem] h-36  bg-black transition-all duration-300 origin-left transform -translate-x-full -translate-y-2 ease-in group-hover:translate-x-0 -translate-y-4">
-                      </span> 
+                      <span className="absolute right-0 w-0 sm:w-[47rem] h-36 bg-black transition-all duration-300 origin-right transform translate-x-full -translate-y-2 ease-in group-hover:translate-x-0 -translate-y-4">
+                      </span>
                       <span className="relative">Subscribe</span>
                     </div>
                   </button>
                 )}
               </div>
+
             </div>
             <div>
               <button
