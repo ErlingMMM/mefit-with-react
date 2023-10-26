@@ -153,7 +153,7 @@ function EditProfile() {
     
     <div className='mb-2'>
       <input onChange={handleRadio2Change} type="radio" id="other" name="gender" value="Expert" />
-      <label className="text-gray-800 text-xl ml-2" htmlFor="other">Advanced</label>
+      <label className="text-gray-800 text-xl ml-2" htmlFor="other">Expert</label>
     </div>
   </div>
 </div>

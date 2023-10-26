@@ -122,7 +122,7 @@ function AddProgramForm() {
         </label>
         <label className="inline-flex items-center">
           <input onChange={handleDif} type="radio" value="2" name="programDifficulty" checked={programDif === '2'} />
-          <span className="ml-2">Advanced</span>
+          <span className="ml-2">Expert</span>
         </label>
       </div>
     </div>

@@ -45,7 +45,7 @@ function AddWorkoutsComponent() {
       .sort();
   };
 
-  const difficultys = ["beginner", "intermidiate", "advanced"];
+  const difficultys = ["beginner", "intermidiate", "expert"];
 
   const toggleWorkout = (workoutId: any) => {
     const index = workoutIdsList.findIndex((id, idx) => id === workoutId && Math.floor(daysList[idx] / 7) + 1 === currentWeek);
