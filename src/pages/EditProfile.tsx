@@ -106,6 +106,7 @@ function EditProfile() {
         MeFit
       </h1>
      <br />
+     <br />
      <div className="sm:w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto">
 
       <form className="bg-gray p-8 rounded">
@@ -153,7 +154,7 @@ function EditProfile() {
     
     <div className='mb-2'>
       <input onChange={handleRadio2Change} type="radio" id="other" name="gender" value="Expert" />
-      <label className="text-gray-800 text-xl ml-2" htmlFor="other">Advanced</label>
+      <label className="text-gray-800 text-xl ml-2" htmlFor="other">Expert</label>
     </div>
   </div>
 </div>
