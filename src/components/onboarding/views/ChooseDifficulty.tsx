@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ChooseDifficulty() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-  const [selectedOption, setSelectedOption] = useState('option1');
+  const [selectedOption, setSelectedOption] = useState('Beginner');
   const navigate = useNavigate();
   const intensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
   const fintessLevelBruker = useSelector((state: any) => state.data.userData.fitnessPreference);
