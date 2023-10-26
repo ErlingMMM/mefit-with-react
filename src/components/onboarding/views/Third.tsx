@@ -35,11 +35,13 @@ const handleRegistrerClick = () => {
   console.log("timeframe:",fintessTimeFrame )
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-4">
+    <div className="min-h-screen flex flex-col justify-center items-center p-4 mt-11">
+      <br />
+      <br />
+      <br />
       <h1 className={`font-bold text-black text-2xl italic text-right`}>
       MeFit
     </h1>
-    <br />
       <h1 className="text-lg font-bold mb-6 text-right">Choose your timeframe</h1>
       <form className="">
 

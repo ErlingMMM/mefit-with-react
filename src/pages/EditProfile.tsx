@@ -106,6 +106,7 @@ function EditProfile() {
         MeFit
       </h1>
      <br />
+     <br />
      <div className="sm:w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto">
 
       <form className="bg-gray p-8 rounded">

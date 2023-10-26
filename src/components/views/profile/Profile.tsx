@@ -45,11 +45,7 @@ function ProfilePage() {
                 edit profile
             </button>
             <br />
-            {!(isAdmin || isContributor) && (
-                <button onClick={handleApplicationClick} className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
-                    apply to become a contributor
-                </button>
-            )}
+            
             {keycloak.tokenParsed && keycloak.tokenParsed.name && (
                 <div className="flex flex-col items-center justify-center max-w-screen-md mx-auto p-4 text-center">
                     <div className='text-custom-green'>
@@ -95,8 +91,13 @@ function ProfilePage() {
                 </div>
             )}
             
-                    
-                    
+            <div  className="flex flex-col justify-center items-center p-4">
+            {!(isAdmin || isContributor) && (
+                <button onClick={handleApplicationClick} className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-2 px-4 rounded focus:shadow-outline  self-end">
+                    apply to become a contributor
+                </button>
+            )}
+                </div>        
                 
             
              {/* Dark Mode Toggle Button */}
