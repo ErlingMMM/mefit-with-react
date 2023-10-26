@@ -1,6 +1,6 @@
 import First from "./views/ChooseDifficulty";
 import Second from "./views/ChooseWorkoutsWeek";
-import Third from "./views/ChooseTimefram";
+import Third from "./views/ChooseTimeframe";
 
 function ContentSwitch({ activeComponent }: { activeComponent: number }) {
     switch (activeComponent) {
