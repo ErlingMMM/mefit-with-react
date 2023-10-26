@@ -1,5 +1,5 @@
-# MeFit webapp
-Pokemon Trainer App is an application that lets you catch, collect and release pokèmon.
+# MeFit webapp -  Your Fitness Companion
+MeFit - an app crafted to assist you in achieving your fitness goals and maintaining a consistent workout routine. Whether you're a fitness novice or a seasoned athlete, MeFit is your dedicated partner, offering personalized workout plans and support at every stage of your fitness journey. Set your goals, preferences, and workout days, and let MeFit guide you with tailored Program and motivation, ensuring you stay on the path to a healthier, fitter you. 
 
 # Required installations:
 You’ll need to have Node 14.0.0 or later version on your local development machine: 
