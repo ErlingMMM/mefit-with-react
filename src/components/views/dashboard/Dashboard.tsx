@@ -21,8 +21,10 @@ function Dashboard() {
   const startDay = (currentWeek - 1) * 7 + 1;
   const endDay = currentWeek * 7;
 
+  // First sort the workouts on day
+  const sortedWorkouts = [...workouts].sort((a, b) => a.day - b.day);
   // Filter out the workouts belonging to the current week
-  const filteredWorkouts = workouts.filter(workout => workout.day >= startDay && workout.day <= endDay);
+  const filteredWorkouts = sortedWorkouts.filter(workout => workout.day >= startDay && workout.day <= endDay);
 
   // Separate current weeks workouts based on completion status
   const upcomingWorkouts = filteredWorkouts.filter(workout => !workout.isCompleted);

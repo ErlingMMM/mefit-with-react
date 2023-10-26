@@ -7,7 +7,9 @@ function CurrentProgramDisplayer(){
     const workouts = useAppSelector(state => state.dashboard.workouts);  // <-- useAppSelector instead of useSelector
     const completedWorkouts = workouts.filter(workout => workout.isCompleted);
     const percentage = Math.floor(completedWorkouts.length/workouts.length*100);  // You can replace this with a dynamic value later
-    const totalWeeks = Math.ceil(workouts[workouts.length-1].day/7)
+    const maxDay = Math.max(...workouts.map(workout => workout.day));
+    const totalWeeks = Math.ceil(maxDay / 7);
+
     
     
     const plan = useAppSelector(state => state.dashboard.plan)
