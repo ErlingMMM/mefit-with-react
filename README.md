@@ -9,7 +9,7 @@ https://nodejs.org/en/download
 https://github.com/ErlingMMM/mefit-with-react/
 
 ### 1. Install Dependencies:
-First things first, install all the necessary dependencies by running the following command in your terminal or command prompt:
+Before you dive into the exciting world of MeFIT development, it's crucial to ensure your project has all the required dependencies. Start by opening your terminal or command prompt and run the following command:
 
 npm install
 
