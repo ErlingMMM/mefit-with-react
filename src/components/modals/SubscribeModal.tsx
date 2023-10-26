@@ -104,7 +104,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 {isSubscribed ? null : (
                   <button onClick={() => subscribe(id)}
 
-                    className="block pb-2 sm:pt-3 sm:mb-5 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#A8E52E] hover:border-[#D0FF70] items-center"
+                    className="block pb-2 pt-3 sm:mb-5 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#A8E52E] hover:border-[#D0FF70] items-center"
                   >
                     Subscribe
                   </button>
