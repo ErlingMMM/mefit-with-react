@@ -11,7 +11,6 @@ https://github.com/ErlingMMM/mefit-with-react/
 ### 1. Install Dependencies:
 First things first, install all the necessary dependencies by running the following command in your terminal or command prompt:
 
-```bash
 npm install
 
 # Start the Development Server:
