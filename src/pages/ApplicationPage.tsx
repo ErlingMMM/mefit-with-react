@@ -49,7 +49,7 @@ function ApplicationPage (){
                 <label className='block mb-2 text-gray-800 font-bold' htmlFor="bio">Application text:</label>
                 <textarea onChange={handleApplicationChange} className='w-full h-40 p-2 mb-4 border rounded align-top' id="bio" name="bio"></textarea>
     
-                <button  onClick={handleApplicationSubmit} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Send application</button>
+                <button  onClick={handleApplicationSubmit} className="w-full bg-custom-green text-custom-black font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Send application</button>
             </form>
         </div>
     )
