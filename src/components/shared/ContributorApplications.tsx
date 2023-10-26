@@ -8,7 +8,6 @@ import keycloak from "../../Keycloak";
 
 
 function ContributorApplications() {
-
     
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
     const UserApplications = useSelector((state: any) => state.data.userApplication);

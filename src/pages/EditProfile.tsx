@@ -107,7 +107,8 @@ function EditProfile() {
       </h1>
      <br />
      <br />
-     <div className="sm:w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto">
+     br
+     <div className="sm:w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto  mt-16">
 
       <form className="bg-gray p-8 rounded">
         <label className='block mb-2 text-black font-bold ' htmlFor="bio">Bio:</label>
