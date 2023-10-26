@@ -247,9 +247,9 @@ function WorkoutsInProgram() {
       <div className="flex justify-center">
         <button
           onClick={() => openModal()}
-          className={` sm:w-auto font-bold w-44 text-lg px-4 sm:px:0 py-6 sm:py-0 relative rounded-lg group transition-color`}
+          className={` sm:w-auto w-full font-bold text-lg sm:px-4  sm:px:0  relative rounded-lg group transition-color`}
         >
-          <div className="relative overflow-hidden rounded-lg sm:pl-3 pl-2 pr-2 sm:pr-3 pt-1 pb-1 text-lg hover:text-white sm:bottom-2 group transition-color duration-700 italic text-black"> {/*own duration-700 for the text*/}
+          <div className="relative overflow-hidden rounded-lg sm:pl-3 pl-2 pr-2 sm:pr-3 sm:pt-1 pt-4 pb-4 sm:pb-1 text-lg hover:text-white sm:bottom-2 group transition-color duration-700 italic text-black"> {/*own duration-700 for the text*/}
             <span className="absolute -inset-6  rounded-lg bg-custom-green"></span>
             <span className="absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 bg-black transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 ease -rotate-90 group-hover:-rotate-180"></span>
             <span className="relative">Subscribe to this program</span>
