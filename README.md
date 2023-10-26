@@ -19,5 +19,4 @@ run npm start
 Open http://localhost:3000 to view it in your browser.
 
 # Vercel
-We've chosen Vercel as our hosting platform for the MeFIT application. Vercel is a powerful and user-friendly platform that simplifies the deployment process and provides robust hosting solutions for web applications.
-We used Vercel to host the application : mefit-with-react.vercel.app
+We've chosen Vercel as our hosting platform for the MeFIT application. Vercel is a powerful and user-friendly platform that simplifies the deployment process and provides robust hosting solutions for web applications. The url is given by: mefit-with-react.vercel.app
