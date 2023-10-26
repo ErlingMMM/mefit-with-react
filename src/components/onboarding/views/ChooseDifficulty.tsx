@@ -11,7 +11,7 @@ function ChooseDifficulty() {
   const [selectedOption, setSelectedOption] = useState('Beginner');
   const navigate = useNavigate();
   const intensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
-  const fintessLevelBruker = useSelector((state: any) => state.data.userData.fitnessPreference);
+  const fintessLevelUser = useSelector((state: any) => state.data.userData.fitnessPreference);
   const fintessTimeFrame = useSelector((state: any) => state.data.userData.DurationTimeFrame);
   const registrationState = useSelector((state: any) => state.data.RegistrationValidation);
 
@@ -23,7 +23,7 @@ function ChooseDifficulty() {
   const handleRegistrerClick = () => {
     dispatch(RegisterUserOnboardingStatsAsync({
       intensity: intensityLevelUser,
-      fitnessLvl: fintessLevelBruker,
+      fitnessLvl: fintessLevelUser,
       timeframe: fintessTimeFrame
     }));
     dispatch(setRegistrationBoolean(true));
