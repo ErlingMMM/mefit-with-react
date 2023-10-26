@@ -1,11 +1,11 @@
 class DifficultyUtils {
     static difficultyToLabel(difficulty: number | undefined): string {
       switch (difficulty) {
-        case 0:
-          return "Beginner";
         case 1:
-          return "Intermediate";
+          return "Beginner";
         case 2:
+          return "Intermediate";
+        case 3:
           return "Expert";
         default:
           return "Unknown"; 
