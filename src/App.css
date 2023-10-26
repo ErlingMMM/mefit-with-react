@@ -98,6 +98,9 @@ border: 2px solid #A8E52D;
     }
 }
 
+
+
+/*******************Radio buttons**************/
 .custom-radio {
   display: flex;
   flex-direction: column;
