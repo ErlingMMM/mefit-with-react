@@ -13,7 +13,7 @@ html::-webkit-scrollbar {
 ::-webkit-scrollbar {
   background-color: transparent;
   margin-left: 2rem;
-  width: 7.5px;  /*adjust width*/
+  width: 7.5px;  
 }
 
 ::-webkit-scrollbar-thumb {
@@ -96,4 +96,27 @@ border: 2px solid #A8E52D;
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
+}
+
+
+/* Apply the background color to the label when the radio button is selected */
+.custom-radio label {
+  position: relative;
+  padding-left: 25px; 
+}
+
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+.custom-radio input[type="radio"]:checked + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 20px; 
+  height: 20px; 
+  background-color: #A8E52D; 
+  border-radius: 50%;
 }
