@@ -37,6 +37,7 @@ function ChooseDifficulty() {
   <div className="text-right">
   
     <br />
+    <br />
     <h1 className="text-xl font-bold mb-6 sm:text-2xl md:text-3xl w-64 sm:w-80 md:w-96">
       What is your<br />current fitness<br />level?
     </h1>

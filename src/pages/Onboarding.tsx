@@ -39,19 +39,19 @@ function Onboarding() {
  
 
   return (
-    <div className="bg-white overflow-x-hidden fixed bottom-0 left-0 w-screen ">
+    <div className="bg-white overflow-x-hidden fixed bottom-0  left-0 w-screen ">
         <ContentSwitch activeComponent={activeComponent} />
         <div className="w-screen flex justify-center">
-        <button className="bg-custom-black hover:bg-opacity-80 text-white font-bold py-3 px-4 sm:py-0 sm:px-6  md:px-8 rounded focus:shadow-outline w-screen" onClick={handlePrevClick}>
+        <button className="bg-custom-black hover:bg-opacity-80 text-white font-bold py-3 px-4  sm:px-6  md:px-8 rounded focus:shadow-outline w-screen" onClick={handlePrevClick}>
   Previous
 </button>
 
 {activeComponent === 3 ? (
-  <button className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-4 px-6 sm:py-0 sm:px-8  md:px-10 rounded focus:shadow-outline w-screen" onClick={handleRegistrerClick}>
+  <button className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-4 px-6  sm:px-8  md:px-10 rounded focus:shadow-outline w-screen" onClick={handleRegistrerClick}>
     Register
   </button>
 ) : (
-  <button className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-4 px-6 sm:py-0 sm:px-8  md:px-10 rounded focus:shadow-outline w-screen" onClick={handleNextClick}>
+  <button className="bg-custom-green hover:bg-custom-green-hover text-black font-bold py-4 px-6  sm:px-8  md:px-10 rounded focus:shadow-outline w-screen" onClick={handleNextClick}>
     Next
   </button>
 )}
