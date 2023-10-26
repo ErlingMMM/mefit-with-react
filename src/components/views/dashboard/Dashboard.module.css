@@ -198,7 +198,7 @@
 }
 
 .completed_h1 {
-  margin-bottom: -8px; /* To counteract the margin-top of the workoutBarWrapper */
+  margin-bottom: 10px; /* To counteract the margin-top of the workoutBarWrapper */
   margin-top: 15px;
 }
   

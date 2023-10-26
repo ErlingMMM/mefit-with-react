@@ -6,7 +6,7 @@ import { RegisterUserOnboardingStatsAsync, SetUserFitnessLVL, setRegistrationBoo
 import { AnyAction } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
 
-function Second() {
+function ChooseWorkoutsWeek() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const [selectedOption, setSelectedOption] = useState('option1');
   const navigate = useNavigate();
@@ -90,4 +90,4 @@ function Second() {
 );
 };
 
-export default Second
+export default ChooseWorkoutsWeek
