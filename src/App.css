@@ -98,7 +98,6 @@ border: 2px solid #A8E52D;
     }
 }
 
-
 .custom-radio {
   display: flex;
   flex-direction: column;
@@ -107,7 +106,6 @@ border: 2px solid #A8E52D;
 .custom-radio label {
   position: relative;
   padding-left: 50px;
-  border: 1px solid black; 
   margin-bottom: 40px;
 }
 
@@ -118,7 +116,7 @@ border: 2px solid #A8E52D;
 .custom-radio input[type="radio"] + label::before {
   content: "";
   position: absolute;
-  left: 5px; 
+  left: 0;
   top: 50%;
   transform: translate(0, -50%);
   width: 20px;
@@ -129,4 +127,5 @@ border: 2px solid #A8E52D;
 
 .custom-radio input[type="radio"]:checked + label::before {
   background-color: #A8E52D; 
+  border: 3px solid black; 
 }
