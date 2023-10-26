@@ -42,7 +42,7 @@ function Onboarding() {
     <div className="bg-white overflow-x-hidden fixed bottom-0  left-0 w-screen ">
         <ContentSwitch activeComponent={activeComponent} />
         <div className="w-screen flex justify-center">
-        <button className="bg-custom-black hover:bg-opacity-80 text-white font-bold py-3 px-4  sm:px-6  md:px-8 rounded focus:shadow-outline w-screen" onClick={handlePrevClick}>
+        <button className={`${activeComponent === 1 ? "invisible cursor-default": "block cursor-pointer"} bg-custom-black hover:bg-opacity-80 text-white font-bold py-3 px-4  sm:px-6  md:px-8 rounded focus:shadow-outline w-screen`} onClick={handlePrevClick}>
   Previous
 </button>
 
