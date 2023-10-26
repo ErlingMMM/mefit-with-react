@@ -39,7 +39,7 @@ function Onboarding() {
  
 
   return (
-    <div className="bg-white overflow-hidden fixed bottom-0 left-0 w-screen">
+    <div className="bg-white overflow-x-hidden fixed bottom-0 left-0 w-screen">
         <ContentSwitch activeComponent={activeComponent} />
         <div className="w-screen flex justify-center">
             <button className="bg-custom-black hover:bg-opacity-95 text-white font-bold py-3 px-4 rounded focus:shadow-outline w-screen" onClick={handlePrevClick}>

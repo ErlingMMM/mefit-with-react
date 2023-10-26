@@ -32,16 +32,20 @@ function ChooseDifficulty() {
 
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-4 overflow-hidden">
-      <div className="mt-10">
-        <div>
-          <h1 className={`font-bold text-black text-2xl italic text-center`}>
-            MeFit
-          </h1>
-          <br />
-          <h1 className="text-lg font-bold mb-6 text-right">What is your<br />current fitness<br />level?</h1>
-        </div>
-      </div>
+    <div className="min-h-screen flex flex-col justify-center items-center overflow-x-hidden">
+<div className="mt-10">
+  <div className="text-center">
+    <h1 className="font-bold text-black text-3xl italic mb-2 w-64">
+      MeFit
+    </h1>
+    <br />
+    <h3 className="text-xl font-bold mb-6 -ml-5 w-full text-start"> 
+      What is your<br />current fitness<br />level?
+    </h3>
+  </div>
+</div>
+
+
 
       <div>
         <form className="">
