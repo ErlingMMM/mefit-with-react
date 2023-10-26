@@ -46,7 +46,7 @@ function Dashboard() {
   const handleClick = () => {
     dispatch(setActiveComponent('explorer'));
   };
-
+/*
   useEffect(() => {
     const storedFlag = localStorage.getItem("showCompletedModal");
 
@@ -61,7 +61,7 @@ function Dashboard() {
     setIsModalOpen(false);
     localStorage.setItem("showCompletedModal", "completed");
   };
-
+*/
   
   return (
     <div className={styles.dashboardContainer}>
