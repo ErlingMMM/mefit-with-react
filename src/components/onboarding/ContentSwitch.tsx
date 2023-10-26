@@ -1,15 +1,15 @@
-import First from "./views/ChooseDifficulty";
-import Second from "./views/ChooseWorkoutsWeek";
-import Third from "./views/ChooseTimeframe";
+import ChooseDifficulty from "./views/ChooseDifficulty";
+import ChooseWorkoutsWeek from "./views/ChooseWorkoutsWeek";
+import ChooseTimeframe from "./views/ChooseTimeframe";
 
 function ContentSwitch({ activeComponent }: { activeComponent: number }) {
     switch (activeComponent) {
       case 1:
-        return <First />;
+        return <ChooseDifficulty />;
       case 2:
-        return <Second />;
+        return <ChooseWorkoutsWeek />;
       case 3:
-        return <Third />;
+        return <ChooseTimeframe />;
     
       default:
         return null;
