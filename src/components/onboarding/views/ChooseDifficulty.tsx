@@ -29,7 +29,7 @@ function ChooseDifficulty() {
     dispatch(setRegistrationBoolean(true));
     navigate('/');
   };
-  
+
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center p-4 overflow-hidden">
@@ -68,7 +68,9 @@ function ChooseDifficulty() {
               and intense routines.</p>
           </div>
         </form>
-        <button className="underline" type="submit" onClick={handleRegistrerClick}>skip</button>
+        <div className="text-center">
+          <button className="underline" type="submit" onClick={handleRegistrerClick}>skip</button>
+        </div>
       </div>
     </div>
   );
