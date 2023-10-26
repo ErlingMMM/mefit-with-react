@@ -22,7 +22,7 @@ interface Workout {
 
 function WorkoutsInProgram() {
   const selectedProgramId = useSelector((state: any) => state.selectedProgramId);
-  const [workout, setWorkouts] = useState<Workout[]>([]);
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [exercises, setExercises] = useState([]);
   const [activeWorkout, setActiveWorkout] = useState(0);
   const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
@@ -34,11 +34,17 @@ function WorkoutsInProgram() {
 
 
 
-
-
   const openModal = () => {
     setIsModalOpen(true);
   };
+
+
+  const uniqueWorkouts = workouts.reduce((accumulator: Workout[], iteratedWorkout: Workout) => {
+    if (!accumulator.some((w) => w.id === iteratedWorkout.id)) {
+      accumulator.push(iteratedWorkout);
+    }
+    return accumulator;
+  }, []);
 
 
   useEffect(() => {
@@ -67,13 +73,14 @@ function WorkoutsInProgram() {
   }, [selectedProgramId]);
 
 
+  
   useEffect(() => {
     const fetchData = async () => {
-      if (activeWorkout >= 0 && workout.length > activeWorkout) {
+      if (activeWorkout >= 0 && uniqueWorkouts.length > activeWorkout) {
         try {
           // Fetch exercises
           const exercisesResponse = await fetch(
-            `https://mefit-backend.azurewebsites.net/api/Workouts/${workout[activeWorkout].id.toString()}/exercises`
+            `https://mefit-backend.azurewebsites.net/api/Workouts/${uniqueWorkouts[activeWorkout].id.toString()}/exercises`
           );
           if (exercisesResponse.ok) {
             const exercisesData = await exercisesResponse.json();
@@ -88,15 +95,13 @@ function WorkoutsInProgram() {
     };
   
     fetchData();
-  }, [activeWorkout, workout]);
+  }, [activeWorkout, uniqueWorkouts]);
   
 
 
 
-
-
   const workoutsPerPage = 3;
-  const totalWorkouts = workout.length;
+  const totalWorkouts = uniqueWorkouts.length;
   const lastPage = Math.ceil(totalWorkouts / workoutsPerPage);
 
 
@@ -133,19 +138,19 @@ function WorkoutsInProgram() {
   return (
     <div>
       <br />
-      {workout[activeWorkout] ? (
+      {uniqueWorkouts[activeWorkout] ? (
         <div className="relative">
           <img
             className="h-44 md:h-52 md:rounded-md w-screen max-w-screen-md mx-auto object-cover object-center overflow-hidden"
-            src={(workout[activeWorkout] as { image: string } || {}).image || ''}
+            src={(uniqueWorkouts[activeWorkout] as { image: string } || {}).image || ''}
             alt="WorkoutImage"
           />
           <div className="absolute bottom-0 right-0 p-2 md:mr-64  text-white z-10">
-            <span className="px-2 py-1">Duration: {workout[activeWorkout].duration ? DurationUtils.formatDuration(workout[activeWorkout].duration) : ''}
+            <span className="px-2 py-1">Duration: {uniqueWorkouts[activeWorkout].duration ? DurationUtils.formatDuration(uniqueWorkouts[activeWorkout].duration) : ''}
             </span>
           </div>
           <div className="absolute left-0 p-2 bottom-0.5 md:ml-64  text-white z-10">
-            <span className="px-2"> {workout[activeWorkout].difficulty ? DifficultyUtils.difficultyToLabel(workout[activeWorkout].difficulty) : ''}
+            <span className="px-2"> {uniqueWorkouts[activeWorkout].difficulty ? DifficultyUtils.difficultyToLabel(uniqueWorkouts[activeWorkout].difficulty) : ''}
             </span>
           </div>
         </div>
@@ -153,18 +158,18 @@ function WorkoutsInProgram() {
 
       <div className='mx-11 sm:mx-0 my-5'>
         <div className='font-bold text-lg sm:justify-center sm:flex sm:pb-5'>
-          {workout[activeWorkout] ? workout[activeWorkout].name : 'Loading...'}
+          {uniqueWorkouts[activeWorkout] ? uniqueWorkouts[activeWorkout].name : 'Loading...'}
         </div>
 
         <div className='sm:justify-center sm:flex max-w-screen-md mx-auto'>
           <div className={showFullDescription ? ' h-full' : 'h-24 sm:h-12'}>
             {showFullDescription
-              ? workout[activeWorkout]?.description || ''
-              : truncateDescription(workout[activeWorkout]?.description || '', 150)}
+              ? uniqueWorkouts[activeWorkout]?.description || ''
+              : truncateDescription(uniqueWorkouts[activeWorkout]?.description || '', 150)}
           </div>
         </div>
 
-        {workout[activeWorkout]?.description?.length > 150 ? (
+        {uniqueWorkouts[activeWorkout]?.description?.length > 150 ? (
           <div className="text-center text-xs mt-1">
             <button
               onClick={() => setShowFullDescription(!showFullDescription)}
@@ -220,7 +225,7 @@ function WorkoutsInProgram() {
                   className={`flex-1 pl-10 md-pl-0 pr-6 pt-2 text-base ${isButtonActive ? 'cursor-default' : 'hover:text-custom-green cursor-pointer'} ${isButtonVisible ? '' : 'hidden'}`}
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
-                  {isButtonVisible ? workout[workoutIndex]?.name || '' : ''}
+                  {isButtonVisible ?uniqueWorkouts[workoutIndex]?.name || '' : ''}
                 </button>
               )}
             </div>
@@ -234,22 +239,27 @@ function WorkoutsInProgram() {
       <ExerciseList exercises={exercises} content={"program"} />
 
 
-      {workout[activeWorkout] ? (
-       <div className="flex justify-center">
-       <div className={`fixed ${isSticky ? 'sm:bottom-4' : 'sm:-bottom-20'} bottom-0 w-full`}>
-         <div className="flex justify-center"> 
-           <button
-             className={`bg-custom-green text-black w-full sm:w-auto font-bold text-lg px-4 sm:py-2 py-6 rounded-lg hover:bg-custom-green-hover`}
-             onClick={() => openModal()}
-           >
-             Subscribe to this program
-           </button>
-         </div>
-       </div>
-     </div>
-     
+      {uniqueWorkouts[activeWorkout] ? (
+  <div className="flex justify-center">
+    <div
+      className={`fixed ${isSticky ? 'sm:bottom-4' : 'sm:-bottom-20'} bottom-0 w-full`}
+    >
+      <div className="flex justify-center">
+        <button
+          onClick={() => openModal()}
+          className={` sm:w-auto font-bold w-44 text-lg px-4 sm:px:0 py-6 sm:py-0 relative rounded-lg group transition-color`}
+        >
+          <div className="relative overflow-hidden rounded-lg sm:pl-3 pl-2 pr-2 sm:pr-3 pt-1 pb-1 text-lg hover:text-white sm:bottom-2 group transition-color duration-700 italic text-black"> {/*own duration-700 for the text*/}
+            <span className="absolute -inset-6  rounded-lg bg-custom-green"></span>
+            <span className="absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 bg-black transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 ease -rotate-90 group-hover:-rotate-180"></span>
+            <span className="relative">Subscribe to this program</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+) : null}
 
-      ) : null}
 
 
   <SubscribeModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} id={selectedProgramId} />

@@ -16,7 +16,10 @@ function Explorer() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
+
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +59,8 @@ function Explorer() {
         programs: ["name", "description", "difficulty"],
         workouts: ["name", "description", "difficulty"],
       };
+
+   
 
   return (
     <>

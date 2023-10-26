@@ -7,9 +7,10 @@ import { fetchWorkouts, getPlanAction } from "../../../Redux/DashboardSlice"
 import { useAppDispatch, useAppSelector } from "../../../Redux/Hooks"
 import { setActiveComponent } from '../../../Redux/NavigationSlice';
 import CoompletedProgramModal from "../../modals/CompletedProgramModal"
+import keycloak from "../../../Keycloak"
 
 function Dashboard() {
-  // console.log(keycloak.token) //log the token to console
+  console.log(keycloak.token) //log the token to console
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const dispatch = useAppDispatch();  // <-- useAppDispatch instead of useDispatch
@@ -59,7 +60,7 @@ function Dashboard() {
     localStorage.setItem("showCompletedModal", "completed");
   };
 
-
+  
   return (
     <div className={styles.dashboardContainer}>
       <Progress />
@@ -77,13 +78,13 @@ function Dashboard() {
           <h1 className={styles.upcoming_h1}><b>Upcoming Workouts:</b></h1>
           {
             upcomingWorkouts.map(workout => (
-              <WorkoutBar key={workout.id} workoutData={workout} updateWorkout={setWorkoutUpdated} />
+              <WorkoutBar key={`${workout.id}-${workout.day}`} workoutData={workout} updateWorkout={setWorkoutUpdated} />
             ))
           }
           <h1 className={styles.completed_h1}><b>Completed Workouts:</b></h1>
           {
             completedWorkouts.map(workout => (
-              <WorkoutBar key={workout.id} workoutData={workout} updateWorkout={setWorkoutUpdated} />
+              <WorkoutBar key={`${workout.id}-${workout.day}`} workoutData={workout} updateWorkout={setWorkoutUpdated} />
             ))
           }
         </>

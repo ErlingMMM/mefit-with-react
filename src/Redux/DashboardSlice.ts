@@ -33,6 +33,11 @@ interface PlanData {
   difficulty: number;
 }
 
+interface CompleteWorkoutDTO {
+  workoutId: number;
+  day: number;
+}
+
 
 // Create an asyncThunk for asynchronous operation (i.e fetching data from the API).
 // Note that the thunk is exported as it is being defined. 
@@ -41,8 +46,8 @@ export const fetchWorkouts = createAsyncThunk('dashboard/fetchWorkouts', async (
     return response;
 });
 
-export const completeWorkoutAction = createAsyncThunk('dashboard/completeWorkout', async (wId : number) => {
-  await completeWorkout(wId);
+export const completeWorkoutAction = createAsyncThunk('dashboard/completeWorkout', async (data : CompleteWorkoutDTO) => {
+  await completeWorkout(data);
 });
 
 export const getStartDateAction = createAsyncThunk('dashboard/getStartDate', async () => {
@@ -97,10 +102,9 @@ export const dashboardSlice = createSlice({
           // Update the workouts with that data:
           state.workouts = action.payload;
 
-          // Calculate the last week of the workout based on the day of the last workout:
+          // Find the maximum day value among the workouts:
           if (state.workouts.length) {
-            const lastWorkout = state.workouts[state.workouts.length - 1];
-            state.maxWeek = Math.ceil(lastWorkout.day / 7);
+          state.maxWeek = Math.ceil(Math.max(...state.workouts.map(workout => workout.day)) / 7);
           }
         })
         .addCase(completeWorkoutAction.fulfilled, (state, action) => {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SearchIcon } from '@heroicons/react/outline';
-import { DotsVerticalIcon } from '@heroicons/react/outline';
+import { FilterIcon } from '@heroicons/react/outline';
 import '../../../../styles/SearchBar.css';
 import SearchSelectorModal from '../../../modals/SearchSelectorModal';
 import { useSelector } from 'react-redux';
@@ -64,7 +64,7 @@ function SearchBar({ searchQuery, setSearchQuery, placeholder, availableSearchOp
           className='absolute right-0 top-1/2 transform -translate-y-1/2'
           style={{ marginRight: '10px' }}
         >
-          <DotsVerticalIcon className="w-6 h-6 text-gray-400 hover:text-black" />
+          <FilterIcon className="w-6 h-6 text-gray-400 hover:text-black" />
         </button>
       </div>
       <SearchSelectorModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} availableSearchOptions={availableSearchOptions} />

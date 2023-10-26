@@ -14,6 +14,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
     e.stopPropagation();
   };
 
+
   function navigateDashboard() {
     dispatch(setActiveComponent('dashboard'));
   }
@@ -89,7 +90,7 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 onClick={closeModal}
               />
               <div className="sm:pt-4 pt-7">
-              {isSubscribed ? null : <h1 className='font-bold '>Select starting week</h1>}
+                {isSubscribed ? null : <h1 className='font-bold '>Select starting week</h1>}
                 {isSubscribed ? null : <WeekPicker />}
               </div>
 
@@ -99,24 +100,36 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
                 ) : null}
               </div>
 
-              <div className="px-4 pb-6 rounded-b-lg justify-center flex items-center">
+              <div className="px-4 pb-6 sm:pb-10 rounded-b-lg justify-center flex items-center">
                 {isSubscribed ? null : (
-                  <button
-                    onClick={() => subscribe(id)}
-                    className="block pb-2 sm:pt-3 px-4 rounded-md text-custom-black font-bold sm:m-2 cursor-pointer hover:bg-gray-50 border-2 border-[#A8E52D] hover:border-[#A8E52D] items-center"
+                  <button onClick={() => subscribe(id)}
+                    className="w-full sm:w-40 font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in overflow-hidden"
                   >
-                    Subscribe
+                    <div className="relative text-sm hover:text-white  group transition-color duration-700 italic text-black">
+                      <span className="absolute -inset-6 rounded-lg bg-custom-green"></span>
+                      <span className="absolute right-0 w-0 sm:w-[47rem] h-36 bg-black transition-all duration-300 origin-right transform translate-x-full -translate-y-2 ease-in group-hover:translate-x-0 -translate-y-4">
+                      </span>
+                      <span className="relative">Subscribe</span>
+                    </div>
                   </button>
                 )}
               </div>
+
             </div>
-            <div className="bg-custom-green py-6 px-4 hover:opacity-90">
+            <div>
               <button
                 onClick={() => navigateDashboard()}
-                className="text-black w-full px-4 font-bold text-lg sm:py-2 py-6 rounded-lg hover:text-gray-600"
+                className="w-full font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in overflow-hidden"
               >
-                Go back to dashboard
+                <div className="relative text-lg text-white group transition-color duration-700 italic hover:text-black">
+                  <span className="absolute -inset-6 rounded-lg bg-black"></span>
+                  <span className="absolute right-0 w-0 sm:w-[47rem] h-36 bg-custom-green transition-all duration-300 origin-right transform translate-x-full -translate-y-2 ease-in group-hover:translate-x-0 -translate-y-4">
+                  </span>
+                  <span className="relative">Go back to dashboard</span>
+                </div>
               </button>
+
+
             </div>
           </div>
         </div>
@@ -126,4 +139,13 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
 }
 
 export default SubscribeModal;
+
+
+
+
+
+
+
+
+
 

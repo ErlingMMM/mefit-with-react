@@ -27,9 +27,14 @@ html::-webkit-scrollbar {
 }
 
 
-body{
-  
+
+.disable-hover {
+  pointer-events: none;
+  cursor: default;
 }
+
+
+
 .light-mode {
   font-family: 'Montserrat', sans-serif;
   background-color: #EFEFEF;

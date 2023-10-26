@@ -153,7 +153,7 @@ function EditProfile() {
     
     <div className='mb-2'>
       <input onChange={handleRadio2Change} type="radio" id="other" name="gender" value="Expert" />
-      <label className="text-gray-800 text-xl ml-2" htmlFor="other">Advanced</label>
+      <label className="text-gray-800 text-xl ml-2" htmlFor="other">Expert</label>
     </div>
   </div>
 </div>
@@ -161,7 +161,7 @@ function EditProfile() {
 
 
 
-        <button onClick={handleSave} className="w-full bg-custom-green text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
+        <button onClick={handleSave} className="w-full bg-custom-green hover:bg-custom-green-hover text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
 
       </form>
       </div>

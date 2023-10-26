@@ -64,7 +64,7 @@ function AddExercisesComponent() {
 
   return (
     <div className="container mx-auto p-4">
-      <button onClick={handleSaveButton} className={`mt-4 px-6 py-2 rounded-lg text-custom-green bg-custom-black ${exerciseCount > 0 ? '' : 'hidden'}`}>Save Workout</button>
+      <button onClick={handleSaveButton} className={`mt-4 px-6 py-2 rounded-lg text-custom-green hover:text-custom-green-hover bg-custom-black ${exerciseCount > 0 ? '' : 'hidden'}`}>Save Workout</button>
       <ul>
         {Array.isArray(exercises) && exercises.length > 0 ? (
           exercises.map((exercise: any) => (

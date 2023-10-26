@@ -13,6 +13,9 @@ function AddProgramForm() {
   const [programDesc, setProgramDesc] = useState("");
   const [programImg, setProgramImg] = useState("");
   const [programDur, setProgramDur] = useState("");
+  const [programDif, setProgramDif] = useState("0");
+  const [hovered, setHovered] = useState(false);
+
 
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setProgramName(event.target.value);
@@ -30,23 +33,19 @@ function AddProgramForm() {
     setProgramDur(event.target.value);
   }
 
-/*
-  name: name,
-        description: description,
-        image: image,
-        difficulty:difficulty,
-        duration:duration,
-        orderOfWorkouts : orderOfWorkouts,*/
-
+  const handleDif = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setProgramDif(event.target.value);
+    console.log(programDif)
+  }
     const postProgram = (e: React.FormEvent) => {
       e.preventDefault();
-      console.log("Hei");
+    
       dispatch(AddProgramAsync({
         name: programName,
         description: programDesc,
         image: programImg,
         duration: parseInt(programDur),
-        difficulty: 1,
+        difficulty: parseInt(programDif),
       }))
       .then(response => {
         console.log("Promise resolved", response);
@@ -62,7 +61,13 @@ function AddProgramForm() {
       });
     };
 
-   
+    const handleMouseEnter = () => {
+      setHovered(true);
+    };
+  
+    const handleMouseLeave = () => {
+      setHovered(false);
+    };
 
     return (
       isFormSubmitted
@@ -103,11 +108,42 @@ function AddProgramForm() {
               </label>
             </div>
           </div>
+
+          <div className="space-y-2">
+      <label className='text-lg text-gray-800' htmlFor="programDifficulty">Program Difficulty:</label>
+      <div className="flex flex-col">
+        <label className="inline-flex items-center">
+          <input onChange={handleDif} type="radio" value="0" name="programDifficulty" checked={programDif === '0'} />
+          <span className="ml-2">Beginner</span>
+        </label>
+        <label className="inline-flex items-center">
+          <input onChange={handleDif} type="radio" value="1" name="programDifficulty" checked={programDif === '1'} />
+          <span className="ml-2">Intermediate</span>
+        </label>
+        <label className="inline-flex items-center">
+          <input onChange={handleDif} type="radio" value="2" name="programDifficulty" checked={programDif === '2'} />
+          <span className="ml-2">Expert</span>
+        </label>
+      </div>
+    </div>
   
         
-          <div>
-            <button onClick={postProgram} className="font-extrabold italic text-[18px] text-custom-black w-full bg-custom-green font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Add Program</button>
-          </div>
+      
+          <button
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={postProgram}
+      className="w-full overflow-hidden font-bold sm:py-2 py-6 mt-2 rounded-lg relative block leading-tight ease-in"
+      type="submit">
+      <div className="absolute -inset-6 rounded-lg transition-color group italic bg-custom-green text-lg"></div>
+      <span className={`absolute -inset-6 rounded-lg text-${hovered ? 'white' : 'black'} `}></span>
+
+      <span
+        className={`absolute -left-48 sm:-left-12 w-[47rem] sm:h-[8rem] h-36 text-${hovered ? 'white' : 'black'} bg-black transition-all duration-700 origin-top-right rounded-r-full -translate-x-full translate-y-24 ease ${hovered ? '-rotate-180' : ' -rotate-90'}`}
+      ></span>
+
+      <span className={`relative text-lg bottom-2 ease-in italic text-${hovered ? 'white' : 'black'} top-0.5`}>Add Program</span>
+    </button>
         </form>
         </div>
       )

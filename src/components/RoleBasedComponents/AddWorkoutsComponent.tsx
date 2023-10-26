@@ -4,6 +4,7 @@ import { addWorkoutToPlan } from '../../endpoints/addWorkoutToPlan_endpoint';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/Store';
 import { useNavigate } from 'react-router-dom';
+import LoadingAnimation from '../loading/LoadingAnimation';
 
 function AddWorkoutsComponent() {
   const [workouts, setWorkouts] = useState([]);
@@ -16,14 +17,19 @@ function AddWorkoutsComponent() {
   const duration = parseInt(localStorage.getItem('duration') || '0');
   const weeks = Math.floor(duration / 7);
   const remainingDays = duration % 7;
+  const [isLoading, setIsLoading] = useState(true);
 
   const [currentWeek, setCurrentWeek] = useState(1);
 
   useEffect(() => {
     getAllWorkouts()
-      .then(data => setWorkouts(data))
+      .then(data => {
+        setWorkouts(data);
+        setIsLoading(false); 
+      })
       .catch(error => console.error('Error fetching data:', error));
   }, []);
+
 
   const isWorkoutSelectedForCurrentWeek = (workoutId: any) => {
     return workoutIdsList.some((id, index) => id === workoutId && Math.floor(daysList[index] / 7) + 1 === currentWeek);
@@ -39,7 +45,7 @@ function AddWorkoutsComponent() {
       .sort();
   };
 
-  const difficultys = ["beginner", "intermidiate", "advanced"];
+  const difficultys = ["beginner", "intermidiate", "expert"];
 
   const toggleWorkout = (workoutId: any) => {
     const index = workoutIdsList.findIndex((id, idx) => id === workoutId && Math.floor(daysList[idx] / 7) + 1 === currentWeek);
@@ -103,7 +109,7 @@ function AddWorkoutsComponent() {
             {getAvailableDays().map(day => (
               <button
                 key={day}
-                className="text-custom-black bg-custom-green text-custom-black rounded px-4 py-2 m-1 font-extrabold italic text-[14px]"
+                className="text-custom-black bg-custom-green hover:bg-custom-green-hover rounded px-4 py-2 m-1 font-extrabold italic text-[14px]"
                 onClick={() => handleDaySelection(day)}
               >
                 {daysOfWeek[(day) % 7]}
@@ -112,7 +118,11 @@ function AddWorkoutsComponent() {
           </div>
         </div>
       )}
-      
+
+
+       {isLoading ? ( 
+        <LoadingAnimation />
+      ) : (
       <ul>
         {Array.isArray(workouts) && workouts.length > 0 ? (
           workouts.map((workout: any) => (
@@ -143,9 +153,10 @@ function AddWorkoutsComponent() {
             </li>
           ))
         ) : (
-          <li>Loading...</li>
-        )}
+          <p>No workouts available.</p>
+          )}
       </ul>
+      )}
     </div>
   );
 
