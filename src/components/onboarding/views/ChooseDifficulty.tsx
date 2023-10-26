@@ -73,7 +73,7 @@ function ChooseDifficulty() {
           </div>
         </form>
         <div className="text-center">
-          <button className="underline" type="submit" onClick={handleRegistrerClick}>skip</button>
+          <button className="underline text-blue-500" type="submit" onClick={handleRegistrerClick}>skip</button>
         </div>
       </div>
     </div>

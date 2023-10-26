@@ -68,7 +68,7 @@ function ChooseWorkoutsWeek() {
           </div>
         </form>
         <div className="text-center">
-          <button className="underline" type="submit" onClick={handleSkipClick}>skip</button>
+          <button className="underline text-blue-500" type="submit" onClick={handleSkipClick}>skip</button>
         </div>
       </div>
     </div>
