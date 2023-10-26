@@ -183,7 +183,7 @@ const initialState: DataState = {
   },
 
   selectedSearchOption: "name",
-  selectedSortOption: "most recent",
+  selectedSortOption: "newest",
   loading: false,
 
   error: null,
