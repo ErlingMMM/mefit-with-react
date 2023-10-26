@@ -112,18 +112,18 @@ function SubscribeModal({ isOpen, closeModal, id }: { isOpen: boolean, id: numbe
               </div>
             </div>
             <div>
-            <button
-  onClick={() => navigateDashboard()}
-  className="w-full font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in overflow-hidden"
->
-  <div className="relative text-lg hover:text-white sm:bottom-2 group transition-color duration-700 italic text-black">
-    <span className="absolute -inset-6 rounded-lg bg-custom-green "></span>
-    
-    <span className="absolute left-0 w-0 sm:w-[47rem] sm:h-[8rem] h-36 bg-black transition-all duration-300 origin-left transform -translate-x-full ease-in group-hover:translate-x-0"></span>
-    
-    <span className="relative">Go back to dashboard</span>
-  </div>
-</button>
+              <button
+                onClick={() => navigateDashboard()}
+                className="w-full font-bold sm:py-2 py-6 rounded-lg relative block leading-tight ease-in overflow-hidden"
+              >
+                <div className="relative text-lg text-white  group transition-color duration-700 italic hover:text-black">
+                  <span className="absolute -inset-6 rounded-lg bg-black"></span>
+
+                  <span className="absolute left-0 w-0 sm:w-[47rem] h-36 bg-custom-green transition-all duration-300 origin-left transform -translate-x-full -translate-y-2 ease-in group-hover:translate-x-0 -translate-y-4">
+                  </span>
+                  <span className="relative">Go back to dashboard</span>
+                </div>
+              </button>
 
             </div>
           </div>
