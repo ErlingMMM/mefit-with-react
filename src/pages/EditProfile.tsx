@@ -162,7 +162,7 @@ function EditProfile() {
 
 
 
-        <button onClick={handleSave} className="w-full bg-custom-green hover:bg-custom-green-hover text-white font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
+        <button onClick={handleSave} className="w-full bg-custom-green hover:bg-custom-green-hover text-custom-black font-bold py-2 px-4 rounded-lg focus:ring focus:ring-green-200" type="submit">Save</button>
 
       </form>
       </div>
