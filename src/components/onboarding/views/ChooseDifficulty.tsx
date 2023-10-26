@@ -33,15 +33,13 @@ function ChooseDifficulty() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center overflow-x-hidden">
-<div className="mt-10">
-  <div className="text-center">
-    <h1 className="font-bold text-black text-3xl italic mb-2 sm:text-4xl md:text-5xl w-64 sm:w-80 md:w-96">
-      MeFit
-    </h1>
+<div className="-mb-10">
+  <div className="text-right">
+  
     <br />
-    <h3 className="text-xl font-bold mb-6 sm:text-2xl md:text-3xl w-64 sm:w-80 md:w-96">
+    <h1 className="text-xl font-bold mb-6 sm:text-2xl md:text-3xl w-64 sm:w-80 md:w-96">
       What is your<br />current fitness<br />level?
-    </h3>
+    </h1>
   </div>
 </div>
 
