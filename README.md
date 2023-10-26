@@ -6,13 +6,16 @@ You’ll need to have Node 14.0.0 or later version on your local development mac
 https://nodejs.org/en/download
 
 # Clone the Repository:
-git clone https://github.com/wardell894/assignment3.git
+https://github.com/ErlingMMM/mefit-with-react/
 
-# Install Dependencies:
+### 1. Install Dependencies:
+First things first, install all the necessary dependencies by running the following command in your terminal or command prompt:
+
+```bash
 npm install
 
 # Start the Development Server:
-ng serve
+run npm start
 Open http://localhost:3000 to view it in your browser.
 
 # Vercel
