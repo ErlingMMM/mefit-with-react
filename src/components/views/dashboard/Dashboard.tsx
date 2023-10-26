@@ -92,7 +92,7 @@ function Dashboard() {
         </>
       )}
 
-      <CoompletedProgramModal isOpen={isModalOpen} closeModal={handleCloseModal} />
+     {/* <CoompletedProgramModal isOpen={isModalOpen} closeModal={handleCloseModal} />*/}
     </div>
 
   )
