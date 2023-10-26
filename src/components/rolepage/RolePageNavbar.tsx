@@ -47,7 +47,7 @@ const RolePageNavbar: React.FC<RolePageNavbarProps> = ({
             onClick={() => navigate("/")}
             className={`${
               currentComponent === 'Mefit'
-                ? 'text-custom-green cursor-not-allowed'
+                ? 'text-custom-green'
                 : 'text-custom-green hover:text-white'
             } italic text-lg font-sans font-bold`}
           >
@@ -57,7 +57,7 @@ const RolePageNavbar: React.FC<RolePageNavbarProps> = ({
           <button
             className={`${
               currentComponent === 'addExercise'
-                ? 'text-white cursor-not-allowed'
+                ? 'text-white'
                 : 'text-white hover:text-custom-green'
             }`}
             onClick={() => handleClick('addExercise')}
@@ -68,7 +68,7 @@ const RolePageNavbar: React.FC<RolePageNavbarProps> = ({
           <button
             className={`${
               currentComponent === 'addWorkout'
-                ? 'text-white cursor-not-allowed'
+                ? 'text-white'
                 : 'text-white hover:text-custom-green'
             }`}
             onClick={() => handleClick('addWorkout')}
@@ -79,7 +79,7 @@ const RolePageNavbar: React.FC<RolePageNavbarProps> = ({
           <button
             className={`${
               currentComponent === 'addProgram'
-                ? 'text-white cursor-not-allowed'
+                ? 'text-white'
                 : 'text-white hover:text-custom-green'
             }`}
             onClick={() => handleClick('addProgram')}
@@ -92,7 +92,7 @@ const RolePageNavbar: React.FC<RolePageNavbarProps> = ({
             <button
               className={`${
                 currentComponent === 'manageApplications'
-                  ? 'text-white cursor-not-allowed'
+                  ? 'text-white'
                   : 'text-white hover:text-custom-green'
               }`}
               onClick={() => handleClick('manageApplications')}
@@ -103,7 +103,7 @@ const RolePageNavbar: React.FC<RolePageNavbarProps> = ({
             <button
               className={`${
                 currentComponent === 'manageUsers'
-                  ? 'text-white cursor-not-allowed'
+                  ? 'text-white'
                   : 'text-white hover:text-custom-green'
               }`}
               onClick={() => handleClick('manageUsers')}
