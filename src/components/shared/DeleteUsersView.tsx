@@ -80,7 +80,7 @@ function DeleteUserView () {
   </div>
 </div>
 
-                <button    onClick={() =>  DeleteUserClick(user.id)} className="bg-[#a3e635] hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                <button    onClick={() =>  DeleteUserClick(user.id)} className="bg-[#a3e635] hover:bg-red-600 text-custom-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                   Delete
                 </button>
               </div>
