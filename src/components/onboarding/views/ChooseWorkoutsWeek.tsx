@@ -33,10 +33,8 @@ function ChooseWorkoutsWeek() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-        <h1 className={`font-bold text-black text-2xl italic text-right`}>
-      MeFit
-    </h1>
-    <br />
+ 
+    
     <h3 className="text-lg font-bold mb-6 text-right">Choose your wanted<br /> intensity level</h3>
 
     <form className="">
