@@ -13,7 +13,7 @@ function AddProgramForm() {
   const [programDesc, setProgramDesc] = useState("");
   const [programImg, setProgramImg] = useState("");
   const [programDur, setProgramDur] = useState("");
-  const [programDif, setProgramDif] = useState("0");
+  const [programDif, setProgramDif] = useState("1");
   const [hovered, setHovered] = useState(false);
 
 
@@ -113,15 +113,15 @@ function AddProgramForm() {
       <label className='text-lg text-gray-800' htmlFor="programDifficulty">Program Difficulty:</label>
       <div className="flex flex-col">
         <label className="inline-flex items-center">
-          <input onChange={handleDif} type="radio" value="0" name="programDifficulty" checked={programDif === '0'} />
+          <input onChange={handleDif} type="radio" value="0" name="programDifficulty" checked={programDif === '1'} />
           <span className="ml-2">Beginner</span>
         </label>
         <label className="inline-flex items-center">
-          <input onChange={handleDif} type="radio" value="1" name="programDifficulty" checked={programDif === '1'} />
+          <input onChange={handleDif} type="radio" value="1" name="programDifficulty" checked={programDif === '2'} />
           <span className="ml-2">Intermediate</span>
         </label>
         <label className="inline-flex items-center">
-          <input onChange={handleDif} type="radio" value="2" name="programDifficulty" checked={programDif === '2'} />
+          <input onChange={handleDif} type="radio" value="2" name="programDifficulty" checked={programDif === '3'} />
           <span className="ml-2">Expert</span>
         </label>
       </div>
