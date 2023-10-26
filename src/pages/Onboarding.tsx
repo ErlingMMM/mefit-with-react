@@ -27,9 +27,7 @@ function Onboarding() {
       dispatch(setRegistrationBoolean(true));
       navigate('/')
   };
-  const handleSkip = () => {
-    //TODO: Add logic to skip onboarding
-    };
+
 
   const handlePrevClick = () => {
     if (activeComponent > 1) {

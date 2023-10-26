@@ -6,7 +6,7 @@ import { RootState } from "../../../Redux/Store";
 import { AnyAction } from "@reduxjs/toolkit";
 import { useNavigate } from 'react-router-dom';
 
-function First() {
+function ChooseDifficulty() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const [selectedOption, setSelectedOption] = useState('option1');
   const navigate = useNavigate();
@@ -92,5 +92,5 @@ function First() {
   );
 };
 
-export default First;
+export default ChooseDifficulty;
 

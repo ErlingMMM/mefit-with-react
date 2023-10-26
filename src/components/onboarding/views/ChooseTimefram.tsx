@@ -7,7 +7,7 @@ import { RegisterUserOnboardingStatsAsync, setRegistrationBoolean, setUserTimeFr
 import { useNavigate } from 'react-router-dom';
 
 
-function Third() {
+function ChooseTimeframe() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const [selectedOption, setSelectedOption] = useState('option1');
   const intensityLevelUser = useSelector((state: any) => state.data.userData.timesAWeek);
@@ -77,4 +77,4 @@ const handleRegistrerClick = () => {
 }
 
 
-export default Third
+export default ChooseTimeframe

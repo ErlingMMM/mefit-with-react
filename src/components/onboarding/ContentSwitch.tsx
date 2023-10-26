@@ -1,6 +1,6 @@
-import First from "./views/First";
-import Second from "./views/Second";
-import Third from "./views/Third";
+import First from "./views/ChooseDifficulty";
+import Second from "./views/ChooseWorkoutsWeek";
+import Third from "./views/ChooseTimefram";
 
 function ContentSwitch({ activeComponent }: { activeComponent: number }) {
     switch (activeComponent) {
